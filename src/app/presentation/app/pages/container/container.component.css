@@ -1,0 +1,26 @@
+.container-sidenav {
+  height: 85.2%;
+  /*position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+}
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidenav-menu-content {
+  padding: 15px;
+  background-color: #E0E7FF;
+}
+
+.sidenav-content {
+  padding: 24px;
+  background-color: transparent;
+  height: 100%;
+}

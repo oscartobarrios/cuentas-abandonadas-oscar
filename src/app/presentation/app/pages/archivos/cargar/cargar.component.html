@@ -1,0 +1,65 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card>
+    <form fxLayout="column" [formGroup]="reactiveForm" fxFlex>
+      <mat-card-header>
+        <mat-card-title>Formulario para el cargue de archivos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div aria-label="Alerta: caso de error" class="alert alert-content text-danger"
+             *ngIf="formerror && (nombreCargue.errors || tipoArchivo.errors || file.errors)">
+          <div *ngIf="nombreCargue.errors">
+            <div *ngIf="nombreCargue.errors.required">
+              El campo nombre es requerido.
+            </div>
+          </div>
+          <div *ngIf="tipoArchivo.errors">
+            <div *ngIf="tipoArchivo.errors.required">
+              El tipo de cargue es requerido.
+            </div>
+          </div>
+          <div *ngIf="file.errors">
+            <div *ngIf="file.errors.required">
+              Debe adjuntar un archivo
+            </div>
+          </div>
+        </div>
+        <div aria-label="Alerta: caso de error" class="alert alert-content-aprobado text-blue" *ngIf="estadoenvio === 'APROBADO'">
+        <div>
+          <span>{{mensaje}}</span>
+        </div>
+        </div>
+        <div aria-label="Alerta: caso de error" class="alert alert-content-rechazado text-danger" *ngIf="estadoenvio === 'RECHAZADO'">
+          <div>
+            <span>{{mensaje}}</span>
+          </div>
+        </div>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" formControlName="nombreCargue">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="opciontipo" formControlName="tipoArchivo">
+              <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipoCargue">
+                {{tipo.tipoCargue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayoutGap="10px">
+        <button mat-raised-button   (click)="fileInput.click()">
+          <mat-icon color="primary">file_present</mat-icon>
+          <span>Selecione el archivo</span>
+          <input #fileInput type="file" formControlName="file" (change)="fileChange($event)" style="display:none;" />
+          <p>{{archivo?.name}}</p>
+        </button>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button type="submit" [routerLink]="['/listar']" style="margin-right: 10px;">Regresar</button>
+        <button-atom text="Cargar" type="submit" (click)="onSubmit()"></button-atom>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

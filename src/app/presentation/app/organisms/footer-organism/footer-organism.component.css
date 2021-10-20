@@ -1,0 +1,20 @@
+.links-footer-list {
+  list-style-type: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+footer .divider {
+  border-top: 1px solid white;  
+  width: 100%;
+}
+
+footer .mat-divider {
+  border-color: white;
+}
+
+footer {
+  padding: 24px;
+  background-color: #36c;
+  color: white;
+}

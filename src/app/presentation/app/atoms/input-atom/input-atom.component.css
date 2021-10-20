@@ -1,0 +1,16 @@
+input.input-atom:disabled {
+	background-color: #ececec;
+}
+
+
+input.input-atom {
+	border: 1px solid #d6d6d6;
+	border-radius: 5px;
+	padding: 10px;	
+	color: #656565;
+	outline: 0;
+}
+
+input.input-atom:focus {
+	border-color: #002684;
+}
