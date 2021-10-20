@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutGap="15px">
+	<!-- buttons -->	
+	<lateral-button-atom 
+		class="item"
+		*ngFor="let item of items"
+		[item]="item" 		
+		(clickedItem)="propageEvent($event)">				
+	</lateral-button-atom>	
+</div>

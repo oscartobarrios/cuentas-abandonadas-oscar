@@ -1,0 +1,12 @@
+<select 
+	[id]="id"
+	[name]="name"
+	[formControl]="formControl" 	
+	(change)="doChange()" 
+	(blur)="doBlur()"
+	[ngClass]="className">
+	<option disabled selected>{{placeholder}}</option>
+	<option *ngFor="let item of dataList;let i = index;trackBy: trackByItems" [ngValue]="item">
+		{{item[attrShow]}}
+	</option>
+</select>

@@ -1,0 +1,18 @@
+<!--mat-card fxLayout="column"
+	fxLayoutAlign="center center"
+	class="item-menu-sidenav"
+	matRipple
+	(clickedItem)="clickedItem.emit(item)">
+    <mat-icon>{{item && item.icon ? item.icon : ''}}</mat-icon>
+    <p>{{item && item.text ? item.text : ''}}</p>
+</mat-card-->
+
+
+<mat-card fxLayout="column"
+          fxLayoutAlign="center center"
+          class="item-menu-sidenav"
+          matRipple
+          [routerLink]="['/listar']">
+  <mat-icon>description</mat-icon>
+  <p>Cargar archivos</p>
+</mat-card>

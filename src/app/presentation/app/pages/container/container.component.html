@@ -1,0 +1,22 @@
+<!-- header -->
+<header-organism></header-organism>
+<!-- subheader -->
+<subheader-organism [drawer]="drawer"></subheader-organism>
+<!-- content -->
+<mat-drawer-container class="container-sidenav" autosize>
+  <mat-drawer #drawer class="sidenav-menu-content" [mode]="openedSidenav ? 'side' : 'over'" [opened]="openedSidenav">
+    <div fxLayout="column" fxLayoutGap="10px" aria-label="Menú principal">
+    	<lateral-menu-molecule 
+		  	[items]="itemsSidenav" 
+		  	(clickedItem)="itemSeleccionado($event)">  		
+		  </lateral-menu-molecule>      
+    </div>
+  </mat-drawer>
+
+  <div fxLayout="column">
+	  <div class="sidenav-content">
+			<router-outlet></router-outlet> 
+		</div>
+		<footer-organism></footer-organism>
+	</div>
+</mat-drawer-container>

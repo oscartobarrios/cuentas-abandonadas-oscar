@@ -1,0 +1,43 @@
+select.select-atom:disabled {
+	background-color: #ececec;
+}
+
+select.select-atom {
+	border: 1px solid #d6d6d6;
+	border-radius: 5px;
+	padding: 10px;	
+	color: #656565;	
+
+	/* inital arrow */
+	background-image:
+	    linear-gradient(45deg, transparent 50%, #002684 50%),
+	    linear-gradient(135deg, #002684 50%, transparent 50%),
+	    linear-gradient(to right, #ccc, #ccc);
+	background-position:
+	    calc(100% - 20px) calc(1em + 2px),
+	    calc(100% - 15px) calc(1em + 2px),
+	    calc(100% - 2.5em) 0.5em;
+	background-size:
+	    5px 5px,
+	    5px 5px,
+	    1px 1.5em;
+	background-repeat: no-repeat;
+}
+
+select.select-atom:focus {
+	background-image:
+	    linear-gradient(45deg, #002684 50%, transparent 50%),
+	    linear-gradient(135deg, transparent 50%, #002684 50%),
+	    linear-gradient(to right, #ccc, #ccc);
+	background-position:
+	  calc(100% - 15px) 1em,
+	  calc(100% - 20px) 1em,
+	  calc(100% - 2.5em) 0.5em;
+	background-size:
+	  5px 5px,
+	  5px 5px,
+	  1px 1.5em;
+	border-color: #002684;
+	background-repeat: no-repeat;
+	outline: 0;
+}

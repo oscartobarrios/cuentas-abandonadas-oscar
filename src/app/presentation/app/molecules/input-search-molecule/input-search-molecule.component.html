@@ -1,0 +1,17 @@
+<div fxLayout fxLayoutAlign="center center" class="search-molecule">
+	<form [formGroup]="formGroup">
+		<input-atom 
+			[type]="type"
+			[id]="id"
+			formControlName="searchModel"
+			[placeholder]="placeholder"
+			(click)="emitEvents('click')">		
+		</input-atom>
+		<button-atom icon="search" 
+			[disabled]="disabled" 
+			(clickButton)="emitEvents('search')" 
+			className=""
+			[disabled]="!formGroup.valid">				
+		</button-atom>
+	</form>
+</div>

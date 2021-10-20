@@ -1,0 +1,86 @@
+<!-- header -->
+<header-organism></header-organism>
+
+<!-- content -->
+<div fxLayout fxLayoutAlign="center center" class="login-container">
+  <form [formGroup]="reactiveForm" method="POST" fxLayout="column">
+    <mat-card class="mat-elevation-z8" style="padding: 55px">
+      <mat-card-header>
+        <h1 class="nombre">ICETEX</h1>
+        <img src="./assets/img/svg/logo-icetex-blue.svg" alt="ICETEX" class="img-fluid d-block mx-auto"/>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="space-around stretch" class="padding-top-24">
+          <div aria-label="Alerta: caso de error" class="alert alert-content text-danger" *ngIf="
+                submitted &&
+                (userName.errors ||
+                  password.errors ||
+                  recaptchaReactive.errors ||
+                  errorLogin)
+              ">
+            <div>
+              <h3>Lo sentimos</h3>
+            </div>
+            <div *ngIf="userName.errors">
+              <div *ngIf="userName.errors.required">
+                Campo Usuario obligatorio
+              </div>
+            </div>
+            <div *ngIf="password.errors">
+              <div *ngIf="password.errors.required">Campo Clave obligatorio</div>
+            </div>
+            <div *ngIf="recaptchaReactive.errors">
+              <div *ngIf="recaptchaReactive.errors.required">
+                El recaptcha es obligatorio
+              </div>
+            </div>
+            <div *ngIf="errorLogin">
+              <div>{{ errorLogin }}</div>
+            </div>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Usuario</mat-label>
+              <input matInput placeholder="Usuario" formControlName="userName" maxlength="50"/>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Clave</mat-label>
+              <input matInput placeholder="Clave" type="password" formControlName="password" maxlength="50"/>
+            </mat-form-field>
+          </div>
+          <!--div fxLayout="column" fxLayoutAlign="center center">
+            <re-captcha formControlName="recaptchaReactive"></re-captcha>
+          </div-->
+        </div>
+      </mat-card-content>
+      <mat-card-actions fxLayout="column">
+        <div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="15px">
+          <div>
+            <button mat-raised-button  color="primary" type="submit" (click)="onSubmit()" class="btn btn-round btn-primary">
+              Ingresar
+            </button>
+          </div>
+          <div>
+            <a href="/restablecer-contrasena" class="btn btn-low">
+              Restablecer contraseña
+            </a>
+          </div>
+          <div>
+            <a class="btn btn-low">
+              Crear una cuenta
+            </a>
+          </div>
+          <div>
+            <a href="/recordarusuario" class="btn btn-low">
+              Recuperar usuario
+            </a>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+
+<footer-organism></footer-organism>

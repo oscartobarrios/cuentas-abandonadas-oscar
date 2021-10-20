@@ -1,0 +1,17 @@
+button.button-atom:not(attr(mat-icon-button)) {
+	border-radius: 5px;
+	border: none;
+	padding: 0 25px;
+	font-weight: bold;
+}
+
+button.button-atom {
+	color: white !important;
+	background-color: #002684;
+}
+
+button.button-atom:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
