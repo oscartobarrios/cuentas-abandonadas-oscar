@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NotificationsService } from './../../../../shared/services/notifications.service';
 import { GetInterfazContableUseCaseService } from './../../../../../domain/usecases/interfaz-contable/get-interfaz-contable-use-case-service';
 import { InterfazContable } from './../../../../../domain/models/interfaz-contable/interfaz-contable';
@@ -12,12 +13,12 @@ import { Component, OnInit } from '@angular/core';
 export class CrearInterfazContableComponent implements OnInit {
   interfazContableForm: FormGroup;
   tipoInterfaz: any = [
-    { codigo:"Cesion", nombre: "Cesión"},
-    { codigo:"Reintegro", nombre: "Reintegro"},
-    { codigo:"Autorizada", nombre: "Traslado - autorizada"},
-    { codigo:"Verificado", nombre: "Traslado - verificado"},
-    { codigo:"Rechazada", nombre: "Traslado - rechazada"},
-    { codigo:"Valoracion", nombre: "Valoración"}
+    { codigo:"CESION", nombre: "Cesión"},
+    { codigo:"REINTEGRO", nombre: "Reintegro"},
+    { codigo:"AUTORIZADA", nombre: "Traslado - autorizada"},
+    { codigo:"VERIFICADO", nombre: "Traslado - verificado"},
+    { codigo:"RECHAZADA", nombre: "Traslado - rechazada"},
+    { codigo:"VALORACION", nombre: "Valoración"}
   ]
   meses: any = [
     { codigo: 1, nombre: "1 - Enero"},
@@ -35,7 +36,8 @@ export class CrearInterfazContableComponent implements OnInit {
   ]
   interfazContable: InterfazContable;
   constructor(private _getInterfazContableUseCaseService: GetInterfazContableUseCaseService,
-              private _notifications: NotificationsService) {
+              private _notifications: NotificationsService,
+              private _router: Router) {
     this.formInit();
    }
 
@@ -55,7 +57,7 @@ export class CrearInterfazContableComponent implements OnInit {
     if(!this.interfazContableForm.invalid) {
       const preloader = this._notifications.showPreloader();
       this._getInterfazContableUseCaseService.CrearInterfazContable(this.interfazContableForm.value).subscribe((res) => {
-        console.log("Respuesta", res)
+        this._router.navigate(['interfaz-contable-listar']);
         preloader.close();
       },  (error: any)  => {
         preloader.close();

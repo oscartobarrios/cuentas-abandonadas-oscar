@@ -36,4 +36,14 @@ export class InterfazContableService {
   CrearInterfazContable(data: InterfazContable): Observable<any> {
     return this.http.post<any>(`${this._url}/Generar`, data , this._httpOptions);
   }
+
+  TrasmitirInterfazContable(data: InterfazContableList): Observable<any> {
+    const dataToSend = {
+      "nmAnoInt": "20" + data.anoproceso,
+      "nmMesInt": data.mesproceso,
+      "nmNroPro": data.nroprocesoborrador
+    }
+    console.log("se envía esto", dataToSend);
+    return this.http.post<any>(`${this._url}/Transmitir`, dataToSend , this._httpOptions);
+  }
 }

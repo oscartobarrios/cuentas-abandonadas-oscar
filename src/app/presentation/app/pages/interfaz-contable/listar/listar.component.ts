@@ -9,17 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar.component.css']
 })
 export class ListarInterfazContableComponent implements OnInit {
-  /*
-  mock: InterfazContableList = {
-    tipoInterfase: "prueba",
-    anoproceso: "2021",
-    mesproceso: "06",
-    fechageneracionborrador: "2020-01-01",
-    fechageneracionapo: "2020-01-10",
-    monto: "123455677",
-    estado: "TestEstado"
-  }
-  */
   interfazContableList: InterfazContableList[] = [];
   constructor(private _getInterfazContableUseCaseService: GetInterfazContableUseCaseService,
               private _notifications: NotificationsService) { }
@@ -34,8 +23,19 @@ export class ListarInterfazContableComponent implements OnInit {
       this.interfazContableList = res;
       preloader.close();
     },  (error: any)  => {
-      //this.interfazContableList = [this.mock];
       console.error("Error trayendo las interfaces", error);
+      preloader.close();
+    });
+  }
+
+  transmitir(data: InterfazContableList) {
+    const preloader = this._notifications.showPreloader();
+    this._getInterfazContableUseCaseService.TrasmitirInterfazContable(data).subscribe((res) => {
+      console.log("Resultado", res);
+      preloader.close();
+      //window.location.reload();
+    },  (error: any)  => {
+      console.error("Error transmitiendo", error);
       preloader.close();
     });
   }

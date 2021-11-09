@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let int of interfazContableList">
-                    <td>{{ int.tipoInterfase }}</td>
+                    <td>{{ int.tipointerfase }}</td>
                     <td>{{ int.anoproceso | number }}</td>
                     <td>{{ int.mesproceso| number }}</td>
                     <td>{{ int.fechageneracionborrador }}</td>
@@ -28,7 +28,7 @@
                     <td>{{ int.monto }}</td>
                     <td>{{ int.estado }}</td>
                     <td>
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-arrow-up" style="cursor: pointer;" (click)="transmitir(int)"></i>
                         <i class="fas fa-th-list"></i>
                         <i class="fas fa-list-ul"></i>
                     </td>

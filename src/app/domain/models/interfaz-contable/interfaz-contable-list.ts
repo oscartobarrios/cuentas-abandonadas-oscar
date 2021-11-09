@@ -1,4 +1,5 @@
 export interface InterfazContableList {
+    nroprocesoborrador: string,
     tipoInterfase: string,
     anoproceso:string,
     mesproceso:string,

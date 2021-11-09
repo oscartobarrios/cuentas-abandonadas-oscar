@@ -16,4 +16,7 @@ export class GetInterfazContableUseCaseService {
   CrearInterfazContable(data: InterfazContable): Observable<any> {
       return this._interfazContableGateway.CrearInterfazContable(data);
   }
+  TrasmitirInterfazContable(data: InterfazContableList): Observable<boolean> {
+     return this._interfazContableGateway.TrasmitirInterfazContable(data);
+  }
 }
