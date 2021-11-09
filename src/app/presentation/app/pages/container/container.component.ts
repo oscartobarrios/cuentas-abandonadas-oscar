@@ -15,12 +15,14 @@ export class ContainerComponent implements OnInit {
   public itemsSidenav = [
     {
       icon: 'description',
-      text: 'Cargar archivos'
+      text: 'Cargar archivos',
+      url : 'listar'
     },
-  /*{
-      icon: 'paid',
-      text: 'Pagos'
-    },
+    {
+      icon: 'description',
+      text: 'Trámites',
+      url : 'submenu/tramites'
+    }/*,
     {
       icon: 'account_balance',
       text: 'Actualización cuenta bancaria'

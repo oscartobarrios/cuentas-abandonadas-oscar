@@ -18,7 +18,7 @@ import {newArray} from '@angular/compiler/src/util';
 })
 export class ListarComponent implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'Usuario', 'Nombre', 'Tipo', 'Fecha', 'Archivo', 'Estado', 'actions'];
+  displayedColumns: string[] = ['Usuario', 'Nombre', 'Tipo', 'NroCuentas', 'SaldoInicial', 'Remuneración', 'Fecha', 'Estado', 'Actions'];
   dataSource = new MatTableDataSource<ICargue>();
   idOrganizacion: any;
   usuario:any;
@@ -65,19 +65,17 @@ export class ListarComponent implements OnInit {
     }
     const validar = confirm(mensajeestado);
     if(validar){
-    this._getarchivousecase.CambiarEstadoCargue({idCargue,
+      this._getarchivousecase.CambiarEstadoCargue({idCargue,
                                                       usuario: this.usuario,
                                                       ip: this.ip || '193.168.1.1',
                                                       operacion: tipoestado})
-      .subscribe((ResulData) =>{
-        alert(ResulData?.mensaje);
-        window.location.reload();
-      }) ;
-
-    }else{
-
+                              .subscribe((ResulData) =>{
+                                alert(ResulData?.mensaje);
+                                window.location.reload();
+                              });
     }
   }
+
   openError(id: any): void {
     const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
       data: {idCargue: id}

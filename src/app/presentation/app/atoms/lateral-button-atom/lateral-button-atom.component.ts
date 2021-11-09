@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export interface LateralItemMenu {
 	icon: string;
 	text: string;
+  url: string;
 }
 
 @Component({

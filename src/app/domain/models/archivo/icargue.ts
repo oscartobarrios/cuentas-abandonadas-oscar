@@ -17,6 +17,8 @@ export interface ICargue {
   estado:string,
   monto:string,
   nroCuentas:string,
+  saldoInicial:string,
+  remuneracion:string,
   causalRechazo:string,
   observacionesRechazo:string
 }

@@ -1,3 +1,7 @@
+import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
+import { CrearInterfazContableComponent } from './presentation/app/pages/interfaz-contable/crear/crear.component';
+import { EntidadFinancieraComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera.component';
+import { SubMenuOrganismComponent } from './presentation/app/organisms/sub-menu-organism/sub-menu-organism.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from './presentation/shared/guards/auth.guard';
@@ -24,6 +28,10 @@ const routes: Routes = [
       {path: 'listar', component: ListarComponent},
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},
+      {path: 'submenu/:type', component: SubMenuOrganismComponent},
+      {path: 'entidad-financiera', component: EntidadFinancieraComponent},
+      {path: 'interfaz-contable-listar', component: ListarInterfazContableComponent},
+      {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

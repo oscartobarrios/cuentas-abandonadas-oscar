@@ -51,6 +51,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+
+
+    this._getLoginUseCase.logIn({userName: "clopez", password: "clopez35424163"}).subscribe((ResponseData) => {
+      this._storageservice.clear();
+      this._storageservice.setItem('payload', ResponseData);
+      this._storageservice.setItem('auth', true);
+      this._router.navigate(['/perfil']);
+
+    });
+
+    /*
+
     if(!this.userName.errors.required || !this.password.errors.required ){
     this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe((ResponseData) => {
       this._storageservice.clear();
@@ -60,6 +72,8 @@ export class LoginComponent implements OnInit {
 
     });
     }
+
+    */
   }
 
 }

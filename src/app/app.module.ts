@@ -1,3 +1,6 @@
+import { InterfazContableService } from './infraestructure/driven-adapter/interfaz-contable-api/interfaz-contable-service';
+import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
+import { CrearInterfazContableComponent } from './presentation/app/pages/interfaz-contable/crear/crear.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecaptchaFormsModule, RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
@@ -25,11 +28,20 @@ import {ErrorArchivoDialogComponent, ListarComponent} from './presentation/app/p
 import { LoginComponent } from './presentation/app/pages/login/login.component';
 import { CargarComponent } from './presentation/app/pages/archivos/cargar/cargar.component';
 import { ProfileComponent } from './presentation/app/pages/profile/profile.component';
+import { CardAtomComponent } from './presentation/app/atoms/card-atom/card-atom.component';
+import { SubMenuOrganismComponent } from './presentation/app/organisms/sub-menu-organism/sub-menu-organism.component';
+import { EntidadFinancieraComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera.component';
+import { RecursoHumanoComponent } from './presentation/app/pages/entidad-financiera/recurso-humano/recurso-humano.component';
+import { ModalDireccionComponent } from './presentation/shared/modal-direccion/modal-direccion.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EntidadFinancieraFormComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera-form/entidad-financiera-form.component';
+import { InterfazContableGateway } from './domain/models/interfaz-contable/gateway/interfaz-contable-gateway';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
   { provide: LoginGateway, useClass: LoginApiService},
-  { provide: ArchivoGateway, useClass: ArchivoApiService}
+  { provide: ArchivoGateway, useClass: ArchivoApiService},
+  { provide: InterfazContableGateway, useClass: InterfazContableService}
 ];
 
 @NgModule({
@@ -40,7 +52,15 @@ export const API_GATEWAYS_PROVIDERS = [
     ListarComponent,
     CargarComponent,
     ProfileComponent,
-    ErrorArchivoDialogComponent
+    ErrorArchivoDialogComponent,
+    CardAtomComponent,
+    SubMenuOrganismComponent,
+    EntidadFinancieraComponent,
+    RecursoHumanoComponent,
+    ModalDireccionComponent,
+    EntidadFinancieraFormComponent,
+    CrearInterfazContableComponent,
+    ListarInterfazContableComponent
   ],
   imports: [
     AppRoutingModule,
@@ -54,6 +74,7 @@ export const API_GATEWAYS_PROVIDERS = [
     InterceptorsIntegratorModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    NgbModule
   ],
   providers: [
   	API_GATEWAYS_PROVIDERS,
