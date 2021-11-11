@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
               private _storageservice: StorageService) {
 
     this.reactiveForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.email]),
+      userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       recaptchaReactive: new FormControl('', []),
     });
@@ -61,18 +61,25 @@ export class LoginComponent implements OnInit {
 
     });
     */
+    console.log(this.userName.errors)
+    console.log(this.password.errors)
 
-    if(!this.userName.errors.required || !this.password.errors.required ){
-    this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe((ResponseData) => {
-      this._storageservice.clear();
-      this._storageservice.setItem('payload', ResponseData);
-      this._storageservice.setItem('auth', true);
-      this._router.navigate(['/perfil']);
-
-    });
+    if(!this.userName.errors || !this.password.errors){
+    this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe(
+      (ResponseData) => {
+        console.log(ResponseData);
+        if(ResponseData && ResponseData.infoUsuario && ResponseData.token)
+        {
+          this.errorLogin = null;
+          this._storageservice.clear();
+          this._storageservice.setItem('payload', ResponseData);
+          this._storageservice.setItem('auth', true);
+          this._router.navigate(['/perfil']);
+        }
+        else{
+          this.errorLogin = ResponseData.mensaje;
+        }
+      });
     }
-
-    
   }
-
 }

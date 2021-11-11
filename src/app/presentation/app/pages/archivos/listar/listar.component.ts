@@ -41,8 +41,9 @@ export class ListarComponent implements OnInit {
      this.ip = res.ip;
     });
 
-    this.idOrganizacion = this._storageservice.getItem('payload').infoUsuario.idOrganizacion;
-    this.usuario = this._storageservice.getItem('payload').infoUsuario.usuario;
+    
+    this.usuario = this._storageservice.getItem('payload').infoUsuario;
+    this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
     this._getarchivousecase.Listar(this.idOrganizacion).subscribe((ResultData) => {
       this.dataSource.data = ResultData;
@@ -66,7 +67,7 @@ export class ListarComponent implements OnInit {
     const validar = confirm(mensajeestado);
     if(validar){
       this._getarchivousecase.CambiarEstadoCargue({idCargue,
-                                                      usuario: this.usuario,
+                                                      usuario: this.usuario.usuario,
                                                       ip: this.ip || '193.168.1.1',
                                                       operacion: tipoestado})
                               .subscribe((ResulData) =>{

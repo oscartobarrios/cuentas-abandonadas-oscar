@@ -27,12 +27,12 @@
             </ng-container>
 
             <ng-container matColumnDef="NroCuentas" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nro de cuentas</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de cuentas</th>
               <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
             </ng-container>
 
             <ng-container matColumnDef="SaldoInicial" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial/ Total traslado</th>
               <td mat-cell *matCellDef="let element">{{element.saldoInicial}} </td>
             </ng-container>
 
@@ -60,7 +60,7 @@
                 <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf="element.estado === 'VALIDACION_FALLIDA'" >
                   <mat-icon color="warn">launch</mat-icon> Ver Errores
                 </button>
-                <div *ngIf="element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA'">
+                <div *ngIf="(element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 4">
                   <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
                     <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar Entidad
                   </button>
@@ -68,7 +68,7 @@
                     <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                   </button>
                 </div>
-                <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION'">
+                <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION' && usuario.idPerfil == 4">
                   <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'aceptar_icetex')" >
                     <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
                   </button>
