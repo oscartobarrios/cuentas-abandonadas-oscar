@@ -1,7 +1,9 @@
 <mat-card fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="80px">
-	<app-card-atom 
-		fxFlex="288px"
-		*ngFor="let item of menuType"
-		[item]="item">				
-	</app-card-atom>	
+	<ng-container *ngFor="let item of menuType">
+		<app-card-atom 
+			fxFlex="288px"
+			[item]="item"
+			*ngIf="item.rols.includes(usuario.idPerfil)">				
+		</app-card-atom>	
+	</ng-container>
 </mat-card>

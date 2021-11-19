@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export interface CardItem {
 	title: string;
 	url: string;
+  rols: number[]
 }
 
 @Component({

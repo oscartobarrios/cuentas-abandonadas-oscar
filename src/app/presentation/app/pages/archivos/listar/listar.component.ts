@@ -36,12 +36,11 @@ export class ListarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    
     this._http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
      this.ip = res.ip;
     });
-
-    
+        
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();

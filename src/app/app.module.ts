@@ -36,6 +36,7 @@ import { ModalDireccionComponent } from './presentation/shared/modal-direccion/m
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadFinancieraFormComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera-form/entidad-financiera-form.component';
 import { InterfazContableGateway } from './domain/models/interfaz-contable/gateway/interfaz-contable-gateway';
+import { AutorizacionCarguesComponent } from './presentation/app/pages/autorizacion-cargues/autorizacion-cargues.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -60,7 +61,8 @@ export const API_GATEWAYS_PROVIDERS = [
     ModalDireccionComponent,
     EntidadFinancieraFormComponent,
     CrearInterfazContableComponent,
-    ListarInterfazContableComponent
+    ListarInterfazContableComponent,
+    AutorizacionCarguesComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,3 +1,4 @@
+import { StorageService } from './../../../shared/services/storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CardItem } from '../../atoms/card-atom/card-atom.component';
@@ -8,32 +9,38 @@ import { CardItem } from '../../atoms/card-atom/card-atom.component';
   styleUrls: ['./sub-menu-organism.component.css']
 })
 export class SubMenuOrganismComponent implements OnInit {
-
+  usuario = this._storageservice.getItem('payload').infoUsuario;
   tramites: CardItem[] = [
     {
       title: "Fichas entidades",
-      url: "entidad-financiera"
+      url: "entidad-financiera",
+      rols: [4]
     },
     {
       title: "Autorización cargues",
-      url: "#"
+      url: "autorizacion-cargues",
+      rols: [4]
     },
     {
       title: "Configuración calendario",
-      url: "#"
+      url: "#",
+      rols: [4]
     },
     {
       title: "Interfaz contable",
-      url: "interfaz-contable-listar"
+      url: "interfaz-contable-listar",
+      rols: [4]
     },
     {
       title: "Configurar dominios",
-      url: "#"
+      url: "#",
+      rols: [4]
     },
   ]
   menuType:any;
 
-  constructor(private _route : ActivatedRoute) {
+  constructor(private _route : ActivatedRoute,
+              private _storageservice: StorageService,) {
     this._route.params.subscribe(params => {
       this.buildSubMenu(params.type)
     });

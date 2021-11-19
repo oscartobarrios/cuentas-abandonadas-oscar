@@ -61,10 +61,7 @@ export class LoginComponent implements OnInit {
 
     });
     */
-    console.log(this.userName.errors)
-    console.log(this.password.errors)
-
-    if(!this.userName.errors || !this.password.errors){
+   if(!this.userName.errors || !this.password.errors){
     this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe(
       (ResponseData) => {
         console.log(ResponseData);

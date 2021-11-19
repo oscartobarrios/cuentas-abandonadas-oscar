@@ -1,0 +1,68 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+        <div class="col-8">Cuentas Abandonadas - Autorización cargues</div>
+        <div class="col-2">&nbsp;</div>
+    </div>
+    <div class="row">
+        <table mat-table [dataSource]="cargues" matSort>
+            <ng-container matColumnDef="Entidad" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad</th>
+            <td mat-cell *matCellDef="let car">{{car.codigoEntidad}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="NombreArchivo" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre archivo</th>
+            <td mat-cell *matCellDef="let car">{{car.nombreArchivo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="FechaCargue" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha cargue</th>
+            <td mat-cell *matCellDef="let car">{{car.fecCargue | date :'dd-MM-yyyy' }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TipoArchivo" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de archivo</th>
+            <td mat-cell *matCellDef="let car">{{car.tipoArchivo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="NumeroCuentas" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de cuentas</th>
+            <td mat-cell *matCellDef="let car">{{car.nroCuentas | number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Estado" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+            <td mat-cell *matCellDef="let car">{{car.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let car;">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                <div style="margin: 3px;">
+                <div *ngIf="(car.estado === 'CARGA_EXITOSA' || car.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 4">
+                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_entidad')" >
+                        <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar Entidad
+                    </button>
+                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_entidad')">
+                        <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                    </button>
+                </div>
+                <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && usuario.idPerfil == 4">
+                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'aceptar_icetex')" >
+                        <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
+                    </button>
+                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_icetex')">
+                        <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                    </button>
+                </div>
+                </div>
+            </mat-cell>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>  
+    </div>
+</div>

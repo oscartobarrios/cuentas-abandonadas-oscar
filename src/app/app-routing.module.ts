@@ -1,3 +1,4 @@
+import { AutorizacionCarguesComponent } from './presentation/app/pages/autorizacion-cargues/autorizacion-cargues.component';
 import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
 import { CrearInterfazContableComponent } from './presentation/app/pages/interfaz-contable/crear/crear.component';
 import { EntidadFinancieraComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
       {path: 'entidad-financiera', component: EntidadFinancieraComponent},
       {path: 'interfaz-contable-listar', component: ListarInterfazContableComponent},
       {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
+      {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
