@@ -49,6 +49,12 @@ export class AutorizacionCarguesComponent implements OnInit {
       case 'rechazar_entidad':
         mensajeestado = '¿ Esta seguro que desea rechazar el cargue ?';
         break;
+      case 'confirmar_icetex':
+        mensajeestado = '¿ Esta seguro que desea aprobar el cargue ?';
+        break;
+      case 'rechazar_icetex':
+        mensajeestado = '¿ Esta seguro que desea rechazar el cargue ?';
+        break;
     }
     const validar = confirm(mensajeestado);
     if(validar){

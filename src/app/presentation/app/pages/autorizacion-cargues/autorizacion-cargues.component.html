@@ -41,22 +41,14 @@
             <mat-cell *matCellDef="let car;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
-                <div *ngIf="(car.estado === 'CARGA_EXITOSA' || car.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 4">
-                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_entidad')" >
-                        <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar Entidad
-                    </button>
-                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_entidad')">
-                        <mat-icon color="accent">highlight_off</mat-icon> Rechazar
-                    </button>
-                </div>
-                <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && usuario.idPerfil == 4">
-                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'aceptar_icetex')" >
-                        <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
-                    </button>
-                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_icetex')">
-                        <mat-icon color="accent">highlight_off</mat-icon> Rechazar
-                    </button>
-                </div>
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && usuario.idPerfil == 4">
+                        <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'aceptar_icetex')" >
+                            <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
+                        </button>
+                        <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_icetex')">
+                            <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                        </button>
+                    </div>
                 </div>
             </mat-cell>
             </ng-container>
