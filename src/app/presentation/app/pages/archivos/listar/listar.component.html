@@ -57,12 +57,12 @@
               <mat-cell *matCellDef="let element;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
-                  <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf="element.estado === 'VALIDACION_FALLIDA'" >
+                  <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA'" >
                     <mat-icon color="warn">launch</mat-icon> Ver Errores
                   </button>
                   <div *ngIf="(element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 1">
                     <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
-                      <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar Entidad
+                      <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar
                     </button>
                     <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(element.idCargue,'rechazar_entidad')">
                       <mat-icon color="accent">highlight_off</mat-icon> Rechazar

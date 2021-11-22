@@ -54,17 +54,6 @@ export class ListarComponent implements OnInit {
 
   cambiarestado(idCargue:any, tipoestado:string): void{
 
-    var mensajeestado = '';
-    switch(tipoestado){
-      case 'confirmar_entidad':
-      mensajeestado = '¿ Esta seguro que desea aprobar el cargue ?';
-      break;
-      case 'rechazar_entidad':
-      mensajeestado = '¿ Esta seguro que desea rechazar el cargue ?';
-      break;
-    }
-    const validar = confirm(mensajeestado);
-    if(validar){
       this._getarchivousecase.CambiarEstadoCargue({idCargue,
                                                       usuario: this.usuario.usuario,
                                                       ip: this.ip || '193.168.1.1',
@@ -73,7 +62,7 @@ export class ListarComponent implements OnInit {
                                 alert(ResulData?.mensaje);
                                 window.location.reload();
                               });
-    }
+    
   }
 
   openError(id: any): void {
