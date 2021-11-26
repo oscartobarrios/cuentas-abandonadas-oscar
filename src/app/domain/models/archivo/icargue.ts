@@ -3,6 +3,7 @@ export interface ICargue {
   nombreArchivo:string,
   tipoArchivo:string,
   tipoEntidad:string,
+  entidad:string,
   codigoEntidad:string,
   secuencia:string,
   fecCargue:string,

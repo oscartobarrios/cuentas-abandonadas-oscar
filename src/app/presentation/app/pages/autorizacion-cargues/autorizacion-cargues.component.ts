@@ -17,6 +17,8 @@ export class AutorizacionCarguesComponent implements OnInit {
   idOrganizacion: any;
   usuario : any;
   cargues = new MatTableDataSource<ICargue>();
+  carguesPendienteAutorizacion: ICargue[];
+  carguesCargaProcesada: ICargue[];
   ip: any;
   @ViewChild(MatPaginator) paginator:  MatPaginator;
 
@@ -33,8 +35,12 @@ export class AutorizacionCarguesComponent implements OnInit {
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
-    this._getarchivousecase.Listar(this.idOrganizacion).subscribe((ResultData) => {
-      this.cargues.data = ResultData;
+    this._getarchivousecase.CarguesXEstado("PENDIENTE_AUTORIZACION").subscribe((ResultData) => {
+      this.carguesPendienteAutorizacion = ResultData;
+    });
+    this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
+      this.carguesCargaProcesada = ResultData;
+      this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
       this.cargues.paginator = this.paginator;
       preloader.close();
     });

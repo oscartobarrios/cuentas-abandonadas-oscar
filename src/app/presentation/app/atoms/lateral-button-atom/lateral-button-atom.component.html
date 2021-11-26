@@ -3,7 +3,8 @@
 	class="item-menu-sidenav"
 	matRipple
   routerLink="/{{item.url}}"
-	(clickedItem)="clickedItem.emit(item)">
+	(clickedItem)="clickedItem.emit(item)"
+	*ngIf="item.rols.includes(usuario.idPerfil)">
     <mat-icon>{{item && item.icon ? item.icon : ''}}</mat-icon>
     <p>{{item && item.text ? item.text : ''}}</p>
 </mat-card>

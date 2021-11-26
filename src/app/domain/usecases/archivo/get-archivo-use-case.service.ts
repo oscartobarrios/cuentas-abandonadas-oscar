@@ -18,6 +18,9 @@ export class GetArchivoUseCaseService {
   Listar(idOrganizacion: any): Observable<ICargue[]> {
     return this._archivoGetway.Listar(idOrganizacion);
   }
+  CarguesXEstado(estado: string): Observable<ICargue[]> {
+    return this._archivoGetway.CarguesXEstado(estado);
+  } 
   Cargar(data: IArchivo): Observable<any> {
     return this._archivoGetway.Cargar(data);
   }

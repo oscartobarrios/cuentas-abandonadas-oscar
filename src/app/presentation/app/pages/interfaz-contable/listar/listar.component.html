@@ -8,7 +8,7 @@
         <table mat-table [dataSource]="interfazContableList" matSort>
 
             <ng-container matColumnDef="tipointerfase" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Interfaz contable</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
               <td mat-cell *matCellDef="let int">{{int.tipointerfase}} </td>
             </ng-container>
 
@@ -23,22 +23,22 @@
             </ng-container>
 
             <ng-container matColumnDef="fechageneracionborrador" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de cuentas</th>
-              <td mat-cell *matCellDef="let int">{{int.fechageneracionborrador  | date :'dd-MM-yyyy'}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha generación</th>
+              <td mat-cell *matCellDef="let int">{{int.fechageneracionborrador  | date :'dd-MM-yy'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="fechageneracionapo" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial/ Total traslado</th>
-              <td mat-cell *matCellDef="let int">{{int.fechageneracionapo  | date :'dd-MM-yyyy'}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha transmisión</th>
+              <td mat-cell *matCellDef="let int">{{int.fechageneracionapo  | date :'dd-MM-yy'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="monto" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Remuneración</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
               <td mat-cell *matCellDef="let int">{{int.monto}} </td>
             </ng-container>
 
             <ng-container matColumnDef="estado" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
               <td mat-cell *matCellDef="let int">{{int.estado}} </td>
             </ng-container>
 

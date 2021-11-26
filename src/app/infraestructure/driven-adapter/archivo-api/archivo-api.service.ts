@@ -37,6 +37,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  CarguesXEstado(estado: string): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesXEstado/${estado}`;
+    return this.http.get<ICargue[]>(url);
+  } 
+
   Cargar(data: IArchivo): Observable<any> {
     const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}`;
     const archivo: FormData = new FormData();

@@ -6,7 +6,7 @@
                     <label class="text-white ps-2 pt-2 pb-2">Crear interfaz</label> 
                 </div>
                 <div class="mb-3 col-sm-6 col-md-6">
-                    <input type="number" formControlName="nmAnoInt" class="form-control" placeholder="Año *" 
+                    <input type="text" pattern="\d*" maxlength="4" formControlName="nmAnoInt" class="form-control" placeholder="Año *" 
                     [ngClass]="{'is-valid': interfazContableForm.controls['nmAnoInt'].valid &&  interfazContableForm.touched,
                         'is-invalid': interfazContableForm.controls['nmAnoInt'].invalid &&  interfazContableForm.touched}">
                 </div>
@@ -28,7 +28,7 @@
                     <select class="form-control" formControlName="vaTipInt" style="color: grey;"
                     [ngClass]="{'is-valid': interfazContableForm.controls['vaTipInt'].valid &&  interfazContableForm.touched,
                     'is-invalid': interfazContableForm.controls['vaTipInt'].invalid &&  interfazContableForm.touched}">
-                        <option value="null" disabled="true" [selected]="true" >Tipo interfaz</option>
+                        <option value="null" disabled="true" [selected]="true" >Tipo de interfaz</option>
                         <option
                             *ngFor="let tipo of tipoInterfaz"
                             value="{{tipo.codigo}}">

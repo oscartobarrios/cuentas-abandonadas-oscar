@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface CardItem {
 	title: string;
@@ -14,3 +14,4 @@ export interface CardItem {
 export class CardAtomComponent {
   @Input('item') item: CardItem;
 }
+

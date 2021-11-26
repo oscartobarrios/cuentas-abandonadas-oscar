@@ -9,6 +9,7 @@ export abstract class ArchivoGateway {
 
   abstract TipoCargue(): Observable<Itipocargue[]>;
   abstract Listar(idOrganizacion: any): Observable<ICargue[]>;
+  abstract CarguesXEstado(estado: any): Observable<ICargue[]>;
   abstract Cargar(data: IArchivo): Observable<any>;
   abstract LogCargue(idCargue): Observable<any>;
   abstract CambiarEstadoCargue(data: ICambiarEstado): Observable<any>;

@@ -14,7 +14,7 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Fichas entidades",
       url: "entidad-financiera",
-      rols: [4]
+      rols: [1,4]
     },
     {
       title: "Autorización cargues",
@@ -37,7 +37,84 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [4]
     },
   ]
-  menuType:any;
+  reportes: CardItem[] = [
+    {
+      title: "Estados cargues",
+      url: "#",
+      rols: [1,4]
+    },
+    {
+      title: "Gestión cuentas",
+      url: "#",
+      rols: [1,4]
+    },{
+      title: "Cargues rechazados",
+      url: "#",
+      rols: [1,4]
+    }
+  ]
+
+  consolidados: CardItem[] = [
+    {
+      title: "Administradas",
+      url: "#",
+      rols: [1,4]
+    },
+    {
+      title: "Valoración",
+      url: "#",
+      rols: [1,4]
+    },{
+      title: "Reintegro",
+      url: "#",
+      rols: [1,4]
+    },{
+      title: "Cesión",
+      url: "#",
+      rols: [1,4]
+    },
+  ]
+
+  detallados: CardItem[] = [
+    {
+      title: "Administradas",
+      url: "#",
+      rols: [1,4]
+    },
+    {
+      title: "Valoración",
+      url: "#",
+      rols: [1,4]
+    },{
+      title: "Reintegro",
+      url: "#",
+      rols: [1,4]
+    },{
+      title: "Cesión",
+      url: "#",
+      rols: [1,4]
+    },
+  ]
+
+  subastas: CardItem[] = [
+    {
+      title: "Notificación subastas",
+      url: "#",
+      rols: [1,4]
+    },
+    {
+      title: "Generar valor de subastas",
+      url: "#",
+      rols: [1,4]
+    },
+    {
+      title: "Histórico subastas",
+      url: "#",
+      rols: [1,4]
+    }
+  ]
+
+  public menuType = [];
 
   constructor(private _route : ActivatedRoute,
               private _storageservice: StorageService,) {
@@ -52,8 +129,26 @@ export class SubMenuOrganismComponent implements OnInit {
   buildSubMenu(type:string)
   {
     switch(type) {
-      case 'tramites' : this.menuType = this.tramites;
+      case 'tramites' : 
+        this.menuType = [];
+        this.menuType = this.tramites;
+        break;
+      case 'reportes' :
+        this.menuType = [];
+        this.menuType = this.reportes;
+        break;
+      case 'consolidados' :
+        this.menuType = [];
+        this.menuType = this.consolidados;
+        break;
+      case 'detallados' :
+        this.menuType = [];
+        this.menuType = this.detallados;
+        break;
+      case 'subastas' :
+        this.menuType = [];
+        this.menuType = this.subastas;
+        break;
     }
   }
-
 }
