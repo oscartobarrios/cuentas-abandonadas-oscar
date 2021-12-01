@@ -23,7 +23,7 @@ export class SubMenuOrganismComponent implements OnInit {
     },
     {
       title: "Configuración calendario",
-      url: "#",
+      url: "calendario",
       rols: [4]
     },
     {

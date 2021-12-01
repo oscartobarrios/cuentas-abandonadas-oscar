@@ -37,12 +37,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntidadFinancieraFormComponent } from './presentation/app/pages/entidad-financiera/entidad-financiera-form/entidad-financiera-form.component';
 import { InterfazContableGateway } from './domain/models/interfaz-contable/gateway/interfaz-contable-gateway';
 import { AutorizacionCarguesComponent } from './presentation/app/pages/autorizacion-cargues/autorizacion-cargues.component';
+import { CrearCalendarioComponent } from './presentation/app/pages/calendario/crear/crear.component';
+import { ListarCalendarioComponent } from './presentation/app/pages/calendario/listar/listar.component';
+import { CalendarioGateway } from './domain/models/calendario/gateway/calendario-gateway';
+import { CalendarioService } from './infraestructure/driven-adapter/calendario-api/calendario-service';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
   { provide: LoginGateway, useClass: LoginApiService},
   { provide: ArchivoGateway, useClass: ArchivoApiService},
-  { provide: InterfazContableGateway, useClass: InterfazContableService}
+  { provide: InterfazContableGateway, useClass: InterfazContableService},
+  { provide: CalendarioGateway, useClass: CalendarioService}
 ];
 
 @NgModule({
@@ -62,7 +67,9 @@ export const API_GATEWAYS_PROVIDERS = [
     EntidadFinancieraFormComponent,
     CrearInterfazContableComponent,
     ListarInterfazContableComponent,
-    AutorizacionCarguesComponent
+    AutorizacionCarguesComponent,
+    ListarCalendarioComponent,
+    CrearCalendarioComponent
   ],
   imports: [
     AppRoutingModule,

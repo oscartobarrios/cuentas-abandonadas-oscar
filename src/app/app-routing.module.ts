@@ -12,6 +12,8 @@ import {LoginComponent} from './presentation/app/pages/login/login.component';
 import {ListarComponent} from './presentation/app/pages/archivos/listar/listar.component';
 import {CargarComponent} from './presentation/app/pages/archivos/cargar/cargar.component';
 import {ProfileComponent} from './presentation/app/pages/profile/profile.component';
+import { ListarCalendarioComponent } from './presentation/app/pages/calendario/listar/listar.component';
+import { CrearCalendarioComponent } from './presentation/app/pages/calendario/crear/crear.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,6 +36,8 @@ const routes: Routes = [
       {path: 'interfaz-contable-listar', component: ListarInterfazContableComponent},
       {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
       {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
+      {path: 'calendario', component: ListarCalendarioComponent},
+      {path: 'calendario-crear', component: CrearCalendarioComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

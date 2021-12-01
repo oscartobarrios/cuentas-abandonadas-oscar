@@ -1,0 +1,47 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+        <div class="col-8">Cuentas Abandonadas - Configuracion Calendario</div>
+        <div class="col-2">&nbsp;</div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12">A continuacion se puede consultar o crear la informacion de calendarios activos o futuros
+            para cada tipo de archivo de cargue.Si esta adicionando un nuevo periodo
+            <br> debe hacer click en el icono inferior derecho para ir al formulario de creacion de periodo
+        </div>
+    </div>
+    <div class="row mb-5">
+        <table mat-table [dataSource]="tipos" matSort>
+            <ng-container matColumnDef="nombre">
+                <td mat-cell *matCellDef="let cal"><h2>{{cal.nombre}}</h2> {{cal.descripcion}}</td>
+            </ng-container>
+            <ng-container matColumnDef="configuracion">
+                <td mat-cell *matCellDef="let cal">
+                    <table mat-table [dataSource]="calendarios" matSort>
+                        <ng-container matColumnDef="fechaDesde">
+                            <td mat-cell *matCellDef="let cal"><h2>{{cal.fechaDesde}}</h2></td>
+                        </ng-container>
+                        <ng-container matColumnDef="fechaHasta">
+                            <td mat-cell *matCellDef="let cal"><h2>{{cal.fechaDesde}}</h2></td>
+                        </ng-container>
+                        <ng-container matColumnDef="fechaInicial">
+                            <td mat-cell *matCellDef="let cal"><h2>{{cal.fechaDesde}}</h2></td>
+                        </ng-container>
+                        <ng-container matColumnDef="fechaFinal">
+                            <td mat-cell *matCellDef="let cal"><h2>{{cal.fechaDesde}}</h2></td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsConf"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsConf;"></tr>
+                    </table>
+                </td>
+            </ng-container>
+            
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <div class="row justify-content-end mt-3">
+        <div class="col-1" style="font-size: 2rem; color: #30834F">
+            <a [routerLink]="['/calendario-crear']"><i class="fas fa-plus-circle"></i></a>
+        </div>
+    </div>
+</div>
