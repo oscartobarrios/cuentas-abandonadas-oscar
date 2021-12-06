@@ -53,7 +53,7 @@ export class CrearCalendarioComponent implements OnInit {
 
 
     this.tipoCalendarioForm = new FormGroup({
-      "idCargue": new FormControl(this.calendario?.idCargue, Validators.required),
+      "idCargue": new FormControl(this.calendario?.idTipoCargue, Validators.required),
       "fechaDesde": new FormControl(this.calendario?.fechaDesde, Validators.required),
       "fechaHasta": new FormControl(this.calendario?.fechaHasta, Validators.required),
       "fechaInicial": new FormControl(this.calendario?.fechaInicial, Validators.required),
@@ -71,9 +71,16 @@ export class CrearCalendarioComponent implements OnInit {
       const preloader = this._notifications.showPreloader();
       this._getCalendarioUseCaseService.GenerarCalendario(this.tipoCalendarioForm.value).subscribe((res) => {
         console.log(res);
-        this._router.navigate(['calendario']);
+        if(res==0){
+          this._notifications.showError("Por favor Valide la fecha Desde");
+          
+        }else{
+          this._router.navigate(['calendario']);
+        }
+        
         preloader.close();
       },  (error: any)  => {
+        console.log(error);
         preloader.close();
       });
     }

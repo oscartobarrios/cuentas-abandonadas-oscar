@@ -55,6 +55,8 @@ export class ListarInterfazContableComponent implements OnInit {
          })
          this.interfazContableList.data = modifiedArray;
          this.interfazContableList.paginator = this.paginator;
+         console.log(this.paginator);
+         console.log(this.interfazContableList.paginator);
          preloader.close();         
     });
     

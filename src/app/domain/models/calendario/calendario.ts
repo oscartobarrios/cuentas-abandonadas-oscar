@@ -1,5 +1,5 @@
 export interface ICalendario {
-    idCargue: number,
+    idTipoCargue: number,
     fechaDesde: Date,
     fechaHasta: Date,
     uvr: number,

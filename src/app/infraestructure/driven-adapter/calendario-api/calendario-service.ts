@@ -31,7 +31,7 @@ export class CalendarioService {
   }
 
   ListarCalendarios(): Observable<ICalendario[]> {
-    return this.http.get<ICalendario[]>(`${this._url}/ConsultarRegistrosInterfaz`);
+    return this.http.get<ICalendario[]>(`${this._url}/GetCalendarios`);
   }
 
   GenerarCalendario(data: ICalendario): Observable<any> {
