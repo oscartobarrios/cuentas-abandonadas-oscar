@@ -6,8 +6,7 @@ export const environment = {
   production: false,
   rest: {
     //Producción
-    //endpoint: 'https://aplicaciones.icetex.gov.co/WsCuentasAbandonadasAPI'
-    endpoint :''
+    endpoint: 'https://aplicaciones.icetex.gov.co/WsCuentasAbandonadasAPI'
   },
   recaptchaKey: '6LeBY9AcAAAAAD9fnMbTWQUSJQgsk2JBqRrS5wiF',
 };
