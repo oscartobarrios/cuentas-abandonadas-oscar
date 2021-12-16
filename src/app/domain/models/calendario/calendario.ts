@@ -4,5 +4,8 @@ export interface ICalendario {
     fechaHasta: Date,
     uvr: number,
     fechaInicial: Date,
-    fechaFinal: Date
+    fechaFinal: Date,
+    fechaTrasMon: Date,
+    fechaCorteCertificaciones: Date,
+    fechaCorte: Date
 }

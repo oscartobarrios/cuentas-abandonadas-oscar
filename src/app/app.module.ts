@@ -41,6 +41,7 @@ import { CrearCalendarioComponent } from './presentation/app/pages/calendario/cr
 import { ListarCalendarioComponent } from './presentation/app/pages/calendario/listar/listar.component';
 import { CalendarioGateway } from './domain/models/calendario/gateway/calendario-gateway';
 import { CalendarioService } from './infraestructure/driven-adapter/calendario-api/calendario-service';
+import { EditarCalendarioComponent } from './presentation/app/pages/calendario/editar/editar.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -69,7 +70,8 @@ export const API_GATEWAYS_PROVIDERS = [
     ListarInterfazContableComponent,
     AutorizacionCarguesComponent,
     ListarCalendarioComponent,
-    CrearCalendarioComponent
+    CrearCalendarioComponent,
+    EditarCalendarioComponent
   ],
   imports: [
     AppRoutingModule,

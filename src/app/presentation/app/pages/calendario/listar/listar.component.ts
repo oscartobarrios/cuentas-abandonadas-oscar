@@ -42,8 +42,6 @@ export class ListarCalendarioComponent implements OnInit {
           case 1: this.calendariosCargueTraslado.data.push(cal);break;
         }
       })
-      console.log(this.calendariosCargueValoracion.data)
-      console.log(cals)
       this.calendariosCargueCesion.paginator = this.MatPaginatorCesion;
       this.calendariosCargueReintegro.paginator = this.MatPaginatorReintegro;
       this.calendariosCargueValoracion.paginator = this.MatPaginatorValoracion;
