@@ -14,12 +14,12 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Fichas entidades",
       url: "entidad-financiera",
-      rols: [1,4]
+      rols: [1,4,5]
     },
     {
       title: "Autorización cargues",
       url: "autorizacion-cargues",
-      rols: [4]
+      rols: [4,5]
     },
     {
       title: "Configuración calendario",
@@ -57,21 +57,21 @@ export class SubMenuOrganismComponent implements OnInit {
   consolidados: CardItem[] = [
     {
       title: "Administradas",
-      url: "#",
-      rols: [1,4]
+      url: "consolidado/administradas",
+      rols: [1,4,5]
     },
     {
       title: "Valoración",
-      url: "#",
-      rols: [1,4]
+      url: "consolidado/valoracion",
+      rols: [1,4,5]
     },{
       title: "Reintegro",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },{
       title: "Cesión",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },
   ]
 
@@ -79,20 +79,20 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Administradas",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },
     {
       title: "Valoración",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },{
       title: "Reintegro",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },{
       title: "Cesión",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },
   ]
 
@@ -100,17 +100,17 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Notificación subastas",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },
     {
       title: "Generar valor de subastas",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     },
     {
       title: "Histórico subastas",
       url: "#",
-      rols: [1,4]
+      rols: [1,4,5]
     }
   ]
 

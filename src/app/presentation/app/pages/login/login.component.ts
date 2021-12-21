@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
     this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe(
       (ResponseData) => {
         console.log(ResponseData);
+        ResponseData.infoUsuario.idPerfil = 5;
         if(ResponseData && ResponseData.infoUsuario && ResponseData.token)
         {
           this.errorLogin = null;

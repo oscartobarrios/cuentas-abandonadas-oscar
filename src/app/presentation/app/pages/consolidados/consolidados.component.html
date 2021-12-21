@@ -1,0 +1,66 @@
+  <div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Consolidado {{tipoConsolidado}}</div>
+        <div class="col-2">
+            <button mat-raised-button color="primary" class="button-primary" style="margin-bottom: 20px;margin-left: 15px;"
+            [routerLink]="['/cargar']">Cargar Archivo</button>
+        </div>
+    </div>
+    <div class="row">
+        <table mat-table [dataSource]="consolidadosDataSource" matSort>
+            <ng-container matColumnDef="EntidadFinanciera" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>
+              <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TipoArchivo" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo archivo</th>
+              <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="FechaTraslado" *ngIf="tipoConsolidado == 'administradas'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha traslado</th>
+              <td mat-cell *matCellDef="let element">{{element.fechaTraslado | date :'dd-MM-yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="FechaCorte" *ngIf="tipoConsolidado == 'administradas'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha corte</th>
+              <td mat-cell *matCellDef="let element">{{element.fechaCorte | date :'dd-MM-yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="NumeroCuentas" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número Cuentas</th>
+              <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TotalSaldoInicial" *ngIf="tipoConsolidado == 'valoración'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total saldo inicial</th>
+              <td mat-cell *matCellDef="let element">{{element.totalSaldoInicial}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TotalTraslados" *ngIf="tipoConsolidado == 'administradas'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total traslados</th>
+              <td mat-cell *matCellDef="let element">{{element.remuneracion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TotalRemuneracionPeriodo" *ngIf="tipoConsolidado == 'valoración'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración periodo</th>
+              <td mat-cell *matCellDef="let element">{{element.remuneracion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TotalRemuneracionAcumulada" *ngIf="tipoConsolidado == 'valoración'">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración acumulada</th>
+              <td mat-cell *matCellDef="let element">{{element.totalRemuneracionAcumulada}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="TasaPonderada" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tasa ponderada</th>
+              <td mat-cell *matCellDef="let element">{{element.tasaPonderada}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {toFormData} from '../../../domain/models/archivo/toFormData';
 import {ICambiarEstado} from '../../../domain/models/archivo/icambiar-estado';
+import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,10 @@ export class ArchivoApiService {
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargue/${data.idCargue}/${data.operacion}/${data.usuario}/${data.ip}`;
     return this.http.get<any>(url);
+  }
+
+  GetConsolidado(tipoArchivo: string, estado: string): Observable<IConsolidado[]>{
+    const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}`;
+    return this.http.get<IConsolidado[]>(url);
   }
 }

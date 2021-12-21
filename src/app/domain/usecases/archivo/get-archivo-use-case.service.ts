@@ -5,6 +5,7 @@ import { Itipocargue } from '../../models/archivo/itipocargue';
 import { ICargue } from '../../models/archivo/icargue';
 import { IArchivo } from '../../models/archivo/iarchivo';
 import { ICambiarEstado } from '../../models/archivo/icambiar-estado';
+import { IConsolidado } from '../../models/archivo/iconsolidado';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class GetArchivoUseCaseService {
   }
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any> {
     return this._archivoGetway.CambiarEstadoCargue(data);
+  }
+
+  GetConsolidado(tipoArchivo: string, estado: string): Observable<IConsolidado[]>{
+    return this._archivoGetway.GetConsolidado(tipoArchivo, estado);
   }
 }

@@ -1,3 +1,4 @@
+import { ConsolidadosComponent } from './presentation/app/pages/consolidados/consolidados.component';
 import { EditarCalendarioComponent } from './presentation/app/pages/calendario/editar/editar.component';
 import { AutorizacionCarguesComponent } from './presentation/app/pages/autorizacion-cargues/autorizacion-cargues.component';
 import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path: 'calendario', component: ListarCalendarioComponent},
       {path: 'calendario-crear', component: CrearCalendarioComponent},
       {path: 'calendario-editar', component: EditarCalendarioComponent},
+      {path: 'consolidado/:type', component: ConsolidadosComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
