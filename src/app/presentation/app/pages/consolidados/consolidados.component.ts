@@ -1,3 +1,4 @@
+import { environment } from './../../../../../environments/environment.pruebas';
 import { NotificationsService } from './../../../shared/services/notifications.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,6 +16,7 @@ export class ConsolidadosComponent implements OnInit {
   tipoConsolidado = "";
   consolidadosDataSource = new MatTableDataSource<IConsolidado>();
   displayedColumns: string[] = [];
+  urlReporteConsolidado: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private _route: ActivatedRoute,
               private _getarchivousecase: GetArchivoUseCaseService,
@@ -39,6 +41,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'NumeroCuentas',
                                   'TotalTraslados',
                                   'TasaPonderada'];
+      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/TRASLADO/PENDIENTE_AUTORIZACION`;
       this._getarchivousecase.GetConsolidado('TRASLADO', 'PENDIENTE_AUTORIZACION')
           .subscribe(res => {
             this.consolidadosDataSource.data = res,
@@ -57,6 +60,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'TotalRemuneracionPeriodo',
                                   'TotalRemuneracionAcumulada',
                                   'TasaPonderada'];
+      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/VALORACION/CARGA_PROCESADA`;
       this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA')
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
