@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //Domain
 import {LoginGateway} from './domain/models/login/gateway/login-gateway';
 import {ArchivoGateway} from './domain/models/archivo/gateway/archivo-gateway';
+import { EntidadGateway } from './domain/models/entidad-financiera/gateway/entidad-gateway';
 
 //Infraestructure
 
@@ -43,13 +44,15 @@ import { CalendarioGateway } from './domain/models/calendario/gateway/calendario
 import { CalendarioService } from './infraestructure/driven-adapter/calendario-api/calendario-service';
 import { EditarCalendarioComponent } from './presentation/app/pages/calendario/editar/editar.component';
 import { ConsolidadosComponent } from './presentation/app/pages/consolidados/consolidados.component';
+import { EntidadApiService } from './infraestructure/driven-adapter/entidad-api/entidad-api.service';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
   { provide: LoginGateway, useClass: LoginApiService},
   { provide: ArchivoGateway, useClass: ArchivoApiService},
   { provide: InterfazContableGateway, useClass: InterfazContableService},
-  { provide: CalendarioGateway, useClass: CalendarioService}
+  { provide: CalendarioGateway, useClass: CalendarioService},
+  { provide: EntidadGateway, useClass: EntidadApiService},
 ];
 
 @NgModule({

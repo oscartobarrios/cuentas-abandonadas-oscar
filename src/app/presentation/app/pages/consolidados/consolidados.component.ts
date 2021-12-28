@@ -6,6 +6,7 @@ import { GetArchivoUseCaseService } from './../../../../domain/usecases/archivo/
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
+import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
 
 @Component({
   selector: 'app-consolidados',
@@ -17,16 +18,71 @@ export class ConsolidadosComponent implements OnInit {
   consolidadosDataSource = new MatTableDataSource<IConsolidado>();
   displayedColumns: string[] = [];
   urlReporteConsolidado: string;
+  entidades:any;
+  entidad: string;
+  fechaInicio: string;
+  fechaFin: string;
+  type: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private _route: ActivatedRoute,
+              private _entidadUseCase: GetEntidadUseCaseService,
               private _getarchivousecase: GetArchivoUseCaseService,
-              private _notifications: NotificationsService) { 
+              private _notifications: NotificationsService,
+              ) { 
     this._route.params.subscribe(params => {
+      this.type = params.type;
       this.setConsolidados(params.type)
     })
+    this._entidadUseCase.ListadoEntidades().subscribe(res => {
+      console.log("Entidades:", res);
+      this.entidades = res;
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  buscar() {
+    const preloader = this._notifications.showPreloader();
+    if(this.type === "administradas" && this.entidad != "")
+    {
+      this._getarchivousecase.GetConsolidadoXEntidad('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad)
+          .subscribe(res => {
+            this.consolidadosDataSource.data = res,
+            this.consolidadosDataSource.paginator = this.paginator;
+            preloader.close();
+          });
+    }
+
+    if(this.type == "valoracion" && this.entidad != "")
+    {
+      this._getarchivousecase.GetConsolidadoXEntidad('VALORACION', 'CARGA_PROCESADA', this.entidad)
+        .subscribe(res => {
+          this.consolidadosDataSource.data = res,
+          this.consolidadosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }
+
+    if(this.type === "administradas" && this.fechaInicio != "")
+    {
+      this._getarchivousecase.GetConsolidadoXFechaCargue('TRASLADO', 'PENDIENTE_AUTORIZACION', this.fechaInicio, this.fechaFin)
+          .subscribe(res => {
+            this.consolidadosDataSource.data = res,
+            this.consolidadosDataSource.paginator = this.paginator;
+            preloader.close();
+          });
+    }
+
+    if(this.type == "valoracion" && this.fechaInicio != "")
+    {
+      this._getarchivousecase.GetConsolidadoXFechaCargue('VALORACION', 'CARGA_PROCESADA', this.fechaInicio, this.fechaFin)
+        .subscribe(res => {
+          this.consolidadosDataSource.data = res,
+          this.consolidadosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }
   }
 
   setConsolidados(type:string){

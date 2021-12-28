@@ -1,11 +1,42 @@
   <div class="container" style="min-height: 420px;">
     <div class="row mb-5">
-        <div class="col-8">Consolidado {{tipoConsolidado}}</div>
+        <div class="col-8">Cuentas abandonadas - Consolidado {{tipoConsolidado}}</div>
         <div class="col-2">
             <a href="{{urlReporteConsolidado}}" target="_blank" class="btn btn-primary" style="margin-bottom: 20px;margin-left: 15px;">Descargar consolidado</a>
         </div>
     </div>
     <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <label>Filtro entidad financiera</label>
+          <select class="form-control" id="Organizador" [(ngModel)]="entidad">
+            <option value="null" disabled="true" [selected]="true" >Entidad</option>
+            <option
+                *ngFor="let ent of entidades"
+                value="{{ent.idOrganizacion}}">
+                {{ent.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="tipoConsolidado == 'administradas'">
+        <div class="row">
+          <label>Filtro de fecha corte</label>
+          <div class="col-6">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+          </div>
+          <div class="col-6">
+            <input type="date" class="form-control" [(ngModel)]="fechaFin">  
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="buscar">
+      </div>
+    </div>
+    <div class="row mt-5">
         <table mat-table [dataSource]="consolidadosDataSource" matSort>
             <ng-container matColumnDef="EntidadFinanciera" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>

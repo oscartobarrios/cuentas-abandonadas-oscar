@@ -41,7 +41,7 @@
             <mat-cell *matCellDef="let car;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
-                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && usuario.idPerfil == 4">
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4 || usuario.idPerfil == 5)">
                         <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_icetex')" >
                             <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
                         </button>
