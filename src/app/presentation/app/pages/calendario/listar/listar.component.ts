@@ -24,6 +24,9 @@ export class ListarCalendarioComponent implements OnInit {
   calendariosCargueValoracion = new MatTableDataSource<ICalendario>();  
   displayedColumns: string[] = ['nombre', 'configuracion'];
   displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal'];
+  displayedColumnsConfTras: string[] = ['fechaDesde', 'fechaHasta','uvr','fechaTrasMon'];
+  displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta'];
+  displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta'];
   constructor(private _notifications: NotificationsService,
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
     private _router: Router
