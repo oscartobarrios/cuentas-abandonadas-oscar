@@ -75,8 +75,15 @@ export class CargarComponent implements OnInit {
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.Cargar(data).subscribe((ResponseData) => {
         preloader.close();
-        this.estadoenvio = 'APROBADO';
+        console.log(ResponseData);
+        console.log(Number(ResponseData?.mensaje).toString());
+        if(ResponseData?.mensaje.indexOf("Cargue Exitoso") === -1){
+          this.estadoenvio = 'RECHAZADO';
+        }else{
+          this.estadoenvio = 'APROBADO';
+        }
         this.mensaje = ResponseData?.mensaje;
+
       },  (error: any)  => {
         preloader.close();
         const dataerror = error.error || error.statusText;
