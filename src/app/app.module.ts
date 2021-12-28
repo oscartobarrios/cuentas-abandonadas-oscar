@@ -1,3 +1,4 @@
+import { ReplaceLeftZerosPipe } from './presentation/shared/pipes/replace-leftZeros-pipe';
 import { InterfazContableService } from './infraestructure/driven-adapter/interfaz-contable-api/interfaz-contable-service';
 import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
 import { CrearInterfazContableComponent } from './presentation/app/pages/interfaz-contable/crear/crear.component';
@@ -76,7 +77,8 @@ export const API_GATEWAYS_PROVIDERS = [
     ListarCalendarioComponent,
     CrearCalendarioComponent,
     EditarCalendarioComponent,
-    ConsolidadosComponent
+    ConsolidadosComponent,
+    ReplaceLeftZerosPipe
   ],
   imports: [
     AppRoutingModule,
