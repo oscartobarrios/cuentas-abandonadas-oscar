@@ -8,6 +8,7 @@ import {environment} from '../../../../environments/environment';
 import {toFormData} from '../../../domain/models/archivo/toFormData';
 import {ICambiarEstado} from '../../../domain/models/archivo/icambiar-estado';
 import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
+import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,9 @@ export class ArchivoApiService {
   GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}/${fechaInicio}/${fechaFin}`;
     return this.http.get<IConsolidado[]>(url);
+  }
+  GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
+    const url = `${environment.rest.endpoint}/Cargue/GetDetallado/${entidad}/${tipoArchivo}/${fechaInicial}/${fechaFinal}`;
+    return this.http.get<IDetallado[]>(url);
   }
 }

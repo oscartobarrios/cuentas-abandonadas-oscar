@@ -32,14 +32,14 @@
 
                 <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 2045">
                     <label>Fecha Inicial</label>
-                    <input type="date" formControlName="fechaInicial" class="form-control"
+                    <input type="date" formControlName="fechaInicial" class="form-control" (change)="validateDatesIF()"
                         placeholder="Fecha Inicial"
                         [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaInicial'].valid &&  tipoCalendarioForm.touched,
                         'is-invalid': tipoCalendarioForm.controls['fechaInicial'].invalid &&  tipoCalendarioForm.touched}">
                 </div>
                 <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 2045">
                     <label>Fecha Final</label>
-                    <input type="date" formControlName="fechaFinal" class="form-control"
+                    <input type="date" formControlName="fechaFinal" class="form-control" (change)="validateDatesIF()"
                         placeholder="Fecha Final"
                         [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaFinal'].valid &&  tipoCalendarioForm.touched,
                         'is-invalid': tipoCalendarioForm.controls['fechaFinal'].invalid &&  tipoCalendarioForm.touched}">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1">
                     <label>Fecha traslado monetario</label>
-                    <input type="date" formControlName="fechaTrasMon" class="form-control"
+                    <input type="date" formControlName="fechaTrasMon" class="form-control" (change)="validateDatesTM()"
                         placeholder="Fecha Final"
                         [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaTrasMon'].valid &&  tipoCalendarioForm.touched,
                         'is-invalid': tipoCalendarioForm.controls['fechaTrasMon'].invalid &&  tipoCalendarioForm.touched}">
@@ -70,7 +70,7 @@
                 <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1 ||
                                                            tipoCalendarioForm.controls['idTipoCargue'].value == 13560023">
                     <label>Fecha corte</label>
-                    <input type="date" formControlName="fechaCorte" class="form-control"
+                    <input type="date" formControlName="fechaCorte" class="form-control" (change)="validateDatesTM()"
                         placeholder="Fecha Final"
                         [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaCorte'].valid &&  tipoCalendarioForm.touched,
                         'is-invalid': tipoCalendarioForm.controls['fechaCorte'].invalid &&  tipoCalendarioForm.touched}">

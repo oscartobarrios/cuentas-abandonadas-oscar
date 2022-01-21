@@ -77,15 +77,16 @@ export class SubMenuOrganismComponent implements OnInit {
 
   detallados: CardItem[] = [
     {
-      title: "Administradas",
-      url: "#",
+      title: "Valoración",
+      url: "detallado/valoracion",
       rols: [1,4,5]
     },
     {
-      title: "Valoración",
-      url: "#",
+      title: "Administradas",
+      url: "detallado/administradas",
       rols: [1,4,5]
-    },{
+    },
+    {
       title: "Reintegro",
       url: "#",
       rols: [1,4,5]

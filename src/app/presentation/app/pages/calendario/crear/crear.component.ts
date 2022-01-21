@@ -30,11 +30,11 @@ export class CrearCalendarioComponent implements OnInit {
     this.tipoCalendarioForm = new FormGroup({
       "idTipoCargue": new FormControl(this.calendario?.idTipoCargue, Validators.required),
       "fechaDesde": new FormControl(this.calendario?.fechaDesde, Validators.required),
-      "fechaHasta": new FormControl(this.calendario?.fechaHasta, Validators.required),
+      "fechaHasta": new FormControl(this.calendario?.fechaHasta, Validators.required), 
+      "uvr":  new FormControl(this.calendario?.uvr),
+      "fechaTrasMon": new FormControl(this.calendario?.fechaTrasMon), 
       "fechaInicial": new FormControl(this.calendario?.fechaInicial),
       "fechaFinal": new FormControl(this.calendario?.fechaFinal),
-      "uvr":  new FormControl(this.calendario?.uvr),
-      "fechaTrasMon": new FormControl(this.calendario?.fechaTrasMon),
       "fechaCorteCertificaciones": new FormControl(this.calendario?.fechaCorteCertificaciones),
       "fechaCorte": new FormControl(this.calendario?.fechaCorte ),
     })
@@ -92,7 +92,67 @@ export class CrearCalendarioComponent implements OnInit {
         this.tipoCalendarioForm.controls["fechaHasta"].clearValidators();
         this.tipoCalendarioForm.controls["fechaHasta"].updateValueAndValidity();
       }
-    }    
+    }      
+  }
+
+  validateDatesIF() {
+    if(this.tipoCalendarioForm.controls["fechaInicial"].value !==  undefined &&
+       this.tipoCalendarioForm.controls["fechaFinal"].value !== undefined)
+    {
+      let existError = this.dateRangeValidator(this.tipoCalendarioForm.controls["fechaInicial"].value, 
+                                                  this.tipoCalendarioForm.controls["fechaFinal"].value)
+      if(existError)
+      {
+        this.tipoCalendarioForm.controls['fechaInicial'].setErrors({'incorrect': true});
+        this.tipoCalendarioForm.controls['fechaFinal'].setErrors({'incorrect': true});
+      }
+      else
+      {
+        this.tipoCalendarioForm.controls["fechaInicial"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaInicial"].updateValueAndValidity();
+        this.tipoCalendarioForm.controls["fechaFinal"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaFinal"].updateValueAndValidity();
+      }
+    }  
+  }
+
+  validateDatesTM() {
+    if(this.tipoCalendarioForm.controls["fechaHasta"].value !==  undefined &&
+    this.tipoCalendarioForm.controls["fechaTrasMon"].value !== undefined)
+    {
+      let existError = this.dateRangeValidator(this.tipoCalendarioForm.controls["fechaHasta"].value, 
+                                                  this.tipoCalendarioForm.controls["fechaTrasMon"].value)
+      if(existError)
+      {
+        this.tipoCalendarioForm.controls['fechaHasta'].setErrors({'incorrect': true});
+        this.tipoCalendarioForm.controls['fechaTrasMon'].setErrors({'incorrect': true});
+      }
+      else
+      {
+        this.tipoCalendarioForm.controls["fechaHasta"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaHasta"].updateValueAndValidity();
+        this.tipoCalendarioForm.controls["fechaTrasMon"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaTrasMon"].updateValueAndValidity();
+      }
+    }  
+    if(this.tipoCalendarioForm.controls["fechaCorte"].value !==  undefined &&
+    this.tipoCalendarioForm.controls["fechaDesde"].value !== undefined)
+    {
+      let existError = this.dateRangeValidator(this.tipoCalendarioForm.controls["fechaCorte"].value, 
+                                                  this.tipoCalendarioForm.controls["fechaDesde"].value)
+      if(existError)
+      {
+        this.tipoCalendarioForm.controls['fechaCorte'].setErrors({'incorrect': true});
+        this.tipoCalendarioForm.controls['fechaDesde'].setErrors({'incorrect': true});
+      }
+      else
+      {
+        this.tipoCalendarioForm.controls["fechaCorte"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaCorte"].updateValueAndValidity();
+        this.tipoCalendarioForm.controls["fechaDesde"].clearValidators();
+        this.tipoCalendarioForm.controls["fechaDesde"].updateValueAndValidity();
+      }
+    }     
   }
 
   dateRangeValidator(min: Date, max: Date) {

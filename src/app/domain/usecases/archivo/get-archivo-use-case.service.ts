@@ -6,6 +6,7 @@ import { ICargue } from '../../models/archivo/icargue';
 import { IArchivo } from '../../models/archivo/iarchivo';
 import { ICambiarEstado } from '../../models/archivo/icambiar-estado';
 import { IConsolidado } from '../../models/archivo/iconsolidado';
+import { IDetallado } from '../../models/archivo/idetallado';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,8 @@ export class GetArchivoUseCaseService {
  }
  GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]> {
   return this._archivoGetway.GetConsolidadoXFechaCargue(tipoArchivo, estado, fechaInicio, fechaFin);
+ }
+ GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
+   return this._archivoGetway.GetDetallado(entidad, tipoArchivo,fechaInicial, fechaFinal);
  }
 }

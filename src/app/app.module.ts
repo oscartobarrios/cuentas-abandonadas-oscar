@@ -45,6 +45,7 @@ import { CalendarioGateway } from './domain/models/calendario/gateway/calendario
 import { CalendarioService } from './infraestructure/driven-adapter/calendario-api/calendario-service';
 import { EditarCalendarioComponent } from './presentation/app/pages/calendario/editar/editar.component';
 import { ConsolidadosComponent } from './presentation/app/pages/consolidados/consolidados.component';
+import { DetalladosComponent } from './presentation/app/pages/detallados/detallados.component';
 import { EntidadApiService } from './infraestructure/driven-adapter/entidad-api/entidad-api.service';
 
 //Api services
@@ -78,6 +79,7 @@ export const API_GATEWAYS_PROVIDERS = [
     CrearCalendarioComponent,
     EditarCalendarioComponent,
     ConsolidadosComponent,
+    DetalladosComponent,
     ReplaceLeftZerosPipe
   ],
   imports: [
