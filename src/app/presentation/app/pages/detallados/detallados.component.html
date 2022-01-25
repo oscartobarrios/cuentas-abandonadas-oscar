@@ -19,13 +19,14 @@
           </select>
         </div>
       </div>
-      <div class="col-6" *ngIf="tipoDetallado == 'valoración'">
+      <div class="col-6" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'administradas'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
         <div class="row">
-          <label>Filtro de fecha corte</label>
           <div class="col-6">
+            <label>Filtro de fecha Inicio</label>          
             <input type="date" class="form-control" [(ngModel)]="fechaInicio">
           </div>
           <div class="col-6">
+            <label>Filtro de fecha Final</label>
             <input type="date" class="form-control" [(ngModel)]="fechaFin">  
           </div> 
         </div>
@@ -48,12 +49,12 @@
             <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="FechaTraslado" *ngIf="tipoDetallado == 'administradas'">
+          <ng-container matColumnDef="FechaTraslado" *ngIf="tipoDetallado == 'administradas'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha traslado</th>
             <td mat-cell *matCellDef="let element">{{element.fechaTraslado | date :'dd-MM-yyyy'}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="FechaCorte" *ngIf="tipoDetallado == 'administradas'">
+          <ng-container matColumnDef="FechaCorte" *ngIf="tipoDetallado == 'administradas'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha corte</th>
             <td mat-cell *matCellDef="let element">{{element.fechaCorte | date :'dd-MM-yyyy'}} </td>
           </ng-container>
@@ -63,22 +64,22 @@
             <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="TotalSaldoInicial" *ngIf="tipoDetallado == 'valoración'">
+          <ng-container matColumnDef="TotalSaldoInicial" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total saldo inicial</th>
             <td mat-cell *matCellDef="let element">{{element.totalSaldoInicial | replaceLeftZeros}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="TotalTraslados" *ngIf="tipoDetallado == 'administradas'">
+          <ng-container matColumnDef="TotalTraslados" *ngIf="tipoDetallado == 'administradas'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total traslados</th>
             <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="TotalRemuneracionPeriodo" *ngIf="tipoDetallado == 'valoración'">
+          <ng-container matColumnDef="TotalRemuneracionPeriodo" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración periodo</th>
             <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="TotalRemuneracionAcumulada" *ngIf="tipoDetallado == 'valoración'">
+          <ng-container matColumnDef="TotalRemuneracionAcumulada" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración acumulada</th>
             <td mat-cell *matCellDef="let element">{{element.totalRemuneracionAcumulada | replaceLeftZeros}} </td>
           </ng-container>

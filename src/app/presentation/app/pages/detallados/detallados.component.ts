@@ -64,6 +64,26 @@ export class DetalladosComponent implements OnInit {
         });
     }
 
+    if(this.type == "reintegro" && this.entidad != "")
+    {
+      this._getarchivousecase.GetConsolidadoXEntidad('REINTEGRO', 'CARGA_PROCESADA', this.entidad)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }   
+
+    if(this.type == "cesion" && this.entidad != "")
+    {
+      this._getarchivousecase.GetConsolidadoXEntidad('CESION', 'CARGA_PROCESADA', this.entidad)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    } 
+
     if(this.type === "administradas" && this.fechaInicio != "")
     {
       this._getarchivousecase.GetDetallado(this.entidad, 'TRASLADO', this.fechaInicio, this.fechaFin)
@@ -83,6 +103,25 @@ export class DetalladosComponent implements OnInit {
           preloader.close();
         });
     }
+    if(this.type == "reintegro" && this.fechaInicio != "")
+    {
+      this._getarchivousecase.GetDetallado(this.entidad,'REINTEGRO', this.fechaInicio, this.fechaFin)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }  
+
+    if(this.type == "cesion" && this.fechaInicio != "")
+    {
+      this._getarchivousecase.GetDetallado(this.entidad,'CESION', this.fechaInicio, this.fechaFin)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }      
   }
 
   setDetallados(type:string){
@@ -122,5 +161,41 @@ export class DetalladosComponent implements OnInit {
           preloader.close();
         });
     }
+
+    if(type == "reintegro")
+    {
+      this.tipoDetallado = "reintegro";
+      this.displayedColumns = [   'EntidadFinanciera',
+                                  'NumeroCuentas',
+                                  'TotalSaldoInicial',
+                                  'TotalRemuneracionPeriodo',
+                                  'TotalRemuneracionAcumulada',
+                                  'TasaPonderada'];
+      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/REINTEGRO`;
+      this._getarchivousecase.GetDetallado(this.entidad, 'REINTEGRO', this.fechaInicio, this.fechaFin)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    } 
+    
+    if(type == "cesion")
+    {
+      this.tipoDetallado = "reintegro";
+      this.displayedColumns = [   'EntidadFinanciera',
+                                  'NumeroCuentas',
+                                  'TotalSaldoInicial',
+                                  'TotalRemuneracionPeriodo',
+                                  'TotalRemuneracionAcumulada',
+                                  'TasaPonderada'];
+      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/CESION`;
+      this._getarchivousecase.GetDetallado(this.entidad, 'CESION', this.fechaInicio, this.fechaFin)
+        .subscribe(res => {
+          this.detalladosDataSource.data = res,
+          this.detalladosDataSource.paginator = this.paginator;
+          preloader.close();
+        });
+    }    
   }
 }

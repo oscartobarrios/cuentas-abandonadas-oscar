@@ -66,11 +66,11 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [1,4,5]
     },{
       title: "Reintegro",
-      url: "#",
+      url: "consolidado/reintegro",
       rols: [1,4,5]
     },{
       title: "Cesión",
-      url: "#",
+      url: "consolidado/cesion",
       rols: [1,4,5]
     },
   ]
@@ -88,11 +88,11 @@ export class SubMenuOrganismComponent implements OnInit {
     },
     {
       title: "Reintegro",
-      url: "#",
+      url: "detallado/reintegro",
       rols: [1,4,5]
     },{
       title: "Cesión",
-      url: "#",
+      url: "detallado/cesion",
       rols: [1,4,5]
     },
   ]
