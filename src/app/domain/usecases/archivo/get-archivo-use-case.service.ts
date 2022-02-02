@@ -7,12 +7,17 @@ import { IArchivo } from '../../models/archivo/iarchivo';
 import { ICambiarEstado } from '../../models/archivo/icambiar-estado';
 import { IConsolidado } from '../../models/archivo/iconsolidado';
 import { IDetallado } from '../../models/archivo/idetallado';
+import { Iimpresionpdf } from '../../models/archivo/Iimpresionpdf';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetArchivoUseCaseService {
   constructor(private _archivoGetway: ArchivoGateway) {}
+  
+  GetPfd(id: any, tipo: string): Observable<Iimpresionpdf[]> {
+    return this._archivoGetway.GetPfd(id,tipo);
+  }
   
   TipoCargue(): Observable<Itipocargue[]> {
     return this._archivoGetway.TipoCargue();

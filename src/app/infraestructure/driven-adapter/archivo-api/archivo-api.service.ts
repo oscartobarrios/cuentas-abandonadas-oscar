@@ -9,6 +9,7 @@ import {toFormData} from '../../../domain/models/archivo/toFormData';
 import {ICambiarEstado} from '../../../domain/models/archivo/icambiar-estado';
 import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
 import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
+import { Iimpresionpdf } from 'src/app/domain/models/archivo/Iimpresionpdf';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,11 @@ export class ArchivoApiService {
   constructor(private http: HttpClient) {
   }
 
+  GetPfd(id: any, tipo: string): Observable<Iimpresionpdf[]> {
+    const url = `${environment.rest.endpoint}/Reporte/OrdenCumplimiento/${id}/${tipo}`;
+    return this.http.get<Iimpresionpdf[]>(url);
+  }
+  
   TipoCargue(): Observable<Itipocargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetTipoCargues`;
     return this.http.get<Itipocargue[]>(url);

@@ -49,6 +49,11 @@
                             <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                         </button>
                     </div>
+                    <div *ngIf="car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO'">
+                       
+                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue)">Descargar Reporte</button>
+
+                    </div>
                 </div>
             </mat-cell>
             </ng-container>

@@ -6,6 +6,7 @@ import { StorageService } from './../../../shared/services/storage.service';
 import { GetArchivoUseCaseService } from './../../../../domain/usecases/archivo/get-archivo-use-case.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-autorizacion-cargues',
@@ -25,7 +26,8 @@ export class AutorizacionCarguesComponent implements OnInit {
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
               private _storageservice: StorageService,
               private _notifications: NotificationsService,
-              private _http: HttpClient) { }
+              private _http: HttpClient,
+              private _router : Router) { }
 
   ngOnInit(): void {
     this._http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
@@ -39,6 +41,7 @@ export class AutorizacionCarguesComponent implements OnInit {
       this.carguesPendienteAutorizacion = ResultData;
     });
     this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
+
       this.carguesCargaProcesada = ResultData;
       this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
       this.cargues.paginator = this.paginator;
@@ -74,5 +77,11 @@ export class AutorizacionCarguesComponent implements OnInit {
                               });
     }
   }
+
+  llevarpdf(id: number)
+  {
+    this._router.navigate([`/autorizacion-traslado-pdf/${id}`]);
+  }
+
 
 }

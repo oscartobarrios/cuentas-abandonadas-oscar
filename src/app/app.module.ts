@@ -47,6 +47,8 @@ import { EditarCalendarioComponent } from './presentation/app/pages/calendario/e
 import { ConsolidadosComponent } from './presentation/app/pages/consolidados/consolidados.component';
 import { DetalladosComponent } from './presentation/app/pages/detallados/detallados.component';
 import { EntidadApiService } from './infraestructure/driven-adapter/entidad-api/entidad-api.service';
+import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
+import { NgxPrintModule } from 'ngx-print';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -80,7 +82,8 @@ export const API_GATEWAYS_PROVIDERS = [
     EditarCalendarioComponent,
     ConsolidadosComponent,
     DetalladosComponent,
-    ReplaceLeftZerosPipe
+    ReplaceLeftZerosPipe,
+    AutorizacionTrasladoPdfComponent
   ],
   imports: [
     AppRoutingModule,
@@ -94,7 +97,8 @@ export const API_GATEWAYS_PROVIDERS = [
     InterceptorsIntegratorModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    NgbModule
+    NgbModule,
+    NgxPrintModule
   ],
   providers: [
   	API_GATEWAYS_PROVIDERS,

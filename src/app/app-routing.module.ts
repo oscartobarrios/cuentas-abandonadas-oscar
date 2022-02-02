@@ -17,6 +17,7 @@ import {CargarComponent} from './presentation/app/pages/archivos/cargar/cargar.c
 import {ProfileComponent} from './presentation/app/pages/profile/profile.component';
 import { ListarCalendarioComponent } from './presentation/app/pages/calendario/listar/listar.component';
 import { CrearCalendarioComponent } from './presentation/app/pages/calendario/crear/crear.component';
+import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
       {path: 'interfaz-contable-listar', component: ListarInterfazContableComponent},
       {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
       {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
+      {path: 'autorizacion-traslado-pdf/:id', component: AutorizacionTrasladoPdfComponent},
       {path: 'calendario', component: ListarCalendarioComponent},
       {path: 'calendario-crear', component: CrearCalendarioComponent},
       {path: 'calendario-editar', component: EditarCalendarioComponent},
