@@ -50,6 +50,9 @@ import { EntidadApiService } from './infraestructure/driven-adapter/entidad-api/
 import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
 import { NgxPrintModule } from 'ngx-print';
 import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/autorizacion-reintegro-pdf/autorizacion-reintegro-pdf.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -101,6 +104,11 @@ export const API_GATEWAYS_PROVIDERS = [
     RecaptchaFormsModule,
     NgbModule,
     NgxPrintModule
+    NgbModule,
+    MatTableModule,
+    MatButtonModule,
+    MatTableExporterModule
+
   ],
   providers: [
   	API_GATEWAYS_PROVIDERS,

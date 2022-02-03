@@ -164,14 +164,13 @@ export class ConsolidadosComponent implements OnInit {
 
     if(type == "reintegro")
     {
-      this.tipoConsolidado = "valoración";
+      this.tipoConsolidado = "reintegro";
       this.displayedColumns = [   'EntidadFinanciera',
                                   'TipoArchivo',
                                   'NumeroCuentas',
                                   'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
+                                  'TotalSolicitado',
+                                  'TotalRemuneracionSolicitada'];
       this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/REINTEGRO/CARGA_PROCESADA`;
       this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA')
         .subscribe(res => {
