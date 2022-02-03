@@ -103,7 +103,7 @@ export const API_GATEWAYS_PROVIDERS = [
     RecaptchaModule,
     RecaptchaFormsModule,
     NgbModule,
-    NgxPrintModule
+    NgxPrintModule,
     NgbModule,
     MatTableModule,
     MatButtonModule,
