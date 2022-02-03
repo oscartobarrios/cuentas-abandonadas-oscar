@@ -39,11 +39,11 @@
           <tr>
               <td style="border-right:2px solid;width: 20%;"><b>Fecha de Solicitud</b></td>
               <td style="border-right:2px solid;width: 25%;">
-                {{ datosImpresion['fechaInicial'] | date:'d/M/yyyy, h:mm a'}}
+                {{ datosImpresion['fechaInicial']}}
               </td>
               <td style="border-right:2px solid;width: 20%;"><b>Fecha de Corte</b></td>
               <td style="width: 30%">
-                {{ datosImpresion['fechaCargue' | date:'d/M/yyyy, h:mm a']}}
+                {{ datosImpresion['fechaCargue']}}
               </td>
           </tr>
   </table>
@@ -86,7 +86,7 @@
         <b>Fecha de Transmisi&oacute;n</b>
     </td>
     <td style="border-right:2px solid;border-bottom:2px solid;">
-        {{ datosImpresion['fechaTransmision' | date:'d/M/yyyy']}}
+        {{ datosImpresion['fechaTransmision']}}
     </td>
     <td style="border-right:2px solid;border-bottom:2px solid;"><b>Tasa Ponderada</b></td>
     <td style="border-bottom:2px solid;">

@@ -51,7 +51,7 @@
                     </div>
                     <div *ngIf="car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO'">
                        
-                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue)">Descargar Reporte</button>
+                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Reporte</button>
 
                     </div>
                 </div>

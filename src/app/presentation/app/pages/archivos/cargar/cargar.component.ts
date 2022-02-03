@@ -57,9 +57,25 @@ export class CargarComponent implements OnInit {
 
   fileChange(e) {
     const fileList = e.target.files;
-    if (fileList.length > 0) {
-      this.archivo = fileList[0];
+    this.estadoenvio = '';
+    this.mensaje = '';
+
+    if(fileList[0].type === "text/plain")
+    {
+      if (fileList.length > 0) {
+
+        this.archivo = fileList[0];
+      }
+
+    }else{
+      this.estadoenvio = 'RECHAZADO';
+      this.mensaje = 'El archivo debe ser de extension .txt';
     }
+
+    console.log(this.mensaje);
+
+
+    
   }
 
   onSubmit(): void {

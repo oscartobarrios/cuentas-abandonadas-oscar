@@ -18,6 +18,7 @@ import {ProfileComponent} from './presentation/app/pages/profile/profile.compone
 import { ListarCalendarioComponent } from './presentation/app/pages/calendario/listar/listar.component';
 import { CrearCalendarioComponent } from './presentation/app/pages/calendario/crear/crear.component';
 import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
+import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/autorizacion-reintegro-pdf/autorizacion-reintegro-pdf.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
       {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
       {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
       {path: 'autorizacion-traslado-pdf/:id', component: AutorizacionTrasladoPdfComponent},
+      {path: 'autorizacion-reintegro-pdf/:id', component: AutorizacionReintegroPdfComponent},
       {path: 'calendario', component: ListarCalendarioComponent},
       {path: 'calendario-crear', component: CrearCalendarioComponent},
       {path: 'calendario-editar', component: EditarCalendarioComponent},

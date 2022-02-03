@@ -42,6 +42,7 @@ export class AutorizacionCarguesComponent implements OnInit {
     });
     this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
 
+      
       this.carguesCargaProcesada = ResultData;
       this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
       this.cargues.paginator = this.paginator;
@@ -78,9 +79,19 @@ export class AutorizacionCarguesComponent implements OnInit {
     }
   }
 
-  llevarpdf(id: number)
+  llevarpdf(id: number,tipo: string)
   {
-    this._router.navigate([`/autorizacion-traslado-pdf/${id}`]);
+
+    console.log(tipo);
+
+    if(tipo === 'TRASLADO')
+    {
+      this._router.navigate([`/autorizacion-traslado-pdf/${id}`]);
+    }else{
+      this._router.navigate([`/autorizacion-reintegro-pdf/${id}`]);
+    }
+
+
   }
 
 

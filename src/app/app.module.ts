@@ -49,6 +49,7 @@ import { DetalladosComponent } from './presentation/app/pages/detallados/detalla
 import { EntidadApiService } from './infraestructure/driven-adapter/entidad-api/entidad-api.service';
 import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
 import { NgxPrintModule } from 'ngx-print';
+import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/autorizacion-reintegro-pdf/autorizacion-reintegro-pdf.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -83,7 +84,8 @@ export const API_GATEWAYS_PROVIDERS = [
     ConsolidadosComponent,
     DetalladosComponent,
     ReplaceLeftZerosPipe,
-    AutorizacionTrasladoPdfComponent
+    AutorizacionTrasladoPdfComponent,
+    AutorizacionReintegroPdfComponent
   ],
   imports: [
     AppRoutingModule,
