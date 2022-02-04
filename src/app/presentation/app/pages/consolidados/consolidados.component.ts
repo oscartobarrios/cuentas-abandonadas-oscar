@@ -57,7 +57,7 @@ export class ConsolidadosComponent implements OnInit {
 
     if(this.type == "valoracion")
     {
-      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaFin, this.fechaFin)
+      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
