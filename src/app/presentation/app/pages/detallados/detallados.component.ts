@@ -48,27 +48,27 @@ export class DetalladosComponent implements OnInit {
     {
       this._getarchivousecase.GetConsolidadoXEntidad('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad)
           .subscribe(res => {
-            this.detalladosDataSource.data = res,
+            //this.detalladosDataSource.data = res,
             this.detalladosDataSource.paginator = this.paginator;
             preloader.close();
           });
     }
 
-    if(this.type == "valoracion" && this.entidad != "")
+    if(this.type == "valoracion")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('VALORACION', 'CARGA_PROCESADA', this.entidad)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
+      this._getarchivousecase.GetDetallado(this.entidad, 'VALORACION', this.fechaInicio, this.fechaFin)
+      .subscribe(res => {
+        this.detalladosDataSource.data = res,
+        this.detalladosDataSource.paginator = this.paginator;
+        preloader.close();
+      });
     }
 
     if(this.type == "reintegro" && this.entidad != "")
     {
       this._getarchivousecase.GetConsolidadoXEntidad('REINTEGRO', 'CARGA_PROCESADA', this.entidad)
         .subscribe(res => {
-          this.detalladosDataSource.data = res,
+          //this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
           preloader.close();
         });
@@ -78,7 +78,7 @@ export class DetalladosComponent implements OnInit {
     {
       this._getarchivousecase.GetConsolidadoXEntidad('CESION', 'CARGA_PROCESADA', this.entidad)
         .subscribe(res => {
-          this.detalladosDataSource.data = res,
+          //this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
           preloader.close();
         });
@@ -94,15 +94,6 @@ export class DetalladosComponent implements OnInit {
           });
     }
 
-    if(this.type == "valoracion" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetDetallado(this.entidad,'VALORACION', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }
     if(this.type == "reintegro" && this.fechaInicio != "")
     {
       this._getarchivousecase.GetDetallado(this.entidad,'REINTEGRO', this.fechaInicio, this.fechaFin)
@@ -148,11 +139,15 @@ export class DetalladosComponent implements OnInit {
     {
       this.tipoDetallado = "valoración";
       this.displayedColumns = [   'EntidadFinanciera',
+                                  'TipoArchivo',
+                                  'FechaCargue',
                                   'NumeroCuentas',
                                   'TotalSaldoInicial',
                                   'TotalRemuneracionPeriodo',
                                   'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
+                                  'TasaPonderada',
+                                  'FechaInicial',
+                                  'FechaFinal'];
       this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/VALORACION`;
       this._getarchivousecase.GetDetallado(this.entidad, 'VALORACION', this.fechaInicio, this.fechaFin)
         .subscribe(res => {

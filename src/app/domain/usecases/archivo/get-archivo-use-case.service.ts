@@ -38,8 +38,8 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.CambiarEstadoCargue(data);
   }
 
-  GetConsolidado(tipoArchivo: string, estado: string): Observable<IConsolidado[]>{
-    return this._archivoGetway.GetConsolidado(tipoArchivo, estado);
+  GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>{
+    return this._archivoGetway.GetConsolidado(tipoArchivo, estado, entidad, fechaInicial, fechaFinal);
   }
 
  GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>{

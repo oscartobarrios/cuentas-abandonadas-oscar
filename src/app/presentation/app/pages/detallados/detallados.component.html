@@ -2,7 +2,8 @@
     <div class="row mb-5">
         <div class="col-8">Cuentas abandonadas - Detallado {{tipoDetallado}}</div>
         <div class="col-2">
-            <a href="{{urlReporteDetallado}}" target="_blank" class="btn btn-primary" style="margin-bottom: 20px;margin-left: 15px;">Descargar detallado</a>
+          <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
+          (click)="exporter.exportTable('xlsx', {fileName:'consolidado'})">Descargar detallado</button>
         </div>
     </div>
     <div class="row">
@@ -38,7 +39,7 @@
       </div>
     </div>
     <div class="row mt-5">
-        <table mat-table [dataSource]="detalladosDataSource" matSort>
+        <table mat-table [dataSource]="detalladosDataSource" matSort matTableExporter  #exporter="matTableExporter">
           <ng-container matColumnDef="EntidadFinanciera" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>
             <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
@@ -47,6 +48,11 @@
           <ng-container matColumnDef="TipoArchivo" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo archivo</th>
             <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="FechaCargue">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de cargue</th>
+            <td mat-cell *matCellDef="let element">{{element.fechaCargue | date :'dd/MM/yyyy'}} </td>
           </ng-container>
 
           <ng-container matColumnDef="FechaTraslado" *ngIf="tipoDetallado == 'administradas'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
@@ -60,12 +66,12 @@
           </ng-container>
 
           <ng-container matColumnDef="NumeroCuentas" >
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Número Cuentas</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No. Cuentas</th>
             <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
           </ng-container>
 
           <ng-container matColumnDef="TotalSaldoInicial" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Total saldo inicial</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial</th>
             <td mat-cell *matCellDef="let element">{{element.totalSaldoInicial | replaceLeftZeros}} </td>
           </ng-container>
 
@@ -75,18 +81,28 @@
           </ng-container>
 
           <ng-container matColumnDef="TotalRemuneracionPeriodo" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración periodo</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Remuneración periodo</th>
             <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
           </ng-container>
 
           <ng-container matColumnDef="TotalRemuneracionAcumulada" *ngIf="tipoDetallado == 'valoración'||tipoDetallado == 'reintegro'||tipoDetallado == 'cesion'">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración acumulada</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Remuneración acumulada</th>
             <td mat-cell *matCellDef="let element">{{element.totalRemuneracionAcumulada | replaceLeftZeros}} </td>
           </ng-container>
 
           <ng-container matColumnDef="TasaPonderada" >
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tasa ponderada</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Tasa</th>
             <td mat-cell *matCellDef="let element">{{element.tasaPonderada}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="FechaInicial">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha inicial</th>
+            <td mat-cell *matCellDef="let element">{{element.fechaInicial | date :'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="FechaFinal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha final</th>
+            <td mat-cell *matCellDef="let element">{{element.fechaFinal | date :'dd/MM/yyyy'}} </td>
           </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

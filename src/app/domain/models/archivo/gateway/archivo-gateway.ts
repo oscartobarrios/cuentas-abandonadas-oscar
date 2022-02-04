@@ -17,7 +17,7 @@ export abstract class ArchivoGateway {
   abstract Cargar(data: IArchivo): Observable<any>;
   abstract LogCargue(idCargue): Observable<any>;
   abstract CambiarEstadoCargue(data: ICambiarEstado): Observable<any>;
-  abstract GetConsolidado(tipoArchivo: string, estado: string): Observable<IConsolidado[]>;
+  abstract GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>;
   abstract GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>;
   abstract GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]>;
   abstract GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>;

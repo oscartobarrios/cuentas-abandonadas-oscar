@@ -55,18 +55,18 @@ export class ConsolidadosComponent implements OnInit {
           });
     }
 
-    if(this.type == "valoracion" && this.entidad != "")
+    if(this.type == "valoracion")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('VALORACION', 'CARGA_PROCESADA', this.entidad)
+      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaFin, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
           preloader.close();
         });
     }
-    if(this.type == "reintegro" && this.entidad != "")
+    if(this.type == "reintegro")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('REINTEGRO', 'CARGA_PROCESADA', this.entidad)
+      this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
@@ -93,24 +93,7 @@ export class ConsolidadosComponent implements OnInit {
           });
     }
 
-    if(this.type == "valoracion" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetConsolidadoXFechaCargue('VALORACION', 'CARGA_PROCESADA', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }
-    if(this.type == "reintegro" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetConsolidadoXFechaCargue('REINTEGRO', 'CARGA_PROCESADA', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }    
+    
     if(this.type == "cesion" && this.fechaInicio != "")
     {
       this._getarchivousecase.GetConsolidadoXFechaCargue('CESION', 'CARGA_PROCESADA', this.fechaInicio, this.fechaFin)
@@ -135,7 +118,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'TotalTraslados',
                                   'TasaPonderada'];
       this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/TRASLADO/PENDIENTE_AUTORIZACION`;
-      this._getarchivousecase.GetConsolidado('TRASLADO', 'PENDIENTE_AUTORIZACION')
+      this._getarchivousecase.GetConsolidado('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad, this.fechaInicio, this.fechaFin)
           .subscribe(res => {
             this.consolidadosDataSource.data = res,
             this.consolidadosDataSource.paginator = this.paginator;
@@ -154,7 +137,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'TotalRemuneracionAcumulada',
                                   'TasaPonderada'];
       this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/VALORACION/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA')
+      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaFin, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
@@ -172,7 +155,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'TotalSolicitado',
                                   'TotalRemuneracionSolicitada'];
       this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/REINTEGRO/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA')
+      this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
@@ -190,7 +173,7 @@ export class ConsolidadosComponent implements OnInit {
                                   'TotalRemuneracionAcumulada',
                                   'TasaPonderada'];
       this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/CESION/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('CESION', 'CARGA_PROCESADA')
+      this._getarchivousecase.GetConsolidado('CESION', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;

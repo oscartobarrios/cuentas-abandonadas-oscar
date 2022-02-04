@@ -13,4 +13,7 @@ export interface IDetallado {
     FechaCorte:Date,
     TotalRemuneracionAcumulada:string,
     TotalSaldoInicial:string,
+    TipoArchivo:string,
+    FechaInicial:Date,
+    FechaFinal:Date
 }

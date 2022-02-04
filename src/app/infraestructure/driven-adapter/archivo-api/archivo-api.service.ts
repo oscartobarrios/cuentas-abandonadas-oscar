@@ -65,8 +65,8 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
-  GetConsolidado(tipoArchivo: string, estado: string): Observable<IConsolidado[]>{
-    const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}`;
+  GetConsolidado(tipoArchivo: string, estado: string, entidad: string,fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>{
+    const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}/${entidad}/${fechaInicial}/${fechaFinal}`;
     return this.http.get<IConsolidado[]>(url);
   }
 
