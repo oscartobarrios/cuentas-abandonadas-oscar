@@ -21,7 +21,7 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
 
-    this._getarchivousecase.GetPfd(this.id,"REINTEGRO").subscribe((ResultData) => {
+    this._getarchivousecase.GetPfd(this.id,"TRASLADO").subscribe((ResultData) => {
 
       this.datosImpresion = ResultData;
       console.log(this.datosImpresion);

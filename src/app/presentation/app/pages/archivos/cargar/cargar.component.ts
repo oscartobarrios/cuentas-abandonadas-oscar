@@ -5,7 +5,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../../../shared/services/storage.service';
 import {NotificationsService} from '../../../../shared/services/notifications.service';
 
-
 @Component({
   selector: 'app-cargar',
   templateUrl: './cargar.component.html',
@@ -40,6 +39,7 @@ export class CargarComponent implements OnInit {
   ngOnInit(): void {
     this._getarchivousecase.TipoCargue().subscribe((ResulData) => {
       this.tipos = ResulData;
+     
     });
   }
 
@@ -71,10 +71,6 @@ export class CargarComponent implements OnInit {
       this.estadoenvio = 'RECHAZADO';
       this.mensaje = 'El archivo debe ser de extension .txt';
     }
-
-    console.log(this.mensaje);
-
-
     
   }
 
@@ -88,6 +84,7 @@ export class CargarComponent implements OnInit {
         usuario: this.usuario,
         file: this.archivo
       };
+      
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.Cargar(data).subscribe((ResponseData) => {
         preloader.close();
@@ -104,7 +101,7 @@ export class CargarComponent implements OnInit {
         preloader.close();
         const dataerror = error.error || error.statusText;
         this.estadoenvio = 'RECHAZADO';
-        this.mensaje = 'El nombre del archivo no corresponde con el código de la entidad a cargar';
+        this.mensaje = error.error.mensaje
       });
     } else {
       this.formerror = true;
