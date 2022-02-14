@@ -40,7 +40,7 @@ export class SubMenuOrganismComponent implements OnInit {
   reportes: CardItem[] = [
     {
       title: "Estados cargues",
-      url: "#",
+      url: "reporteestadocargue",
       rols: [1,4]
     },
     {

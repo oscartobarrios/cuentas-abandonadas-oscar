@@ -53,11 +53,16 @@ import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/auto
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReporteGateway } from './domain/models/reporte/gateway/reporte-gateway';
+import { ReporteApiService } from './infraestructure/driven-adapter/reporte/reporte-api.service';
+import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
   { provide: LoginGateway, useClass: LoginApiService},
   { provide: ArchivoGateway, useClass: ArchivoApiService},
+  { provide: ReporteGateway, useClass: ReporteApiService},
   { provide: InterfazContableGateway, useClass: InterfazContableService},
   { provide: CalendarioGateway, useClass: CalendarioService},
   { provide: EntidadGateway, useClass: EntidadApiService},
@@ -88,7 +93,8 @@ export const API_GATEWAYS_PROVIDERS = [
     DetalladosComponent,
     ReplaceLeftZerosPipe,
     AutorizacionTrasladoPdfComponent,
-    AutorizacionReintegroPdfComponent
+    AutorizacionReintegroPdfComponent,
+    EstadoCarguesComponent
   ],
   imports: [
     AppRoutingModule,
@@ -107,7 +113,8 @@ export const API_GATEWAYS_PROVIDERS = [
     NgbModule,
     MatTableModule,
     MatButtonModule,
-    MatTableExporterModule
+    MatTableExporterModule,
+    ReactiveFormsModule
 
   ],
   providers: [

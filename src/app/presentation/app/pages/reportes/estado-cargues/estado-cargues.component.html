@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-7">Estado de Cargues</div>
+        
+    </div>
+</div>
+
+<form role="form" (ngSubmit)="descargarExcel()" [formGroup]="consultaexcelForm">
+
+  
+  <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <label>Filtro entidad financiera</label>
+          <select class="form-control" id="Organizador" formControlName="entidad">
+            <option value="null" disabled="true" [selected]="true" ></option>
+            <option
+                *ngFor="let ent of entidades"
+                value="{{ent.idOrganizacion}}">
+                {{ent.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <label>Tipo Archivo</label> 
+              <select class="form-control" id="tipoarchivo" formControlName="tipoArchivo">
+                  <option value="null" disabled="true" [selected]="true" ></option>
+                  <option
+                      *ngFor="let tipo of tipos"
+                      value="{{tipo.tipoCargue}}">
+                      {{tipo.tipoCargue}}
+                  </option>
+                </select>
+            </div>
+            <div class="col-6">
+              <label>Fecha Cargue</label> 
+              <input type="date" class="form-control" formControlName="fechaCargue">  
+              </div> 
+          </div>
+      </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-6">
+          <div class="row">
+            <label>Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">  
+          </div>
+      </div>
+      <div class="col-3">
+          <label>Estado</label> 
+          <select class="form-control" id="tipoarchivo" formControlName="estado">
+              <option value="null" disabled="true" [selected]="true" ></option>
+              <option
+                  *ngFor="let estado of estados"
+                  value="{{estado.nombre}}">
+                  {{estado.nombre}}
+              </option>
+            </select>
+      </div>
+  
+      <div class="col-2">
+        <br>
+        <button class="btn btn-primary" type="submit">Descargar</button>
+      </div>
+      <div class="col-1">
+        <br>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </div>
+  </div>
+
+
+</form>
+
