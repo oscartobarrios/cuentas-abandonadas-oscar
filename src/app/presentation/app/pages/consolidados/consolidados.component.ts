@@ -32,15 +32,15 @@ export class ConsolidadosComponent implements OnInit {
               ) { 
     this._route.params.subscribe(params => {
       this.type = params.type;
-      this.setConsolidados(params.type)
     })
+   
+  }
+
+  ngOnInit(): void {
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       console.log("Entidades:", res);
       this.entidades = res;
     });
-  }
-
-  ngOnInit(): void {
   }
 
   buscar() {
@@ -57,7 +57,16 @@ export class ConsolidadosComponent implements OnInit {
 
     if(this.type == "valoracion")
     {
-      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
+      this.tipoConsolidado = "valoración";
+      this.displayedColumns = [   'EntidadFinanciera',
+                                  'TipoArchivo',
+                                  'NumeroCuentas',
+                                  'TotalSaldoInicial',
+                                  'TotalRemuneracionPeriodo',
+                                  'TotalRemuneracionAcumulada',
+                                  'TasaPonderada'];
+      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/VALORACION/CARGA_PROCESADA`;
+      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaFin, this.fechaFin)
         .subscribe(res => {
           this.consolidadosDataSource.data = res,
           this.consolidadosDataSource.paginator = this.paginator;
@@ -103,82 +112,5 @@ export class ConsolidadosComponent implements OnInit {
           preloader.close();
         });
     }   
-  }
-
-  setConsolidados(type:string){
-    const preloader = this._notifications.showPreloader();
-    if(type === "administradas")
-    {
-      this.tipoConsolidado = "administradas";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'TipoArchivo',
-                                  'FechaTraslado',
-                                  'FechaCorte',
-                                  'NumeroCuentas',
-                                  'TotalTraslados',
-                                  'TasaPonderada'];
-      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/TRASLADO/PENDIENTE_AUTORIZACION`;
-      this._getarchivousecase.GetConsolidado('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad, this.fechaInicio, this.fechaFin)
-          .subscribe(res => {
-            this.consolidadosDataSource.data = res,
-            this.consolidadosDataSource.paginator = this.paginator;
-            preloader.close();
-          });
-    }
-
-    if(type == "valoracion")
-    {
-      this.tipoConsolidado = "valoración";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'TipoArchivo',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
-      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/VALORACION/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('VALORACION', 'CARGA_PROCESADA', this.entidad, this.fechaFin, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }
-
-    if(type == "reintegro")
-    {
-      this.tipoConsolidado = "reintegro";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'TipoArchivo',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalSolicitado',
-                                  'TotalRemuneracionSolicitada'];
-      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/REINTEGRO/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }
-    if(type == "cesion")
-    {
-      this.tipoConsolidado = "valoración";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'TipoArchivo',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
-      this.urlReporteConsolidado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/CESION/CARGA_PROCESADA`;
-      this._getarchivousecase.GetConsolidado('CESION', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
-    }
   }
 }
