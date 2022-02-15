@@ -82,4 +82,9 @@ export class ArchivoApiService {
     const url = `${environment.rest.endpoint}/Cargue/GetDetallado/${entidad}/${tipoArchivo}/${fechaInicial}/${fechaFinal}`;
     return this.http.get<IDetallado[]>(url);
   }
+  GetDetalladoFilter(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetDetalladoFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
 }

@@ -51,4 +51,8 @@ export class GetArchivoUseCaseService {
  GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
    return this._archivoGetway.GetDetallado(entidad, tipoArchivo,fechaInicial, fechaFinal);
  }
+
+ GetDetalladoFilter(dataQuery): Observable<any>{
+  return this._archivoGetway.GetDetalladoFilter(dataQuery);
+}
 }

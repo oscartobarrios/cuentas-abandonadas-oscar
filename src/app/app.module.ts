@@ -53,10 +53,12 @@ import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/auto
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReporteGateway } from './domain/models/reporte/gateway/reporte-gateway';
 import { ReporteApiService } from './infraestructure/driven-adapter/reporte/reporte-api.service';
 import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
+
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -115,6 +117,7 @@ export const API_GATEWAYS_PROVIDERS = [
     MatButtonModule,
     MatTableExporterModule,
     ReactiveFormsModule
+    NgxDatatableModule
 
   ],
   providers: [

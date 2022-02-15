@@ -4,9 +4,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetArchivoUseCaseService } from './../../../../domain/usecases/archivo/get-archivo-use-case.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, AfterViewInit } from '@angular/core';
 import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
 import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+import { Page } from '../../interfaces/page';
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-detallados',
@@ -24,6 +28,24 @@ export class DetalladosComponent implements OnInit {
   fechaFin: string;
   type: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+  // Variables NgxTable
+  public pagination = [10, 20, 30, 40, 50, 60];
+  public page = new Page();
+  public rows = new Array<any>();
+  public columnMode = ColumnMode;
+  public dataQuery: IDetallado[] = [];
+  public resultSearch = false;
+  public columns = [];
+  public resultadosBusqueda: any[] = [];
+  public nombreReporte = 'RepRolFuncionalidad';
+  public formato = 'EXCEL';
+  public nombreArchivo = 'Reporte_Roles.xls';
+  public acciones: any;
+  public idUsuarioActual: any;
+  
+
   constructor(private _route: ActivatedRoute,
               private _entidadUseCase: GetEntidadUseCaseService,
               private _getarchivousecase: GetArchivoUseCaseService,
@@ -31,37 +53,78 @@ export class DetalladosComponent implements OnInit {
               ) { 
     this._route.params.subscribe(params => {
       this.type = params.type;
+      this.setDefaultValues();
       this.setDetallados(params.type)
     })
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       console.log("Entidades:", res);
       this.entidades = res;
     });
+
+   
   }
 
   ngOnInit(): void {
+
+    // Definición de columnas de la Tabla de Roles
+    this.columns = [
+      { prop: 'nombre', name: 'EntidadFinanciera' },
+      { prop: 'tipoArchivo', name: 'TipoArchivo' },
+      { prop: 'fechaCargue', name: 'FechaCargue' },
+      { prop: 'nroCuenta', name: 'NumeroCuenta' },
+      { prop: 'totalSaldoInicial', name: 'TotalSaldoInicial' },
+      { prop: 'remuneracion', name: 'TotalRemuneracionPeriodo' },
+      { prop: 'totalRemuneracionAcumulada', name: 'TotalRemuneracionAcumulada' },
+      { prop: 'tasaPonderada', name: 'TasaPonderada' },
+      { prop: 'fechaInicial', name: 'FechaInicial' },
+      { prop: 'fechaFinal', name: 'FechaFinal' }
+
+    ];
+
+    // Establecer la página de inicio de la tabla en 1
+    this.setPage({ offset: 0 });
+  }
+
+
+  setDefaultValues() {
+    this.page.pageNumber = 1;
+    this.page.size = 10;
+    this.page.totalElements = 0;
+  }
+
+  // Conulta de registros
+  consultarRegistros(): void {
+    const preloader = this._notifications.showPreloader();
+    
+    this._getarchivousecase.GetDetalladoFilter(this.page)
+      .subscribe(res => {
+        this.configurarTablaConRespuesta(res);
+        preloader.close();
+      });
+      
+
   }
 
   buscar() {
-    const preloader = this._notifications.showPreloader();
     if(this.type === "administradas" && this.entidad != "")
     {
       this._getarchivousecase.GetConsolidadoXEntidad('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad)
           .subscribe(res => {
             //this.detalladosDataSource.data = res,
             this.detalladosDataSource.paginator = this.paginator;
-            preloader.close();
           });
     }
 
     if(this.type == "valoracion")
     {
-      this._getarchivousecase.GetDetallado(this.entidad, 'VALORACION', this.fechaInicio, this.fechaFin)
-      .subscribe(res => {
-        this.detalladosDataSource.data = res,
-        this.detalladosDataSource.paginator = this.paginator;
-        preloader.close();
-      });
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "VALORACION",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
     }
 
     if(this.type == "reintegro" && this.entidad != "")
@@ -70,7 +133,6 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           //this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     }   
 
@@ -80,7 +142,6 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           //this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     } 
 
@@ -90,7 +151,6 @@ export class DetalladosComponent implements OnInit {
           .subscribe(res => {
             this.detalladosDataSource.data = res,
             this.detalladosDataSource.paginator = this.paginator;
-            preloader.close();
           });
     }
 
@@ -100,7 +160,6 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     }  
 
@@ -110,13 +169,11 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     }      
   }
 
   setDetallados(type:string){
-    const preloader = this._notifications.showPreloader();
     if(type === "administradas")
     {
       this.tipoDetallado = "administradas";
@@ -131,30 +188,13 @@ export class DetalladosComponent implements OnInit {
           .subscribe(res => {
             this.detalladosDataSource.data = res,
             this.detalladosDataSource.paginator = this.paginator;
-            preloader.close();
           });
     }
 
     if(type == "valoracion")
     {
-      this.tipoDetallado = "valoración";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'TipoArchivo',
-                                  'FechaCargue',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada',
-                                  'FechaInicial',
-                                  'FechaFinal'];
-      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/VALORACION`;
-      this._getarchivousecase.GetDetallado(this.entidad, 'VALORACION', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
-        });
+      //this.setPage({ offset: 0 });
+      //this.consultarRegistros()
     }
 
     if(type == "reintegro")
@@ -171,7 +211,6 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     } 
     
@@ -189,8 +228,32 @@ export class DetalladosComponent implements OnInit {
         .subscribe(res => {
           this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
-          preloader.close();
         });
     }    
   }
+
+  // Configuración de la tabla con respuesta
+  private configurarTablaConRespuesta(modelo: any): void {
+    //this.loadingService.loadingOff();
+    this.resultSearch = true;
+    this.dataQuery = modelo.data;
+    this.rows = modelo.data;
+    this.definirValoresPagina(modelo);
+    if (this.rows === null || this.rows.length === 0) {
+      this.resultSearch = false;
+    }
+  }
+  // definicion de valores del paginador
+  private definirValoresPagina(values): void {
+    this.page.pageNumber = values.pageNumber;
+    this.page.size = values.size;
+    this.page.totalElements = values.totalElements;
+    this.page.totalPages = values.totalPages;
+  }
+
+  public setPage(pageInfo: any, fromPagination?: boolean) {
+    this.page.pageNumber = pageInfo.offset;
+    if (this.page.data && fromPagination) this.consultarRegistros();
+  }
+
 }
