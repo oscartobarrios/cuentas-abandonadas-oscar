@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {Itipocargue} from '../../../domain/models/archivo/itipocargue';
 import {ICargue} from '../../../domain/models/archivo/icargue';
 import {IArchivo} from '../../../domain/models/archivo/iarchivo';
-import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {toFormData} from '../../../domain/models/archivo/toFormData';
 import {ICambiarEstado} from '../../../domain/models/archivo/icambiar-estado';
 import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
 import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
 import { Iimpresionpdf } from 'src/app/domain/models/archivo/Iimpresionpdf';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,9 +58,29 @@ export class ArchivoApiService {
     return this.http.post<any>(url, archivo);
   }
   LogCargue(idCargue): Observable<any> {
-    const url = `${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`;
-    return this.http.get<Itipocargue>(url);
+    // const url = `${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`;
+    // return this.http.get<Itipocargue>(url);
+
+    return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`, 
+            {responseType: 'blob'})
+      .pipe(
+              tap(data => console.log('Get mission report: ' + data)),
+              catchError(this.handleError)
+      )
+
   }
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+        errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+        errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
+
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargue/${data.idCargue}/${data.operacion}/${data.usuario}/${data.ip}`;
     return this.http.get<any>(url);

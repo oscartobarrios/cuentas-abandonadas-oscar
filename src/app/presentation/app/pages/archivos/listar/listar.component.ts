@@ -10,6 +10,8 @@ import {GetIpService} from '../../../../shared/services/get-ip.service';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {newArray} from '@angular/compiler/src/util';
+import Swal from 'sweetalert2';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 
 @Component({
   selector: 'app-listar',
@@ -31,7 +33,8 @@ export class ListarComponent implements OnInit {
               public dialog: MatDialog,
               private _ipservice: GetIpService,
               private _router: Router,
-              private _http: HttpClient
+              private _http: HttpClient,
+              private alarma: SweetAlertService,
   ) {
   }
 
@@ -66,9 +69,28 @@ export class ListarComponent implements OnInit {
   }
 
   openError(id: any): void {
-    const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
-      data: {idCargue: id}
-    });
+
+    Swal.fire({
+      title: 'Espere por favor, Guardando Datos',
+      allowOutsideClick:false,
+      didOpen: () => {
+          Swal.showLoading()
+        }
+      });
+
+    this._getarchivousecase.LogCargue(id).subscribe((response) => {
+      const blob = new Blob([response], {type: 'application/octet-stream'});
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+      Swal.close();
+    }, error =>{
+      this.alarma.showError(error);
+      Swal.close();
+    })
+
+    // const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
+    //   data: {idCargue: id}
+    // });
   }
 }
 

@@ -105,13 +105,6 @@ export class EstadoCarguesComponent implements OnInit {
       Swal.close();
     })
 
-    // this._getreportecase.getReporteEstadoCargaexcel(this.consultaexcelForm.value).subscribe(response => {
-    //   const blob = new Blob([response], {type: 'text/plain'});
-    //   const url = window.URL.createObjectURL(blob);
-    //   window.open(url);
-    // })
-
-
     }else{
       this.alarma.showWarning("Información incompleta, por favor verifique");
     }
