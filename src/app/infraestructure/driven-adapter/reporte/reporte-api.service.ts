@@ -39,6 +39,17 @@ import { environment } from "src/environments/environment";
 
     }
 
+    getReporteDetalladoExcel(filtros: any): Observable<Blob> {
+
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteDetalladoExcel/${filtros.entidad}/${filtros.tipoArchivo}/${filtros.fechaInicial}/${filtros.fechaFinal}`, 
+            {responseType: 'blob'})
+      .pipe(
+              tap(data => console.log('Get mission report: ' + data)),
+              catchError(this.handleError)
+      )
+
+    }
+
     private handleError(err: HttpErrorResponse) {
       let errorMessage = '';
       if (err.error instanceof ErrorEvent) {

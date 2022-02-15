@@ -10,6 +10,7 @@ import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-en
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Page } from '../../interfaces/page';
 import { FormGroup } from '@angular/forms';
+import { GetReporteService } from 'src/app/domain/usecases/reportes/get-reporte.service';
 
 
 @Component({
@@ -39,9 +40,7 @@ export class DetalladosComponent implements OnInit {
   public resultSearch = false;
   public columns = [];
   public resultadosBusqueda: any[] = [];
-  public nombreReporte = 'RepRolFuncionalidad';
-  public formato = 'EXCEL';
-  public nombreArchivo = 'Reporte_Roles.xls';
+  public nombreArchivo = 'Detallado.xlsx';
   public acciones: any;
   public idUsuarioActual: any;
   
@@ -50,17 +49,12 @@ export class DetalladosComponent implements OnInit {
               private _entidadUseCase: GetEntidadUseCaseService,
               private _getarchivousecase: GetArchivoUseCaseService,
               private _notifications: NotificationsService,
+              private _getreportecase: GetReporteService
               ) { 
     this._route.params.subscribe(params => {
       this.type = params.type;
       this.setDefaultValues();
-      this.setDetallados(params.type)
     })
-    this._entidadUseCase.ListadoEntidades().subscribe(res => {
-      console.log("Entidades:", res);
-      this.entidades = res;
-    });
-
    
   }
 
@@ -87,6 +81,10 @@ export class DetalladosComponent implements OnInit {
 
 
   setDefaultValues() {
+    this._entidadUseCase.ListadoEntidades().subscribe(res => {
+      this.entidades = res;
+    });
+    
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
@@ -173,65 +171,6 @@ export class DetalladosComponent implements OnInit {
     }      
   }
 
-  setDetallados(type:string){
-    if(type === "administradas")
-    {
-      this.tipoDetallado = "administradas";
-      this.displayedColumns = [   'EntidadFinanciera',                               
-                                  'FechaTraslado',
-                                  'FechaCorte',
-                                  'NumeroCuentas',
-                                  'TotalTraslados',
-                                  'TasaPonderada'];
-      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetConsolidadoExcel/TRASLADO`;
-      this._getarchivousecase.GetDetallado(this.entidad, 'TRASLADO', this.fechaInicio, this.fechaFin)
-          .subscribe(res => {
-            this.detalladosDataSource.data = res,
-            this.detalladosDataSource.paginator = this.paginator;
-          });
-    }
-
-    if(type == "valoracion")
-    {
-      //this.setPage({ offset: 0 });
-      //this.consultarRegistros()
-    }
-
-    if(type == "reintegro")
-    {
-      this.tipoDetallado = "reintegro";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
-      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/REINTEGRO`;
-      this._getarchivousecase.GetDetallado(this.entidad, 'REINTEGRO', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
-    } 
-    
-    if(type == "cesion")
-    {
-      this.tipoDetallado = "reintegro";
-      this.displayedColumns = [   'EntidadFinanciera',
-                                  'NumeroCuentas',
-                                  'TotalSaldoInicial',
-                                  'TotalRemuneracionPeriodo',
-                                  'TotalRemuneracionAcumulada',
-                                  'TasaPonderada'];
-      this.urlReporteDetallado = `${environment.rest.endpoint}/Cargue/GetDetalladoExcel/CESION`;
-      this._getarchivousecase.GetDetallado(this.entidad, 'CESION', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
-    }    
-  }
-
   // Configuración de la tabla con respuesta
   private configurarTablaConRespuesta(modelo: any): void {
     //this.loadingService.loadingOff();
@@ -254,6 +193,25 @@ export class DetalladosComponent implements OnInit {
   public setPage(pageInfo: any, fromPagination?: boolean) {
     this.page.pageNumber = pageInfo.offset;
     if (this.page.data && fromPagination) this.consultarRegistros();
+  }
+
+  descargarExcel(){
+    const preloader = this._notifications.showPreloader();
+    this.page.data = {
+      "entidad": this.entidad,
+      "tipoArchivo": "VALORACION",
+      "fechaInicial": this.fechaInicio,
+      "fechaFinal": this.fechaFin
+    };
+    this._getreportecase.getReporteDetalladoExcel(this.page.data).subscribe(response => {
+      
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', this.nombreArchivo);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      preloader.close();
+    })
   }
 
 }

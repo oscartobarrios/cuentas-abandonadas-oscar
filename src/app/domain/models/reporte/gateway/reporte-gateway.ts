@@ -3,4 +3,5 @@ import { IEstadoCargue } from '../iestadocargue';
 
 export abstract class ReporteGateway {
   abstract getReporteEstadoCargueExcel(estadocargue: IEstadoCargue): Observable<any>;
+  abstract getReporteDetalladoExcel(filtros: any): Observable<any>;
 }
