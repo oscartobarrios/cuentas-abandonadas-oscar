@@ -116,7 +116,7 @@ export const API_GATEWAYS_PROVIDERS = [
     MatTableModule,
     MatButtonModule,
     MatTableExporterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     NgxDatatableModule
 
   ],
