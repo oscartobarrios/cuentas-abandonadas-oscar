@@ -21,4 +21,9 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
     getReporteConsolidadoExcel(filtros: any): Observable<any> {
       return this._reporteGetway.getReporteConsolidadoExcel(filtros);
     }
+
+    GetEstadoCargueFilter(dataQuery): Observable<any>{
+      return this._reporteGetway.GetEstadoCargueFilter(dataQuery);
+    }
+
 }

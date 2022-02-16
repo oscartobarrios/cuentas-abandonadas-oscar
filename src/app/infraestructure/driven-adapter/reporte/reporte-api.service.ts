@@ -61,6 +61,12 @@ import { environment } from "src/environments/environment";
 
     }
 
+    GetEstadoCargueFilter(dataQuery): Observable<any>{
+      const url = `${environment.rest.endpoint}/Reporte/GetEstadoCargueFilter`;
+      return this.http.post<any>(url, dataQuery);
+    }
+
+
     private handleError(err: HttpErrorResponse) {
       let errorMessage = '';
       if (err.error instanceof ErrorEvent) {
