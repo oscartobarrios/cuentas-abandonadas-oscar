@@ -63,8 +63,8 @@ export class ConsolidadosComponent implements OnInit {
       { prop: 'fechaCargue', name: 'FechaCargue' },
       { prop: 'nroCuentas', name: 'Número cuentas' },
       { prop: 'totalSaldoInicial', name: 'Total saldo inicial' },
-      { prop: 'remuneracion', name: 'Total remuneracion periodo' },
-      { prop: 'totalRemuneracionAcumulada', name: 'Total remuneracion acumulada' },
+      { prop: 'remuneracion', name: 'Total remuneración período' },
+      { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada' },
       { prop: 'tasaPonderada', name: 'Tasa ponderada' }   
 
     ];
@@ -91,6 +91,11 @@ export class ConsolidadosComponent implements OnInit {
   }
 
   setDefaultValues() {
+    if(this.type == "valoracion")
+    {
+      this.tipoConsolidado = "valoración";
+    }
+    
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       this.entidades = res;
     });

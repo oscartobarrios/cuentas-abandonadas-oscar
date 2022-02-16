@@ -63,16 +63,15 @@ export class DetalladosComponent implements OnInit {
 
     // Definición de columnas de la Tabla de Roles
     this.columns = [
-      { prop: 'nombre', name: 'EntidadFinanciera' },
-      { prop: 'tipoArchivo', name: 'TipoArchivo' },
-      { prop: 'fechaCargue', name: 'FechaCargue' },
-      { prop: 'nroCuenta', name: 'NumeroCuenta' },
-      { prop: 'totalSaldoInicial', name: 'TotalSaldoInicial' },
-      { prop: 'remuneracion', name: 'TotalRemuneracionPeriodo' },
-      { prop: 'totalRemuneracionAcumulada', name: 'TotalRemuneracionAcumulada' },
-      { prop: 'tasaPonderada', name: 'TasaPonderada' },
-      { prop: 'fechaInicial', name: 'FechaInicial' },
-      { prop: 'fechaFinal', name: 'FechaFinal' }
+      { prop: 'nombre', name: 'Entidad financiera' },
+      { prop: 'fechaCargue', name: 'Fecha cargue' },
+      { prop: 'nroCuenta', name: 'Número cuenta' },
+      { prop: 'totalSaldoInicial', name: 'Saldo inicial' },
+      { prop: 'remuneracion', name: 'Remuneración periodo' },
+      { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada' },
+      { prop: 'tasaPonderada', name: 'Tasa ponderada' },
+      { prop: 'fechaInicial', name: 'Fecha inicial' },
+      { prop: 'fechaFinal', name: 'Fecha final' }
 
     ];
 
@@ -82,6 +81,11 @@ export class DetalladosComponent implements OnInit {
 
 
   setDefaultValues() {
+    if(this.type == "valoracion")
+    {
+      this.tipoDetallado = "valoración";
+    }
+
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       this.entidades = res;
     });
@@ -118,6 +122,8 @@ export class DetalladosComponent implements OnInit {
 
     if(this.type == "valoracion")
     {
+      this.tipoDetallado = "valoración";
+      
       this.setPage({ offset: 0 });
       this.page.data = {
         "entidad": this.entidad,
