@@ -50,6 +50,11 @@ import { environment } from "src/environments/environment";
 
     }
 
+    GetEstadoCargueFilter(dataQuery): Observable<any>{
+      const url = `${environment.rest.endpoint}/Reporte/GetEstadoCargueFilter`;
+      return this.http.post<any>(url, dataQuery);
+    }
+
     getReporteConsolidadoExcel(filtros: any): Observable<Blob> {
 
       return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteConsolidadoExcel/${filtros.entidad}/${filtros.tipoArchivo}/${filtros.fechaInicial}/${filtros.fechaFinal}`, 
