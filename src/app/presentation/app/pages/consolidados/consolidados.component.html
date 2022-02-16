@@ -3,15 +3,15 @@
         <div class="col-8">Cuentas abandonadas - Consolidado {{tipoConsolidado}}</div>
         <div class="col-2">
           <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
-          (click)="exporter.exportTable('xlsx', {fileName:'consolidado'})">Descargar consolidado</button>
+          (click)="descargarExcel()">Descargar consolidado</button>
         </div>
     </div>
     <div class="row">
       <div class="col-6">
         <div class="row">
           <label>Entidad financiera</label>
-          <select class="form-control" id="Organizador" [(ngModel)]="entidad">
-            <option value="null" disabled="true" [selected]="true" >Entidad</option>
+          <select class="form-control" id="Organizador" [(ngModel)]="entidad" required>
+            <option value="null" [selected]="true" >Todas</option>
             <option
                 *ngFor="let ent of entidades"
                 value="{{ent.idOrganizacion}}">
@@ -24,11 +24,11 @@
         <div class="row">
           <div class="col-6">
             <label>Fecha Inicio</label> 
-            <input type="date" class="form-control" [(ngModel)]="fechaInicio">
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio" required>
           </div>
           <div class="col-6">
             <label>Fecha Final</label> 
-            <input type="date" class="form-control" [(ngModel)]="fechaFin">  
+            <input type="date" class="form-control" [(ngModel)]="fechaFin" required>  
           </div> 
         </div>
       </div>
@@ -39,73 +39,21 @@
       </div>
     </div>
     <div class="row mt-5">
-    
-        <table mat-table [dataSource]="consolidadosDataSource" matSort matTableExporter  #exporter="matTableExporter">
-            <ng-container matColumnDef="EntidadFinanciera" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>
-              <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TipoArchivo" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo archivo</th>
-              <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="FechaTraslado" *ngIf="tipoConsolidado == 'administradas'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha traslado</th>
-              <td mat-cell *matCellDef="let element">{{element.fechaTraslado | date :'dd-MM-yyyy'}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="FechaCorte" *ngIf="tipoConsolidado == 'administradas'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha corte</th>
-              <td mat-cell *matCellDef="let element">{{element.fechaCorte | date :'dd-MM-yyyy'}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="NumeroCuentas" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número Cuentas</th>
-              <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalSaldoInicial" *ngIf="tipoConsolidado == 'valoración'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total saldo inicial</th>
-              <td mat-cell *matCellDef="let element">{{element.totalSaldoInicial | replaceLeftZeros}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalTraslados" *ngIf="tipoConsolidado == 'administradas'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total traslados</th>
-              <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalRemuneracionPeriodo" *ngIf="tipoConsolidado == 'valoración'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración periodo</th>
-              <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalSolicitado" *ngIf="tipoConsolidado == 'reintegro'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total solicitado</th>
-              <td mat-cell *matCellDef="let element">{{element.totalSolicitado | replaceLeftZeros}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TotalRemuneracionSolicitada" *ngIf="tipoConsolidado == 'reintegro'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración solicitada</th>
-              <td mat-cell *matCellDef="let element">{{element.remuneracion | replaceLeftZeros}} </td>
-            </ng-container>
-
-            
-
-            <ng-container matColumnDef="TotalRemuneracionAcumulada" *ngIf="tipoConsolidado == 'valoración'||tipoConsolidado == 'reintegro'||tipoConsolidado == 'cesion'">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total remuneración acumulada</th>
-              <td mat-cell *matCellDef="let element">{{element.totalRemuneracionAcumulada | replaceLeftZeros}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TasaPonderada" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tasa ponderada</th>
-              <td mat-cell *matCellDef="let element">{{element.tasaPonderada}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-          <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>      
+      <ng-container>
+        <ngx-datatable class="material"
+                [rows]="rows" 
+                [columns]="columns" 
+                [columnMode]="columnMode.force"
+                [sorts]="[{prop: 'codigo', dir: 'asc'}]" 
+                [headerHeight]="'auto'" 
+                [footerHeight]="100" 
+                [limit]="page.size"
+                rowHeight="auto" 
+                [externalPaging]="true" 
+                [count]="page.totalElements" 
+                [offset]="page.pageNumber"
+                (page)="setPage($event, true)">
+          </ngx-datatable>
+      </ng-container>  
     </div>
 </div>

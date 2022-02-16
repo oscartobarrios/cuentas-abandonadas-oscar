@@ -108,4 +108,9 @@ export class ArchivoApiService {
     return this.http.post<any>(url, dataQuery);
   }
 
+  GetConsolidadoFilter(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetConsolidadoFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
 }

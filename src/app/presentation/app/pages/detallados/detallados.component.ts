@@ -11,6 +11,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Page } from '../../interfaces/page';
 import { FormGroup } from '@angular/forms';
 import { GetReporteService } from 'src/app/domain/usecases/reportes/get-reporte.service';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 
 
 @Component({
@@ -41,16 +42,16 @@ export class DetalladosComponent implements OnInit {
   public columns = [];
   public resultadosBusqueda: any[] = [];
   public nombreArchivo = 'Detallado.xlsx';
-  public acciones: any;
-  public idUsuarioActual: any;
   
 
   constructor(private _route: ActivatedRoute,
               private _entidadUseCase: GetEntidadUseCaseService,
               private _getarchivousecase: GetArchivoUseCaseService,
               private _notifications: NotificationsService,
-              private _getreportecase: GetReporteService
-              ) { 
+              private _getreportecase: GetReporteService,
+              private alarma: SweetAlertService
+              ) 
+  { 
     this._route.params.subscribe(params => {
       this.type = params.type;
       this.setDefaultValues();
@@ -92,15 +93,17 @@ export class DetalladosComponent implements OnInit {
 
   // Conulta de registros
   consultarRegistros(): void {
-    const preloader = this._notifications.showPreloader();
-    
-    this._getarchivousecase.GetDetalladoFilter(this.page)
-      .subscribe(res => {
-        this.configurarTablaConRespuesta(res);
-        preloader.close();
-      });
-      
 
+    if(!this.fechaInicio || !this.fechaFin){
+      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta");
+    }else{
+      const preloader = this._notifications.showPreloader();
+      this._getarchivousecase.GetDetalladoFilter(this.page)
+        .subscribe(res => {
+          this.configurarTablaConRespuesta(res);
+          preloader.close();
+        });
+    }
   }
 
   buscar() {

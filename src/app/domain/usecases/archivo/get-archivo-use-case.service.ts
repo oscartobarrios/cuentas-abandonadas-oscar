@@ -54,5 +54,8 @@ export class GetArchivoUseCaseService {
 
  GetDetalladoFilter(dataQuery): Observable<any>{
   return this._archivoGetway.GetDetalladoFilter(dataQuery);
-}
+  }
+  GetConsolidadoFilter(dataQuery): Observable<any>{
+    return this._archivoGetway.GetConsolidadoFilter(dataQuery);
+  }
 }

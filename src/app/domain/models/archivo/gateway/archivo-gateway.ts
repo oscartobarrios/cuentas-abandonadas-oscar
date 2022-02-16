@@ -22,5 +22,6 @@ export abstract class ArchivoGateway {
   abstract GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]>;
   abstract GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>;
   abstract GetDetalladoFilter(dataQuery): Observable<any>;
+  abstract GetConsolidadoFilter(dataQuery): Observable<any>;
 
 }
