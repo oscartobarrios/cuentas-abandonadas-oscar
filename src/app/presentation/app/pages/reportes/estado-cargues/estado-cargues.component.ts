@@ -28,7 +28,6 @@ export class EstadoCarguesComponent implements OnInit {
   dato: IEstadoCargue;
 
   public pagination = [10, 20, 30, 40, 50, 60];
-  consolidadosDataSource
   public page = new Page();
   public rows = new Array<any>();
   public columnMode = ColumnMode;
@@ -96,8 +95,11 @@ export class EstadoCarguesComponent implements OnInit {
       { prop: 'idCargue', name: 'idCargue' },
       { prop: 'fecCargue', name: 'FechaCargue' },
       { prop: 'nroCuentas', name: 'NumeroCuenta' },
+      { prop: 'tasaPonderada', name: 'TasaPonderada' },
+      { prop: 'totalRemuneracionPeriodo', name: 'Remuneracion' },
       { prop: 'monto', name: 'Monto' },
-      { prop: 'estado', name: 'Estado' }
+      { prop: 'estado', name: 'Estado' },
+    
     ];
 
     // Establecer la página de inicio de la tabla en 1
@@ -170,9 +172,9 @@ export class EstadoCarguesComponent implements OnInit {
 
   buscar(){
 
-      if(this.entidad != undefined && this.entidad != '' && this.tipoArchivo != undefined && this.tipoArchivo != '' && this.fechaCargue != undefined && 
-      this.fechaCargue != '' && this.nombre != undefined && this.nombre != '' && this.estado != undefined && this.estado != '' )
-      {
+      // if(this.entidad != undefined && this.entidad != '' && this.tipoArchivo != undefined && this.tipoArchivo != '' && this.fechaCargue != undefined && 
+      // this.fechaCargue != '' && this.nombre != undefined && this.nombre != '' && this.estado != undefined && this.estado != '' )
+      // {
         this.setPage({ offset: 0 });
         this.page.data = {
           "entidad": this.entidad,
@@ -182,17 +184,14 @@ export class EstadoCarguesComponent implements OnInit {
           "estado": this.estado
         };
           this.consultarRegistros()
-      } else{
-      this.alarma.showWarning("Información incompleta, por favor verifique");
-      }
+      // } else{
+      // this.alarma.showWarning("Información incompleta, por favor verifique");
+      // }
   }
   
   descargarExcel(){
 
-    if(this.entidad != undefined && this.entidad != '' && this.tipoArchivo != undefined && this.tipoArchivo != '' && this.fechaCargue != undefined && 
-    this.fechaCargue != '' && this.nombre != undefined && this.nombre != '' && this.estado != undefined && this.estado != '' )
-    {
-
+   
       this.dato = {
         "entidad": this.entidad,
         "tipoArchivo": this.tipoArchivo,
@@ -216,9 +215,7 @@ export class EstadoCarguesComponent implements OnInit {
       Swal.close();
     })
 
-    }else{
-      this.alarma.showWarning("Información incompleta, por favor verifique");
-    }
+   
   }
 
 }
