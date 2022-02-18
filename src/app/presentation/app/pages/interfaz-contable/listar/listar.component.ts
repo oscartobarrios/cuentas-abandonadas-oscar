@@ -73,4 +73,13 @@ export class ListarInterfazContableComponent implements OnInit {
       preloader.close();
     });
   }
+
+  reporteConsolidado(data: InterfazContableList)
+  {
+    
+    const {nroprocesoborrador} = data; 
+    console.log(nroprocesoborrador);
+
+  }
+
 }
