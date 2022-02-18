@@ -12,7 +12,6 @@
         <div class="row">
           <label>Entidad financiera</label>
           <select class="form-control" id="Organizador" [(ngModel)]="entidad" required>
-            <option value="null" [selected]="true" >Todas</option>
             <option
                 *ngFor="let ent of entidades"
                 value="{{ent.idOrganizacion}}">
@@ -58,4 +57,15 @@
         </ngx-datatable>
       </ng-container>
     </div>
+
+    <ng-template #monedaTemplate let-value="value" let-row="row">
+      <div>
+        $ {{value | number }}
+      </div>
+    </ng-template>
+    <ng-template #numberTemplate let-value="value" let-row="row">
+      <div>
+         {{value | number }}
+      </div>
+    </ng-template>
 </div>

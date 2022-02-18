@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetArchivoUseCaseService } from './../../../../domain/usecases/archivo/get-archivo-use-case.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
 import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
 import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
@@ -19,6 +19,10 @@ import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
   styleUrls: ['./consolidados.component.css']
 })
 export class ConsolidadosComponent implements OnInit {
+  
+  @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
+  @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+
   tipoConsolidado = "";
   consolidadosDataSource = new MatTableDataSource<IConsolidado>();
   displayedColumns: string[] = [];
@@ -62,10 +66,10 @@ export class ConsolidadosComponent implements OnInit {
       { prop: 'tipoArchivo', name: 'Tipo archivo' },
       { prop: 'fechaCargue', name: 'FechaCargue' },
       { prop: 'nroCuentas', name: 'Número cuentas' },
-      { prop: 'totalSaldoInicial', name: 'Total saldo inicial' },
-      { prop: 'remuneracion', name: 'Total remuneración período' },
-      { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada' },
-      { prop: 'tasaPonderada', name: 'Tasa ponderada' }   
+      { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
+      { prop: 'remuneracion', name: 'Total remuneración período', cellTemplate: this.monedaTemplate },
+      { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada', cellTemplate: this.monedaTemplate },
+      { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate }   
 
     ];
 

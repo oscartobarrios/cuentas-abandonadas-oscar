@@ -20,6 +20,10 @@ import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
   styleUrls: ['./detallados.component.css']
 })
 export class DetalladosComponent implements OnInit {
+
+  @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
+  @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+
   tipoDetallado = "";
   detalladosDataSource = new MatTableDataSource<IDetallado>();
   displayedColumns: string[] = [];
@@ -61,15 +65,15 @@ export class DetalladosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Definición de columnas de la Tabla de Roles
+    // Definición de columnas de la Tabla de Rolesa
     this.columns = [
       { prop: 'nombre', name: 'Entidad financiera' },
       { prop: 'fechaCargue', name: 'Fecha cargue' },
       { prop: 'nroCuenta', name: 'Número cuenta' },
-      { prop: 'totalSaldoInicial', name: 'Saldo inicial' },
-      { prop: 'remuneracion', name: 'Remuneración periodo' },
-      { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada' },
-      { prop: 'tasaPonderada', name: 'Tasa ponderada' },
+      { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+      { prop: 'remuneracion', name: 'Remuneración periodo', cellTemplate: this.monedaTemplate },
+      { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
+      { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
       { prop: 'fechaInicial', name: 'Fecha inicial' },
       { prop: 'fechaFinal', name: 'Fecha final' }
 
