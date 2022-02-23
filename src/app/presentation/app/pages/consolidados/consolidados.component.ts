@@ -61,17 +61,36 @@ export class ConsolidadosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.columns = [
-      { prop: 'nombre', name: 'Entidad financiera' },
-      { prop: 'tipoArchivo', name: 'Tipo archivo' },
-      { prop: 'fechaCargue', name: 'FechaCargue' },
-      { prop: 'nroCuentas', name: 'Número cuentas' },
-      { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
-      { prop: 'remuneracion', name: 'Total remuneración período', cellTemplate: this.monedaTemplate },
-      { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada', cellTemplate: this.monedaTemplate },
-      { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate }   
 
-    ];
+    if(this.type == "valoracion")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'tipoArchivo', name: 'Tipo archivo' },
+        { prop: 'fechaCargue', name: 'FechaCargue' },
+        { prop: 'nroCuentas', name: 'Número cuentas' },
+        { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'remuneracion', name: 'Total remuneración período', cellTemplate: this.monedaTemplate },
+        { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada', cellTemplate: this.monedaTemplate },
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate }   
+  
+      ];
+    }
+
+    if(this.type == "reintegro")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'tipoArchivo', name: 'Tipo archivo' },
+        { prop: 'fechaCargue', name: 'FechaCargue' },
+        { prop: 'nroCuentas', name: 'Número cuentas' },
+        { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'remuneracion', name: 'Total remuneración', cellTemplate: this.monedaTemplate },
+  
+      ];
+    }
+
+    
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -98,6 +117,11 @@ export class ConsolidadosComponent implements OnInit {
     if(this.type == "valoracion")
     {
       this.tipoConsolidado = "valoración";
+    }
+
+    if(this.type == "reintegro")
+    {
+      this.tipoConsolidado = "reintegro";
     }
     
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -135,12 +159,17 @@ export class ConsolidadosComponent implements OnInit {
     }
     if(this.type == "reintegro")
     {
-      this._getarchivousecase.GetConsolidado('REINTEGRO', 'CARGA_PROCESADA', this.entidad, this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
+      this.tipoConsolidado = "reintegro";
 
-        });
+      
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "REINTEGRO",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
     }
     if(this.type == "cesion" && this.entidad != "")
     {
@@ -200,12 +229,27 @@ export class ConsolidadosComponent implements OnInit {
 
   descargarExcel(){
     const preloader = this._notifications.showPreloader();
-    this.page.data = {
-      "entidad": this.entidad,
-      "tipoArchivo": "VALORACION",
-      "fechaInicial": this.fechaInicio,
-      "fechaFinal": this.fechaFin
-    };
+
+    if(this.type == "valoracion")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "VALORACION",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+
+    if(this.type == "reintegro")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "REINTEGRO",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+    
     this._getreportecase.getReporteConsolidadoExcel(this.page.data).subscribe(response => {
       
       const downloadLink = document.createElement('a');

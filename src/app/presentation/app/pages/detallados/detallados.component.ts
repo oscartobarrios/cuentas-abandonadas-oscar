@@ -65,19 +65,36 @@ export class DetalladosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // Definición de columnas de la Tabla de Rolesa
-    this.columns = [
-      { prop: 'nombre', name: 'Entidad financiera' },
-      { prop: 'fechaCargue', name: 'Fecha cargue' },
-      { prop: 'nroCuenta', name: 'Número cuenta' },
-      { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
-      { prop: 'remuneracion', name: 'Remuneración periodo', cellTemplate: this.monedaTemplate },
-      { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
-      { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
-      { prop: 'fechaInicial', name: 'Fecha inicial' },
-      { prop: 'fechaFinal', name: 'Fecha final' }
+    if(this.type == "valoracion")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'fechaCargue', name: 'Fecha cargue' },
+        { prop: 'nroCuenta', name: 'Número cuenta' },
+        { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'remuneracion', name: 'Remuneración periodo', cellTemplate: this.monedaTemplate },
+        { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
+        { prop: 'fechaInicial', name: 'Fecha inicial' },
+        { prop: 'fechaFinal', name: 'Fecha final' }
+  
+      ];
+    }
 
-    ];
+    if(this.type == "reintegro")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'fechaCargue', name: 'Fecha cargue' },
+        { prop: 'nroCuenta', name: 'Número cuenta' },
+        { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'remuneracion', name: 'Remuneración', cellTemplate: this.monedaTemplate },
+        { prop: 'fechaTraslado', name: 'Fecha traslado' },
+        { prop: 'fechaFinal', name: 'Fecha final' }
+  
+      ];
+    }
+    
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -88,6 +105,11 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "valoracion")
     {
       this.tipoDetallado = "valoración";
+    }
+
+    if(this.type == "reintegro")
+    {
+      this.tipoDetallado = "reintegro";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -140,11 +162,16 @@ export class DetalladosComponent implements OnInit {
 
     if(this.type == "reintegro" && this.entidad != "")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('REINTEGRO', 'CARGA_PROCESADA', this.entidad)
-        .subscribe(res => {
-          //this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
+      this.tipoDetallado = "reintegro";
+      
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "REINTEGRO",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
     }   
 
     if(this.type == "cesion" && this.entidad != "")
