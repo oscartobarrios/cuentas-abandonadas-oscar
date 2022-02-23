@@ -7,6 +7,7 @@ import {ICambiarEstado} from '../icambiar-estado';
 import { IConsolidado } from '../iconsolidado';
 import { IDetallado } from '../idetallado';
 import { Iimpresionpdf } from '../Iimpresionpdf';
+import { ICambiarEstadoRechazada } from '../icambiar-estado-reachazada';
 
 export abstract class ArchivoGateway {
 
@@ -17,6 +18,7 @@ export abstract class ArchivoGateway {
   abstract Cargar(data: IArchivo): Observable<any>;
   abstract LogCargue(idCargue): Observable<any>;
   abstract CambiarEstadoCargue(data: ICambiarEstado): Observable<any>;
+  abstract CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>;
   abstract GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>;
   abstract GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>;
   abstract GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]>;

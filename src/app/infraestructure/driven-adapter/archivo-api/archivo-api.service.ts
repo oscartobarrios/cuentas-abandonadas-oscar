@@ -11,6 +11,7 @@ import { IConsolidado } from 'src/app/domain/models/archivo/iconsolidado';
 import { IDetallado } from 'src/app/domain/models/archivo/idetallado';
 import { Iimpresionpdf } from 'src/app/domain/models/archivo/Iimpresionpdf';
 import { catchError, tap } from 'rxjs/operators';
+import { ICambiarEstadoRechazada } from 'src/app/domain/models/archivo/icambiar-estado-reachazada';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,13 @@ export class ArchivoApiService {
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargue/${data.idCargue}/${data.operacion}/${data.usuario}/${data.ip}`;
     return this.http.get<any>(url);
+  }
+
+  CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargueRechazada?idCargue=${data.idCargue}&usuario=${data.usuario}&ip=${data.ip}&observacion=${data.observacion}`;
+    const archivo: FormData = new FormData();
+    archivo.append('file', data.file, data.file.name);
+    return this.http.post<any>(url, archivo);
   }
 
   GetConsolidado(tipoArchivo: string, estado: string, entidad: string,fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>{

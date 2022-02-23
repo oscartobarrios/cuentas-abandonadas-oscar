@@ -58,7 +58,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReporteGateway } from './domain/models/reporte/gateway/reporte-gateway';
 import { ReporteApiService } from './infraestructure/driven-adapter/reporte/reporte-api.service';
 import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
-
+import { AutorizacionRechazoComponent } from './presentation/app/pages/autorizacion-rechazo/autorizacion-rechazo.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -96,7 +96,8 @@ export const API_GATEWAYS_PROVIDERS = [
     ReplaceLeftZerosPipe,
     AutorizacionTrasladoPdfComponent,
     AutorizacionReintegroPdfComponent,
-    EstadoCarguesComponent
+    EstadoCarguesComponent,
+    AutorizacionRechazoComponent
   ],
   imports: [
     AppRoutingModule,

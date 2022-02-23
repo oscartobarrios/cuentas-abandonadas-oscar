@@ -8,6 +8,7 @@ import { ICambiarEstado } from '../../models/archivo/icambiar-estado';
 import { IConsolidado } from '../../models/archivo/iconsolidado';
 import { IDetallado } from '../../models/archivo/idetallado';
 import { Iimpresionpdf } from '../../models/archivo/Iimpresionpdf';
+import { ICambiarEstadoRechazada } from '../../models/archivo/icambiar-estado-reachazada';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,10 @@ export class GetArchivoUseCaseService {
   }
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any> {
     return this._archivoGetway.CambiarEstadoCargue(data);
+  }
+
+  CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any> {
+    return this._archivoGetway.CambiarEstadoCargueRechazada(data);
   }
 
   GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>{

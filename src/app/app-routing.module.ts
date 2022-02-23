@@ -20,6 +20,7 @@ import { CrearCalendarioComponent } from './presentation/app/pages/calendario/cr
 import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autorizacion-traslado-pdf/autorizacion-traslado-pdf.component';
 import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/autorizacion-reintegro-pdf/autorizacion-reintegro-pdf.component';
 import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
+import { AutorizacionRechazoComponent } from './presentation/app/pages/autorizacion-rechazo/autorizacion-rechazo.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -44,6 +45,7 @@ const routes: Routes = [
       {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
       {path: 'autorizacion-traslado-pdf/:id', component: AutorizacionTrasladoPdfComponent},
       {path: 'autorizacion-reintegro-pdf/:id', component: AutorizacionReintegroPdfComponent},
+      {path: 'autorizacion-rechazo/:id', component: AutorizacionRechazoComponent},
       {path: 'calendario', component: ListarCalendarioComponent},
       {path: 'calendario-crear', component: CrearCalendarioComponent},
       {path: 'calendario-editar', component: EditarCalendarioComponent},
