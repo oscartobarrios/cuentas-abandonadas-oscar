@@ -160,7 +160,7 @@ export class DetalladosComponent implements OnInit {
       this.consultarRegistros()
     }
 
-    if(this.type == "reintegro" && this.entidad != "")
+    if(this.type == "reintegro")
     {
       this.tipoDetallado = "reintegro";
       
@@ -191,15 +191,6 @@ export class DetalladosComponent implements OnInit {
             this.detalladosDataSource.paginator = this.paginator;
           });
     }
-
-    if(this.type == "reintegro" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetDetallado(this.entidad,'REINTEGRO', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
-    }  
 
     if(this.type == "cesion" && this.fechaInicio != "")
     {
@@ -237,12 +228,27 @@ export class DetalladosComponent implements OnInit {
 
   descargarExcel(){
     const preloader = this._notifications.showPreloader();
-    this.page.data = {
-      "entidad": this.entidad,
-      "tipoArchivo": "VALORACION",
-      "fechaInicial": this.fechaInicio,
-      "fechaFinal": this.fechaFin
-    };
+
+    if(this.type == "valoracion")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "VALORACION",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+
+    if(this.type == "reintegro")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "REINTEGRO",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+    
     this._getreportecase.getReporteDetalladoExcel(this.page.data).subscribe(response => {
       
       const downloadLink = document.createElement('a');
