@@ -41,7 +41,7 @@ import { environment } from "src/environments/environment";
 
     getReporteDetalladoExcel(filtros: any): Observable<Blob> {
 
-      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteDetalladoExcel/${filtros.entidad}/${filtros.tipoArchivo}/${filtros.fechaInicial}/${filtros.fechaFinal}`, 
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteDetalladoExcel/${filtros.entidad}/${filtros.tipoArchivo}/${filtros.fechaInicial}/${filtros.fechaFinal}/${filtros.estado}`, 
             {responseType: 'blob'})
       .pipe(
               tap(data => console.log('Get mission report: ' + data)),

@@ -23,6 +23,7 @@ export class DetalladosComponent implements OnInit {
 
   @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+  @ViewChild('estadoTemplate', { static: true }) estadoTemplate: TemplateRef<any>;
 
   tipoDetallado = "";
   detalladosDataSource = new MatTableDataSource<IDetallado>();
@@ -32,6 +33,7 @@ export class DetalladosComponent implements OnInit {
   entidad: string;
   fechaInicio: string;
   fechaFin: string;
+  estado: string;
   type: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -94,6 +96,22 @@ export class DetalladosComponent implements OnInit {
   
       ];
     }
+
+    if(this.type == "administradas")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'fechaCargue', name: 'Fecha cargue' },
+        { prop: 'nroCuenta', name: 'Número cuenta' },
+        { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
+        { prop: 'fechaInicial', name: 'Fecha inicial' },
+        { prop: 'fechaTraslado', name: 'Fecha traslado' },
+        { prop: 'estado_Cargue', name: 'Estado' , cellTemplate: this.estadoTemplate}
+       
+  
+      ];
+    }
     
 
     // Establecer la página de inicio de la tabla en 1
@@ -110,6 +128,11 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "reintegro")
     {
       this.tipoDetallado = "reintegro";
+    }
+
+    if(this.type == "administradas")
+    {
+      this.tipoDetallado = "administradas";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -137,15 +160,6 @@ export class DetalladosComponent implements OnInit {
   }
 
   buscar() {
-    if(this.type === "administradas" && this.entidad != "")
-    {
-      this._getarchivousecase.GetConsolidadoXEntidad('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad)
-          .subscribe(res => {
-            //this.detalladosDataSource.data = res,
-            this.detalladosDataSource.paginator = this.paginator;
-          });
-    }
-
     if(this.type == "valoracion")
     {
       this.tipoDetallado = "valoración";
@@ -174,6 +188,19 @@ export class DetalladosComponent implements OnInit {
       this.consultarRegistros()
     }   
 
+    if(this.type === "administradas")
+    {      
+          this.setPage({ offset: 0 });
+          this.page.data = {
+            "entidad": this.entidad,
+            "tipoArchivo": "TRASLADO",
+            "estado":this.estado,
+            "fechaInicial": this.fechaInicio,
+            "fechaFinal": this.fechaFin
+          };
+          this.consultarRegistros()
+    }
+
     if(this.type == "cesion" && this.entidad != "")
     {
       this._getarchivousecase.GetConsolidadoXEntidad('CESION', 'CARGA_PROCESADA', this.entidad)
@@ -182,24 +209,7 @@ export class DetalladosComponent implements OnInit {
           this.detalladosDataSource.paginator = this.paginator;
         });
     } 
-
-    if(this.type === "administradas" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetDetallado(this.entidad, 'TRASLADO', this.fechaInicio, this.fechaFin)
-          .subscribe(res => {
-            this.detalladosDataSource.data = res,
-            this.detalladosDataSource.paginator = this.paginator;
-          });
-    }
-
-    if(this.type == "cesion" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetDetallado(this.entidad,'CESION', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
-    }      
+    
   }
 
   // Configuración de la tabla con respuesta
@@ -235,7 +245,8 @@ export class DetalladosComponent implements OnInit {
         "entidad": this.entidad,
         "tipoArchivo": "VALORACION",
         "fechaInicial": this.fechaInicio,
-        "fechaFinal": this.fechaFin
+        "fechaFinal": this.fechaFin,
+        "estado": this.estado
       };
     }
 
@@ -245,7 +256,19 @@ export class DetalladosComponent implements OnInit {
         "entidad": this.entidad,
         "tipoArchivo": "REINTEGRO",
         "fechaInicial": this.fechaInicio,
-        "fechaFinal": this.fechaFin
+        "fechaFinal": this.fechaFin,
+        "estado": this.estado
+      };
+    }
+
+    if(this.type == "administradas")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "TRASLADO",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin,
+        "estado": this.estado
       };
     }
     
