@@ -70,27 +70,27 @@ export class ListarComponent implements OnInit {
 
   openError(id: any): void {
 
-    Swal.fire({
-      title: 'Espere por favor, Guardando Datos',
-      allowOutsideClick:false,
-      didOpen: () => {
-          Swal.showLoading()
-        }
-      });
+    // Swal.fire({
+    //   title: 'Espere por favor, Guardando Datos',
+    //   allowOutsideClick:false,
+    //   didOpen: () => {
+    //       Swal.showLoading()
+    //     }
+    //   });
 
-    this._getarchivousecase.LogCargue(id).subscribe((response) => {
-      const blob = new Blob([response], {type: 'application/octet-stream'});
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
-      Swal.close();
-    }, error =>{
-      this.alarma.showError(error);
-      Swal.close();
-    })
+    // this._getarchivousecase.LogCargue(id).subscribe((response) => {
+    //   const blob = new Blob([response], {type: 'application/octet-stream'});
+    //   const url = window.URL.createObjectURL(blob);
+    //   window.open(url);
+    //   Swal.close();
+    // }, error =>{
+    //   this.alarma.showError(error);
+    //   Swal.close();
+    // })
 
-    // const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
-    //   data: {idCargue: id}
-    // });
+    const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
+      data: {idCargue: id}
+    });
   }
 }
 

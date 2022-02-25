@@ -59,15 +59,15 @@ export class ArchivoApiService {
     return this.http.post<any>(url, archivo);
   }
   LogCargue(idCargue): Observable<any> {
-    // const url = `${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`;
-    // return this.http.get<Itipocargue>(url);
+    const url = `${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`;
+    return this.http.get<Itipocargue>(url);
 
-    return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`, 
-            {responseType: 'blob'})
-      .pipe(
-              tap(data => console.log('Get mission report: ' + data)),
-              catchError(this.handleError)
-      )
+    // return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`, 
+    //         {responseType: 'blob'})
+    //   .pipe(
+    //           tap(data => console.log('Get mission report: ' + data)),
+    //           catchError(this.handleError)
+    //   )
 
   }
 
