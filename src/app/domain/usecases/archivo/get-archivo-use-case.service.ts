@@ -35,6 +35,10 @@ export class GetArchivoUseCaseService {
   LogCargue(idCargue): Observable<any> {
     return this._archivoGetway.LogCargue(idCargue);
   }
+  LogCargueDescarga(idCargue): Observable<any> {
+    return this._archivoGetway.LogCargueDescarga(idCargue);
+  }
+
   CambiarEstadoCargue(data: ICambiarEstado): Observable<any> {
     return this._archivoGetway.CambiarEstadoCargue(data);
   }
