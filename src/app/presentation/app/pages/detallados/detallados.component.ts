@@ -237,7 +237,11 @@ export class DetalladosComponent implements OnInit {
   }
 
   descargarExcel(){
-    const preloader = this._notifications.showPreloader();
+
+    if(!this.fechaInicio || !this.fechaFin){
+      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta", "Atención");
+    }else{
+      const preloader = this._notifications.showPreloader();
 
     if(this.type == "valoracion")
     {
@@ -281,6 +285,8 @@ export class DetalladosComponent implements OnInit {
       downloadLink.click();
       preloader.close();
     })
+    }
+    
   }
 
 }

@@ -101,7 +101,7 @@ export class ConsolidadosComponent implements OnInit {
     var init = this.fechaInicio;
 
     if(!this.fechaInicio || !this.fechaFin){
-      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta");
+      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta", "Atención");
     }else{
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.GetConsolidadoFilter(this.page)
@@ -228,7 +228,10 @@ export class ConsolidadosComponent implements OnInit {
   }
 
   descargarExcel(){
-    const preloader = this._notifications.showPreloader();
+    if(!this.fechaInicio || !this.fechaFin){
+      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la descarga", "Atención");
+    }else{
+      const preloader = this._notifications.showPreloader();
 
     if(this.type == "valoracion")
     {
@@ -259,6 +262,9 @@ export class ConsolidadosComponent implements OnInit {
       downloadLink.click();
       preloader.close();
     })
+    }
+
+    
   }
 
 }
