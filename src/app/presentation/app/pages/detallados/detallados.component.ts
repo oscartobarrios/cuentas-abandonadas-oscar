@@ -239,52 +239,59 @@ export class DetalladosComponent implements OnInit {
   descargarExcel(){
 
     if(!this.fechaInicio || !this.fechaFin){
-      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta", "Atención");
+      this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la descarga", "Atención");
     }else{
+      if(!this.entidad){
+        this.alarma.showWarning("Debe seleccionar una entidad para realizar la descarga", "Atención");
+      }else{
+
+      
       const preloader = this._notifications.showPreloader();
 
-    if(this.type == "valoracion")
-    {
-      this.page.data = {
-        "entidad": this.entidad,
-        "tipoArchivo": "VALORACION",
-        "fechaInicial": this.fechaInicio,
-        "fechaFinal": this.fechaFin,
-        "estado": this.estado
-      };
-    }
+      if(this.type == "valoracion")
+      {
+        this.page.data = {
+          "entidad": this.entidad,
+          "tipoArchivo": "VALORACION",
+          "fechaInicial": this.fechaInicio,
+          "fechaFinal": this.fechaFin,
+          "estado": this.estado
+        };
+      }
 
-    if(this.type == "reintegro")
-    {
-      this.page.data = {
-        "entidad": this.entidad,
-        "tipoArchivo": "REINTEGRO",
-        "fechaInicial": this.fechaInicio,
-        "fechaFinal": this.fechaFin,
-        "estado": this.estado
-      };
-    }
+      if(this.type == "reintegro")
+      {
+        this.page.data = {
+          "entidad": this.entidad,
+          "tipoArchivo": "REINTEGRO",
+          "fechaInicial": this.fechaInicio,
+          "fechaFinal": this.fechaFin,
+          "estado": this.estado
+        };
+      }
 
-    if(this.type == "administradas")
-    {
-      this.page.data = {
-        "entidad": this.entidad,
-        "tipoArchivo": "TRASLADO",
-        "fechaInicial": this.fechaInicio,
-        "fechaFinal": this.fechaFin,
-        "estado": this.estado
-      };
-    }
-    
-    this._getreportecase.getReporteDetalladoExcel(this.page.data).subscribe(response => {
+      if(this.type == "administradas")
+      {
+        this.page.data = {
+          "entidad": this.entidad,
+          "tipoArchivo": "TRASLADO",
+          "fechaInicial": this.fechaInicio,
+          "fechaFinal": this.fechaFin,
+          "estado": this.estado
+        };
+      }
       
-      const downloadLink = document.createElement('a');
-      downloadLink.href = window.URL.createObjectURL(response);
-      downloadLink.setAttribute('download', this.nombreArchivo);
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      preloader.close();
-    })
+      this._getreportecase.getReporteDetalladoExcel(this.page.data).subscribe(response => {
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(response);
+        downloadLink.setAttribute('download', this.nombreArchivo);
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        preloader.close();
+      })
+        
+      }
     }
     
   }
