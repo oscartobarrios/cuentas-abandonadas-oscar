@@ -21,5 +21,7 @@ export interface ICargue {
   saldoInicial:string,
   remuneracion:string,
   causalRechazo:string,
-  observacionesRechazo:string
+  observacionesRechazo:string,
+  vbnotesoreria: number,
+  vbnocontador:number
 }

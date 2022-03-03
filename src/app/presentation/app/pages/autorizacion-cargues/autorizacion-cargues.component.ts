@@ -7,6 +7,8 @@ import { GetArchivoUseCaseService } from './../../../../domain/usecases/archivo/
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ConsoleLoggerService } from 'src/app/presentation/shared/services/console-logger.service';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 
 @Component({
   selector: 'app-autorizacion-cargues',
@@ -29,7 +31,8 @@ export class AutorizacionCarguesComponent implements OnInit {
               private _storageservice: StorageService,
               private _notifications: NotificationsService,
               private _http: HttpClient,
-              private _router : Router) { }
+              private _router : Router,
+              private alarma: SweetAlertService,) { }
 
   ngOnInit(): void {
 
@@ -45,26 +48,32 @@ export class AutorizacionCarguesComponent implements OnInit {
       this.carguesPendienteAutorizacion = ResultData;
       this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
       this.cargues.data = ResultData;
+      console.log(ResultData);
 
          this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
           ResultData.map((resultado) =>{
             this.cargues.data.push(resultado)
-          })
-
-          this._getarchivousecase.CarguesXEstado("VoBo1").subscribe((ResultData) => {
-            ResultData.map((resultado) =>{
-              this.cargues.data.push(resultado)
-            })
-          
-            // console.log(this.cargues.data);
             this.cargues.paginator = this.paginator;
             preloader.close();
-          });
+          })
+
+         
       });
     });    
   }
 
-  cambiarestado(idCargue:any, tipoestado:string): void{
+  cambiarestado(idCargue:any, tipoestado:string,vbnotesoreria: number, vbnocontador: number,swguardado: number): void{
+
+    //validar si tiene el aprobar tanto de tesoreria como de contabilidad
+    console.log(vbnotesoreria,vbnocontador);
+
+      if(vbnocontador == 0 || vbnotesoreria == 0)
+      {
+
+        this.alarma.showWarning("No se puede Aprobar porque debe tener el visto bueno de tesoreria y de contabilidad");
+        return;
+      }
+
     var mensajeestado = '';
     switch(tipoestado){
       case 'confirmar_entidad':
@@ -107,16 +116,13 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
-  vobuenoTesoreria(idCargue:any){
+  vobueno(idCargue:any,tipousuario){
 
-    this._getarchivousecase.CambiarEstadoCargue({idCargue,
-      usuario: this.usuario.usuario,
-      ip: this.ip || '193.168.1.1',
-      operacion: 'VoBo-Tesoreria'})
+    this._getarchivousecase.ActualizarVbno(idCargue,tipousuario)
       .subscribe((ResulData) =>{
       alert(ResulData?.mensaje);
       window.location.reload();
-});
+    });
 
   }
 

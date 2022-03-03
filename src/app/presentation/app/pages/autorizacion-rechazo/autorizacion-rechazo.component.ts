@@ -43,36 +43,50 @@ this.usuario = this._storageservice.getItem('payload')?.infoUsuario.usuario;
 
     if (!this.reactiveForm.invalid) {
 
-      const{observacion} = this.reactiveForm.value;
-
       Swal.fire({
-        title: 'Espere por favor, Guardando Datos',
+        title: 'Esta seguro que desea rechazar el cargue?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Rechazarlo!',
+        cancelButtonText: "Cancelar",
         allowOutsideClick:false,
-        didOpen: () => {
-            Swal.showLoading()
-          }
-        });
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const{observacion} = this.reactiveForm.value;
 
-        const data = {
-          idCargue: this.idCargue,
-          usuario: this.usuario,
-          ip: this.ip || '193.168.1.1',
-          observacion: observacion,
-          file: this.archivo,
-         
-        };
+          Swal.fire({
+            title: 'Espere por favor, Guardando Datos',
+            allowOutsideClick:false,
+            didOpen: () => {
+                Swal.showLoading()
+              }
+            });
 
-      this._getarchivousecase.CambiarEstadoCargueRechazada(data).subscribe((ResponseData) => {
-        Swal.close()
-        this.alarma.showSuccess("autorización rechazada exitosamente");
-        this._router.navigate([`/autorizacion-cargues`]);
-        
-      },  (error: any)  => {
-        console.log(error);
-        Swal.close();
-        this.alarma.showError(this.mensaje);
-        
-      });
+            const data = {
+              idCargue: this.idCargue,
+              usuario: this.usuario,
+              ip: this.ip || '193.168.1.1',
+              observacion: observacion,
+              file: this.archivo,
+            
+            };
+
+          this._getarchivousecase.CambiarEstadoCargueRechazada(data).subscribe((ResponseData) => {
+            Swal.close()
+            this.alarma.showSuccess("autorización rechazada exitosamente");
+            this._router.navigate([`/autorizacion-cargues`]);
+            
+          },  (error: any)  => {
+            console.log(error);
+            Swal.close();
+            this.alarma.showError(this.mensaje);
+            
+          });
+        }
+      })
 
     }else{
       this.alarma.showWarning("Información incompleta, por favor verifique");

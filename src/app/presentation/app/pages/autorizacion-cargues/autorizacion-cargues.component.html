@@ -41,26 +41,32 @@
             <mat-cell *matCellDef="let car;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
+
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4)"mat>
+
+                        <mat-checkbox disabled [checked] = "car.vbnotesoreria">VoBno Tesorero</mat-checkbox>
+                        <mat-checkbox disabled [checked] = "car.vbnocontador">VoBno Contador</mat-checkbox>
+                    </div>
+
+                  
                     <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4)">
-                        <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_icetex')" >
+                        <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_icetex',car.vbnotesoreria,car.vbnocontador)" >
                             <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
                         </button>
-                        <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(car.idCargue,'rechazar_icetex')">
+                        <button mat-raised-button matTooltip="Rechazar" (click)="rechazar(car.idCargue)">
                             <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                         </button>
                     </div>
 
                     <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 5)">
-
-                        <mat-checkbox (click)="vobuenoTesoreria(car.idCargue)" [id]="car.idCargue + '_chkbueno'" >Vo Bueno</mat-checkbox>
+                        <mat-checkbox (click)="vobueno(car.idCargue,'tesorero')" [checked] = "car.vbnotesoreria">Vo Bueno</mat-checkbox>
                         <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
                         
                     </div>
 
-                    <div *ngIf="car.estado === 'VoBo1' && (usuario.idPerfil == 5)"mat>
-
-                        <mat-checkbox (click)="vobuenoTesoreria(car.idCargue)" checked = "true">Vo Bueno</mat-checkbox>
-                        <mat-checkbox (click)="rechazar(car.idCargue)">Rechazar</mat-checkbox>
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 6)">
+                        <mat-checkbox (click)="vobueno(car.idCargue,'contabilidad')" [checked] = "car.vbnocontador">Vo Bueno</mat-checkbox>
+                        <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
                         
                     </div>
 
