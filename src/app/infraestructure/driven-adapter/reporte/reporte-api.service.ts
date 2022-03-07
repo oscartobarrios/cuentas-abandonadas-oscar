@@ -30,11 +30,11 @@ import { environment } from "src/environments/environment";
       // return this.http.post<Blob>(`${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel`, estadocargue,
       //   { responseType: 'blob' as 'json' });
 
-      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel/${estadocargue.entidad}/${estadocargue.tipoArchivo}/${estadocargue.fechaCargue}/${estadocargue.nombre}/${estadocargue.estado}`, 
-            {responseType: 'blob'})
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel/${estadocargue.entidad}/${estadocargue.tipoArchivo}/${estadocargue.fechaInicial}/${estadocargue.fechaFinal}/${estadocargue.nombre}/${estadocargue.estado}/${estadocargue.idCargue}`, 
+      {responseType: 'blob'})
       .pipe(
-              tap(data => console.log('Get mission report: ' + data)),
-              catchError(this.handleError)
+        tap(data => console.log('Get mission report: ' + data)),
+        catchError(this.handleError)
       )
 
     }

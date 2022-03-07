@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Itipocargue } from 'src/app/domain/models/archivo/itipocargue';
@@ -21,6 +21,9 @@ import { exit } from 'process';
   styleUrls: ['./estado-cargues.component.css']
 })
 export class EstadoCarguesComponent implements OnInit {
+  @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
+  @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+  
   entidades:any;
   type: string;
   tipos: Itipocargue[] = [];
@@ -42,9 +45,11 @@ export class EstadoCarguesComponent implements OnInit {
 
   entidad: string;
   tipoArchivo: string;
-  fechaCargue: string;
+  fechaInicial: string;
+  fechaFinal: string;
   nombre: string;
   estado: string;
+  idCargue: string;
   
   public consultaexcelForm: FormGroup;
   
@@ -90,14 +95,15 @@ export class EstadoCarguesComponent implements OnInit {
     // this.cargarformulario();
      // Definición de columnas de la Tabla de Roles
      this.columns = [
-      { prop: 'nombreArchivo', name: 'Nombre' },
+      { prop: 'entidad', name: 'Entidad Financiera' },
       { prop: 'tipoArchivo', name: 'TipoArchivo' },
       { prop: 'idCargue', name: 'idCargue' },
+      { prop: 'nombreArchivo', name: 'Nombre' },
       { prop: 'fecCargue', name: 'FechaCargue' },
-      { prop: 'nroCuentas', name: 'NumeroCuenta' },
-      { prop: 'tasaPonderada', name: 'TasaPonderada' },
-      { prop: 'totalRemuneracionPeriodo', name: 'Remuneracion' },
-      { prop: 'monto', name: 'Monto' },
+      { prop: 'nroCuentas', name: 'Numero Cuentas' },
+      { prop: 'monto', name: 'Monto' , cellTemplate: this.monedaTemplate},
+      { prop: 'tasaPonderada', name: 'TasaPonderada' , cellTemplate: this.numberTemplate},
+      { prop: 'totalRemuneracionPeriodo', name: 'Remuneracion', cellTemplate: this.monedaTemplate },
       { prop: 'estado', name: 'Estado' },
     
     ];
@@ -146,26 +152,16 @@ export class EstadoCarguesComponent implements OnInit {
   llenarEstados(){
     this.estados = [
       {
-        nombre:"CARGA_PROCESADA"
+        nombre:"Autorización rechazada"
       },
       {
-        nombre: "VALIDACION_EXITOSA",
+        nombre: "Carga procesada",
       },{
-        nombre: "AUTORIZACION_APROBADA",
+        nombre: "Pendiente autorización",
       },{
-        nombre: "AUTORIZACION_RECHAZADA",
+        nombre: "Validación exitosa",
       },{
-        nombre: "CARGANDO",
-      },{
-        nombre: "GUARDANDO",
-      },{
-        nombre: "VALIDANDO",
-      },{
-        nombre: "VALIDACION_FALLIDA",
-      },{
-        nombre: "BORRADOR",
-      },{
-        nombre: "PENDIENTE_AUTORIZACION",
+        nombre: "Validación Fallida",
       }
     ]
   }
@@ -179,9 +175,11 @@ export class EstadoCarguesComponent implements OnInit {
         this.page.data = {
           "entidad": this.entidad,
           "tipoArchivo": this.tipoArchivo,
-          "fechaCargue": this.fechaCargue,
+          "fechaInicial": this.fechaInicial,
+          "fechaFinal": this.fechaFinal,
           "nombre": this.nombre,
-          "estado": this.estado
+          "estado": this.estado,
+          "idCargue": this.idCargue
         };
           this.consultarRegistros()
       // } else{
@@ -195,9 +193,11 @@ export class EstadoCarguesComponent implements OnInit {
       this.dato = {
         "entidad": this.entidad,
         "tipoArchivo": this.tipoArchivo,
-        "fechaCargue": this.fechaCargue,
+        "fechaInicial": this.fechaInicial,
+        "fechaFinal": this.fechaFinal,
         "nombre": this.nombre,
-        "estado": this.estado
+        "estado": this.estado,
+        "idCargue": this.idCargue
       };
      
       Swal.fire({
@@ -217,5 +217,6 @@ export class EstadoCarguesComponent implements OnInit {
 
    
   }
+
 
 }
