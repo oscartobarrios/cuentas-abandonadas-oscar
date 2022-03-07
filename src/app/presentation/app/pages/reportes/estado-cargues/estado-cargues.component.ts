@@ -21,6 +21,7 @@ import { exit } from 'process';
   styleUrls: ['./estado-cargues.component.css']
 })
 export class EstadoCarguesComponent implements OnInit {
+
   @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
   

@@ -31,7 +31,7 @@ import { environment } from "src/environments/environment";
       //   { responseType: 'blob' as 'json' });
 
       return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel/${estadocargue.entidad}/${estadocargue.tipoArchivo}/${estadocargue.fechaInicial}/${estadocargue.fechaFinal}/${estadocargue.nombre}/${estadocargue.estado}/${estadocargue.idCargue}`, 
-      {responseType: 'blob'})
+            {responseType: 'blob'})
       .pipe(
         tap(data => console.log('Get mission report: ' + data)),
         catchError(this.handleError)
