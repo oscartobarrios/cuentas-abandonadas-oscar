@@ -100,7 +100,7 @@ export class EstadoCarguesComponent implements OnInit {
       { prop: 'tipoArchivo', name: 'TipoArchivo' },
       { prop: 'idCargue', name: 'idCargue' },
       { prop: 'nombreArchivo', name: 'Nombre' },
-      { prop: 'fecCargue', name: 'FechaCargue' },
+      { prop: 'fechaCargue', name: 'FechaCargue' },
       { prop: 'nroCuentas', name: 'Numero Cuentas' },
       { prop: 'monto', name: 'Monto' , cellTemplate: this.monedaTemplate},
       { prop: 'tasaPonderada', name: 'TasaPonderada' , cellTemplate: this.numberTemplate},
