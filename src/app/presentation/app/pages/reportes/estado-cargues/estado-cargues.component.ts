@@ -24,6 +24,8 @@ export class EstadoCarguesComponent implements OnInit {
 
   @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+  @ViewChild('fecha', { static: true }) fecha: TemplateRef<any>;
+  
   
   entidades:any;
   type: string;
@@ -100,7 +102,7 @@ export class EstadoCarguesComponent implements OnInit {
       { prop: 'tipoArchivo', name: 'TipoArchivo' },
       { prop: 'idCargue', name: 'idCargue' },
       { prop: 'nombreArchivo', name: 'Nombre' },
-      { prop: 'fechaCargue', name: 'FechaCargue' },
+      { prop: 'fecCargue', name: 'FechaCargue', cellTemplate: this.fecha },
       { prop: 'nroCuentas', name: 'Numero Cuentas' },
       { prop: 'monto', name: 'Monto' , cellTemplate: this.monedaTemplate},
       { prop: 'tasaPonderada', name: 'TasaPonderada' , cellTemplate: this.numberTemplate},
@@ -169,19 +171,61 @@ export class EstadoCarguesComponent implements OnInit {
 
   buscar(){
 
-      // if(this.entidad != undefined && this.entidad != '' && this.tipoArchivo != undefined && this.tipoArchivo != '' && this.fechaCargue != undefined && 
-      // this.fechaCargue != '' && this.nombre != undefined && this.nombre != '' && this.estado != undefined && this.estado != '' )
-      // {
-        this.setPage({ offset: 0 });
-        this.page.data = {
-          "entidad": this.entidad,
-          "tipoArchivo": this.tipoArchivo,
-          "fechaInicial": this.fechaInicial,
-          "fechaFinal": this.fechaFinal,
-          "nombre": this.nombre,
-          "estado": this.estado,
-          "idCargue": this.idCargue
-        };
+    var tipoarchivo = this.tipoArchivo;
+    var entidad = this.entidad;
+    var fechainicial = this.fechaInicial;
+    var fechafinal = this.fechaFinal;
+    var nombre = this.nombre;
+    var estado = this.estado;
+    var idcargue = this.idCargue;
+
+
+    if(tipoarchivo === undefined || tipoarchivo === "undefined" || tipoarchivo === "")
+    {
+      tipoarchivo = 'undefined';
+    }
+
+    if(entidad === undefined || entidad === "undefined" || entidad === "")
+    {
+      entidad = 'undefined';
+    }
+
+    if(fechainicial === undefined || fechainicial === "undefined" || fechainicial === "")
+    {
+      fechainicial = 'undefined';
+    }
+
+    if(fechafinal === undefined || fechafinal === "undefined" || fechafinal === "")
+    {
+      fechafinal = 'undefined';
+    }
+
+    if(nombre === undefined || nombre === "undefined" || nombre === "")
+    {
+      nombre = 'undefined';
+    }
+
+    if(estado === undefined || estado === "undefined" || estado === "")
+    {
+      estado = 'undefined';
+    }
+
+    if(idcargue === undefined || idcargue === "undefined" || idcargue === "")
+    {
+      idcargue = 'undefined';
+    }
+
+    this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": entidad,
+        "tipoArchivo": tipoarchivo,
+        "fechaInicial": fechainicial,
+        "fechaFinal": fechafinal,
+        "nombre": nombre,
+        "estado": estado,
+        "idCargue": idcargue
+      };
+
           this.consultarRegistros()
       // } else{
       // this.alarma.showWarning("Información incompleta, por favor verifique");
@@ -190,17 +234,63 @@ export class EstadoCarguesComponent implements OnInit {
   
   descargarExcel(){
 
-   
+    debugger;
+
+    var tipoarchivo = this.tipoArchivo;
+    var entidad = this.entidad;
+    var fechainicial = this.fechaInicial;
+    var fechafinal = this.fechaFinal;
+    var nombre = this.nombre;
+    var estado = this.estado;
+    var idcargue = this.idCargue;
+
+
+    if(tipoarchivo === undefined || tipoarchivo === "undefined" || tipoarchivo === "")
+    {
+      tipoarchivo = 'undefined';
+    }
+
+    if(entidad === undefined || entidad === "undefined" || entidad === "")
+    {
+      entidad = 'undefined';
+    }
+
+    if(fechainicial === undefined || fechainicial === "undefined" || fechainicial === "")
+    {
+      fechainicial = 'undefined';
+    }
+
+    if(fechafinal === undefined || fechafinal === "undefined" || fechafinal === "")
+    {
+      fechafinal = 'undefined';
+    }
+
+    if(nombre === undefined || nombre === "undefined" || nombre === "")
+    {
+      nombre = 'undefined';
+    }
+
+    if(estado === undefined || estado === "undefined" || estado === "")
+    {
+      estado = 'undefined';
+    }
+
+    if(idcargue === undefined || idcargue === "undefined" || idcargue === "")
+    {
+      idcargue = 'undefined';
+    }
+
+    this.setPage({ offset: 0 });
       this.dato = {
-        "entidad": this.entidad,
-        "tipoArchivo": this.tipoArchivo,
-        "fechaInicial": this.fechaInicial,
-        "fechaFinal": this.fechaFinal,
-        "nombre": this.nombre,
-        "estado": this.estado,
-        "idCargue": this.idCargue
+        "entidad": entidad,
+        "tipoArchivo": tipoarchivo,
+        "fechaInicial": fechainicial,
+        "fechaFinal": fechafinal,
+        "nombre": nombre,
+        "estado": estado,
+        "idCargue": idcargue
       };
-     
+
       Swal.fire({
         title: 'Espere por favor, Guardando Datos',
         allowOutsideClick:false,
@@ -218,6 +308,7 @@ export class EstadoCarguesComponent implements OnInit {
 
    
   }
+
 
 
 }

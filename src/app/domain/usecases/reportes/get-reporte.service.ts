@@ -10,7 +10,7 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
 
     constructor(private _reporteGetway: ReporteGateway) {}
 
-    getReporteEstadoCargaexcel(estadocargue: IEstadoCargue): Observable<any> {
+    getReporteEstadoCargaexcel(estadocargue:any): Observable<any> {
         return this._reporteGetway.getReporteEstadoCargueExcel(estadocargue);
       }
 

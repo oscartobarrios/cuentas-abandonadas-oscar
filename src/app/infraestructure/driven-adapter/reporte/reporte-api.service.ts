@@ -24,7 +24,7 @@ import { environment } from "src/environments/environment";
     constructor(private http: HttpClient) {
     }
   
-    getReporteEstadoCargueExcel(estadocargue: IEstadoCargue): Observable<Blob> {
+    getReporteEstadoCargueExcel(estadocargue: any): Observable<Blob> {
       // const url = `${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel/${entidad}/${tipoarchivo}/${fechaCargue}/${nombre}/${estado}`;
       // return this.http.get<any>(url);
       // return this.http.post<Blob>(`${environment.rest.endpoint}/Reporte/GetReporteEstadoCargueExcel`, estadocargue,

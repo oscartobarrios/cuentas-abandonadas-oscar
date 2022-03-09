@@ -109,7 +109,11 @@
        {{value | number }}
     </div>
   </ng-template>
-
+  <ng-template #fecha let-value="value" let-row="row">
+    <div>
+       {{value | date: 'dd/MM/yyyy'}}
+    </div>
+  </ng-template>
 
 <!-- </form> -->
 
