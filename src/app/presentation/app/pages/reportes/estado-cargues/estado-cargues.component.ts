@@ -14,6 +14,7 @@ import { IEstadoCargue } from 'src/app/domain/models/reporte/iestadocargue';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { exit } from 'process';
+import { RETURN } from 'mat-table-exporter';
 
 @Component({
   selector: 'app-estado-cargues',
