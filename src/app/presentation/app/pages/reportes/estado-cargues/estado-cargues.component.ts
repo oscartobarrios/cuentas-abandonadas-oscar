@@ -42,7 +42,7 @@ export class EstadoCarguesComponent implements OnInit {
   public resultSearch = false;
   public columns = [];
   public resultadosBusqueda: any[] = [];
-  public nombreArchivo = 'Detallado.xlsx';
+  public nombreArchivo = 'Reporte Estados Cargues.xlsx';
   public acciones: any;
   public idUsuarioActual: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -301,12 +301,18 @@ export class EstadoCarguesComponent implements OnInit {
         });
 
     this._getreportecase.getReporteEstadoCargaexcel(this.dato).subscribe(response => {
-      const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
+      // const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+      // const url = window.URL.createObjectURL(blob);
+      // window.open(url);
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', this.nombreArchivo);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
       Swal.close();
     })
-
    
   }
 
