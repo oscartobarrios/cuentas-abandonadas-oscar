@@ -58,7 +58,7 @@
                         </button>
                     </div>
 
-                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 5)">
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION'  && (usuario.idPerfil == 5)">
                         <mat-checkbox (click)="vobueno(car.idCargue,'tesorero')" [checked] = "car.vbnotesoreria">Vo Bueno</mat-checkbox>
                         <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
                         
@@ -70,10 +70,17 @@
                         
                     </div>
 
-                    <div *ngIf="car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO'">
+                    <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && (usuario.idPerfil == 4)">
                        
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Reporte</button>
+                       
+                    </div>
 
+                    <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && (usuario.idPerfil == 5)">
+                       
+                        <!-- <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Reporte</button> -->
+                        <mat-checkbox (click)="vobueno(car.idCargue,'tesorero')" [checked] = "car.vbnotesoreria">Vo Bueno</mat-checkbox>
+                        <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
                     </div>
                 </div>
             </mat-cell>
