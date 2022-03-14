@@ -48,6 +48,9 @@
                         <mat-checkbox disabled [checked] = "car.vbnocontador">VoBno Contador</mat-checkbox>
                     </div>
 
+                    <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && (usuario.idPerfil == 4)">
+                        <mat-checkbox disabled [checked] = "car.vbnotesoreria">VoBno Tesorero</mat-checkbox>
+                    </div>
                   
                     <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4)">
                         <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(car.idCargue,'confirmar_icetex',car.vbnotesoreria,car.vbnocontador)" >
