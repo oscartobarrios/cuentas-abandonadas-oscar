@@ -14,12 +14,12 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Fichas entidades",
       url: "entidad-financiera",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
     {
       title: "Autorización cargues",
       url: "autorizacion-cargues",
-      rols: [4,5,6]
+      rols: [4,5,6,7]
     },
     {
       title: "Configuración calendario",
@@ -58,20 +58,20 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Administradas",
       url: "consolidado/administradas",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
     {
       title: "Valoración",
       url: "consolidado/valoracion",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },{
       title: "Reintegro",
       url: "consolidado/reintegro",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },{
       title: "Cesión",
       url: "consolidado/cesion",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
   ]
 
@@ -79,21 +79,21 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Valoración",
       url: "detallado/valoracion",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
     {
       title: "Administradas",
       url: "detallado/administradas",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
     {
       title: "Reintegro",
       url: "detallado/reintegro",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },{
       title: "Cesión",
       url: "detallado/cesion",
-      rols: [1,4,5,6]
+      rols: [1,4,5,6,7]
     },
   ]
 
