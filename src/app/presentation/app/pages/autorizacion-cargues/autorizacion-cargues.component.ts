@@ -62,17 +62,32 @@ export class AutorizacionCarguesComponent implements OnInit {
     });    
   }
 
-  cambiarestado(idCargue:any, tipoestado:string,vbnotesoreria: number, vbnocontador: number,swguardado: number): void{
+  cambiarestado(idCargue:any, tipoestado:string,vbnotesoreria: number, vbnocontador: number,tipoArchivo: string): void{
 
-    //validar si tiene el aprobar tanto de tesoreria como de contabilidad
-    console.log(vbnotesoreria,vbnocontador);
-
+    debugger;
+    //validar si tiene el vbno tanto de tesoreria como de contabilidad cuando es tipo archivo valoracion
+    if(tipoArchivo === "VALORACION")
+    {
       if(vbnocontador == 0 || vbnotesoreria == 0)
       {
 
         this.alarma.showWarning("No se puede Aprobar porque debe tener el visto bueno de tesoreria y de contabilidad");
         return;
       }
+    }
+
+    //validar si tiene el vbno de tesoreria cuando es tipo archivo traslado o reintegro
+
+    if(tipoArchivo === "TRASLADO" || tipoArchivo === "REINTEGRO")
+    {
+      if(vbnotesoreria == 0)
+      {
+
+        this.alarma.showWarning("No se puede Aprobar porque debe tener el visto bueno de tesoreria");
+        return;
+      }
+    }
+      
 
     var mensajeestado = '';
     switch(tipoestado){
