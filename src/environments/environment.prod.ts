@@ -7,11 +7,11 @@ export const environment = {
   rest: {
     //Producción
     //endpoint: 'https://aplicaciones.icetex.gov.co/WsCuentasAbandonadasAPI',
-    endpoint: 'http://10.1.18.124:5600',
-    //endpoint: 'https://appsitiospruebas.icetex.gov.co/AppCuentasAbandonadas',
+    //endpoint: 'http://10.1.18.124:5600',
+    endpoint: 'https://appsitiospruebas.icetex.gov.co/AppCuentasAbandonadas/ApiCuentasAbandonadas',
   },
   recaptchaKey: '6LeBY9AcAAAAAD9fnMbTWQUSJQgsk2JBqRrS5wiF',
-};
+};  
 
 /*
  * For easier debugging in development mode, you can import the following file
