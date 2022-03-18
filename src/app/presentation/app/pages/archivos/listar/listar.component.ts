@@ -56,7 +56,7 @@ export class ListarComponent implements OnInit {
 
 
   cambiarestado(idCargue:any, tipoestado:string): void{
-
+      const preloader = this._notifications.showPreloader();
       this._getarchivousecase.CambiarEstadoCargue({idCargue,
                                                       usuario: this.usuario.usuario,
                                                       ip: this.ip || '193.168.1.1',
@@ -65,7 +65,7 @@ export class ListarComponent implements OnInit {
                                 alert(ResulData?.mensaje);
                                 window.location.reload();
                               });
-    
+      preloader.close();
   }
 
   openError(id: any): void {
