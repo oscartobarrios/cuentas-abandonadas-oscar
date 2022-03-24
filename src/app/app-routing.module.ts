@@ -21,6 +21,10 @@ import { AutorizacionTrasladoPdfComponent } from './presentation/app/pages/autor
 import { AutorizacionReintegroPdfComponent } from './presentation/app/pages/autorizacion-reintegro-pdf/autorizacion-reintegro-pdf.component';
 import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
 import { AutorizacionRechazoComponent } from './presentation/app/pages/autorizacion-rechazo/autorizacion-rechazo.component';
+import { ListarFuncionariosComponent } from './presentation/app/pages/administrador/funcionarios/listar-funcionarios/listar-funcionarios.component';
+import { FuncionarioRegistroComponent } from './presentation/app/pages/administrador/funcionarios/funcionario-registro/funcionario-registro.component';
+import { ListarCargosComponent } from './presentation/app/pages/administrador/cargos/listar-cargos/listar-cargos.component';
+import { CargoRegistroComponent } from './presentation/app/pages/administrador/cargos/cargo-registro/cargo-registro.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -52,6 +56,10 @@ const routes: Routes = [
       {path: 'consolidado/:type', component: ConsolidadosComponent},
       {path: 'detallado/:type', component: DetalladosComponent},
       {path: 'reporteestadocargue', component: EstadoCarguesComponent},
+      {path: 'funcionario', component: ListarFuncionariosComponent},
+      {path: 'funcionarioRegistro/:id', component: FuncionarioRegistroComponent},
+      {path: 'cargo', component: ListarCargosComponent},
+      {path: 'cargoRegistro/:id', component: CargoRegistroComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

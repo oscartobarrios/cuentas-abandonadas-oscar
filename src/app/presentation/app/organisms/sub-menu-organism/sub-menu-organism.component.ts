@@ -17,6 +17,11 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [1,4,5,6,7]
     },
     {
+      title: "Registro de Funcionarios",
+      url: "funcionario",
+      rols: [4]
+    },
+    {
       title: "Autorización cargues",
       url: "autorizacion-cargues",
       rols: [4,5,6,7]

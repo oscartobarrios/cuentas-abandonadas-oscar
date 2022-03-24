@@ -1,0 +1,55 @@
+<mat-card>
+        <form [formGroup]="funcionarioForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+            <mat-card-header>
+            <mat-card-title>Registro de Funcionarios</mat-card-title>
+            </mat-card-header>
+                <mat-card-content style="margin-top: 40px;">
+                    <div class="mb-3 col-sm-10 col-md-10">
+                        <select class="form-control" formControlName="Usuario" style="color: grey;">
+                            <option value="null" disabled="true" [selected]="true" >Usuarios</option>
+                            <!-- <option
+                                *ngFor="let tipo of tipoEntidad"
+                                value="{{tipo.codigo}}">
+                                {{tipo.nombre}}
+                            </option> -->
+                        </select>
+                    </div>
+                    <div class="mb-3 col-sm-10 col-md-10">
+                        <select class="form-control" formControlName="Cargo" style="color: grey;">
+                            <option value="null" disabled="true" [selected]="true" >Cargos</option>
+                            <!-- <option
+                                *ngFor="let tipo of tipoEntidad"
+                                value="{{tipo.codigo}}">
+                                {{tipo.nombre}}
+                            </option> -->
+                        </select>
+                    </div>
+                   
+                    <div class="col-md-4  col-sm-4">
+
+                        <h2>Firma</h2>
+                        <div class="form-group" style="margin-bottom: 40px;">
+                        
+                                <input type='file' id="uploadFile" name="file" data-val="true" accept=".jpeg" data-val-required="please select a file" />
+                                
+                        </div>
+                    </div>
+
+                    <div class="row" fxLayoutAlign="center center">
+                        <div class="col-sm-3 col-md-3" >
+                            <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            <button [routerLink]="['/funcionario']" class="form-control btn-primary-icetex">Regresar</button>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+        </form>
+       
+</mat-card>
+   
+
+   
+
+      

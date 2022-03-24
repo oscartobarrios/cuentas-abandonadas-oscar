@@ -59,6 +59,12 @@ import { ReporteGateway } from './domain/models/reporte/gateway/reporte-gateway'
 import { ReporteApiService } from './infraestructure/driven-adapter/reporte/reporte-api.service';
 import { EstadoCarguesComponent } from './presentation/app/pages/reportes/estado-cargues/estado-cargues.component';
 import { AutorizacionRechazoComponent } from './presentation/app/pages/autorizacion-rechazo/autorizacion-rechazo.component';
+import { ListarFuncionariosComponent } from './presentation/app/pages/administrador/funcionarios/listar-funcionarios/listar-funcionarios.component';
+import { FuncionarioRegistroComponent } from './presentation/app/pages/administrador/funcionarios/funcionario-registro/funcionario-registro.component';
+import { ListarCargosComponent } from './presentation/app/pages/administrador/cargos/listar-cargos/listar-cargos.component';
+import { CargoRegistroComponent } from './presentation/app/pages/administrador/cargos/cargo-registro/cargo-registro.component';
+import { AdministrativoGateway } from './domain/models/administrativo/gateway/administrativo-gateway';
+import { AministrativoApiService } from './infraestructure/driven-adapter/administrativo/administrativo-api.service';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -68,6 +74,7 @@ export const API_GATEWAYS_PROVIDERS = [
   { provide: InterfazContableGateway, useClass: InterfazContableService},
   { provide: CalendarioGateway, useClass: CalendarioService},
   { provide: EntidadGateway, useClass: EntidadApiService},
+  { provide: AdministrativoGateway, useClass: AministrativoApiService},
 ];
 
 @NgModule({
@@ -97,7 +104,11 @@ export const API_GATEWAYS_PROVIDERS = [
     AutorizacionTrasladoPdfComponent,
     AutorizacionReintegroPdfComponent,
     EstadoCarguesComponent,
-    AutorizacionRechazoComponent
+    AutorizacionRechazoComponent,
+    ListarFuncionariosComponent,
+    FuncionarioRegistroComponent,
+    ListarCargosComponent,
+    CargoRegistroComponent
   ],
   imports: [
     AppRoutingModule,
