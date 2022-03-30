@@ -63,7 +63,6 @@ export class FuncionarioRegistroComponent implements OnInit {
       this._servicioAdministrativo.consultarFuncionario(this.idfuncionario).subscribe((ResponseData) => {
 
         console.log(ResponseData);
-
         this.funcionarioForm.controls["Usuario"].setValue(ResponseData.idUsuario);
         this.funcionarioForm.controls["Cargo"].setValue(ResponseData.idCargo);
         this.rutafoto = ResponseData.foto;
@@ -96,7 +95,6 @@ export class FuncionarioRegistroComponent implements OnInit {
   onSubmit(){
     if(this.funcionarioForm.valid)
     {
-      debugger;
       const {Usuario, Cargo,foto} = this.funcionarioForm.value;
      
       if(foto != "")
@@ -134,10 +132,9 @@ export class FuncionarioRegistroComponent implements OnInit {
         this._router.navigate([`/funcionario`]);
         
       },  (error: any)  => {
-        console.log(error);
+        console.log(error.error);
         Swal.close();
-        this.alarma.showError(error.error.mensaje);
-        
+        this.alarma.showError(error.error)
       });
 
 
@@ -152,7 +149,6 @@ export class FuncionarioRegistroComponent implements OnInit {
   onFileChange(event: any) {
 
     this.files = event.target.files[0];
-    debugger;
     if(this.files.type === "image/png")
     {
     }else{
