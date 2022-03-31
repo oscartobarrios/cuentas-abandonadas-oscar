@@ -30,4 +30,6 @@ export abstract class ArchivoGateway {
   abstract GetDetalladoFilter(dataQuery): Observable<any>;
   abstract GetConsolidadoFilter(dataQuery): Observable<any>;
   abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
+  abstract GetCargueFilter(dataQuery): Observable<any>;
+
 }

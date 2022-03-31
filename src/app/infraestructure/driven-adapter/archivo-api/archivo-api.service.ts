@@ -145,4 +145,9 @@ export class ArchivoApiService {
   }
 
 
+  GetCargueFilter(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesByIdOrganizacionFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
 }
