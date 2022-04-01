@@ -42,4 +42,8 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.consultarFuncionario(idFuncionario);
   }
 
+  consultarUsuario(idUsuario: number): Observable<any> {
+    return this._administrativoGetway.consultarUsuario(idUsuario);
+  }
+
 }

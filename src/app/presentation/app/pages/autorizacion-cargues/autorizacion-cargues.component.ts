@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ConsoleLoggerService } from 'src/app/presentation/shared/services/console-logger.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-autorizacion-cargues',
@@ -48,7 +49,6 @@ export class AutorizacionCarguesComponent implements OnInit {
       this.carguesPendienteAutorizacion = ResultData;
       this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
       this.cargues.data = ResultData;
-      console.log(ResultData);
 
          this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
           ResultData.map((resultado) =>{
@@ -141,11 +141,24 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
+  vobuenoorden(idCargue:any)
+  {
+
+    this._getarchivousecase.ActualizarVbnoOrden(idCargue,this.usuario.idPerfil,this.usuario.idUsuario).subscribe((ResponseData) => {
+      Swal.close()
+      alert(ResponseData?.mensaje);
+      window.location.reload();
+    },  (error: any)  => {
+      console.log(error.error.mensaje);
+      Swal.close();
+      this.alarma.showError(error.error.mensaje)
+    });
+  }
+
+
   rechazar(id:number){
     this._router.navigate([`/autorizacion-rechazo/${id}`]);
 
   }
-
-  
 
 }

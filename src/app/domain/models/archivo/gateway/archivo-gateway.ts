@@ -20,6 +20,7 @@ export abstract class ArchivoGateway {
   abstract LogCargueDescarga(idCargue): Observable<any>;
   abstract CambiarEstadoCargue(data: ICambiarEstado): Observable<any>;
   abstract ActualizarVbno(idCargue: string, tipousuario: string): Observable<any>;
+  abstract ActualizarVbnoOrden(idCargue: string, tipousuario: string,idUsuario:string): Observable<any>;
   abstract CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>;
   abstract GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>;
   abstract GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>;
@@ -27,5 +28,5 @@ export abstract class ArchivoGateway {
   abstract GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>;
   abstract GetDetalladoFilter(dataQuery): Observable<any>;
   abstract GetConsolidadoFilter(dataQuery): Observable<any>;
-
+  abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
 }

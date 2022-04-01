@@ -95,6 +95,11 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
+  ActualizarVbnoOrden(idCargue: string, tipousuario: string,idUsuario:string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/ActualizarVbnoOrden/${idCargue}/${tipousuario}/${idUsuario}`;
+    return this.http.get<any>(url);
+  }
+
   CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargueRechazada?idCargue=${data.idCargue}&usuario=${data.usuario}&ip=${data.ip}&observacion=${data.observacion}`;
     const archivo: FormData = new FormData();
@@ -128,5 +133,11 @@ export class ArchivoApiService {
     const url = `${environment.rest.endpoint}/Cargue/GetConsolidadoFilter`;
     return this.http.post<any>(url, dataQuery);
   }
+
+  GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetOrdenCumplimiento/${idCargue}`;
+    return this.http.get<any>(url);
+  }
+
 
 }

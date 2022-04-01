@@ -1,3 +1,7 @@
+<div class="row mb-5">
+    <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+    <div class="col-2">&nbsp;</div>
+</div>
 <div id="imprimirreintegro">
 
     <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px; border: 3px solid">
@@ -36,12 +40,13 @@
                 <b>Fecha Generaci&oacute;n</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+                {{ datosImpresion['fechaInicial']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
                 <b> N&uacute;mero de Cuentas Solicitadas</b>
             </td>
             <td style="border-bottom:2px solid;width:25%">
-                
+                {{ datosImpresion['numeroCuentas']}}
             </td>
         </tr>
     
@@ -50,11 +55,13 @@
                 <b>Nombre Instituci&oacute;n Financiera</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+                {{ datosImpresion['nombreInstitucion']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
                 <b> Valor Total Solicitado</b>
             </td>
             <td style="border-bottom:2px solid;width:25%">
+                $ {{ datosImpresion['valor'] | number}}
             </td>
         </tr>
         <tr>
@@ -62,11 +69,13 @@
                 <b>Nombre del Archivo</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
+                {{ datosImpresion['nombreArchivo']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
                 <b>Total Saldo Inicial Solicitado</b>
             </td>
             <td style="border-bottom:2px solid;">
+                $ {{ datosImpresion['valorTotal'] | number}}
             </td>
         </tr>
         
@@ -75,11 +84,13 @@
                 <b>Fecha de Transmisi&oacute;n</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
+                {{ datosImpresion['fechaTransmision']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
                 <b>Total Remuneraci&oacute;n Solicitada</b>
             </td>
             <td style="border-bottom:2px solid;">
+                $ {{ datosImpresion['valorRemuneracion'] | number}}
             </td>
         </tr>
     
@@ -141,27 +152,30 @@
         <tr>
             <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;height:20px"><b>Funcionario</b></td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:37.5%">
-                JESUS VARGAS AGUAS
+                <!-- JESUS VARGAS AGUAS -->
+                {{funcionarioAdmin.nombreUsuario}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;"><b>Funcionario</b></td>
             <td style="border-bottom:2px solid;width:37.5%">
-                JOSE EDUARDO PARADA JIMENEZ
+                <!-- JOSE EDUARDO PARADA JIMENEZ -->
             </td>
         </tr>
         <tr>
             <td style="border-right:2px solid;border-bottom:2px solid;height:20px"><b>Cargo</b></td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
-                PROFESION UNIVERSITARIO
+                <!-- PROFESION UNIVERSITARIO -->
+                {{funcionarioAdmin.nombreCargo}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
             <td style="border-bottom:2px solid;">
-                COORDINADOR GRUPO ADMINISTRACION DE CARTERA
+                <!-- COORDINADOR GRUPO ADMINISTRACION DE CARTERA -->
             </td>
         </tr>
         <tr>
             <td style="border-right:2px solid;height:20px"><b>Firma</b></td>
             <td style="border-right:2px solid;">
                 <!-- <img src="../assets/images/Grafo JV.png" style="width: 20%;height: auto;"/> -->
+                <img [src]="funcionarioAdmin.firma" style="width: 10%;height: auto;"/>
             </td>
             <td style="border-right:2px solid;"><b>Firma</b></td>
             <td>
@@ -289,13 +303,13 @@
                 <b>Funcionario</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
-                Yenny G&oacute;mez
+                <!-- Yenny G&oacute;mez -->
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
                 <b>Funcionario</b>
             </td>
             <td style="border-bottom:2px solid;">
-                Jorge Nelson Gait&aacute;n Le&oacute;n 
+                <!-- Jorge Nelson Gait&aacute;n Le&oacute;n  -->
             </td>
         </tr>
     
@@ -304,13 +318,13 @@
                 <b>Cargo</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
-                Contratista
+                <!-- Contratista -->
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
                 <b>Cargo</b>
             </td>
             <td style="border-bottom:2px solid;">
-               Coordinador Pagaduria
+               <!-- Coordinador Pagaduria -->
             </td>
         </tr>
     

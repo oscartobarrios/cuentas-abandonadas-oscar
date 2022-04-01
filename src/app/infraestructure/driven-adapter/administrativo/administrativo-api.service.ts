@@ -65,5 +65,10 @@ import { environment } from "src/environments/environment";
       return this.http.get<any>(url);
     }
 
+    consultarUsuario(idUsuario:number): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetUsuario/${idUsuario}`;
+      return this.http.get<any>(url);
+    }
+
 }
 

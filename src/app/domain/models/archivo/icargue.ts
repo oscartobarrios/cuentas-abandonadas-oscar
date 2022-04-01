@@ -23,5 +23,7 @@ export interface ICargue {
   causalRechazo:string,
   observacionesRechazo:string,
   vbnotesoreria: number,
-  vbnocontador:number
+  vbnocontador:number,
+  vbnoadminorden:number
+
 }

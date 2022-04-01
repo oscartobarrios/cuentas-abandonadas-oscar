@@ -47,6 +47,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.ActualizarVbno(idCargue,tipoUsuario);
   }
 
+  ActualizarVbnoOrden(idCargue: string, tipoUsuario: string,idUsuario: string): Observable<any> {
+    return this._archivoGetway.ActualizarVbnoOrden(idCargue,tipoUsuario,idUsuario);
+  }
+
   CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any> {
     return this._archivoGetway.CambiarEstadoCargueRechazada(data);
   }
@@ -70,5 +74,9 @@ export class GetArchivoUseCaseService {
   }
   GetConsolidadoFilter(dataQuery): Observable<any>{
     return this._archivoGetway.GetConsolidadoFilter(dataQuery);
+  }
+
+  GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>{
+    return this._archivoGetway.GetObtenerOrdenCumplimientoIdCargue(idCargue);
   }
 }
