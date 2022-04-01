@@ -103,7 +103,7 @@ stages:
         displayName: 'Instalando Angular CLI'
       - script: |
           cd '$(System.DefaultWorkingDirectory)/'
-          ng build --prod --base-href ./
+          npm run build$(buildProfile)
         displayName: 'Compilando'
       - script: |
           cd '$(System.DefaultWorkingDirectory)/'
