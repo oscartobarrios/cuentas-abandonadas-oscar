@@ -100,6 +100,11 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
+  ActualizarVbnoOrdenTodos(idUsuario:string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/ActualizarVbnoOrdenSeleccionarTodo/${idUsuario}`;
+    return this.http.get<any>(url);
+  }
+
   CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargueRechazada?idCargue=${data.idCargue}&usuario=${data.usuario}&ip=${data.ip}&observacion=${data.observacion}`;
     const archivo: FormData = new FormData();

@@ -155,6 +155,29 @@ export class AutorizacionCarguesComponent implements OnInit {
     });
   }
 
+  vobuenoordenTodos()
+  {
+
+    Swal.fire({
+      title: 'Espere por favor',
+      allowOutsideClick:false,
+      didOpen: () => {
+        Swal.showLoading()
+      }
+    });
+    
+    this._getarchivousecase.ActualizarVbnoOrdenTodos(this.usuario.idUsuario).subscribe((ResponseData) => {
+      Swal.close()
+      alert(ResponseData?.mensaje);
+      window.location.reload();
+    },  (error: any)  => {
+      console.log(error.error.mensaje);
+      Swal.close();
+      this.alarma.showError(error.error.mensaje)
+    });
+  }
+
+
 
   rechazar(id:number){
     this._router.navigate([`/autorizacion-rechazo/${id}`]);

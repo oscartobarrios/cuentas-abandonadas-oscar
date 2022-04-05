@@ -51,6 +51,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.ActualizarVbnoOrden(idCargue,tipoUsuario,idUsuario);
   }
 
+  ActualizarVbnoOrdenTodos(idUsuario: string): Observable<any> {
+    return this._archivoGetway.ActualizarVbnoOrdenTodos(idUsuario);
+  }
+
   CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any> {
     return this._archivoGetway.CambiarEstadoCargueRechazada(data);
   }
