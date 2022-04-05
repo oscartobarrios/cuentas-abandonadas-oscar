@@ -1,0 +1,53 @@
+<mat-card>
+    <h4>Listado de Funcionarios</h4>
+    <mat-card-content>
+      <mat-card-actions align="start">
+        <div class="row" fxLayoutAlign="left">
+          <div class="col-sm-3 col-md-3" >
+            <button [routerLink]="['/funcionarioRegistro',0]" class="form-control btn-primary-icetex">Registrar Funcionario</button>
+          </div>
+          
+          <div class="col-sm-3 col-md-3" >
+            <button [routerLink]="['/cargo']" class="form-control btn-primary-icetex">Cargo</button>
+          </div>
+        </div>      
+      </mat-card-actions>
+
+      <div fxLayout="column">
+        <div class="mat-elevation-z8">
+  
+          <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="Nombre" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                <td mat-cell *matCellDef="let element" style="width: 700px;">{{element.nombreUsuario}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="Cargo" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Cargo</th>
+                <td mat-cell *matCellDef="let element" style="width: 600px;">{{element.nombreCargo}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="Actions">
+                <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                <mat-cell *matCellDef="let element;">
+                  <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                  <div style="margin: 3px;">
+                    <div>
+                      <button [routerLink]="['/funcionarioRegistro',element.idFuncionario]" class="form-control btn-primary-icetex">Actualizar</button> 
+                    </div>
+                   
+                  </div>
+                </mat-cell>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

@@ -5,7 +5,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StorageService} from '../../../../shared/services/storage.service';
 import {NotificationsService} from '../../../../shared/services/notifications.service';
 
-
 @Component({
   selector: 'app-cargar',
   templateUrl: './cargar.component.html',
@@ -40,6 +39,7 @@ export class CargarComponent implements OnInit {
   ngOnInit(): void {
     this._getarchivousecase.TipoCargue().subscribe((ResulData) => {
       this.tipos = ResulData;
+     
     });
   }
 
@@ -57,9 +57,21 @@ export class CargarComponent implements OnInit {
 
   fileChange(e) {
     const fileList = e.target.files;
-    if (fileList.length > 0) {
-      this.archivo = fileList[0];
+    this.estadoenvio = '';
+    this.mensaje = '';
+
+    if(fileList[0].type === "text/plain")
+    {
+      if (fileList.length > 0) {
+
+        this.archivo = fileList[0];
+      }
+
+    }else{
+      this.estadoenvio = 'RECHAZADO';
+      this.mensaje = 'El archivo debe ser de extension .txt';
     }
+    
   }
 
   onSubmit(): void {
@@ -72,16 +84,24 @@ export class CargarComponent implements OnInit {
         usuario: this.usuario,
         file: this.archivo
       };
+      
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.Cargar(data).subscribe((ResponseData) => {
         preloader.close();
-        this.estadoenvio = 'APROBADO';
+        console.log(ResponseData);
+        console.log(Number(ResponseData?.mensaje).toString());
+        if(ResponseData?.mensaje.indexOf("Cargue Exitoso") === -1){
+          this.estadoenvio = 'RECHAZADO';
+        }else{
+          this.estadoenvio = 'APROBADO';
+        }
         this.mensaje = ResponseData?.mensaje;
+
       },  (error: any)  => {
         preloader.close();
         const dataerror = error.error || error.statusText;
         this.estadoenvio = 'RECHAZADO';
-        this.mensaje = 'El nombre del archivo no corresponde con el código de la entidad a cargar';
+        this.mensaje = error.error.mensaje
       });
     } else {
       this.formerror = true;

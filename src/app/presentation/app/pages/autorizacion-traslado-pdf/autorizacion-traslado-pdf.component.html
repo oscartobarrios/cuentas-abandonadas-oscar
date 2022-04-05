@@ -1,0 +1,273 @@
+<div class="row mb-5">
+    <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+    <div class="col-2">&nbsp;</div>
+</div>
+
+<div id="imprimirrecepcion">
+
+<table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px; border: 2px solid">
+    <tr>
+        <td style="width: 15%;border-right:2px solid;border-bottom:2px solid;height:20px">
+            <b>C&oacute;digo F351</b>
+        </td>
+        <th rowspan="4" style="width: 60%; text-align:center;vertical-align:middle;border-right:2px solid">
+            ORDEN DE CUMPLIMIENTO RECEPCI&Oacute;N DE RECURSOS N° {{ datosImpresion['consecutivo']}}
+        </th>
+        <td rowspan="4" style="width: 20%;text-align:center;vertical-align:middle">
+            <img src="../assets/img/jpg/LogoIcetex.jpg" style="width: 70%;height: auto;"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <b>Versi&oacute;n 1</b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <b>Fecha:</b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;height:20px"><b>P&aacute;gina 1 de 1</b></td>
+    </tr>
+    
+  </table>
+  
+  <div style="text-align:center;"><b>DATOS DEL TRASLADO</b></div>
+  
+  <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid;height:20px">
+          <tr>
+              <td style="border-right:2px solid;width: 20%;"><b>Fecha de Solicitud</b></td>
+              <td style="border-right:2px solid;width: 25%;">
+                {{ datosImpresion['fechaInicial']}}
+              </td>
+              <td style="border-right:2px solid;width: 20%;"><b>Fecha de Corte</b></td>
+              <td style="width: 30%">
+                {{ datosImpresion['fechaCargue']}}
+              </td>
+          </tr>
+  </table>
+    
+  <div style="width:100%;text-align:center;">La Vicepresidencia de Operaciones y Tecnolog&iacute;a luego de verificar la informaci&oacute;n transmitida por las Instituciones Financieras en el marco de la Ley 1777 de 2016, autoriza  la recepci&oacute;n de recursos por concepto de traslado del saldo de cuentas abandonadas bajo las siguientes condiciones:</div>
+  
+  <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height: 25px">
+            <b>Nombre Instituci&oacute;n Financiera</b>
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid">
+            {{ datosImpresion['nombreInstitucion']}}
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+            <b> Valor del Traslado</b>
+        </td>
+        <td style="border-bottom:2px solid;width:25%">
+           $ {{ datosImpresion['valor'] | number}}
+        </td>
+    </tr>
+  
+    <tr>
+      <td style="border-right:2px solid;border-bottom:2px solid;height: 25px">
+          <b>Nombre del Archivo</b>
+      </td>
+      <td style="border-right:2px solid;border-bottom:2px solid;">
+        {{ datosImpresion['nombreArchivo']}}
+      </td>
+      <td style="border-right:2px solid;border-bottom:2px solid;">
+          <b>N&uacute;mero de Cuentas</b>
+      </td>
+      <td style="border-bottom:2px solid;">
+        {{ datosImpresion['numeroCuentas']}}
+      </td>
+  </tr>
+  
+  <tr>
+    <td style="border-right:2px solid;border-bottom:2px solid;height: 25px">
+        <b>Fecha de Transmisi&oacute;n</b>
+    </td>
+    <td style="border-right:2px solid;border-bottom:2px solid;">
+        {{ datosImpresion['fechaTransmision']}}
+    </td>
+    <td style="border-right:2px solid;border-bottom:2px solid;"><b>Tasa Ponderada</b></td>
+    <td style="border-bottom:2px solid;">
+       {{datosImpresion['tasaPonderada']}} %
+    </td>
+  </tr>
+  
+  <tr>
+    <td style="vertical-align:top; height:80px">
+        <b>Observaciones</b>
+    </td>
+    <td colspan="3"></td>
+  </tr>
+  
+  </table>
+  
+  <div>
+  
+  </div>
+  
+  <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;;height:25px">
+    <tr>
+        <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height: 25px" colspan="4">
+            <b>VICEPRESIDENCIA DE OPERACIONES Y TECNOLOG&Iacute;A</b>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;text-align:center;height: 25px" colspan="2"><b>VERIFICA</b></td>
+        <td style="border-bottom:2px solid;text-align:center;" colspan="2"><b>AUTORIZA</b></td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;height: 25px"><b>Funcionario</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:37.5%">
+            <!-- JESUS VARGAS AGUAS -->
+            {{funcionarioAdmin.nombreUsuario}}
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;"><b>Funcionario</b></td>
+        <td style="border-bottom:2px solid;width:37.5%">
+            <!-- JOSE EDUARDO PARADA JIMENEZ -->
+            {{funcionarioAutorizador.nombreUsuario}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height: 25px"><b>Cargo</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;">
+            <!-- PROFESION UNIVERSITARIO -->
+            {{funcionarioAdmin.nombreCargo}}
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
+        <td style="border-bottom:2px solid;">
+            <!-- COORDINADOR GRUPO ADMINISTRACION DE CARTERA -->
+            {{funcionarioAutorizador.nombreCargo}}
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;height:20px"><b>Firma</b>
+        </td>
+        <td style="text-align: center;border-right:2px solid">
+          <!-- <img src="../assets/img/png/Grafo JV.png" style="margin-top: 5px; width: 15%;height: auto;text-align: center;"/> -->
+          <img [src]="funcionarioAdmin.firma" style="margin-top: 5px; width: 20%;height: auto;text-align: center;"/>
+          
+        </td>
+      <td style="border-right:2px solid"><b>Firma</b>
+        <td style="text-align: center"> 
+            <!-- <img src="../assets/img/png/Grafo Jose.png" style="width: 20%;height: auto;"/> -->
+            <img [src]="funcionarioAutorizador.firma" style="margin-top: 5px; width: 20%;height: auto;text-align: center;"/>
+        </td>
+    </tr>
+  </table>
+  
+  <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;margin-top:10px">
+    <tr>
+        <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height: 30px" colspan="4">
+            <!-- <b>VICEPRESIDENCIA FINANCIERA - TESORER&Iacute;A</b> -->
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;text-align:center;height: 25px" colspan="2"><b>CONFIRMACI&Oacute;N SEBRA</b></td>
+        <td style="border-bottom:2px solid;text-align:center" colspan="2"><b>CONFIRMACI&Oacute;N APLICATIVO CUENTAS ABANDONADAS</b></td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:16%;"><b>Fecha y Hora de Traslado:</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:34%"></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;width:13%;"><b>Fecha y Hora de Autorización:</b></td>
+        <td style="border-bottom:2px solid;width:37%"></td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cuenta CUD Entidad:</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;" rowspan="3"><b>Acción a Ejecutar:</b></td>
+        <td style="">
+            <table style="width:100%">
+                <tr>
+                    <td style="width:25%;">Autoriza</td>
+                    <td style="border:1px solid; width:5%">&nbsp;X</td>
+                    <td style="width:70%">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Número de Transacción:</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"></td>
+        <td style=""></td>
+  
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Numero de Operación:</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"></td>
+        <td style="border-bottom:2px solid;">
+            <table style="width:100%">
+                <tr>
+                    <td style="width:25%;">Rechaza</td>
+                    <td style="border:1px solid; width:5%">&nbsp;</td>
+                    <td style="width:70%">&nbsp;</td>
+                </tr>
+            </table>
+        </td>
+  
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:2%;"><b>Observaciones</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Observaciones</b></td>
+        <td style="border-bottom:2px solid;">
+            La autorizaci&Oacute;n en el aplicativo de cuentas 
+            abandonadas es adelantada por el Ingeniero 
+            Marco Montoya de la Direcci&oacute;n de Tecnología
+        </td>
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Funcionario</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;">
+            <!-- Yenny Marcela G&Oacute;mez Palacios -->
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Funcionario</b></td>
+        <td style="border-bottom:2px solid;">
+            <!-- Marco Montoya -->
+        </td>
+  
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
+        <td style="border-right:2px solid;border-bottom:2px solid;">
+            <!-- Contratista -->
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
+        <td style="border-bottom:2px solid;">
+            <!-- Contratista -->
+        </td>
+        
+  
+    </tr>
+    <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;width: 10px;"><b>Firma</b>
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;">
+          <!-- <img src="../assets/img/png/firmacebra.png" style="width: 4%;height: auto;margin-top: 5px;margin-left: 5px;"/> -->
+        </td>
+        <td style="border-right:2px solid;border-bottom:2px solid;"><b>Firma</b></td>
+        <td style="border-bottom:2px solid;">
+        
+        </td>
+    </tr>
+  
+    <tr>
+        <td style="vertical-align:top; height:140px" colspan="4"><b>Verificado por:</b> </td>
+  
+    </tr>
+  </table>
+  
+</div>
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+    <div class="col-md-2">
+        <button class="btn btn-primary mt-2" printSectionId="imprimirrecepcion" ngxPrint [useExistingCss]="true">Descargar en PDF</button>
+    </div>
+</div>
+<br><br>
+</div>
+

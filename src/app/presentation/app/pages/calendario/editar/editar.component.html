@@ -1,0 +1,36 @@
+<div class="container" style="height: 580px;">
+    <div style="max-width: 620px; margin: 0 auto;">
+        <form [formGroup]="editarCalendarioForm" method="post" (ngSubmit)="onSubmit()"
+            (keydown.enter)="$event.preventDefault()">
+            <div class="row mb-3">
+                <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+                    <label class="text-white ps-2 pt-2 pb-2">Modificar fecha máxima</label>
+                </div>
+                <div class="mb-3 col-sm-12 col-md-12">
+                    <select class="form-control" formControlName="idCargue" style="color: grey;" [ngClass]="{'is-valid': editarCalendarioForm.controls['idCargue'].valid &&  editarCalendarioForm.touched,
+                    'is-invalid': editarCalendarioForm.controls['idCargue'].invalid &&  editarCalendarioForm.touched}">
+                        <option value="null" disabled="true" [selected]="true">Tipo de Archivo</option>
+                        <option *ngFor="let tipo of tipoCalendario" value="{{tipo.codigo}}">
+                            {{tipo.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Fecha Hasta</label>
+                    <input type="date" formControlName="fechaHasta" class="form-control"
+                        placeholder="Fecha Hasta"
+                        [ngClass]="{'is-valid': editarCalendarioForm.controls['fechaHasta'].valid &&  editarCalendarioForm.touched,
+                        'is-invalid': editarCalendarioForm.controls['fechaHasta'].invalid &&  editarCalendarioForm.touched}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;"value="Guardar">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <a [routerLink]="['/calendario']" class="btn btn-secondary btn-icetex"><i class="fas fa-chevron-left"></i> Atrás</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

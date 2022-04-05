@@ -1,0 +1,57 @@
+<div class="container">
+    <form [formGroup]="financieraForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+            <label class="text-white ps-2 pt-2 pb-2">Datos generales</label> 
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="Nombre" class="form-control" placeholder="Entidad financiera *" 
+            [ngClass]="{'is-valid': financieraForm.controls['Nombre'].valid &&  financieraForm.controls['Nombre'].touched,
+                        'is-invalid': financieraForm.controls['Nombre'].invalid &&  financieraForm.controls['Nombre'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="IdOrganizacion" class="form-control" placeholder="NIT *"
+            [ngClass]="{'is-valid': financieraForm.controls['IdOrganizacion'].valid &&  financieraForm.controls['IdOrganizacion'].touched,
+                        'is-invalid': financieraForm.controls['IdOrganizacion'].invalid &&  financieraForm.controls['IdOrganizacion'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <select class="form-control" formControlName="TipoEntidad" style="color: grey;">
+                <option value="null" disabled="true" [selected]="true" >Tipo entidad</option>
+                <option
+                    *ngFor="let tipo of tipoEntidad"
+                    value="{{tipo.codigo}}">
+                    {{tipo.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="number" formControlName="CodigoEntidad" class="form-control" placeholder="Código entidad">
+        </div>
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *" 
+                [ngClass]="{'is-valid': financieraForm.controls['TelefonoNumero'].valid &&  financieraForm.controls['TelefonoNumero'].touched,
+                'is-invalid': financieraForm.controls['TelefonoNumero'].invalid &&  financieraForm.controls['TelefonoNumero'].touched}">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoExtension" class="form-control" placeholder="Extensión Teléfono">
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="Direccion" class="form-control" placeholder="Dirección correspondencia*" readonly (click)="openModal(content)"
+            [ngClass]="{'is-valid': financieraForm.controls['Direccion'].valid &&  financieraForm.controls['Direccion'].touched,
+                        'is-invalid': financieraForm.controls['Direccion'].invalid &&  financieraForm.controls['Direccion'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="CentroCosto" class="form-control" placeholder="Centro de costo">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12" >
+            <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" value="Guardar">
+        </div>
+    </form>
+</div>
+<ng-template #content let-modal>
+    <app-modal-direccion></app-modal-direccion>  
+  </ng-template>

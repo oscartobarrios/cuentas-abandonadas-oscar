@@ -11,11 +11,6 @@
         <div class="table-responsive">
           <table mat-table [dataSource]="dataSource" matSort>
 
-            <ng-container matColumnDef="ID" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>IdCargue</th>
-              <td mat-cell *matCellDef="let element">&nbsp;&nbsp;&nbsp;&nbsp;{{element.idCargue}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="Usuario" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
               <td mat-cell *matCellDef="let element">{{element.usuario}} </td>
@@ -31,11 +26,20 @@
               <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="Archivo" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Archivo</th>
-              <td mat-cell *matCellDef="let element">{{element.nombreArchivo}} </td>
+            <ng-container matColumnDef="NroCuentas" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de cuentas</th>
+              <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="SaldoInicial" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial/ Total traslado</th>
+              <td mat-cell *matCellDef="let element">{{element.saldoInicial}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Remuneración" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Remuneración</th>
+              <td mat-cell *matCellDef="let element">{{element.remuneracion}} </td>
+            </ng-container>
 
             <ng-container matColumnDef="Fecha" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
@@ -48,28 +52,33 @@
               <td mat-cell *matCellDef="let element">{{element.estado}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="actions">
-              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <ng-container matColumnDef="Actions">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
               <mat-cell *matCellDef="let element;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
-                <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf="element.estado === 'VALIDACION_FALLIDA'" >
-                  <mat-icon color="warn">launch</mat-icon> Ver Errores
-                </button>
-                <div *ngIf="element.estado === 'VALIDACION_EXITOSA'">
-                  <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
-                    <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
+                  <div>
+                    <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                      <mat-icon color="warn">launch</mat-icon> ver Errores
+                    </button>  
+                  </div>
+                  <div>
+                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                    <mat-icon color="warn">launch</mat-icon> Descargar Errores
                   </button>
-                  <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(element.idCargue,'rechazar_entidad')">
-                    <mat-icon color="accent">highlight_off</mat-icon> Rechazar
-                  </button>
-                </div>
+                  </div>
+               
+                  <div *ngIf="(element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 1">
+                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
+                      <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar
+                    </button>
+                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(element.idCargue,'rechazar_entidad')">
+                      <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                    </button>
+                  </div>
                 </div>
               </mat-cell>
-
             </ng-container>
-
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>

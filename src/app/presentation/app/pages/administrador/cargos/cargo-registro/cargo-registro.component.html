@@ -1,0 +1,24 @@
+<mat-card>
+    <form [formGroup]="cargoForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <mat-card-header>
+        <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+            <mat-card-content style="margin-top: 40px;">
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre *" >
+                </div>
+                <br>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+                    <div class="col-sm-3 col-md-3" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/cargo']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+    </form>
+   
+</mat-card>

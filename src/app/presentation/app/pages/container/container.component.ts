@@ -15,12 +15,40 @@ export class ContainerComponent implements OnInit {
   public itemsSidenav = [
     {
       icon: 'description',
-      text: 'Cargar archivos'
+      text: 'Cargar archivos',
+      url : 'listar',
+      rols: [1]
     },
-  /*{
-      icon: 'paid',
-      text: 'Pagos'
+    {
+      icon: 'description',
+      text: 'Trámites',
+      url : 'submenu/tramites',
+      rols: [4,5,6,7]
     },
+    {
+      icon: 'description',
+      text: 'Reportes',
+      url : 'submenu/reportes',
+      rols: [4]
+    },
+    {
+      icon: 'description',
+      text: 'Consolidados',
+      url : 'submenu/consolidados',
+      rols: [4,5,6,7]
+    },
+    {
+      icon: 'description',
+      text: 'Detallados',
+      url : 'submenu/detallados',
+      rols: [4,5,6,7]
+    },
+    {
+      icon: 'description',
+      text: 'Subastas',
+      url : 'submenu/subastas',
+      rols: [4,5,6,7]
+    }/*,
     {
       icon: 'account_balance',
       text: 'Actualización cuenta bancaria'

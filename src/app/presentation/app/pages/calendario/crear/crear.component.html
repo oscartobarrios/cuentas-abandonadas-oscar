@@ -1,0 +1,91 @@
+<div class="container" style="height: 580px;">
+    <div style="max-width: 620px; margin: 0 auto;">
+        <form [formGroup]="tipoCalendarioForm" method="post" (ngSubmit)="onSubmit()"
+            (keydown.enter)="$event.preventDefault()">
+            <div class="row mb-3">
+                <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+                    <label class="text-white ps-2 pt-2 pb-2">Crear Calendario</label>
+                </div>
+                <div class="mb-3 col-sm-12 col-md-12">
+                    <select (change)="setExtraValidation()" class="form-control" formControlName="idTipoCargue" style="color: grey;" [ngClass]="{'is-valid': tipoCalendarioForm.controls['idTipoCargue'].valid &&  tipoCalendarioForm.touched,
+                    'is-invalid': tipoCalendarioForm.controls['idTipoCargue'].invalid &&  tipoCalendarioForm.touched}">
+                        <option value="null" disabled="true" [selected]="true">Tipo de Archivo</option>
+                        <option *ngFor="let tipo of tipoCalendario" value="{{tipo.codigo}}">
+                            {{tipo.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Fecha Desde</label>
+                    <input type="date" formControlName="fechaDesde" class="form-control" (change)="validateDates()"
+                        placeholder="Fecha Desde"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaDesde'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaDesde'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" >
+                    <label>Fecha Hasta</label>
+                    <input type="date" formControlName="fechaHasta" class="form-control" (change)="validateDates()"
+                        placeholder="Fecha Hasta"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaHasta'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaHasta'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 2045">
+                    <label>Fecha Inicial</label>
+                    <input type="date" formControlName="fechaInicial" class="form-control" (change)="validateDatesIF()"
+                        placeholder="Fecha Inicial"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaInicial'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaInicial'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 2045">
+                    <label>Fecha Final</label>
+                    <input type="date" formControlName="fechaFinal" class="form-control" (change)="validateDatesIF()"
+                        placeholder="Fecha Final"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaFinal'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaFinal'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1">
+                    <label>UVR</label>
+                    <input type="text" formControlName="uvr" class="form-control" placeholder="UVR"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['uvr'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['uvr'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1">
+                    <label>Fecha traslado monetario</label>
+                    <input type="date" formControlName="fechaTrasMon" class="form-control" (change)="validateDatesTM()"
+                        placeholder="Fecha Final"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaTrasMon'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaTrasMon'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1 || 
+                                                           tipoCalendarioForm.controls['idTipoCargue'].value == 2045 ||
+                                                           tipoCalendarioForm.controls['idTipoCargue'].value == 13560023">
+                    <label>Fecha corte certificaciones</label>
+                    <input type="date" formControlName="fechaCorteCertificaciones" class="form-control"
+                        placeholder="Fecha Inicial"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaCorteCertificaciones'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaCorteCertificaciones'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 1 ||
+                                                           tipoCalendarioForm.controls['idTipoCargue'].value == 13560023">
+                    <label>Fecha corte</label>
+                    <input type="date" formControlName="fechaCorte" class="form-control" (change)="validateDatesTM()"
+                        placeholder="Fecha Final"
+                        [ngClass]="{'is-valid': tipoCalendarioForm.controls['fechaCorte'].valid &&  tipoCalendarioForm.touched,
+                        'is-invalid': tipoCalendarioForm.controls['fechaCorte'].invalid &&  tipoCalendarioForm.touched}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;"
+                        value="Guardar">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <a [routerLink]="['/calendario']" class="btn btn-secondary btn-icetex"><i
+                            class="fas fa-chevron-left"></i> Atrás</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

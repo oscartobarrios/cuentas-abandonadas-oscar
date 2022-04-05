@@ -2,8 +2,10 @@
 @import "./assets/styles/reset.css";
 @import "./assets/styles/icetex-theme.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100% !important; }
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap%27');
+body { margin: 0; font-family: 'Work Sans', sans-serif; }
 
 
 /* bootstrap */
@@ -34,4 +36,122 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 18px ;
   line-height: 14px ;
   margin: 0 0 0 0;
+}
+
+
+
+/* Icetex colours */
+.bg-blue-icetex1{
+  background-color: rgba(21,24,67,1)
+}
+
+.bg-blue-icetex2{
+  background-color: rgba(0,37,110,1)
+}
+
+.bg-blue-icetex3{
+  background-color: rgba(0,39,147,1)
+}
+
+.bg-blue-icetex4{
+  background-color: rgba(44, 90, 206, 1)
+}
+
+.blue-icetex1{
+  color: rgba(21,24,67,1)
+}
+
+.blue-icetex2{
+  color: rgba(0,37,110,1)
+}
+
+.blue-icetex3{
+  color: rgba(0,39,147,1)
+}
+
+.blue-icetex4{
+  color: rgba(44, 90, 206, 1)
+}
+
+
+/* Gov.co colours */
+.bg-blue-govco{
+  background-color: rgba(0,72,132,1)
+}
+
+.bg-blue-govco2{
+  background-color: rgba(51, 102, 204, 1)
+}
+
+.bg-blue-govco3{
+  background-color: rgba(230, 239, 253, 1)
+}
+
+.bg-blue-govco4{
+  background-color: rgba(246, 248, 249, 1)
+}
+
+.blue-govco{
+  color: rgba(0,72,132,1)
+}
+
+.blue-govco2{
+  color: rgba(51, 102, 204, 1)
+}
+
+.blue-govco3{
+  color: rgba(230, 239, 253, 1)
+}
+
+.blue-govco4{
+  color: rgba(246, 248, 249, 1)
+}
+
+.vertical-divider-right{
+  border-right: 1px solid rgba(246, 248, 249, 1);
+}
+
+.btn-icetex {
+  cursor: pointer;
+  border-radius: 22px;
+}
+
+.btn-primary-icetex:enabled {
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(51, 102, 204, 1);
+  border-color: rgba(51, 102, 204, 1);
+  border-radius: 22px;
+}
+
+.btn-primary-icetex:hover:enabled {
+  color: rgba(51, 102, 204, 1);
+  background-color: #fff;
+  border-color: rgba(51, 102, 204, 1);;
+}
+
+.form-control:disabled{
+  cursor: not-allowed;
+}
+
+select:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+.mat-card-header-text {
+  width: 100%;
+}
+
+.shadowBox {
+  background-color: #FFF;
+  border-radius: 50%;
+  padding: 8px;
+  width: 30px;
+  box-shadow: 1px 1px #888888;
 }

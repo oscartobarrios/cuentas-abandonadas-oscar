@@ -1,0 +1,19 @@
+export interface IDetallado {
+    CodigoValor:string,
+    Nombre:string,
+    IdCargue:string,
+    CargueNombre:string,
+    FechaCargue:Date,
+    NroCuentas:string,
+    Monto:string,
+    TasaPonderada:string,
+    Remuneracion:string,
+    Estado:string,
+    FechaTraslado:Date,
+    FechaCorte:Date,
+    TotalRemuneracionAcumulada:string,
+    TotalSaldoInicial:string,
+    TipoArchivo:string,
+    FechaInicial:Date,
+    FechaFinal:Date
+}

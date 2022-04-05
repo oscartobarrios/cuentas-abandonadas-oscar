@@ -10,6 +10,8 @@ import {GetIpService} from '../../../../shared/services/get-ip.service';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {newArray} from '@angular/compiler/src/util';
+import Swal from 'sweetalert2';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 
 @Component({
   selector: 'app-listar',
@@ -18,7 +20,7 @@ import {newArray} from '@angular/compiler/src/util';
 })
 export class ListarComponent implements OnInit {
 
-  displayedColumns: string[] = ['ID', 'Usuario', 'Nombre', 'Tipo', 'Fecha', 'Archivo', 'Estado', 'actions'];
+  displayedColumns: string[] = ['Usuario', 'Nombre', 'Tipo', 'NroCuentas', 'SaldoInicial', 'Remuneración', 'Fecha', 'Estado', 'Actions'];
   dataSource = new MatTableDataSource<ICargue>();
   idOrganizacion: any;
   usuario:any;
@@ -31,18 +33,19 @@ export class ListarComponent implements OnInit {
               public dialog: MatDialog,
               private _ipservice: GetIpService,
               private _router: Router,
-              private _http: HttpClient
+              private _http: HttpClient,
+              private alarma: SweetAlertService,
   ) {
   }
 
   ngOnInit(): void {
-
+    
     this._http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
      this.ip = res.ip;
     });
-
-    this.idOrganizacion = this._storageservice.getItem('payload').infoUsuario.idOrganizacion;
-    this.usuario = this._storageservice.getItem('payload').infoUsuario.usuario;
+        
+    this.usuario = this._storageservice.getItem('payload').infoUsuario;
+    this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
     this._getarchivousecase.Listar(this.idOrganizacion).subscribe((ResultData) => {
       this.dataSource.data = ResultData;
@@ -53,36 +56,46 @@ export class ListarComponent implements OnInit {
 
 
   cambiarestado(idCargue:any, tipoestado:string): void{
-
-    var mensajeestado = '';
-    switch(tipoestado){
-      case 'confirmar_entidad':
-      mensajeestado = '¿ Esta seguro que desea aprobar el cargue ?';
-      break;
-      case 'rechazar_entidad':
-      mensajeestado = '¿ Esta seguro que desea rechazar el cargue ?';
-      break;
-    }
-    const validar = confirm(mensajeestado);
-    if(validar){
-    this._getarchivousecase.CambiarEstadoCargue({idCargue,
-                                                      usuario: this.usuario,
+      const preloader = this._notifications.showPreloader();
+      this._getarchivousecase.CambiarEstadoCargue({idCargue,
+                                                      usuario: this.usuario.usuario,
                                                       ip: this.ip || '193.168.1.1',
                                                       operacion: tipoestado})
-      .subscribe((ResulData) =>{
-        alert(ResulData?.mensaje);
-        window.location.reload();
-      }) ;
-
-    }else{
-
-    }
+                              .subscribe((ResulData) =>{
+                                alert(ResulData?.mensaje);
+                                window.location.reload();
+                              });
+      preloader.close();
   }
+
   openError(id: any): void {
     const dialogRef = this.dialog.open(ErrorArchivoDialogComponent, {
       data: {idCargue: id}
     });
   }
+
+  openErrorPantalla(id: any): void {
+    Swal.fire({
+      title: 'Espere por favor, Guardando Datos',
+      allowOutsideClick:false,
+      didOpen: () => {
+          Swal.showLoading()
+        }
+      });
+
+    this._getarchivousecase.LogCargueDescarga(id).subscribe((response) => {
+      const blob = new Blob([<any>response], {type: 'application/octet-stream'});
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+      Swal.close();
+    }, error =>{
+      this.alarma.showError(error);
+      Swal.close();
+    })
+
+  }
+
+
 }
 
 export interface DialogData {

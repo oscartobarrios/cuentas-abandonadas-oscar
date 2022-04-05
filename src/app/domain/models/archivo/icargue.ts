@@ -3,6 +3,7 @@ export interface ICargue {
   nombreArchivo:string,
   tipoArchivo:string,
   tipoEntidad:string,
+  entidad:string,
   codigoEntidad:string,
   secuencia:string,
   fecCargue:string,
@@ -17,6 +18,12 @@ export interface ICargue {
   estado:string,
   monto:string,
   nroCuentas:string,
+  saldoInicial:string,
+  remuneracion:string,
   causalRechazo:string,
-  observacionesRechazo:string
+  observacionesRechazo:string,
+  vbnotesoreria: number,
+  vbnocontador:number,
+  vbnoadminorden:number,
+  vbnoautorizadororden:number
 }
