@@ -156,7 +156,8 @@ export class CrearCalendarioComponent implements OnInit {
   }
 
   dateRangeValidator(min: Date, max: Date) {
-    if(min === undefined || max === undefined) return;
+    if(min === undefined || max === undefined || max === null) 
+      return true;
     if(max <= min)
       return true;
     else
