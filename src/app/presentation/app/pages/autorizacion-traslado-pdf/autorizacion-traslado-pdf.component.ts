@@ -15,6 +15,7 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
   datosImpresion:Iimpresionpdf[] = [];
   private id: any;
   public funcionarioAdmin:any = "";
+  public funcionarioAutorizador:any = "";
   
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
               private _servicioAdministrativo: GetAdministrativoService,
@@ -39,11 +40,19 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
 
           this.funcionarioAdmin = ResultData;
 
-          console.log(this.funcionarioAdmin);
-          
+        });
+      }
+
+       //para el funcionario autorizador
+      if(ResultData.idFuncionarioAutorizador != 0)
+      {
+        this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioAutorizador).subscribe((ResultData) => {
+
+          this.funcionarioAutorizador = ResultData;
 
         });
       }
+
       
     });
 

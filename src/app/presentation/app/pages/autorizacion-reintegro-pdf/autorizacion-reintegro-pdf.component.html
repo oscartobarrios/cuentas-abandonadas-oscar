@@ -158,6 +158,7 @@
             <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;"><b>Funcionario</b></td>
             <td style="border-bottom:2px solid;width:37.5%">
                 <!-- JOSE EDUARDO PARADA JIMENEZ -->
+                {{funcionarioAutorizador.nombreUsuario}}
             </td>
         </tr>
         <tr>
@@ -169,17 +170,19 @@
             <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
             <td style="border-bottom:2px solid;">
                 <!-- COORDINADOR GRUPO ADMINISTRACION DE CARTERA -->
+                {{funcionarioAutorizador.nombreCargo}}
             </td>
         </tr>
         <tr>
             <td style="border-right:2px solid;height:20px"><b>Firma</b></td>
             <td style="border-right:2px solid;">
                 <!-- <img src="../assets/images/Grafo JV.png" style="width: 20%;height: auto;"/> -->
-                <img [src]="funcionarioAdmin.firma" style="width: 10%;height: auto;"/>
+                <img [src]="funcionarioAdmin.firma" style="width: 20%;height: auto;"/>
             </td>
             <td style="border-right:2px solid;"><b>Firma</b></td>
             <td>
                 <!-- <img src="../assets/images/Grafo Jose.png" style="width: 30%;height: auto;"/> -->
+                <img [src]="funcionarioAutorizador.firma" style="width: 20%;height: auto;"/>
             </td>
         </tr>
     </table>

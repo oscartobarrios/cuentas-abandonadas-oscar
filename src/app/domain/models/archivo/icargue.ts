@@ -24,6 +24,6 @@ export interface ICargue {
   observacionesRechazo:string,
   vbnotesoreria: number,
   vbnocontador:number,
-  vbnoadminorden:number
-
+  vbnoadminorden:number,
+  vbnoautorizadororden:number
 }
