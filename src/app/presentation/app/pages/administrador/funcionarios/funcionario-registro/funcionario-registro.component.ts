@@ -47,10 +47,10 @@ export class FuncionarioRegistroComponent implements OnInit {
 
   cargardatos(){
     this.idfuncionario = this.route.snapshot.params['id'];
-    this.title="Registrar Funcionario";
+    this.title="Cuentas abandonadas - Registrar funcionario";
     this.rutafoto="";
     if(this.idfuncionario !=0){
-      this.title="Actualizar Funcionario";
+      this.title="Cuentas abandonadas - Actualizar Funcionario";
 
       Swal.fire({
         title: 'Espere por favor, Consultando Datos del Cargo',
@@ -95,10 +95,18 @@ export class FuncionarioRegistroComponent implements OnInit {
   onSubmit(){
     if(this.funcionarioForm.valid)
     {
+      
       const {Usuario, Cargo,foto} = this.funcionarioForm.value;
      
       if(foto != "")
       {
+
+        if(this.files.size > 20000)
+        {
+          this.alarma.showWarning("El archivo debe pesar máximo 20kb");
+          return;
+        }
+        
         if(this.files.type === "image/png")
         {
         }else{
@@ -148,7 +156,16 @@ export class FuncionarioRegistroComponent implements OnInit {
 
   onFileChange(event: any) {
 
+    debugger;
     this.files = event.target.files[0];
+
+    if(this.files.size > 20000)
+    {
+      this.alarma.showWarning("El archivo debe pesar máximo 20kb");
+      return;
+    }
+
+
     if(this.files.type === "image/png")
     {
     }else{
