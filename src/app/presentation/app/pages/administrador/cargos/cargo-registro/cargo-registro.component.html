@@ -1,11 +1,12 @@
 <mat-card>
+    <div>{{title}}</div>
     <form [formGroup]="cargoForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
         <mat-card-header>
-        <mat-card-title>{{title}}</mat-card-title>
+       
         </mat-card-header>
             <mat-card-content style="margin-top: 40px;">
                 <div class="mb-3 col-sm-8 col-md-8">
-                    <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre *" >
+                    <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre *" maxlength="256">
                 </div>
                 <br>
                 <br>

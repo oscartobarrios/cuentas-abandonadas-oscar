@@ -31,9 +31,9 @@ export class CargoRegistroComponent implements OnInit {
 
   cargardatos(){
     this.idcargo = this.route.snapshot.params['id'];
-    this.title="Registrar Cargo";
+    this.title="Cuentas abandonadas - Registrar Cargo";
     if(this.idcargo !=0){
-      this.title="Actualizar Cargo";
+      this.title="Cuentas abandonadas - Actualizar Cargo";
 
       Swal.fire({
         title: 'Espere por favor, Consultando Datos del Cargo',
@@ -93,7 +93,7 @@ export class CargoRegistroComponent implements OnInit {
       },  (error: any)  => {
         console.log(error);
         Swal.close();
-        this.alarma.showError(error);
+        this.alarma.showError(error.error.mensaje);
         
       });
 
