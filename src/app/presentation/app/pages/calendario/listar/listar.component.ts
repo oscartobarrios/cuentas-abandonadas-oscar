@@ -1,5 +1,5 @@
-import { Component, OnInit, QueryList, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -14,10 +14,14 @@ import { NotificationsService } from 'src/app/presentation/shared/services/notif
 })
 export class ListarCalendarioComponent implements OnInit {
   calendarios = new MatTableDataSource<ICalendario>();
-  @ViewChild(MatPaginator) MatPaginatorCesion: MatPaginator;
-  @ViewChild(MatPaginator) MatPaginatorReintegro: MatPaginator;
-  @ViewChild(MatPaginator) MatPaginatorTraslado: MatPaginator;
-  @ViewChild(MatPaginator) MatPaginatorValoracion: MatPaginator;
+
+  @ViewChild('MatPaginatorCesion') MatPaginatorCesion: MatPaginator;
+
+  @ViewChild('MatPaginatorReintegro') MatPaginatorReintegro: MatPaginator;
+
+  @ViewChild('MatPaginatorTraslado') MatPaginatorTraslado: MatPaginator;
+  @ViewChild('MatPaginatorValoracion') MatPaginatorValoracion: MatPaginator;
+  
   calendariosCargueCesion = new MatTableDataSource<ICalendario>();
   calendariosCargueReintegro = new MatTableDataSource<ICalendario>();
   calendariosCargueTraslado = new MatTableDataSource<ICalendario>();
@@ -31,6 +35,7 @@ export class ListarCalendarioComponent implements OnInit {
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
     private _router: Router
   ) { 
+
     
   }
 
