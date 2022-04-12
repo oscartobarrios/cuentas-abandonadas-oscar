@@ -61,6 +61,17 @@ import { environment } from "src/environments/environment";
 
     }
 
+    getReporteInterfazExcel(proceso: string): Observable<Blob> {
+
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteInterfazExcel/${proceso}`, 
+            {responseType: 'blob'})
+      .pipe(
+              tap(data => console.log('Get mission report: ' + data)),
+              catchError(this.handleError)
+      )
+
+    }
+
     GetEstadoCargueFilter(dataQuery): Observable<any>{
       const url = `${environment.rest.endpoint}/Reporte/GetEstadoCargueFilter`;
       return this.http.post<any>(url, dataQuery);
