@@ -7,4 +7,5 @@ export abstract class ReporteGateway {
   abstract GetEstadoCargueFilter(dataQuery): Observable<any>;
 
   abstract getReporteConsolidadoExcel(filtros: any): Observable<any>;
+  abstract getReporteInterfazExcel(proceso: string): Observable<any>;
 }

@@ -47,7 +47,7 @@
               <mat-cell *matCellDef="let int;">
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th> 
                 <i class="fas fa-arrow-up" style="cursor: pointer;" (click)="transmitir(int)"></i>
-                <i class="fas fa-file-download" style="cursor: pointer;"></i>
+                <i class="fas fa-file-download" style="cursor: pointer;" (click)="descargarInterfaz(int)"></i>
                 <i class="fas fa-file-alt" style="cursor: pointer;" (click)="reporteConsolidado(int)"></i>
               </mat-cell>
             </ng-container>
