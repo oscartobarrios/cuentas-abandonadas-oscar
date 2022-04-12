@@ -4,4 +4,5 @@ export interface ICambiarEstadoRechazada{
     ip: string,
     observacion: string,
     file: File,
+    tipoUsuario: string
   }
