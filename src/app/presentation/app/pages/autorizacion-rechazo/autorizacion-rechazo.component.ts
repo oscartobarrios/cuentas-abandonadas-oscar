@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class AutorizacionRechazoComponent implements OnInit {
 
-  usuario?: string;
+  usuario: any;
   ip: string;
   reactiveForm: FormGroup;
   archivo: File;
@@ -32,7 +32,7 @@ this.reactiveForm = new FormGroup({
 observacion: new FormControl('', [Validators.required]),
 file: new FormControl('', [Validators.required]),
 });
-this.usuario = this._storageservice.getItem('payload')?.infoUsuario.usuario;
+this.usuario = this._storageservice.getItem('payload').infoUsuario;
 }
 
   ngOnInit(): void {
@@ -65,14 +65,17 @@ this.usuario = this._storageservice.getItem('payload')?.infoUsuario.usuario;
               }
             });
 
+            debugger;
+            
             const data = {
               idCargue: this.idCargue,
-              usuario: this.usuario,
+              usuario: this.usuario.usuario,
               ip: this.ip || '193.168.1.1',
               observacion: observacion,
               file: this.archivo,
-            
+              tipoUsuario: this.usuario.idPerfil
             };
+
 
           this._getarchivousecase.CambiarEstadoCargueRechazada(data).subscribe((ResponseData) => {
             Swal.close()
@@ -82,7 +85,7 @@ this.usuario = this._storageservice.getItem('payload')?.infoUsuario.usuario;
           },  (error: any)  => {
             console.log(error);
             Swal.close();
-            this.alarma.showError(this.mensaje);
+            this.alarma.showError(error.error.mensaje);
             
           });
         }

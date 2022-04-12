@@ -106,7 +106,7 @@ export class ArchivoApiService {
   }
 
   CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>{
-    const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargueRechazada?idCargue=${data.idCargue}&usuario=${data.usuario}&ip=${data.ip}&observacion=${data.observacion}`;
+    const url = `${environment.rest.endpoint}/Cargue/CambiarEstadoCargueRechazada?idCargue=${data.idCargue}&usuario=${data.usuario}&ip=${data.ip}&observacion=${data.observacion}&tipoUsuario=${data.tipoUsuario}`;
     const archivo: FormData = new FormData();
     archivo.append('file', data.file, data.file.name);
     return this.http.post<any>(url, archivo);
