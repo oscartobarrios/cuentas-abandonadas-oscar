@@ -5,6 +5,7 @@ import { NotificationsService } from './../../../../shared/services/notification
 import { GetInterfazContableUseCaseService } from './../../../../../domain/usecases/interfaz-contable/get-interfaz-contable-use-case-service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { GetReporteService } from 'src/app/domain/usecases/reportes/get-reporte.service';
 
 @Component({
   selector: 'app-listar',
@@ -17,7 +18,8 @@ export class ListarInterfazContableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private _getInterfazContableUseCaseService: GetInterfazContableUseCaseService,
-              private _notifications: NotificationsService) { }
+    private _notifications: NotificationsService,
+    private _getreportecase: GetReporteService) { }
 
   ngOnInit(): void {
     this.getData();
@@ -81,5 +83,25 @@ export class ListarInterfazContableComponent implements OnInit {
     console.log(nroprocesoborrador);
 
   }
+
+  descargarInterfaz(data: InterfazContableList)
+  {
+    const preloader = this._notifications.showPreloader();
+
+    const {nroprocesoborrador} = data; 
+    console.log(nroprocesoborrador);
+
+    this._getreportecase.getReporteInterfazExcel(nroprocesoborrador).subscribe(response => {
+      
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', "InterfazContable"+nroprocesoborrador);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      preloader.close();
+    })
+
+  }
+
 
 }
