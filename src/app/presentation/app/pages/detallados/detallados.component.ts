@@ -112,6 +112,20 @@ export class DetalladosComponent implements OnInit {
   
       ];
     }
+
+    if(this.type == "traslado")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'fechaCargue', name: 'Fecha cargue' },
+        { prop: 'nroCuenta', name: 'Número cuenta' },
+        { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
+        { prop: 'fechaInicial', name: 'Fecha inicial' },
+        { prop: 'fechaTraslado', name: 'Fecha traslado' }       
+  
+      ];
+    }
     
 
     // Establecer la página de inicio de la tabla en 1
@@ -133,6 +147,11 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "administradas")
     {
       this.tipoDetallado = "administradas";
+    }
+
+    if(this.type == "traslado")
+    {
+      this.tipoDetallado = "traslado";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -193,8 +212,20 @@ export class DetalladosComponent implements OnInit {
           this.setPage({ offset: 0 });
           this.page.data = {
             "entidad": this.entidad,
-            "tipoArchivo": "TRASLADO",
+            "tipoArchivo": "ADMINISTRADAS",
             "estado":this.estado,
+            "fechaInicial": this.fechaInicio,
+            "fechaFinal": this.fechaFin
+          };
+          this.consultarRegistros()
+    }
+
+    if(this.type === "traslado")
+    {      
+          this.setPage({ offset: 0 });
+          this.page.data = {
+            "entidad": this.entidad,
+            "tipoArchivo": "TRASLADO",
             "fechaInicial": this.fechaInicio,
             "fechaFinal": this.fechaFin
           };
@@ -271,6 +302,17 @@ export class DetalladosComponent implements OnInit {
       }
 
       if(this.type == "administradas")
+      {
+        this.page.data = {
+          "entidad": this.entidad,
+          "tipoArchivo": "ADMINISTRADAS",
+          "fechaInicial": this.fechaInicio,
+          "fechaFinal": this.fechaFin,
+          "estado": this.estado
+        };
+      }
+
+      if(this.type == "traslado")
       {
         this.page.data = {
           "entidad": this.entidad,
