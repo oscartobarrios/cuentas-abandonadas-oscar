@@ -74,3 +74,68 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
           ArtifactName: $(nameArtefacto)
           publishLocation: 'Container'
+
+- stage: StaticCodeAnalisys
+  displayName: 'Static Code Analisys'
+  jobs:
+  - job: StaticCodeAnalisys
+    displayName: 'Static Code Analisys'
+    variables:
+    - group: sonar
+    pool:
+      name: $(namepool)
+      demands:
+      - agent.name -equals AgenteWindowsUno-10.1.18.42
+    workspace:
+      clean: all 
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '14.17.1'
+        displayName: 'Instalando Node.js'
+      - script: |
+          cd '$(System.DefaultWorkingDirectory)/'
+          npm install 
+        displayName: 'Instalando npm'
+      - script: |
+          cd '$(System.DefaultWorkingDirectory)/'
+          npm install -g @angular/cli@11.2.15
+          npm install -D typescript@4.1.5
+        displayName: 'Instalando Angular CLI'
+      - script: |
+          cd '$(System.DefaultWorkingDirectory)/'
+          ng build --prod --base-href ./
+        displayName: 'Compilando'
+      - script: |
+          cd '$(System.DefaultWorkingDirectory)/'
+          npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
+          npm i -g eslint
+        displayName: 'Instalando esLint Plugins'
+      - script: |
+          cd '$(System.DefaultWorkingDirectory)/'
+          npm run eslint
+        displayName: 'Run eslint'
+        continueOnError: true
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'SonarCloud'
+          organization: 'icetex'
+          scannerMode: 'CLI'
+          configMode: 'manual'
+          cliProjectKey: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
+          cliProjectName: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
+          cliSources: '.'
+          extraProperties: |
+            # Additional properties that will be passed to the scanner, 
+            # Put one key=value per line, example:
+            sonar.sources=. 
+            sonar.sourceEncoding=ISO-8859-1  
+            sonar.exclusions=
+            sonar.branch.name=$(branchName)
+            sonar.eslint.reportPaths=result-tslint.json
+            sonar.exclusions="**/*.bin","**/node_modules/**/*","**/coverage/**/*", "**/coveragereport/**/*" , "dts-tooling-templates/**/*", "**/dist/**/*", "**/out/**/*"
+
+      - task: SonarCloudAnalyze@1
+      - task: SonarCloudPublish@1
+        inputs:
+          pollingTimeoutSec: '3000'
