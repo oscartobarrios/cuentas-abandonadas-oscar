@@ -40,6 +40,8 @@ stages:
     displayName: 'Proceso Compilacion'
     pool:
       name: $(namepool)
+      demands:
+      - agent.name -equals AgenteWindowsUno-10.1.18.42
     workspace:
       clean: all 
     steps:
