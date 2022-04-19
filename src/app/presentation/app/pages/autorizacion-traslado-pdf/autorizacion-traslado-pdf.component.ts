@@ -38,6 +38,7 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
       {
         this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioAdmion).subscribe((ResultData) => {
 
+          console.log(ResultData);
           this.funcionarioAdmin = ResultData;
 
         });
@@ -47,7 +48,7 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
       if(ResultData.idFuncionarioAutorizador != 0)
       {
         this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioAutorizador).subscribe((ResultData) => {
-
+          console.log(ResultData);
           this.funcionarioAutorizador = ResultData;
 
         });
