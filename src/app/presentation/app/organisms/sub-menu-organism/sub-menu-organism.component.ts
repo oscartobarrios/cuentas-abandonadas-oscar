@@ -87,7 +87,7 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [1,4,5,6,7]
     },
     {
-      title: "Traslados",
+      title: "Traslado",
       url: "detallado/traslado",
       rols: [1,4,5]
     },
