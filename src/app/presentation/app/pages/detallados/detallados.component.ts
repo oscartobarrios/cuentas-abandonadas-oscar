@@ -120,7 +120,7 @@ export class DetalladosComponent implements OnInit {
         { prop: 'fechaCargue', name: 'Fecha cargue' },
         { prop: 'nroCuenta', name: 'Número cuenta' },
         { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
-        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
+        { prop: 'tasa', name: 'Tasa ponderada'},
         { prop: 'fechaInicial', name: 'Fecha inicial' },
         { prop: 'fechaTraslado', name: 'Fecha traslado' }       
   
