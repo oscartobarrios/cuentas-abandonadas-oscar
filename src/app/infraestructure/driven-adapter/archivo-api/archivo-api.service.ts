@@ -150,4 +150,12 @@ export class ArchivoApiService {
     return this.http.post<any>(url, dataQuery);
   }
 
+  CargarCertificado(data: any): Observable<any> {
+
+    const url = `${environment.rest.endpoint}/Administrativo/InsertarFuncionario?idFuncionario=${data.idFuncionario}&idUsuario=${data.idUsuario}&idCargo=${data.idCargo}`;
+    const archivo: FormData = new FormData();
+    archivo.append('file', data.file, data.file.name);
+    return this.http.post<any>(url, archivo);
+  }
+
 }

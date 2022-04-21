@@ -45,7 +45,6 @@ export class CertificadosComponent implements OnInit {
       { prop: 'saldoInicial', name: 'Saldo inicial/ Total traslado'},
       { prop: 'remuneracion', name: 'Remuneración' },
       { prop: 'fecModificacion', name: 'Fecha'},
-      { prop: 'estado', name: 'Estado' },
       { prop: 'idCargue', name: 'Acciones', cellTemplate: this.accionesTemplate }
     ];
 

@@ -66,6 +66,7 @@ import { CargoRegistroComponent } from './presentation/app/pages/administrador/c
 import { AdministrativoGateway } from './domain/models/administrativo/gateway/administrativo-gateway';
 import { AministrativoApiService } from './infraestructure/driven-adapter/administrativo/administrativo-api.service';
 import { CertificadosComponent } from './presentation/app/pages/archivos/certificados/certificados.component';
+import { CertificadosCargarComponent } from './presentation/app/pages/archivos/certificados-cargar/certificados-cargar.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -110,7 +111,8 @@ export const API_GATEWAYS_PROVIDERS = [
     FuncionarioRegistroComponent,
     ListarCargosComponent,
     CargoRegistroComponent,
-    CertificadosComponent
+    CertificadosComponent,
+    CertificadosCargarComponent
   ],
   imports: [
     AppRoutingModule,

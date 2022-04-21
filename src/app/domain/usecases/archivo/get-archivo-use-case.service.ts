@@ -74,6 +74,10 @@ export class GetArchivoUseCaseService {
    return this._archivoGetway.GetDetallado(entidad, tipoArchivo,fechaInicial, fechaFinal);
  }
 
+CargarCertificado(data: any): Observable<any> {
+  return this._archivoGetway.Cargar(data);
+}
+
  //Filtros y paginado
  GetDetalladoFilter(dataQuery): Observable<any>{
   return this._archivoGetway.GetDetalladoFilter(dataQuery);

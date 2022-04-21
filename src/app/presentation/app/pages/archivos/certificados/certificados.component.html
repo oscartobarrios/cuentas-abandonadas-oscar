@@ -1,6 +1,6 @@
 <div class="container" style="min-height: 420px;">
     <div class="row mb-5">
-        <div class="col-8">Certificaciones</div>
+        <div class="col-8">Listado de archivos cargados.</div>
         <div class="col-4">
            
         </div>
@@ -28,11 +28,10 @@
 
     <ng-template #accionesTemplate let-value="value" let-row="row">
       <div>
-        <button mat-raised-button>
-          <mat-icon color="primary">file_present</mat-icon>
-          <span>Cargar</span>
-        </button>
-
+        <mat-card-actions align="start">
+          <button mat-raised-button color="primary" class="button-primary"
+             [routerLink]="['/certificados-cargar']">Seleccionar</button>
+        </mat-card-actions>
       </div>
     </ng-template>
 
