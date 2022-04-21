@@ -4,134 +4,137 @@
 </div>
 <div id="imprimirreintegro">
 
-    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px; border: 3px solid">
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px; border: 2px solid">
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>C&oacute;digo F362</b>
             </td>
-            <td rowspan="4" style="text-align:center;vertical-align:middle;border-right:2px solid;">
-                <strong>ORDEN DE CUMPLIMIENTO REINTEGRO DE RECURSOS N°</strong>
+            <td rowspan="4" style="text-align:center;vertical-align:middle;border-right:2px solid;font-size: 90%">
+                <strong>ORDEN DE CUMPLIMIENTO REINTEGRO DE RECURSOS N° {{ datosImpresion['consecutivo']}}</strong>
             </td>
             <td rowspan="4" style="width: 20%;text-align:center;vertical-align:middle">
                 <img src="../assets/img/jpg/LogoIcetex.jpg" style="width: 70%;height: auto;"/>
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Versi&oacute;n 1</b>
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
-                <b>Fecha: </b>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Fecha: 05/12/2016</b>
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;height:20px"><b>P&aacute;gina 1 de 1</b></td>
+            <td style="border-right:2px solid;height:20px;font-size: 80%"><b>P&aacute;gina 1 de 1</b></td>
         </tr>
     </table>
     
-    <div style="text-align:center;;height:25px"><b>SOLICITUD DE REINTEGRO DE RECURSOS ENTIDAD FINANCIERA.</b></div>
+    <div style="text-align:center;height:25px;font-size: 80%"><b>SOLICITUD DE REINTEGRO DE RECURSOS ENTIDAD FINANCIERA.</b></div>
     
     <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
         
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:25px">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:25px;font-size: 80%">
                 <b>Fecha Generaci&oacute;n</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
                 {{ datosImpresion['fechaInicial']}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
                 <b> N&uacute;mero de Cuentas Solicitadas</b>
             </td>
-            <td style="border-bottom:2px solid;width:25%">
+            <td style="border-bottom:2px solid;width:25%;font-size: 80%">
                 {{ datosImpresion['numeroCuentas']}}
             </td>
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:20px;font-size: 80%">
                 <b>Nombre Instituci&oacute;n Financiera</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
                 {{ datosImpresion['nombreInstitucion']}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:25%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
                 <b> Valor Total Solicitado</b>
             </td>
-            <td style="border-bottom:2px solid;width:25%">
+            <td style="border-bottom:2px solid;width:25%;font-size: 80%">
                 $ {{ datosImpresion['valor'] | number}}
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Nombre del Archivo</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 {{ datosImpresion['nombreArchivo']}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Total Saldo Inicial Solicitado</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 $ {{ datosImpresion['valorTotal'] | number}}
             </td>
         </tr>
         
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Fecha de Transmisi&oacute;n</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 {{ datosImpresion['fechaTransmision']}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Total Remuneraci&oacute;n Solicitada</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 $ {{ datosImpresion['valorRemuneracion'] | number}}
             </td>
         </tr>
     
         <tr>
             <td colspan="4" style="border-bottom:2px solid;height:20px">
-                <div style="text-align:center;">
+                <div style="text-align:center;font-size: 80%">
                     La Vicepresidencia de Operaciones y Tecnolog&iacute;a luego de verificar la informaci&oacute;n transmitida por las Instituciones Financieras en el marco de la Ley 1777  de 2016, autoriza el reintegro de recursos del saldo registrado de cuentas abandonadas bajo las siguientes condiciones:
                 </div>
             </td>
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Valor Saldo Inicial Autorizado</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valorTotal'] | number}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Valor Remuneraci&oacute;n Autorizada</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valorRemuneracion'] | number}}
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Valor de Giro Autorizado</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valorTotal'] | number}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Valor Pendiente de Reintegro</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;width:12.5%;height:60px">
+            <td style="border-right:2px solid;width:12.5%;height:60px;font-size: 80%">
                 <b>Observaciones</b>
             </td>
             <td colspan="3"></td>
@@ -146,95 +149,95 @@
     <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;">
      
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;text-align:center;height:20px" colspan="2"><b>VERIFICA</b></td>
-            <td style="border-bottom:2px solid;text-align:center;" colspan="2"><b>AUTORIZA</b></td>
+            <td style="border-right:2px solid;border-bottom:2px solid;text-align:center;height:20px;font-size: 90%" colspan="2"><b>VERIFICA</b></td>
+            <td style="border-bottom:2px solid;text-align:center;font-size: 90%" colspan="2"><b>AUTORIZA</b></td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;height:20px"><b>Funcionario</b></td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:37.5%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;height:20px;font-size: 80%"><b>Funcionario</b></td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:37.5%;font-size: 80%">
                 <!-- JESUS VARGAS AGUAS -->
                 {{funcionarioAdmin.nombreUsuario}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;"><b>Funcionario</b></td>
-            <td style="border-bottom:2px solid;width:37.5%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;font-size: 80%"><b>Funcionario</b></td>
+            <td style="border-bottom:2px solid;width:37.5%;font-size: 80%">
                 <!-- JOSE EDUARDO PARADA JIMENEZ -->
                 {{funcionarioAutorizador.nombreUsuario}}
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px"><b>Cargo</b></td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%"><b>Cargo</b></td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <!-- PROFESION UNIVERSITARIO -->
                 {{funcionarioAdmin.nombreCargo}}
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;"><b>Cargo</b></td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%"><b>Cargo</b></td>
+            <td style="border-bottom:2px solid;font-size: 80%">
                 <!-- COORDINADOR GRUPO ADMINISTRACION DE CARTERA -->
                 {{funcionarioAutorizador.nombreCargo}}
             </td>
         </tr>
         <tr>
-            <td style="border-right:2px solid;height:20px"><b>Firma</b></td>
-            <td style="border-right:2px solid;">
+            <td style="border-right:2px solid;height:20px;font-size: 80%"><b>Firma</b></td>
+            <td style="border-right:2px solid;text-align:center">
                 <!-- <img src="../assets/images/Grafo JV.png" style="width: 20%;height: auto;"/> -->
-                <img [src]="funcionarioAdmin.firma" style="width: 20%;height: auto;"/>
+                <img *ngIf="funcionarioAdmin.firma != null" [src]="funcionarioAdmin.firma" style="width: 40px;height: 40px;margin-top: 5px;"/>
             </td>
-            <td style="border-right:2px solid;"><b>Firma</b></td>
-            <td>
+            <td style="border-right:2px solid;font-size: 80%"><b>Firma</b></td>
+            <td style="border-right:2px solid;text-align:center">
                 <!-- <img src="../assets/images/Grafo Jose.png" style="width: 30%;height: auto;"/> -->
-                <img [src]="funcionarioAutorizador.firma" style="width: 20%;height: auto;"/>
+                <img *ngIf="funcionarioAutorizador.firma != null" [src]="funcionarioAutorizador.firma" style="width: 40px;height: 40px;margin-top:5px;"/>
             </td>
         </tr>
     </table>
     
     <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;margin-top:10px">
         <tr>
-            <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height:20px" colspan="4">
+            <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height:20px;font-size: 90%" colspan="4">
                 <b>VICEPRESIDENCIA FINANCIERA - DIRECCI&Oacute;N DE TESORER&Iacute;A</b>
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:20%;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:20%;height:20px;font-size: 80%">
                 <b>Cuenta CUD Destino</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:30%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:30%;font-size: 80%">
                 &nbsp;
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;width:20%">
+            <td style="border-right:2px solid;border-bottom:2px solid;width:20%;font-size: 80%">
                 <b>Valor de Giro</b>
             </td>
-            <td style="border-bottom:2px solid;width:30%">
-                &nbsp;
+            <td style="border-bottom:2px solid;width:30%;font-size: 80%">
+                $ {{ datosImpresion['valorTotal'] | number}}
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Portafolio Destino</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>C&oacute;digo Transacci&oacute;n</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Cuenta CUD Origen</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
-            <td colspan="2" style="border-bottom:2px solid;">
+            <td colspan="2" style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
             
@@ -243,10 +246,10 @@
     
     
         <tr>
-            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px ">
+            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px;font-size: 90%">
                 <b>VERIFICACI&Oacute;N CARGUE INFORMACI&Oacute;N</b>
             </td>
-            <td colspan="2" style="border-bottom:2px solid;background-color:#bfbfbf;text-align:center; ">
+            <td colspan="2" style="border-bottom:2px solid;background-color:#bfbfbf;text-align:center;font-size: 90%">
                 <b>APROBADOR SEBRA</b>
             </td>
             
@@ -255,16 +258,16 @@
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Fecha y Hora</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Fecha y Hora</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
         </tr>
@@ -273,10 +276,10 @@
             <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
                 <b>N° Operaci&oacute;n CUD</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>N° Operaci&oacute;n CUD</b>
             </td>
             <td style="border-bottom:2px solid;">
@@ -285,14 +288,14 @@
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Observaciones</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Observaciones</b>
             </td>
             <td style="border-bottom:2px solid;">
@@ -302,85 +305,85 @@
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Funcionario</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <!-- Yenny G&oacute;mez -->
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Funcionario</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 <!-- Jorge Nelson Gait&aacute;n Le&oacute;n  -->
             </td>
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Cargo</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <!-- Contratista -->
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Cargo</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                <!-- Coordinador Pagaduria -->
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Firma</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Firma</b>
             </td>
-            <td style="border-bottom:2px solid;">
+            <td style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
         </tr>
     
         <tr>
-            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px ">
+            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px;font-size: 90%">
                 <b>AUTORIZACI&Oacute;N APLICATIVO CUENTAS ABANDONADAS</b>
             </td>
-            <td colspan="2" rowspan="7" style="valign:top; ">
+            <td colspan="2" rowspan="7" style="valign:top;;font-size: 80%">
                 <b>Verificado por</b>
             </td>
             
         </tr>
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Fecha y Hora Aplicaci&oacute;n</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 &nbsp;
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Acci&oacute;n a Ejecutar</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;">
                 <table>
                     <tr>
-                        <td style="width:30%;">Verifica</td>
+                        <td style="width:30%;font-size: 80%">Verifica</td>
                         <td style="width:10%;">&nbsp;</td>
                         <td style="width:10%;border-left:2px solid;border-right:2px solid;border-bottom:2px solid;border-top:2px solid;">X&nbsp;</td>
                         <td style="width:30%;">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>Rechaza</td>
+                        <td style="font-size: 80%">Rechaza</td>
                         <td>&nbsp;</td>
                         <td style="border-left:2px solid;border-right:2px solid;border-bottom:2px solid;border-top:2px solid;">&nbsp;</td>
                         <td>&nbsp;</td>
@@ -391,10 +394,10 @@
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Observaciones</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 La autorizaci&oacute;n en el aplicativo de cuentas 
                 abandonadas es adelantada por el Ingeniero 
                 Marco Montoya de la Direcci&oacute;n de Tecnolog&iacute;a
@@ -403,27 +406,27 @@
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Funcionario</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
-                Marco Montoya
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <!-- Marco Montoya -->
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;border-bottom:2px solid;height:20px">
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Cargo</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;">
-                Contratista
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <!-- Contratista -->
             </td>
         </tr>
     
     
         <tr>
-            <td style="border-right:2px solid;height:20px">
+            <td style="border-right:2px solid;height:20px;font-size: 80%">
                 <b>Firma</b>
             </td>
             <td style="border-right:2px solid;">

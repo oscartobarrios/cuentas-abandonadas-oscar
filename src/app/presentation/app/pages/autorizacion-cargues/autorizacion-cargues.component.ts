@@ -141,9 +141,20 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
-  vobuenoorden(idCargue:any)
+  vobuenoorden(idCargue:any,voboadministrador:number)
   {
 
+    debugger;
+    if(this.usuario.idPerfil == 7)
+    {
+      if(voboadministrador == 0)
+      {
+        this.alarma.showWarning("No se puede dar el visto bueno del autorizador porque debe tener el visto bueno del administrador");
+        return;
+      }
+  
+    }
+    
     this._getarchivousecase.ActualizarVbnoOrden(idCargue,this.usuario.idPerfil,this.usuario.idUsuario).subscribe((ResponseData) => {
       Swal.close()
       alert(ResponseData?.mensaje);
