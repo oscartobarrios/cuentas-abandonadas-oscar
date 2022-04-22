@@ -16,7 +16,7 @@ export interface ICargue {
   idUsuario:string,
   idOrganizacion:string
   estado:string,
-  monto:string,
+  monto:number,
   nroCuentas:string,
   saldoInicial:string,
   remuneracion:string,
@@ -25,5 +25,5 @@ export interface ICargue {
   vbnotesoreria: number,
   vbnocontador:number,
   vbnoadminorden:number,
-  vbnoautorizadororden:number
+  vbnoautorizadororden:number,
 }
