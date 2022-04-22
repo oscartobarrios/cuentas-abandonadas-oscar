@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetArchivoUseCaseService } from 'src/app/domain/usecases/archivo/get-archivo-use-case.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
@@ -13,8 +14,11 @@ import Swal from 'sweetalert2';
 export class CertificadosCargarComponent implements OnInit {
 
   public files: File;
-  funcionarioForm: FormGroup;
+  certificacionesForm: FormGroup;
   public idCargue: number;
+  displayedColumns: string[] = ['Nombre', 'Actions'];
+  dataSource = new MatTableDataSource<any>();
+
 
 
   constructor( private alarma: SweetAlertService,
@@ -23,48 +27,23 @@ export class CertificadosCargarComponent implements OnInit {
 
   ngOnInit(): void {
     this.idCargue = this.route.snapshot.params['id'];
-  }
-
-  formInit(){
-
-    this.funcionarioForm = new FormGroup({
-      tipo: new FormControl('', [Validators.required]),
-      archivo: new FormControl('',[Validators.required]), 
-
-      
+    this.certificacionesForm = new FormGroup({
+      nombre: new FormControl('',[Validators.required]),
+      file: new FormControl('',[Validators.required]),  
     });
-
   }
+
 
   onSubmit(){
-    if(this.funcionarioForm.valid)
+    debugger
+    if(this.certificacionesForm.valid)
     {
       
-      const {Usuario, Cargo,foto} = this.funcionarioForm.value;
-     
-      if(foto != "")
-      {
-
-        if(this.files.size > 20000)
-        {
-          this.alarma.showWarning("El archivo debe pesar máximo 20kb");
-          return;
-        }
-        
-        if(this.files.type === "image/png")
-        {
-        }else{
-          if(this.files.type === "image/jpeg")
-          {
-          }else{
-            this.alarma.showWarning("El archivo debe ser de extensión png ó jpeg");
-            return;
-          }
-        }
-      }
+      const {nombre, file} = this.certificacionesForm.value;
 
       const data = {
         idCargue: this.idCargue,
+        nombre: nombre,
         file: this.files
       };
 
@@ -94,5 +73,12 @@ export class CertificadosCargarComponent implements OnInit {
 
     }
   }
+
+  onFileChange(event: any) {
+
+    debugger;
+    this.files = event.target.files[0];
+  }
+
 
 }

@@ -43,7 +43,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'main', pathMatch: 'full'},
       {path: 'listar', component: ListarComponent},
       {path: 'certificados', component: CertificadosComponent},
-      {path: 'certificados-cargar', component: CertificadosCargarComponent},
+      {path: 'certificados-cargar/:id', component: CertificadosCargarComponent},
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},
       {path: 'submenu/:type', component: SubMenuOrganismComponent},

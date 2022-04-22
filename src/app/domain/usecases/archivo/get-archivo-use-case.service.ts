@@ -75,7 +75,7 @@ export class GetArchivoUseCaseService {
  }
 
 CargarCertificado(data: any): Observable<any> {
-  return this._archivoGetway.Cargar(data);
+  return this._archivoGetway.CargarCertificado(data);
 }
 
  //Filtros y paginado
