@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./autorizacion-cargues.component.css']
 })
 export class AutorizacionCarguesComponent implements OnInit {
-  displayedColumns: string[] = ['Entidad', 'NombreArchivo', 'FechaCargue', 'TipoArchivo', 'NumeroCuentas', 'Estado', 'Acciones'];
+  displayedColumns: string[] = ['Entidad', 'NombreArchivo', 'FechaCargue', 'TipoArchivo', 'Saldoinicial', 'Estado', 'Acciones'];
   idOrganizacion: any;
   usuario : any;
   cargues = new MatTableDataSource<ICargue>();
