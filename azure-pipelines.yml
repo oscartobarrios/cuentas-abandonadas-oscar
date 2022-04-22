@@ -9,9 +9,9 @@ trigger:
 
 variables:
   # Web app name
-  webAppName: 'APP_CUENTA_ABANDONADA'
+  webAppName: 'ApiCuentasAbandonadasFrontEnd'
   namepool: 'AgentsOnpremiseICETEX'
-  nameArtefacto: 'APP_CUENTA_ABANDONADA'
+  nameArtefacto: 'ApiCuentasAbandonadasFrontEnd'
   ${{ if startsWith(variables['System.TeamFoundationCollectionUri'], 'https://dev.azure.com/') }}:
     OrganizationName: $[ replace(variables['System.TeamFoundationCollectionUri'], 'https://dev.azure.com/', '') ]
     OrganizationNameFinal: $[ replace(variables['OrganizationName'], '/', '') ]
@@ -40,6 +40,8 @@ stages:
     displayName: 'Proceso Compilacion'
     pool:
       name: $(namepool)
+      demands:
+      - agent.name -equals AgenteWindowsUno-10.1.18.42
     workspace:
       clean: all 
     steps:
@@ -103,7 +105,7 @@ stages:
         displayName: 'Instalando Angular CLI'
       - script: |
           cd '$(System.DefaultWorkingDirectory)/'
-          npm run build$(buildProfile)
+          ng build --prod --base-href ./
         displayName: 'Compilando'
       - script: |
           cd '$(System.DefaultWorkingDirectory)/'
@@ -121,8 +123,8 @@ stages:
           organization: 'icetex'
           scannerMode: 'CLI'
           configMode: 'manual'
-          cliProjectKey: '$(OrganizationNameFinal)-Cuenta_Abandonada_FrontEnd'
-          cliProjectName: '$(OrganizationNameFinal)-Cuenta_Abandonada_FrontEnd'
+          cliProjectKey: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
+          cliProjectName: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
           cliSources: '.'
           extraProperties: |
             # Additional properties that will be passed to the scanner, 
