@@ -14,6 +14,7 @@ export abstract class ArchivoGateway {
   abstract GetPfd(id: any,tipo: string): Observable<Iimpresionpdf[]>;
   abstract TipoCargue(): Observable<Itipocargue[]>;
   abstract Listar(idOrganizacion: any): Observable<ICargue[]>;
+  abstract ListarCertificaciones(idCargue: any): Observable<any>;
   abstract CarguesXEstado(estado: any): Observable<ICargue[]>;
   abstract Cargar(data: IArchivo): Observable<any>;
   abstract LogCargue(idCargue): Observable<any>;
@@ -30,4 +31,7 @@ export abstract class ArchivoGateway {
   abstract GetDetalladoFilter(dataQuery): Observable<any>;
   abstract GetConsolidadoFilter(dataQuery): Observable<any>;
   abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
+  abstract GetCargueFilter(dataQuery): Observable<any>;
+  abstract CargarCertificado(data: any): Observable<any>;
+
 }

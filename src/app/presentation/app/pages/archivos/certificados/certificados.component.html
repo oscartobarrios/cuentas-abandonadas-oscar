@@ -1,0 +1,44 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Listado de archivos cargados.</div>
+        <div class="col-4">
+           
+        </div>
+    </div>
+
+    <div class="row">
+      
+      <ng-container>
+      <ngx-datatable class="material"
+              [rows]="rows" 
+              [columns]="columns" 
+              [columnMode]="columnMode.force"
+              [sorts]="[{prop: 'codigo', dir: 'asc'}]" 
+              [headerHeight]="'auto'" 
+              [footerHeight]="100" 
+              [limit]="page.size"
+              rowHeight="auto" 
+              [externalPaging]="true" 
+              [count]="page.totalElements" 
+              [offset]="page.pageNumber"
+              (page)="setPage($event, true)">
+        </ngx-datatable>
+      </ng-container>
+    </div>
+
+    <ng-template #accionesTemplate let-value="value" let-row="row">
+      <div>
+        <mat-card-actions align="start">
+          <button mat-raised-button color="primary" class="button-primary"
+             [routerLink]="['/certificados-cargar/', value]">Seleccionar</button>
+        </mat-card-actions>
+      </div>
+    </ng-template>
+
+    <ng-template #monedaTemplate let-value="value" let-row="row">
+      <div>
+        $ {{value | number }}
+      </div>
+    </ng-template>
+
+</div>
