@@ -47,6 +47,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  ListarCertificaciones(idCargue: any): Observable<any> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCertificacionCargue/${idCargue}`;
+    return this.http.get<ICargue[]>(url);
+  }
+
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesXEstado/${estado}`;
     return this.http.get<ICargue[]>(url);

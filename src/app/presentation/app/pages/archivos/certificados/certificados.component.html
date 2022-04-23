@@ -35,4 +35,10 @@
       </div>
     </ng-template>
 
+    <ng-template #monedaTemplate let-value="value" let-row="row">
+      <div>
+        $ {{value | number }}
+      </div>
+    </ng-template>
+
 </div>

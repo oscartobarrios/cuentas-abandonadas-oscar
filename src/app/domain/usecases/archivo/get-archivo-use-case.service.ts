@@ -27,6 +27,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.Listar(idOrganizacion);
   }
 
+  ListarCertificaciones(idCargue: any): Observable<any> {
+    return this._archivoGetway.ListarCertificaciones(idCargue);
+  }
+
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     return this._archivoGetway.CarguesXEstado(estado);
   } 

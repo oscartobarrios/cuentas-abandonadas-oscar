@@ -16,6 +16,7 @@ import { Page } from '../../../interfaces/page';
 export class CertificadosComponent implements OnInit {
 
   @ViewChild('accionesTemplate', { static: true }) accionesTemplate: TemplateRef<any>;
+  @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
 
   usuario:any;
   // Variables NgxTable
@@ -42,8 +43,7 @@ export class CertificadosComponent implements OnInit {
       { prop: 'nombre', name: 'Nombre' },
       { prop: 'tipoArchivo', name: 'Tipo' },
       { prop: 'nroCuentas', name: 'Número de cuentas' },
-      { prop: 'saldoInicial', name: 'Saldo inicial/ Total traslado'},
-      { prop: 'remuneracion', name: 'Remuneración' },
+      { prop: 'monto', name: 'Saldo inicial', cellTemplate: this.monedaTemplate},
       { prop: 'fecModificacion', name: 'Fecha'},
       { prop: 'idCargue', name: 'Acciones', cellTemplate: this.accionesTemplate }
     ];

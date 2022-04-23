@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetArchivoUseCaseService } from 'src/app/domain/usecases/archivo/get-archivo-use-case.service';
@@ -16,8 +17,9 @@ export class CertificadosCargarComponent implements OnInit {
   public files: File;
   certificacionesForm: FormGroup;
   public idCargue: number;
-  displayedColumns: string[] = ['Nombre', 'Actions'];
+  displayedColumns: string[] = ['Fecha', 'Nombre', 'Actions'];
   dataSource = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
 
@@ -31,11 +33,17 @@ export class CertificadosCargarComponent implements OnInit {
       nombre: new FormControl('',[Validators.required]),
       file: new FormControl('',[Validators.required]),  
     });
+
+    this._getarchivousecase.ListarCertificaciones(this.idCargue).subscribe((ResultData) => {
+      this.dataSource.data = ResultData.result;
+      this.dataSource.paginator = this.paginator;
+    });
+
   }
 
 
   onSubmit(){
-    debugger
+    
     if(this.certificacionesForm.valid)
     {
       
@@ -58,6 +66,10 @@ export class CertificadosCargarComponent implements OnInit {
       this._getarchivousecase.CargarCertificado(data).subscribe((ResponseData) => {
         Swal.close()
         this.alarma.showSuccess("Guardado exitosamente");
+        this._getarchivousecase.ListarCertificaciones(this.idCargue).subscribe((ResultData) => {
+          this.dataSource.data = ResultData.result;
+          this.dataSource.paginator = this.paginator;
+        });
         
       },  (error: any)  => {
         console.log(error.error);
@@ -75,8 +87,6 @@ export class CertificadosCargarComponent implements OnInit {
   }
 
   onFileChange(event: any) {
-
-    debugger;
     this.files = event.target.files[0];
   }
 
