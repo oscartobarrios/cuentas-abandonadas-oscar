@@ -61,7 +61,8 @@
                 <b> Valor Total Solicitado</b>
             </td>
             <td style="border-bottom:2px solid;width:25%;font-size: 80%">
-                $ {{ datosImpresion['valor'] | number}}
+                $ {{ datosImpresion['valorTotal'] | number}}
+                
             </td>
         </tr>
         <tr>
@@ -75,7 +76,7 @@
                 <b>Total Saldo Inicial Solicitado</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                $ {{ datosImpresion['valorTotal'] | number}}
+                $ {{ datosImpresion['valor'] | number}}
             </td>
         </tr>
         
@@ -107,7 +108,7 @@
                 <b>Valor Saldo Inicial Autorizado</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                $ {{ datosImpresion['valorTotal'] | number}}
+                $ {{ datosImpresion['valor'] | number}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Valor Remuneraci&oacute;n Autorizada</b>
@@ -123,7 +124,7 @@
                 <b>Valor de Giro Autorizado</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                $ {{ datosImpresion['valorTotal'] | number}}
+                $ {{ datosImpresion['valor'] | number}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Valor Pendiente de Reintegro</b>
@@ -209,7 +210,7 @@
                 <b>Valor de Giro</b>
             </td>
             <td style="border-bottom:2px solid;width:30%;font-size: 80%">
-                $ {{ datosImpresion['valorTotal'] | number}}
+                $ {{ datosImpresion['valor'] | number}}
             </td>
         </tr>
     
