@@ -25,6 +25,8 @@ import { ListarFuncionariosComponent } from './presentation/app/pages/administra
 import { FuncionarioRegistroComponent } from './presentation/app/pages/administrador/funcionarios/funcionario-registro/funcionario-registro.component';
 import { ListarCargosComponent } from './presentation/app/pages/administrador/cargos/listar-cargos/listar-cargos.component';
 import { CargoRegistroComponent } from './presentation/app/pages/administrador/cargos/cargo-registro/cargo-registro.component';
+import { CertificadosComponent } from './presentation/app/pages/archivos/certificados/certificados.component';
+import { CertificadosCargarComponent } from './presentation/app/pages/archivos/certificados-cargar/certificados-cargar.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -40,6 +42,8 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'main', pathMatch: 'full'},
       {path: 'listar', component: ListarComponent},
+      {path: 'certificados', component: CertificadosComponent},
+      {path: 'certificados-cargar/:id', component: CertificadosCargarComponent},
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},
       {path: 'submenu/:type', component: SubMenuOrganismComponent},
