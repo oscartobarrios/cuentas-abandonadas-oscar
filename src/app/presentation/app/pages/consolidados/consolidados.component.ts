@@ -19,7 +19,7 @@ import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
   styleUrls: ['./consolidados.component.css']
 })
 export class ConsolidadosComponent implements OnInit {
-  
+
   @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
 
@@ -44,20 +44,20 @@ export class ConsolidadosComponent implements OnInit {
   public columns = [];
   public resultadosBusqueda: any[] = [];
   public nombreArchivo = 'Consolidado.xlsx';
-  
+
   constructor(private _route: ActivatedRoute,
               private _entidadUseCase: GetEntidadUseCaseService,
               private _getarchivousecase: GetArchivoUseCaseService,
               private _notifications: NotificationsService,
               private _getreportecase: GetReporteService,
               private alarma: SweetAlertService
-              ) 
-  { 
+              )
+  {
     this._route.params.subscribe(params => {
       this.type = params.type;
       this.setDefaultValues();
     })
-   
+
   }
 
   ngOnInit(): void {
@@ -72,8 +72,8 @@ export class ConsolidadosComponent implements OnInit {
         { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
         { prop: 'remuneracion', name: 'Total remuneración período', cellTemplate: this.monedaTemplate },
         { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada', cellTemplate: this.monedaTemplate },
-        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate }   
-  
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate }
+
       ];
     }
 
@@ -86,11 +86,25 @@ export class ConsolidadosComponent implements OnInit {
         { prop: 'nroCuentas', name: 'Número cuentas' },
         { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
         { prop: 'remuneracion', name: 'Total remuneración', cellTemplate: this.monedaTemplate },
-  
+
       ];
     }
 
-    
+    if(this.type == "administradas")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'tipoArchivo', name: 'Tipo archivo' },
+        { prop: 'fechaTraslado', name: 'Fecha Traslado' },
+        { prop: 'fechaCorte', name: 'Fecha Corte' },
+        { prop: 'nroCuentas', name: 'Número cuentas' },
+        { prop: 'totalSaldoInicial', name: 'Total traslados', cellTemplate: this.monedaTemplate },
+        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate },
+
+      ];
+    }
+
+
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -110,7 +124,7 @@ export class ConsolidadosComponent implements OnInit {
           preloader.close();
         });
     }
-   
+
   }
 
   setDefaultValues() {
@@ -123,31 +137,27 @@ export class ConsolidadosComponent implements OnInit {
     {
       this.tipoConsolidado = "reintegro";
     }
-    
+    if(this.type == "administradas")
+    {
+      this.tipoConsolidado = "administradas";
+    }
+
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       this.entidades = res;
     });
-    
+
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
   }
 
   buscar() {
-    if(this.type === "administradas" && this.entidad != "")
-    {
-      this._getarchivousecase.GetConsolidadoXEntidad('TRASLADO', 'PENDIENTE_AUTORIZACION', this.entidad)
-          .subscribe(res => {
-            this.consolidadosDataSource.data = res,
-            this.consolidadosDataSource.paginator = this.paginator;
-          });
-    }
 
     if(this.type == "valoracion")
     {
       this.tipoConsolidado = "valoración";
 
-      
+
       this.setPage({ offset: 0 });
       this.page.data = {
         "entidad": this.entidad,
@@ -161,7 +171,7 @@ export class ConsolidadosComponent implements OnInit {
     {
       this.tipoConsolidado = "reintegro";
 
-      
+
       this.setPage({ offset: 0 });
       this.page.data = {
         "entidad": this.entidad,
@@ -171,36 +181,23 @@ export class ConsolidadosComponent implements OnInit {
       };
       this.consultarRegistros()
     }
-    if(this.type == "cesion" && this.entidad != "")
+    if(this.type == "administradas")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('CESION', 'CARGA_PROCESADA', this.entidad)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
+      this.tipoConsolidado = "administradas";
 
-        });
-    }      
 
-    if(this.type === "administradas" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetConsolidadoXFechaCargue('TRASLADO', 'PENDIENTE_AUTORIZACION', this.fechaInicio, this.fechaFin)
-          .subscribe(res => {
-            this.consolidadosDataSource.data = res,
-            this.consolidadosDataSource.paginator = this.paginator;
-     
-          });
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "ADMINISTRADAS",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
     }
 
-    
-    if(this.type == "cesion" && this.fechaInicio != "")
-    {
-      this._getarchivousecase.GetConsolidadoXFechaCargue('CESION', 'CARGA_PROCESADA', this.fechaInicio, this.fechaFin)
-        .subscribe(res => {
-          this.consolidadosDataSource.data = res,
-          this.consolidadosDataSource.paginator = this.paginator;
-      
-        });
-    }   
+
+
   }
 
   // Configuración de la tabla con respuesta
@@ -252,9 +249,19 @@ export class ConsolidadosComponent implements OnInit {
         "fechaFinal": this.fechaFin
       };
     }
-    
+
+    if(this.type == "administradas")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "ADMINISTRADAS",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+
     this._getreportecase.getReporteConsolidadoExcel(this.page.data).subscribe(response => {
-      
+
       const downloadLink = document.createElement('a');
       downloadLink.href = window.URL.createObjectURL(response);
       downloadLink.setAttribute('download', this.nombreArchivo);
@@ -264,7 +271,7 @@ export class ConsolidadosComponent implements OnInit {
     })
     }
 
-    
+
   }
 
 }
