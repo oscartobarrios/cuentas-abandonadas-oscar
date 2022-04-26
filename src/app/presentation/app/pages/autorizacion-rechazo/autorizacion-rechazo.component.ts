@@ -107,18 +107,34 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
   
 
   fileChange(e) {
+
+    debugger;
     const fileList = e.target.files;
+
+   
 
     if(fileList[0].type === "text/plain")
     {
-      if (fileList.length > 0) {
-
-        this.archivo = fileList[0];
+    }else {
+      if(fileList[0].type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+      {
+      }else{
+      this.alarma.showWarning("El archivo debe ser de extension .txt ó .xlsx");
+      return;
       }
 
-    }else{
-      this.alarma.showWarning("El archivo debe ser de extension .txt");
       // this.mensaje = 'El archivo debe ser de extension .txt';
+    }
+
+    if(fileList[0].size > 10000)
+    {
+      this.alarma.showWarning("El archivo debe pesar máximo 10kb");
+      return;
+    }
+    
+    if (fileList.length > 0) {
+
+      this.archivo = fileList[0];
     }
     
   }
