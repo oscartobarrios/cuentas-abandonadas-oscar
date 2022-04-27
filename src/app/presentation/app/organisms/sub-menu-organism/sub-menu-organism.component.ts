@@ -14,7 +14,7 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Fichas entidades",
       url: "entidad-financiera",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
     {
       title: "Registro de Funcionarios",
@@ -63,20 +63,20 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Administradas",
       url: "consolidado/administradas",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
     {
       title: "Valoración",
       url: "consolidado/valoracion",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },{
       title: "Reintegro",
       url: "consolidado/reintegro",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },{
       title: "Cesión",
       url: "consolidado/cesion",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
   ]
 
@@ -84,7 +84,7 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Valoración",
       url: "detallado/valoracion",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
     {
       title: "Traslado",
@@ -94,16 +94,16 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Administradas",
       url: "detallado/administradas",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
     {
       title: "Reintegro",
       url: "detallado/reintegro",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },{
       title: "Cesión",
       url: "detallado/cesion",
-      rols: [1,4,5,6,7]
+      rols: [1,4,5]
     },
   ]
 
@@ -111,17 +111,17 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Notificación subastas",
       url: "#",
-      rols: [1,4,5,6]
+      rols: [1,4]
     },
     {
       title: "Generar valor de subastas",
       url: "#",
-      rols: [1,4,5,6]
+      rols: [1,4,5]
     },
     {
       title: "Histórico subastas",
       url: "#",
-      rols: [1,4,5,6]
+      rols: [1,4,5]
     }
   ]
 

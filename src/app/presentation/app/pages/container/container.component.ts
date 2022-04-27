@@ -41,19 +41,19 @@ export class ContainerComponent implements OnInit {
       icon: 'description',
       text: 'Consolidados',
       url : 'submenu/consolidados',
-      rols: [4,5,6,7]
+      rols: [4,5]
     },
     {
       icon: 'description',
       text: 'Detallados',
       url : 'submenu/detallados',
-      rols: [4,5,6,7]
+      rols: [4,5]
     },
     {
       icon: 'description',
       text: 'Subastas',
       url : 'submenu/subastas',
-      rols: [4,5,6,7]
+      rols: [4,5]
     }/*,
     {
       icon: 'account_balance',

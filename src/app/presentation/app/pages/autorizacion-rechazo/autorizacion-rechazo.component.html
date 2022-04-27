@@ -16,7 +16,7 @@
           <button mat-raised-button   (click)="fileInput.click()">
             <mat-icon color="primary">file_present</mat-icon>
             <span>Selecione el archivo</span>
-            <input #fileInput type="file" formControlName="file" accept=".txt" (change)="fileChange($event)" style="display:none;" />
+            <input #fileInput type="file" formControlName="file" (change)="fileChange($event)" style="display:none;" />
             <p>{{archivo?.name}}</p>
 
           </button>
