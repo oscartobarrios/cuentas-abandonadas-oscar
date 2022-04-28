@@ -39,11 +39,11 @@ export class ListarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this._http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
      this.ip = res.ip;
     });
-        
+
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
@@ -56,6 +56,10 @@ export class ListarComponent implements OnInit {
 
 
   cambiarestado(idCargue:any, tipoestado:string): void{
+
+    const validar = confirm("¿ Esta seguro que desea confirmar el cargue ?");
+
+    if(validar){
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.CambiarEstadoCargue({idCargue,
                                                       usuario: this.usuario.usuario,
@@ -66,6 +70,9 @@ export class ListarComponent implements OnInit {
                                 window.location.reload();
                               });
       preloader.close();
+    }
+
+
   }
 
   openError(id: any): void {
