@@ -66,7 +66,7 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
             });
 
             debugger;
-            
+
             const data = {
               idCargue: this.idCargue,
               usuario: this.usuario.usuario,
@@ -81,12 +81,12 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
             Swal.close()
             this.alarma.showSuccess("autorización rechazada exitosamente");
             this._router.navigate([`/autorizacion-cargues`]);
-            
+
           },  (error: any)  => {
             console.log(error);
             Swal.close();
             this.alarma.showError(error.error.mensaje);
-            
+
           });
         }
       })
@@ -104,14 +104,14 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
   get file() {
     return this.reactiveForm.get('file');
   }
-  
+
 
   fileChange(e) {
 
     debugger;
     const fileList = e.target.files;
 
-   
+
 
     if(fileList[0].type === "text/plain")
     {
@@ -126,17 +126,11 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
       // this.mensaje = 'El archivo debe ser de extension .txt';
     }
 
-    if(fileList[0].size > 10000)
-    {
-      this.alarma.showWarning("El archivo debe pesar máximo 10kb");
-      return;
-    }
-    
     if (fileList.length > 0) {
 
       this.archivo = fileList[0];
     }
-    
+
   }
 
 
