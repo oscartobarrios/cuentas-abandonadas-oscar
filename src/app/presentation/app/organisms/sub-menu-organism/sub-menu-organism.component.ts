@@ -61,7 +61,7 @@ export class SubMenuOrganismComponent implements OnInit {
 
   consolidados: CardItem[] = [
     {
-      title: "Administradas",
+      title: "Traslado",
       url: "consolidado/administradas",
       rols: [1,4,5]
     },
@@ -140,7 +140,7 @@ export class SubMenuOrganismComponent implements OnInit {
   buildSubMenu(type:string)
   {
     switch(type) {
-      case 'tramites' : 
+      case 'tramites' :
         this.menuType = [];
         this.menuType = this.tramites;
         break;

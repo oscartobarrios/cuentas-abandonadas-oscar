@@ -99,7 +99,7 @@ export class ConsolidadosComponent implements OnInit {
         { prop: 'fechaCorte', name: 'Fecha Corte' },
         { prop: 'nroCuentas', name: 'Número cuentas' },
         { prop: 'totalSaldoInicial', name: 'Total traslados', cellTemplate: this.monedaTemplate },
-        { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate },
+        { prop: 'tasa', name: 'Tasa ponderada'},
 
       ];
     }
@@ -139,7 +139,7 @@ export class ConsolidadosComponent implements OnInit {
     }
     if(this.type == "administradas")
     {
-      this.tipoConsolidado = "administradas";
+      this.tipoConsolidado = "traslado";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
