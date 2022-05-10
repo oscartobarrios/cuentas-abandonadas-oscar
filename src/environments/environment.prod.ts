@@ -11,7 +11,7 @@ export const environment = {
     //endpoint: 'https://appsitiospruebas.icetex.gov.co/AppCuentasAbandonadas/ApiCuentasAbandonadas',
   },
   recaptchaKey: '6LeBY9AcAAAAAD9fnMbTWQUSJQgsk2JBqRrS5wiF',
-};  
+};
 
 /*
  * For easier debugging in development mode, you can import the following file
