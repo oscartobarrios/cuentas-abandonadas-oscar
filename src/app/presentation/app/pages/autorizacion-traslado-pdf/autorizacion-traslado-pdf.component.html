@@ -30,11 +30,11 @@
     <tr>
         <td style="border-right:2px solid;height:20px;font-size: 70%"><b>P&aacute;gina 1 de 1</b></td>
     </tr>
-    
+
   </table>
-  
+
   <div style="text-align:center;font-size: 80%;"><b>DATOS DEL TRASLADO</b></div>
-  
+
   <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid;height:20px">
           <tr>
               <td style="border-right:2px solid;width: 20%;font-size: 70%"><b>Fecha de Solicitud</b></td>
@@ -47,9 +47,9 @@
               </td>
           </tr>
   </table>
-    
+
   <div style="width:100%;text-align:center;;font-size: 80%">La Vicepresidencia de Operaciones y Tecnolog&iacute;a luego de verificar la informaci&oacute;n transmitida por las Instituciones Financieras en el marco de la Ley 1777 de 2016, autoriza  la recepci&oacute;n de recursos por concepto de traslado del saldo de cuentas abandonadas bajo las siguientes condiciones:</div>
-  
+
   <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
     <tr>
         <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height: 25px;font-size: 70%">
@@ -65,7 +65,7 @@
            $ {{ datosImpresion['valor'] | number}}
         </td>
     </tr>
-  
+
     <tr>
       <td style="border-right:2px solid;border-bottom:2px solid;height: 25px;font-size: 70%">
           <b>Nombre del Archivo</b>
@@ -80,7 +80,7 @@
         {{ datosImpresion['numeroCuentas']}}
       </td>
   </tr>
-  
+
   <tr>
     <td style="border-right:2px solid;border-bottom:2px solid;height: 25px;font-size: 70%">
         <b>Fecha de Transmisi&oacute;n</b>
@@ -93,20 +93,20 @@
        {{datosImpresion['tasaPonderada']}} %
     </td>
   </tr>
-  
+
   <tr>
     <td style="vertical-align:top; height:80px;font-size: 70%">
         <b>Observaciones</b>
     </td>
     <td colspan="3"></td>
   </tr>
-  
+
   </table>
-  
+
   <div>
-  
+
   </div>
-  
+
   <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;height:25px">
     <tr>
         <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height: 25px;font-size: 70%" colspan="4">
@@ -147,16 +147,16 @@
         <td style="text-align: center;border-right:2px solid">
           <!-- <img src="../assets/img/png/Grafo JV.png" style="margin-top: 5px; width: 15%;height: auto;text-align: center;"/> -->
           <img *ngIf="funcionarioAdmin.firma != null" [src]="funcionarioAdmin.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
-          
+
         </td>
       <td style="border-right:2px solid;font-size: 70%"><b>Firma</b>
-        <td style="text-align: center"> 
+        <td style="text-align: center">
             <!-- <img src="../assets/img/png/Grafo Jose.png" style="width: 20%;height: auto;"/> -->
             <img *ngIf="funcionarioAutorizador.firma != null" [src]="funcionarioAutorizador.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
         </td>
     </tr>
   </table>
-  
+
   <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;margin-top:10px">
     <tr>
         <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height: 30px" colspan="4">
@@ -191,7 +191,7 @@
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Número de Transacción:</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"></td>
         <td style=""></td>
-  
+
     </tr>
     <tr>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Número de Operación:</b></td>
@@ -205,16 +205,14 @@
                 </tr>
             </table>
         </td>
-  
+
     </tr>
     <tr>
         <td style="border-right:2px solid;border-bottom:2px solid;height:2%;font-size: 70%"><b>Observaciones</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Observaciones</b></td>
         <td style="border-bottom:2px solid;font-size: 70%">
-            La autorizaci&Oacute;n en el aplicativo de cuentas 
-            abandonadas es adelantada por el Ingeniero 
-            Marco Montoya de la Direcci&oacute;n de Tecnología
+
         </td>
     </tr>
     <tr>
@@ -226,7 +224,7 @@
         <td style="border-bottom:2px solid;font-size: 70%">
             <!-- Marco Montoya -->
         </td>
-  
+
     </tr>
     <tr>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Cargo</b></td>
@@ -237,8 +235,8 @@
         <td style="border-bottom:2px solid;font-size: 70%">
             <!-- Contratista -->
         </td>
-        
-  
+
+
     </tr>
     <tr>
         <td style="border-right:2px solid;border-bottom:2px solid;width: 10px;font-size: 70%"><b>Firma</b>
@@ -248,16 +246,16 @@
         </td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Firma</b></td>
         <td style="border-bottom:2px solid;">
-        
+
         </td>
     </tr>
-  
+
     <tr>
         <td style="vertical-align:top; height:140px;font-size: 70%" colspan="4"><b>Verificado por:</b> </td>
-  
+
     </tr>
   </table>
-  
+
 </div>
 
 <div class="container">

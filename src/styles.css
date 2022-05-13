@@ -17,7 +17,7 @@ body { margin: 0; font-family: 'Work Sans', sans-serif; }
   right: 0;
   top: 0;
   z-index: 999999;
-}         
+}
 #pre-bootstrap div.messaging {
   color: #FFFFFF;
   left: 0;
@@ -26,12 +26,12 @@ body { margin: 0; font-family: 'Work Sans', sans-serif; }
   right: 0;
   text-align: center;
   top: 50%;
-}         
+}
 #pre-bootstrap h1 {
   font-size: 26px;
   line-height: 35px;
   margin: 0 0 20px 0;
-}         
+}
 #pre-bootstrap p {
   font-size: 18px ;
   line-height: 14px ;
@@ -154,4 +154,13 @@ option {
   padding: 8px;
   width: 30px;
   box-shadow: 1px 1px #888888;
+}
+
+
+.modal-certificados {
+  padding: 20px;
+
+}
+.campo-fecha {
+  padding-right: 50px !important;
 }
