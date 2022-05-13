@@ -17,6 +17,7 @@ export class CertificadosComponent implements OnInit {
 
   @ViewChild('accionesTemplate', { static: true }) accionesTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
+  @ViewChild('fechaTemplate', { static: true }) fehcaTemplate: TemplateRef<any>;
 
   usuario:any;
   // Variables NgxTable
@@ -28,23 +29,25 @@ export class CertificadosComponent implements OnInit {
   public resultSearch = false;
   public columns = [];
   public resultadosBusqueda: any[] = [];
-  public nombreArchivo = 'Detallado.xlsx';
+  public titulo = 'Cargue de certificaciones';
+  public boton = 'Seleccionar';
 
   constructor(private _notifications: NotificationsService,
               private _getarchivousecase: GetArchivoUseCaseService,
-              private _storageservice: StorageService,) 
-              { 
+              private _storageservice: StorageService,)
+              {
                 this.setDefaultValues();
               }
 
   ngOnInit(): void {
+
     this.columns = [
-      { prop: 'usuario', name: 'Usuario' },
-      { prop: 'nombre', name: 'Nombre' },
+      { prop: 'usuario', name: 'Entidad' },
+      { prop: 'nombreArchivo', name: 'Nombre' },
       { prop: 'tipoArchivo', name: 'Tipo' },
       { prop: 'nroCuentas', name: 'Número de cuentas' },
       { prop: 'monto', name: 'Saldo inicial', cellTemplate: this.monedaTemplate},
-      { prop: 'fecModificacion', name: 'Fecha'},
+      { prop: 'fecCargue', name: 'Fecha', cellTemplate: this.fehcaTemplate},
       { prop: 'idCargue', name: 'Acciones', cellTemplate: this.accionesTemplate }
     ];
 
@@ -54,11 +57,19 @@ export class CertificadosComponent implements OnInit {
     this.page.data = {
       "entidad": this.usuario.idOrganizacion
     };
+    if(this.usuario.idPerfil != 1){
+      this.page.data = {
+        "entidad": ""
+      };
+      this.titulo = "Certificaciones cargadas";
+      this.boton = "Ver certificaciones";
+
+    }
     this.consultarRegistros()
   }
 
   setDefaultValues() {
-    
+
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
@@ -73,7 +84,7 @@ export class CertificadosComponent implements OnInit {
           this.configurarTablaConRespuesta(res);
           preloader.close();
         });
-    
+
   }
 
    // Configuración de la tabla con respuesta

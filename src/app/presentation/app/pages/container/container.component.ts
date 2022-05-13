@@ -21,6 +21,12 @@ export class ContainerComponent implements OnInit {
     },
     {
       icon: 'description',
+      text: 'Certificaciones',
+      url : 'certificados',
+      rols: [1,4,5,6,7]
+    },
+    {
+      icon: 'description',
       text: 'Trámites',
       url : 'submenu/tramites',
       rols: [4,5,6,7]
