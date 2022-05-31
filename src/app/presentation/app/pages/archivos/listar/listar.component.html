@@ -60,14 +60,14 @@
                   <div>
                     <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
                       <mat-icon color="warn">launch</mat-icon> ver Errores
-                    </button>  
+                    </button>
                   </div>
                   <div>
-                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue, element.nombreArchivo)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
                     <mat-icon color="warn">launch</mat-icon> Descargar Errores
                   </button>
                   </div>
-               
+
                   <div *ngIf="(element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 1">
                     <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
                       <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar
