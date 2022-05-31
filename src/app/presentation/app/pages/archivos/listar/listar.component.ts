@@ -81,7 +81,7 @@ export class ListarComponent implements OnInit {
     });
   }
 
-  openErrorPantalla(id: any): void {
+  openErrorPantalla(id: any, archivo: any): void {
     Swal.fire({
       title: 'Espere por favor, Guardando Datos',
       allowOutsideClick:false,
@@ -91,9 +91,11 @@ export class ListarComponent implements OnInit {
       });
 
     this._getarchivousecase.LogCargueDescarga(id).subscribe((response) => {
-      const blob = new Blob([<any>response], {type: 'application/octet-stream'});
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', "LOG-ERRORES-"+archivo);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
       Swal.close();
     }, error =>{
       this.alarma.showError(error);
