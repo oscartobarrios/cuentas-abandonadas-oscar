@@ -36,7 +36,7 @@ export class ArchivoApiService {
     const url = `${environment.rest.endpoint}/Reporte/OrdenCumplimiento/${id}/${tipo}`;
     return this.http.get<Iimpresionpdf[]>(url);
   }
-  
+
   TipoCargue(): Observable<Itipocargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetTipoCargues`;
     return this.http.get<Itipocargue[]>(url);
@@ -55,7 +55,7 @@ export class ArchivoApiService {
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesXEstado/${estado}`;
     return this.http.get<ICargue[]>(url);
-  } 
+  }
 
   Cargar(data: IArchivo): Observable<any> {
     const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}`;
@@ -70,7 +70,7 @@ export class ArchivoApiService {
 
   LogCargueDescarga(idCargue): Observable<any> {
 
-    return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargueDescarga/${idCargue}`, 
+    return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargueDescarga/${idCargue}`,
             {responseType: 'blob'})
       .pipe(
               tap(data => console.log('Get mission report: ' + data)),
@@ -161,6 +161,11 @@ export class ArchivoApiService {
     const archivo: FormData = new FormData();
     archivo.append('file', data.file, data.file.name);
     return this.http.post<any>(url, archivo);
+  }
+
+  ActualizarCertificacion(data: any): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/ActualizarCertificacion/${data.idCargueCertificacion}`;
+    return this.http.post<any>(url, data);
   }
 
 }

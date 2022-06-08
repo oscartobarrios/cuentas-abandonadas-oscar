@@ -45,7 +45,7 @@ export class SweetAlertService {
                 break;
 
             case 'success':
-                title = '!Proceso exitoso!';
+                title = '¡Proceso exitoso!';
                 break;
 
             case 'question':

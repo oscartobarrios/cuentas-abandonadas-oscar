@@ -15,11 +15,11 @@ import { ICambiarEstadoRechazada } from '../../models/archivo/icambiar-estado-re
 })
 export class GetArchivoUseCaseService {
   constructor(private _archivoGetway: ArchivoGateway) {}
-  
+
   GetPfd(id: any, tipo: string): Observable<Iimpresionpdf[]> {
     return this._archivoGetway.GetPfd(id,tipo);
   }
-  
+
   TipoCargue(): Observable<Itipocargue[]> {
     return this._archivoGetway.TipoCargue();
   }
@@ -33,7 +33,7 @@ export class GetArchivoUseCaseService {
 
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     return this._archivoGetway.CarguesXEstado(estado);
-  } 
+  }
   Cargar(data: IArchivo): Observable<any> {
     return this._archivoGetway.Cargar(data);
   }
@@ -50,6 +50,10 @@ export class GetArchivoUseCaseService {
 
   ActualizarVbno(idCargue: string, tipoUsuario: string): Observable<any> {
     return this._archivoGetway.ActualizarVbno(idCargue,tipoUsuario);
+  }
+
+  ActualizarCertificacion(certificacion: any): Observable<any> {
+    return this._archivoGetway.ActualizarCertificacion(certificacion);
   }
 
   ActualizarVbnoOrden(idCargue: string, tipoUsuario: string,idUsuario: string): Observable<any> {

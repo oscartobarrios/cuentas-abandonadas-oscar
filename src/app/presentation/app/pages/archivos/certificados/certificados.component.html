@@ -28,7 +28,6 @@
 
     <ng-template #accionesTemplate let-value="value" let-row="row">
       <div>
-        <mat-checkbox disabled [checked] = "row.vbnotesoreria">VoBno Tesorero</mat-checkbox>
       </div>
       <div *ngIf="row.vbnotesoreria || usuario.idPerfil != 1">
         <mat-card-actions align="start">
