@@ -12,8 +12,14 @@
           <div class="col-md-12  col-sm-12">
             <mat-form-field appearance="outline" fxFlex="600">
               <mat-label>Nombre del certificado</mat-label>
-              <input matInput placeholder="Nombre" formControlName="nombre" maxlength="199">
+              <mat-select formControlName="nombre">
+                <mat-option *ngFor="let type of typesCertificacion" [value]="type">
+                {{type}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
+
+
           </div>
 
           <div class="col-md-4  col-sm-4">
@@ -30,11 +36,7 @@
     <hr>
     <h4>Listado de certificaciones cargadas.</h4>
     <div class="table-responsive">
-      <table mat-table [dataSource]="dataSource" matSort width = "900px">
-        <ng-container matColumnDef="Id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-          <td mat-cell *matCellDef="let element">{{element.idCargueCertificacion}} </td>
-        </ng-container>
+      <table mat-table [dataSource]="dataSource" matSort width = "1100px">
         <ng-container matColumnDef="Fecha">
           <th mat-header-cell *matHeaderCellDef mat-sort-header class="campo-fecha">Fecha</th>
           <td mat-cell *matCellDef="let element">{{element.fecha | date :'dd-MM-yyyy'}} </td>
@@ -43,19 +45,41 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
           <td mat-cell *matCellDef="let element">{{element.nombre}} </td>
         </ng-container>
-
-
-        <ng-container matColumnDef="Actions">
-          <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <ng-container matColumnDef="Estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado certificación</th>
+          <td mat-cell *matCellDef="let element">{{element.estado}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Observacion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</th>
+          <td mat-cell *matCellDef="let element">{{element.observacion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Acciones">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="(usuario.idPerfil == 4)"mat>
+              <mat-checkbox disabled [checked] = "element.vbnotesoreria">VoBno Tesorero</mat-checkbox>
+            </div>
+            <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4) && element.vbnotesoreria == 1">
+              <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;"  (click)="aproparCertificacion(element)">
+                  <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
+              </button>
+              <button mat-raised-button matTooltip="Rechazar" (click)="openModal(element)">
+                  <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+              </button>
+            </div>
+            <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION'  && (usuario.idPerfil == 5)">
+              <mat-checkbox (click)="vobueno(element)" [checked] = "element.vbnotesoreria" [id] = "element.idCargueCertificacion">Vo Bueno</mat-checkbox> &nbsp;
+             </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Descargar">
+          <mat-header-cell *matHeaderCellDef>Descargar</mat-header-cell>
           <mat-cell *matCellDef="let element;">
-            <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header>Descargar</th>
             <div style="margin: 3px;">
-
               <div>
               <a href="{{element.certificacion}}" target="_blank"><mat-icon color="success">launch</mat-icon></a>
               </div>
-
-
             </div>
           </mat-cell>
         </ng-container>
@@ -66,3 +90,52 @@
     <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
   </mat-card>
 </div>
+
+
+<ng-template #modalInfo let-modal>
+  <form [formGroup]="rechazoForm" (ngSubmit)="!rechazoForm.invalid && rechazarCertificacion(rechazoForm.value)">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Rechazar certificación </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close()"></button>
+          </div>
+          <div class="modal-body">
+              <!--Observacion-->
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="observacion">Observacion</label>
+              <input
+                novalidate
+                id="observacion"
+                class="form-control"
+                formControlName="observacion"
+              />
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                *ngIf="
+                rechazoForm.get('observacion')!.hasError('required') &&
+                rechazoForm.get('observacion')!.touched
+                "
+              >
+                Observación requerida
+              </div>
+              <div
+              class="alert alert-danger alert-dismissible fade show"
+              *ngIf="rechazoForm.get('observacion')!.hasError('maxlength')"
+            >
+            Observación mayor a 200 caracteres
+            </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="modal.close()">
+        Cancelar
+      </button>
+              <button type="submit" class="btn btn-primary" [disabled]="!rechazoForm.valid">
+        Aceptar
+      </button>
+          </div>
+      </div>
+  </form>
+</ng-template>
+

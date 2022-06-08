@@ -33,5 +33,6 @@ export abstract class ArchivoGateway {
   abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
   abstract GetCargueFilter(dataQuery): Observable<any>;
   abstract CargarCertificado(data: any): Observable<any>;
+  abstract ActualizarCertificacion(data: any): Observable<any>;
 
 }
