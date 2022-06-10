@@ -59,7 +59,7 @@ stages:
         displayName: 'Instalando Angular CLI'
       - script: |
           cd '$(System.DefaultWorkingDirectory)/'
-          npm run build$(buildProfile)
+          npm run build:$(buildProfile)
         displayName: 'Compilando'
       - task: ArchiveFiles@2
         displayName: 'Creando Artefacto'
