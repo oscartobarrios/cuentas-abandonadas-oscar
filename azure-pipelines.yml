@@ -25,7 +25,7 @@ variables:
     branchNameFinal: $[ replace(variables['branchName'], '/', '-') ]
 
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
-    buildProfile: ""
+    buildProfile: "dev"
 
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/release/') }}:
     buildProfile: qa
