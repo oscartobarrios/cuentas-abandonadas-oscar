@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:dev": "ng build --prod --base-href ./",
     "test": "ng test",
     "lint": "ng lint",
     "eslint": "eslint . -f json -o result-tslint.json",
