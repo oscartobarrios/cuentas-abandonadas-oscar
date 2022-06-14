@@ -1,4 +1,3 @@
-import { environment } from './../../../../../environments/environment.pruebas';
 import { NotificationsService } from './../../../shared/services/notifications.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -48,7 +47,7 @@ export class DetalladosComponent implements OnInit {
   public columns = [];
   public resultadosBusqueda: any[] = [];
   public nombreArchivo = 'Detallado.xlsx';
-  
+
 
   constructor(private _route: ActivatedRoute,
               private _entidadUseCase: GetEntidadUseCaseService,
@@ -56,13 +55,13 @@ export class DetalladosComponent implements OnInit {
               private _notifications: NotificationsService,
               private _getreportecase: GetReporteService,
               private alarma: SweetAlertService
-              ) 
-  { 
+              )
+  {
     this._route.params.subscribe(params => {
       this.type = params.type;
       this.setDefaultValues();
     })
-   
+
   }
 
   ngOnInit(): void {
@@ -79,7 +78,7 @@ export class DetalladosComponent implements OnInit {
         { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
         { prop: 'fechaInicial', name: 'Fecha inicial' },
         { prop: 'fechaFinal', name: 'Fecha final' }
-  
+
       ];
     }
 
@@ -93,7 +92,7 @@ export class DetalladosComponent implements OnInit {
         { prop: 'remuneracion', name: 'Remuneración', cellTemplate: this.monedaTemplate },
         { prop: 'fechaTraslado', name: 'Fecha traslado' },
         { prop: 'fechaFinal', name: 'Fecha final' }
-  
+
       ];
     }
 
@@ -108,8 +107,8 @@ export class DetalladosComponent implements OnInit {
         { prop: 'fechaInicial', name: 'Fecha inicial' },
         { prop: 'fechaTraslado', name: 'Fecha traslado' },
         { prop: 'estado_Cargue', name: 'Estado' , cellTemplate: this.estadoTemplate}
-       
-  
+
+
       ];
     }
 
@@ -122,11 +121,11 @@ export class DetalladosComponent implements OnInit {
         { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
         { prop: 'tasa', name: 'Tasa ponderada'},
         { prop: 'fechaInicial', name: 'Fecha inicial' },
-        { prop: 'fechaTraslado', name: 'Fecha traslado' }       
-  
+        { prop: 'fechaTraslado', name: 'Fecha traslado' }
+
       ];
     }
-    
+
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -157,7 +156,7 @@ export class DetalladosComponent implements OnInit {
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
       this.entidades = res;
     });
-    
+
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
@@ -182,7 +181,7 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "valoracion")
     {
       this.tipoDetallado = "valoración";
-      
+
       this.setPage({ offset: 0 });
       this.page.data = {
         "entidad": this.entidad,
@@ -196,7 +195,7 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "reintegro")
     {
       this.tipoDetallado = "reintegro";
-      
+
       this.setPage({ offset: 0 });
       this.page.data = {
         "entidad": this.entidad,
@@ -205,10 +204,10 @@ export class DetalladosComponent implements OnInit {
         "fechaFinal": this.fechaFin
       };
       this.consultarRegistros()
-    }   
+    }
 
     if(this.type === "administradas")
-    {      
+    {
           this.setPage({ offset: 0 });
           this.page.data = {
             "entidad": this.entidad,
@@ -221,7 +220,7 @@ export class DetalladosComponent implements OnInit {
     }
 
     if(this.type === "traslado")
-    {      
+    {
           this.setPage({ offset: 0 });
           this.page.data = {
             "entidad": this.entidad,
@@ -239,8 +238,8 @@ export class DetalladosComponent implements OnInit {
           //this.detalladosDataSource.data = res,
           this.detalladosDataSource.paginator = this.paginator;
         });
-    } 
-    
+    }
+
   }
 
   // Configuración de la tabla con respuesta
@@ -276,7 +275,7 @@ export class DetalladosComponent implements OnInit {
         this.alarma.showWarning("Debe seleccionar una entidad para realizar la descarga", "Atención");
       }else{
 
-      
+
       const preloader = this._notifications.showPreloader();
 
       if(this.type == "valoracion")
@@ -322,9 +321,9 @@ export class DetalladosComponent implements OnInit {
           "estado": this.estado
         };
       }
-      
+
       this._getreportecase.getReporteDetalladoExcel(this.page.data).subscribe(response => {
-        
+
         const downloadLink = document.createElement('a');
         downloadLink.href = window.URL.createObjectURL(response);
         downloadLink.setAttribute('download', this.nombreArchivo);
@@ -332,10 +331,10 @@ export class DetalladosComponent implements OnInit {
         downloadLink.click();
         preloader.close();
       })
-        
+
       }
     }
-    
+
   }
 
 }
