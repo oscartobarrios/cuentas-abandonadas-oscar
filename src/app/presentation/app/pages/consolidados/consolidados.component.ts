@@ -1,4 +1,3 @@
-import { environment } from './../../../../../environments/environment.pruebas';
 import { NotificationsService } from './../../../shared/services/notifications.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
