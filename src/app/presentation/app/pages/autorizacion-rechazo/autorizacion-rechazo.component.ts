@@ -65,13 +65,23 @@ this.usuario = this._storageservice.getItem('payload').infoUsuario;
               }
             });
 
+            var observacion2 = "";
+
+            for (let index = 0; index < observacion.length; index++) {
+  
+              const element = observacion[index].replace('#', '');
+              observacion2 = observacion2 + element;
+            }
+  
             debugger;
+
+            this.reactiveForm.controls['observacion'].setValue(observacion2);
 
             const data = {
               idCargue: this.idCargue,
               usuario: this.usuario.usuario,
               ip: this.ip || '193.168.1.1',
-              observacion: observacion,
+              observacion: observacion2,
               file: this.archivo,
               tipoUsuario: this.usuario.idPerfil
             };
