@@ -105,7 +105,7 @@ export class CertificadosCargarComponent implements OnInit {
         },  (error: any)  => {
           console.log(error.error);
           Swal.close();
-          this.alarma.showError(error.error)
+          this.alarma.showError(error.error.mensaje)
         });
       }
 
