@@ -26,7 +26,8 @@ variables:
 
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
     buildProfile: "dev"
-
+  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/') }}:
+    buildProfile: "dev"
   ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/release/') }}:
     buildProfile: qa
 
