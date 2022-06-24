@@ -1,0 +1,64 @@
+<mat-card>
+    <div>{{title}}</div>
+<div class="container">
+    <form [formGroup]="financieraForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+        </div>
+       
+        <div class="mb-3 col-sm-12 col-md-12">
+                <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250">
+        </div>
+
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4" *ngIf="identidad== 0">
+                <input type="text" formControlName="idOrganizacion" class="form-control" placeholder="NIT *" maxlength="20" >
+            </div>
+
+            <div class="mb-3 col-sm-12 col-md-4" *ngIf="identidad!= 0">
+                <input type="text" formControlName="idOrganizacion" class="form-control" placeholder="NIT *" maxlength="20"  disabled>
+            </div>
+
+            <div class="mb-3 col-sm-12 col-md-4">
+                <select class="form-control" formControlName="tipoEntidad" style="color: grey;">
+                    <option value="null" disabled="true" [selected]="true" >Tipo entidad</option>
+                    <option
+                        *ngFor="let tipo of tipoEntidad"
+                        value="{{tipo.codigo}}">
+                        {{tipo.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad" maxlength="3">
+            </div>
+
+        </div>
+       
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoArea" class="form-control" placeholder="Área Teléfono" maxlength="3">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoNumero" class="form-control" placeholder="Número Teléfono *" maxlength="10">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoExtension" class="form-control" placeholder="Extensión Teléfono" maxlength="10">
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="direccion" class="form-control" placeholder="Dirección *" maxlength="250">
+        </div>
+        <div class="mb-3 col-sm-4 col-md-4">
+            <input type="text" formControlName="centroCosto" class="form-control" placeholder="Centro de costo" maxlength="20">
+        </div>
+        <div class="row" fxLayoutAlign="center center">
+            <div class="col-sm-3 col-md-3" >
+                <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <button [routerLink]="['/entidad-financiera']" class="form-control btn-primary-icetex">Regresar</button>
+            </div>
+        </div>
+    </form>
+</div>
+</mat-card>

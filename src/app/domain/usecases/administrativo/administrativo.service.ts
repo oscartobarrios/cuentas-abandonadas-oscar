@@ -3,8 +3,10 @@ import { Observable } from 'rxjs';
 import { FuncionarioModelo } from '../../models/administrativo/funcionario';
 import { AdministrativoGateway } from '../../models/administrativo/gateway/administrativo-gateway';
 import { ICargo } from '../../models/administrativo/icargo';
+import { IEntidad } from '../../models/administrativo/ientidad';
 import { IFuncionario } from '../../models/administrativo/iFuncionario';
 import { IUsuario } from '../../models/administrativo/iusuario';
+import { EntidadFinanciera } from '../../models/entidad-financiera/entidad-financiera';
 import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
 
 @Injectable({
@@ -18,12 +20,24 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
         return this._administrativoGetway.insertarCargo(Icargo);
     }
 
+    insertarEntidad(Ientidad:EntidadFinanciera): Observable<any> {
+      return this._administrativoGetway.insertarEntidad(Ientidad);
+    }
+
+    actualizarEntidad(Ientidad:EntidadFinanciera): Observable<any> {
+      return this._administrativoGetway.actualizarEntidad(Ientidad);
+    }
+
     ListarCargos(): Observable<ICargo[]> {
       return this._administrativoGetway.ListarCargos();
     }
 
     consultarCargo(idCargo: number): Observable<ICargo> {
       return this._administrativoGetway.consultarCargo(idCargo);
+    }
+
+    consultarEntidad(idEntidad: number): Observable<IEntidad> {
+      return this._administrativoGetway.consultarEntidad(idEntidad);
     }
 
     ListarUsuarios(): Observable<IUsuario[]> {
@@ -44,6 +58,10 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
 
   consultarUsuario(idUsuario: number): Observable<any> {
     return this._administrativoGetway.consultarUsuario(idUsuario);
+  }
+
+  ListarEntidades(): Observable<IEntidad[]> {
+    return this._administrativoGetway.ListarEntidades();
   }
 
 }

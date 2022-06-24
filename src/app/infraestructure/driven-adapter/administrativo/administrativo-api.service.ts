@@ -4,8 +4,10 @@ import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { FuncionarioModelo } from "src/app/domain/models/administrativo/funcionario";
 import { ICargo } from "src/app/domain/models/administrativo/icargo";
+import { IEntidad } from "src/app/domain/models/administrativo/ientidad";
 import { IFuncionario } from "src/app/domain/models/administrativo/iFuncionario";
 import { IUsuario } from "src/app/domain/models/administrativo/iusuario";
+import { EntidadFinanciera } from "src/app/domain/models/entidad-financiera/entidad-financiera";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -32,6 +34,16 @@ import { environment } from "src/environments/environment";
         return this.http.post<ICargo>(url, dataQuery);
     }
 
+    insertarEntidad(dataQuery: EntidadFinanciera): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/InsertarEntidad`;
+      return this.http.post<EntidadFinanciera>(url, dataQuery);
+    }
+
+    actualizarEntidad(dataQuery: EntidadFinanciera): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/ActualizarEntidad`;
+      return this.http.post<EntidadFinanciera>(url, dataQuery);
+    }
+
     ListarCargos(): Observable<ICargo[]> {
       const url = `${environment.rest.endpoint}/Administrativo/GetCargos`;
       return this.http.get<ICargo[]>(url);
@@ -40,6 +52,11 @@ import { environment } from "src/environments/environment";
     consultarCargo(idCargo:number): Observable<ICargo> {
       const url = `${environment.rest.endpoint}/Administrativo/GetCargo/${idCargo}`;
       return this.http.get<ICargo>(url);
+    }
+
+    consultarEntidad(idEntidad:number): Observable<IEntidad> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetEntidad/${idEntidad}`;
+      return this.http.get<IEntidad>(url);
     }
 
     ListarUsuarios(): Observable<IUsuario[]> {
@@ -68,6 +85,11 @@ import { environment } from "src/environments/environment";
     consultarUsuario(idUsuario:number): Observable<any> {
       const url = `${environment.rest.endpoint}/Administrativo/GetUsuario/${idUsuario}`;
       return this.http.get<any>(url);
+    }
+
+    ListarEntidades(): Observable<IEntidad[]> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetEntidades`;
+      return this.http.get<IEntidad[]>(url);
     }
 
 }
