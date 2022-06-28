@@ -27,6 +27,8 @@ import { ListarCargosComponent } from './presentation/app/pages/administrador/ca
 import { CargoRegistroComponent } from './presentation/app/pages/administrador/cargos/cargo-registro/cargo-registro.component';
 import { CertificadosComponent } from './presentation/app/pages/archivos/certificados/certificados.component';
 import { CertificadosCargarComponent } from './presentation/app/pages/archivos/certificados-cargar/certificados-cargar.component';
+import { ListarEntidadesComponent } from './presentation/app/pages/administrador/entidades/listar-entidades/listar-entidades.component';
+import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -47,7 +49,7 @@ const routes: Routes = [
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},
       {path: 'submenu/:type', component: SubMenuOrganismComponent},
-      {path: 'entidad-financiera', component: EntidadFinancieraComponent},
+      {path: 'entidad-financiera', component: ListarEntidadesComponent},
       {path: 'interfaz-contable-listar', component: ListarInterfazContableComponent},
       {path: 'interfaz-contable-crear', component: CrearInterfazContableComponent},
       {path: 'autorizacion-cargues', component: AutorizacionCarguesComponent},
@@ -64,6 +66,7 @@ const routes: Routes = [
       {path: 'funcionarioRegistro/:id', component: FuncionarioRegistroComponent},
       {path: 'cargo', component: ListarCargosComponent},
       {path: 'cargoRegistro/:id', component: CargoRegistroComponent},
+      {path: 'entidadRegistro/:id', component: EntidadRegistroComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

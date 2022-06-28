@@ -67,6 +67,8 @@ import { AdministrativoGateway } from './domain/models/administrativo/gateway/ad
 import { AministrativoApiService } from './infraestructure/driven-adapter/administrativo/administrativo-api.service';
 import { CertificadosComponent } from './presentation/app/pages/archivos/certificados/certificados.component';
 import { CertificadosCargarComponent } from './presentation/app/pages/archivos/certificados-cargar/certificados-cargar.component';
+import { ListarEntidadesComponent } from './presentation/app/pages/administrador/entidades/listar-entidades/listar-entidades.component';
+import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -112,7 +114,9 @@ export const API_GATEWAYS_PROVIDERS = [
     ListarCargosComponent,
     CargoRegistroComponent,
     CertificadosComponent,
-    CertificadosCargarComponent
+    CertificadosCargarComponent,
+    ListarEntidadesComponent,
+    EntidadRegistroComponent
   ],
   imports: [
     AppRoutingModule,
