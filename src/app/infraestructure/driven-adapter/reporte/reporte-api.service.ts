@@ -39,6 +39,17 @@ import { environment } from "src/environments/environment";
 
     }
 
+    getReporteCargueRechazadoExcel(estadocargue: any): Observable<Blob> {
+    
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteCargueRechazadoExcel/${estadocargue.entidad}/${estadocargue.tipoArchivo}/${estadocargue.fechaInicial}/${estadocargue.fechaFinal}`, 
+            {responseType: 'blob'})
+      .pipe(
+        tap(data => console.log('Get mission report: ' + data)),
+        catchError(this.handleError)
+      )
+
+    }
+
     getReporteDetalladoExcel(filtros: any): Observable<Blob> {
 
       return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteDetalladoExcel/${filtros.entidad}/${filtros.tipoArchivo}/${filtros.fechaInicial}/${filtros.fechaFinal}/${filtros.estado}`, 
@@ -77,6 +88,10 @@ import { environment } from "src/environments/environment";
       return this.http.post<any>(url, dataQuery);
     }
 
+    GetCargueRechazadoFilter(dataQuery): Observable<any>{
+      const url = `${environment.rest.endpoint}/Reporte/GetCargueRechazadoFilter`;
+      return this.http.post<any>(url, dataQuery);
+    }
 
     private handleError(err: HttpErrorResponse) {
       let errorMessage = '';

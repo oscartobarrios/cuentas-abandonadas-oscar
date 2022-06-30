@@ -14,12 +14,20 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
         return this._reporteGetway.getReporteEstadoCargueExcel(estadocargue);
       }
 
+    getReporteCargaRechazadoexcel(estadocargue:any): Observable<any> {
+        return this._reporteGetway.getReporteCargueRechazadoExcel(estadocargue);
+    }
+
     getReporteDetalladoExcel(filtros: any): Observable<any> {
       return this._reporteGetway.getReporteDetalladoExcel(filtros);
     }
 
     GetEstadoCargueFilter(dataQuery): Observable<any>{
       return this._reporteGetway.GetEstadoCargueFilter(dataQuery);
+    }
+
+    GetCargueRechazadoFilter(dataQuery): Observable<any>{
+      return this._reporteGetway.GetCargueRechazadoFilter(dataQuery);
     }
 
     getReporteConsolidadoExcel(filtros: any): Observable<any> {

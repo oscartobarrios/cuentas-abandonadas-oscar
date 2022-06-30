@@ -29,6 +29,7 @@ import { CertificadosComponent } from './presentation/app/pages/archivos/certifi
 import { CertificadosCargarComponent } from './presentation/app/pages/archivos/certificados-cargar/certificados-cargar.component';
 import { ListarEntidadesComponent } from './presentation/app/pages/administrador/entidades/listar-entidades/listar-entidades.component';
 import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
+import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/cargues-rechazados/cargues-rechazados.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -67,6 +68,8 @@ const routes: Routes = [
       {path: 'cargo', component: ListarCargosComponent},
       {path: 'cargoRegistro/:id', component: CargoRegistroComponent},
       {path: 'entidadRegistro/:id', component: EntidadRegistroComponent},
+      {path: 'reportecarguerechazados', component: CarguesRechazadosComponent},
+      
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
