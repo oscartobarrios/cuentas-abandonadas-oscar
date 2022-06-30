@@ -70,6 +70,7 @@ import { CertificadosCargarComponent } from './presentation/app/pages/archivos/c
 import { ListarEntidadesComponent } from './presentation/app/pages/administrador/entidades/listar-entidades/listar-entidades.component';
 import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
 import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/cargues-rechazados/cargues-rechazados.component';
+import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/certificacion-saldos/certificacion-saldos.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -118,7 +119,8 @@ export const API_GATEWAYS_PROVIDERS = [
     CertificadosCargarComponent,
     ListarEntidadesComponent,
     EntidadRegistroComponent,
-    CarguesRechazadosComponent
+    CarguesRechazadosComponent,
+    CertificacionSaldosComponent
   ],
   imports: [
     AppRoutingModule,
