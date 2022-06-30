@@ -46,16 +46,20 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Estados cargues",
       url: "reporteestadocargue",
-      rols: [1,4]
+      rols: [4]
     },
     {
       title: "Gestión cuentas",
       url: "#",
-      rols: [1,4]
+      rols: [4]
     },{
       title: "Cargues rechazados",
       url: "reportecarguerechazados",
-      rols: [1,4]
+      rols: [4]
+    },{
+      title: "Certificación de Saldos",
+      url: "reportecertifiacionsaldos",
+      rols: [1]
     }
   ]
 
