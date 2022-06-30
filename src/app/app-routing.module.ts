@@ -60,7 +60,7 @@ const routes: Routes = [
       {path: 'autorizacion-rechazo/:id', component: AutorizacionRechazoComponent},
       {path: 'calendario', component: ListarCalendarioComponent},
       {path: 'calendario-crear', component: CrearCalendarioComponent},
-      {path: 'calendario-editar', component: EditarCalendarioComponent},
+      {path: 'calendario-editar/:id/:fechaDesde', component: EditarCalendarioComponent},
       {path: 'consolidado/:type', component: ConsolidadosComponent},
       {path: 'detallado/:type', component: DetalladosComponent},
       {path: 'reporteestadocargue', component: EstadoCarguesComponent},

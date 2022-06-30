@@ -14,8 +14,12 @@ export class GetCalendarioUseCaseService {
   }
   GenerarCalendario(data: ICalendario): Observable<any> {
     console.log(data);
-    
+
       return this._calendarioGateway.GenerarCalendario(data);
+  }
+
+  GetCalendario(id, fechaDesde): Observable<ICalendario> {
+    return this._calendarioGateway.GetCalendario(id, fechaDesde);
   }
 
 }
