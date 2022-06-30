@@ -54,7 +54,7 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [1,4]
     },{
       title: "Cargues rechazados",
-      url: "#",
+      url: "reportecarguerechazados",
       rols: [1,4]
     }
   ]
