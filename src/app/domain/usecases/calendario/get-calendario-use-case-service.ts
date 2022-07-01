@@ -22,4 +22,10 @@ export class GetCalendarioUseCaseService {
     return this._calendarioGateway.GetCalendario(id, fechaDesde);
   }
 
+  EditarCalendario(data: ICalendario): Observable<any> {
+    console.log(data);
+
+      return this._calendarioGateway.EditarCalendario(data);
+  }
+
 }

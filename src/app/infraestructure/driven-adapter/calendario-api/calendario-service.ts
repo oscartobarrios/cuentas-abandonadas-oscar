@@ -42,4 +42,8 @@ export class CalendarioService {
     return this.http.get<ICalendario>(`${this._url}/GetCalendario/${id}/${fechaDesde}`);
   }
 
+  EditarCalendario(data: ICalendario): Observable<any> {
+    return this.http.post<any>(`${this._url}/EditCalendario`, data , this._httpOptions);
+  }
+
 }

@@ -195,7 +195,7 @@ export class EditarCalendarioComponent implements OnInit {
     if(!this.tipoCalendarioForm.invalid) {
       const preloader = this._notifications.showPreloader();
       console.log(this.tipoCalendarioForm.value);
-      this._getCalendarioUseCaseService.GenerarCalendario(this.tipoCalendarioForm.value).subscribe((res) => {
+      this._getCalendarioUseCaseService.EditarCalendario(this.tipoCalendarioForm.value).subscribe((res) => {
         console.log(res);
         if(res==0){
           this._notifications.showError("Por favor Valide los campos");
