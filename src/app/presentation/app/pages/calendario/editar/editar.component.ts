@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -84,16 +85,15 @@ export class EditarCalendarioComponent implements OnInit {
     this.fechaDesde = this.route.snapshot.params['fechaDesde'];
 
     this._getCalendarioUseCaseService.GetCalendario(this.idCalendario, this.fechaDesde).subscribe((ResponseData) => {
-      debugger
 
       console.log(ResponseData);
-      this.tipoCalendarioForm.controls['fechaDesde'].setValue(ResponseData.fechaDesde);
-      this.tipoCalendarioForm.controls['fechaHasta'].setValue(ResponseData.fechaHasta);
-      this.tipoCalendarioForm.controls['fechaInicial'].setValue(ResponseData.fechaInicial);
-      this.tipoCalendarioForm.controls['fechaFinal'].setValue(ResponseData.fechaFinal);
-      this.tipoCalendarioForm.controls['fechaCorte'].setValue(ResponseData.fechaCorte);
-      this.tipoCalendarioForm.controls['fechaCorteCertificaciones'].setValue(ResponseData.fechaCorteCertificaciones);
-      this.tipoCalendarioForm.controls['fechaTrasMon'].setValue(ResponseData.fechaTrasMon);
+      this.tipoCalendarioForm.controls['fechaDesde'].setValue(formatDate(ResponseData.fechaDesde,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaHasta'].setValue(formatDate(ResponseData.fechaHasta,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaInicial'].setValue(formatDate(ResponseData.fechaInicial,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaFinal'].setValue(formatDate(ResponseData.fechaFinal,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaCorte'].setValue(formatDate(ResponseData.fechaCorte,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaCorteCertificaciones'].setValue(formatDate(ResponseData.fechaCorteCertificaciones,'yyyy-MM-dd',"en-US"));
+      this.tipoCalendarioForm.controls['fechaTrasMon'].setValue(formatDate(ResponseData.fechaTrasMon,'yyyy-MM-dd',"en-US"));
       this.tipoCalendarioForm.controls['uvr'].setValue(ResponseData.uvr);
     },  (error: any)  => {
         console.log(error);
