@@ -37,4 +37,9 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
     getReporteInterfazExcel(proceso: string): Observable<any> {
       return this._reporteGetway.getReporteInterfazExcel(proceso);
     }
+
+    getReporteCertificacionSaldos(entidad: string,fecha: string): Observable<any> {
+      return this._reporteGetway.getReporteCertificacionSaldos(entidad,fecha);
+    }
+
 }

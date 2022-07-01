@@ -102,6 +102,13 @@ import { environment } from "src/environments/environment";
       }
       console.error(errorMessage);
       return throwError(errorMessage);
-  }
+    }
+
+    getReporteCertificacionSaldos(entidad: string,fecha: string): Observable<any> {
+
+      const url = `${environment.rest.endpoint}/Reporte/GetCertificacionSaldos/${entidad}/${fecha}`;
+      return this.http.get<any>(url);
+
+    }
   
   }
