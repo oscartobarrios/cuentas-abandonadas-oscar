@@ -82,13 +82,13 @@ export class CarguesRechazadosComponent implements OnInit {
       { prop: 'tipoArchivo', name: 'TipoArchivo' },
       { prop: 'idCargue', name: 'idCargue' },
       // { prop: 'nombreArchivo', name: 'Nombre' },
-      { prop: 'fecCargue', name: 'Fecha', cellTemplate: this.fecha },
+      { prop: 'fecCargue', name: 'Fecha Rechazo', cellTemplate: this.fecha },
       // { prop: 'nroCuentas', name: 'Numero Cuentas' },
       // { prop: 'monto', name: 'Monto' , cellTemplate: this.monedaTemplate},
       // { prop: 'tasaPonderada', name: 'TasaPonderada' , cellTemplate: this.numberTemplate},
       // { prop: 'totalRemuneracionPeriodo', name: 'Remuneracion', cellTemplate: this.monedaTemplate },
       { prop: 'usuario', name: 'Usuario' },
-      { prop: 'observacionesRechazo', name: 'Observación' },
+      { prop: 'observacionesRechazo', name: 'Observaciones' },
       ];
 
       this.setPage({ offset: 0 });
