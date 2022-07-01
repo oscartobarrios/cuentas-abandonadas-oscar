@@ -21,22 +21,22 @@ export class ListarCalendarioComponent implements OnInit {
 
   @ViewChild('MatPaginatorTraslado') MatPaginatorTraslado: MatPaginator;
   @ViewChild('MatPaginatorValoracion') MatPaginatorValoracion: MatPaginator;
-  
+
   calendariosCargueCesion = new MatTableDataSource<ICalendario>();
   calendariosCargueReintegro = new MatTableDataSource<ICalendario>();
   calendariosCargueTraslado = new MatTableDataSource<ICalendario>();
-  calendariosCargueValoracion = new MatTableDataSource<ICalendario>();  
+  calendariosCargueValoracion = new MatTableDataSource<ICalendario>();
   displayedColumns: string[] = ['nombre', 'configuracion'];
-  displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal'];
-  displayedColumnsConfTras: string[] = ['fechaDesde', 'fechaHasta','uvr','fechaTrasMon'];
-  displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta'];
-  displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta'];
+  displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal', 'idTipoCargue'];
+  displayedColumnsConfTras: string[] = ['fechaDesde', 'fechaHasta','uvr','fechaTrasMon', 'idTipoCargue'];
+  displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
+  displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
   constructor(private _notifications: NotificationsService,
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
     private _router: Router
-  ) { 
+  ) {
 
-    
+
   }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class ListarCalendarioComponent implements OnInit {
       this.calendariosCargueReintegro.paginator = this.MatPaginatorReintegro;
       this.calendariosCargueValoracion.paginator = this.MatPaginatorValoracion;
       this.calendariosCargueTraslado.paginator = this.MatPaginatorTraslado;
-      preloader.close(); 
+      preloader.close();
     })).subscribe()
   }
 }
