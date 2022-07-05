@@ -17,7 +17,9 @@ export class CertificacionSaldosComponent implements OnInit {
   idOrganizacion: any;
   datos: any[] = [];
   numerocuentas: number = 0;
-  saldocapitalintereses: number
+  saldocapitalintereses: number;
+  public fechahoy: String;
+  public fechafiltro: String;
 
   constructor(private fb: FormBuilder,
               private alarma: SweetAlertService,
@@ -42,6 +44,8 @@ export class CertificacionSaldosComponent implements OnInit {
     {
 
       const{fecha} = this.certificadoForm.value;
+      this.fechahoy = Date();
+      this.fechafiltro = fecha;
 
       this._getreportecase.getReporteCertificacionSaldos(this.idOrganizacion,fecha).subscribe(response => {
        
@@ -50,7 +54,7 @@ export class CertificacionSaldosComponent implements OnInit {
         console.log(response);
 
         this.numerocuentas = response['numeroTraslados'] - response['numeroReintegros'];
-        this.saldocapitalintereses = (response['saldoTraslados'])
+        this.saldocapitalintereses = (response['saldoTraslados'] - response['totalRemuneracionAcumulada']) - (response['saldoReintegros'] - response['totalRemuneracion'])
   
       })
 

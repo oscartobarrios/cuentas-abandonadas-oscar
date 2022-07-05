@@ -6,7 +6,7 @@
 
     <div class="row">
           <div class="col-4">
-            <label>Fecha</label> 
+            <label>Fecha Corte</label> 
             <input type="date" class="form-control" formControlName="fecha">  
           </div> 
           <div class="col-4">
@@ -41,7 +41,7 @@
 
     <div class="row text-justify" style="font-size: 80%">
       <div class="col-md-12">
-        La Dirección de Tesorería del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior - ICETEX certifica que de acuerdo a la información reportada en los traslados y reintegros monetarios del proceso de cuentas abandonadas por la Institución Financiera <label style="font-weight: bold;"><uppercase>{{usuario.nombreEntidad}}</uppercase></label> NIT <label style="font-weight: bold;">{{idOrganizacion}}</label> con corte al 30 de noviembre de 2020, el estado de cuenta es el siguiente:
+        La Dirección de Tesorería del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior - ICETEX certifica que de acuerdo a la información reportada en los traslados y reintegros monetarios del proceso de cuentas abandonadas por la Institución Financiera <label style="font-weight: bold;"><uppercase>{{usuario.nombreEntidad}}</uppercase></label> NIT <label style="font-weight: bold;">{{idOrganizacion}}</label> con corte al {{fechafiltro | date:'dd'}} de {{fechafiltro | date:'MMMM'}} de {{fechafiltro | date:'yyyy'}}, el estado de cuenta es el siguiente:
       </div>
     </div>
 
@@ -159,7 +159,7 @@
           Saldo Institución Financiera a la fecha
         </td>
         <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-         
+          {{saldocapitalintereses |number}}
         </td>
         <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
           {{numerocuentas}}
@@ -173,7 +173,7 @@
     <br>
     <br>
 
-    <p style="font-size: 80%;">La presente certificación se firma el 16 de diciembre de 2020.</p>
+    <p style="font-size: 80%;">La presente certificación se firma el {{fechahoy | date:'dd'}} de {{fechahoy | date:'MMMM'}} de {{fechahoy | date:'yyyy'}}.</p>
 
     <br><br><br><br>
     <br><br><br><br>
