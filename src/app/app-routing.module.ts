@@ -31,6 +31,7 @@ import { ListarEntidadesComponent } from './presentation/app/pages/administrador
 import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
 import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/cargues-rechazados/cargues-rechazados.component';
 import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/certificacion-saldos/certificacion-saldos.component';
+import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/consolidado-entidad/consolidado-entidad.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -71,6 +72,7 @@ const routes: Routes = [
       {path: 'entidadRegistro/:id', component: EntidadRegistroComponent},
       {path: 'reportecarguerechazados', component: CarguesRechazadosComponent},
       {path: 'reportecertifiacionsaldos', component: CertificacionSaldosComponent},
+      {path: 'consolidadoentidad', component: ConsolidadoEntidadComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

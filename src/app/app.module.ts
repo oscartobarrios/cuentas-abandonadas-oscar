@@ -73,6 +73,7 @@ import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/ca
 import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/certificacion-saldos/certificacion-saldos.component';
 import {registerLocaleData} from '@angular/common';
 import localEs from '@angular/common/locales/es';
+import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/consolidado-entidad/consolidado-entidad.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -124,7 +125,8 @@ registerLocaleData(localEs);
     ListarEntidadesComponent,
     EntidadRegistroComponent,
     CarguesRechazadosComponent,
-    CertificacionSaldosComponent
+    CertificacionSaldosComponent,
+    ConsolidadoEntidadComponent
   ],
   imports: [
     AppRoutingModule,
