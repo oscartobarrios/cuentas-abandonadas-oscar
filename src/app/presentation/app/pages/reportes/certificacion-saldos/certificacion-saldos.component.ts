@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GetReporteService } from 'src/app/domain/usecases/reportes/get-reporte.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { StorageService } from 'src/app/presentation/shared/services/storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-certificacion-saldos',
@@ -12,7 +13,7 @@ import { StorageService } from 'src/app/presentation/shared/services/storage.ser
 export class CertificacionSaldosComponent implements OnInit {
 
   public certificadoForm: FormGroup;
-  public swimpresion: boolean = true;
+  public swimpresion: boolean = false;
   usuario:any;
   idOrganizacion: any;
   datos: any[] = [];
@@ -43,6 +44,15 @@ export class CertificacionSaldosComponent implements OnInit {
     if(this.certificadoForm.valid)
     {
 
+      Swal.fire({
+        title: 'Espere por favor, Consultando Datos',
+        allowOutsideClick:false,
+        didOpen: () => {
+            Swal.showLoading()
+          }
+        });
+        
+      this.swimpresion = false;
       const{fecha} = this.certificadoForm.value;
       this.fechahoy = Date();
       this.fechafiltro = fecha;
@@ -55,7 +65,8 @@ export class CertificacionSaldosComponent implements OnInit {
 
         this.numerocuentas = response['numeroTraslados'] - response['numeroReintegros'];
         this.saldocapitalintereses = (response['saldoTraslados'] - response['totalRemuneracionAcumulada']) - (response['saldoReintegros'] - response['totalRemuneracion'])
-  
+        this.swimpresion = true;
+        Swal.close();
       })
 
       // this.swimpresion = true;
