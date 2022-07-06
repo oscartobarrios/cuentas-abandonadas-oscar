@@ -2,7 +2,7 @@ import { ReplaceLeftZerosPipe } from './presentation/shared/pipes/replace-leftZe
 import { InterfazContableService } from './infraestructure/driven-adapter/interfaz-contable-api/interfaz-contable-service';
 import { ListarInterfazContableComponent } from './presentation/app/pages/interfaz-contable/listar/listar.component';
 import { CrearInterfazContableComponent } from './presentation/app/pages/interfaz-contable/crear/crear.component';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecaptchaFormsModule, RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 //Material
@@ -71,6 +71,8 @@ import { ListarEntidadesComponent } from './presentation/app/pages/administrador
 import { EntidadRegistroComponent } from './presentation/app/pages/administrador/entidades/entidad-registro/entidad-registro.component';
 import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/cargues-rechazados/cargues-rechazados.component';
 import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/certificacion-saldos/certificacion-saldos.component';
+import {registerLocaleData} from '@angular/common';
+import localEs from '@angular/common/locales/es';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -82,6 +84,8 @@ export const API_GATEWAYS_PROVIDERS = [
   { provide: EntidadGateway, useClass: EntidadApiService},
   { provide: AdministrativoGateway, useClass: AministrativoApiService},
 ];
+
+registerLocaleData(localEs);
 
 @NgModule({
   declarations: [
@@ -150,6 +154,10 @@ export const API_GATEWAYS_PROVIDERS = [
       provide: RECAPTCHA_SETTINGS,
       useValue: { siteKey: environment.recaptchaKey } as RecaptchaSettings,
     },
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
+    }
   ],
   bootstrap: [AppComponent]
 })
