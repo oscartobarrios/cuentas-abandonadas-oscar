@@ -42,4 +42,10 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
       return this._reporteGetway.getReporteCertificacionSaldos(entidad,fecha);
     }
 
+    GetConsolidadoEntidadFilter(dataQuery): Observable<any>{
+      return this._reporteGetway.GetConsolidadoEntidadFilter(dataQuery);
+    }
+
+
+
 }

@@ -60,6 +60,10 @@ export class SubMenuOrganismComponent implements OnInit {
       title: "Certificación de Saldos",
       url: "reportecertifiacionsaldos",
       rols: [1]
+    },{
+      title: "Consolidado",
+      url: "consolidadoentidad",
+      rols: [1]
     }
   ]
 
