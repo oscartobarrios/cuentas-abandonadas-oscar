@@ -61,10 +61,10 @@ export class CertificacionSaldosComponent implements OnInit {
        
         this.datos = response;
         
-        console.log(response);
-
         this.numerocuentas = response['numeroTraslados'] - response['numeroReintegros'];
-        this.saldocapitalintereses = (response['saldoTraslados'] - response['totalRemuneracionAcumulada']) - (response['saldoReintegros'] - response['totalRemuneracion'])
+        this.saldocapitalintereses = (response['saldoTraslados'] + response['totalRemuneracionAcumulada']) - (response['saldoReintegros'] + response['totalRemuneracion'])
+        
+        
         this.swimpresion = true;
         Swal.close();
       })

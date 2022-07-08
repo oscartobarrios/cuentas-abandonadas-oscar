@@ -46,13 +46,4 @@
          {{value | number }}
       </div>
     </ng-template>
-    <ng-template #estadoTemplate let-value="value" let-row="row">
-      <div>
-        <label *ngIf="value == 'ACTIVA' ">ADMINISTRADA</label>
-        <label *ngIf="value == 'REINTEGRO' ">REINTEGRADA</label>
-        <label *ngIf="value == 'CEDIDO' ">CEDIDA</label>
-
-      </div>
-    </ng-template>
-    
 </div>

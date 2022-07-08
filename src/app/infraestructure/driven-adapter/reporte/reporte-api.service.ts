@@ -110,5 +110,10 @@ import { environment } from "src/environments/environment";
       return this.http.get<any>(url);
 
     }
+
+    GetConsolidadoEntidadFilter(dataQuery): Observable<any>{
+      const url = `${environment.rest.endpoint}/Reporte/GetCOnsolidadoEntidadFilter`;
+      return this.http.post<any>(url, dataQuery);
+    }
   
   }
