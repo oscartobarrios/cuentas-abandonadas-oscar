@@ -21,6 +21,8 @@ export class CertificacionSaldosComponent implements OnInit {
   saldocapitalintereses: number;
   public fechahoy: String;
   public fechafiltro: String;
+  public fecha: Date;
+  public fechaahora: string;
 
   constructor(private fb: FormBuilder,
               private alarma: SweetAlertService,
@@ -32,6 +34,7 @@ export class CertificacionSaldosComponent implements OnInit {
     this.idOrganizacion = this.usuario.idOrganizacion;
     console.log(this.usuario);
     this.cargarformulario();
+
   }
 
   cargarformulario(){
@@ -44,16 +47,32 @@ export class CertificacionSaldosComponent implements OnInit {
     if(this.certificadoForm.valid)
     {
 
-      Swal.fire({
-        title: 'Espere por favor, Consultando Datos',
-        allowOutsideClick:false,
-        didOpen: () => {
-            Swal.showLoading()
-          }
-        });
-        
       this.swimpresion = false;
-      const{fecha} = this.certificadoForm.value;
+
+        const{fecha} = this.certificadoForm.value;
+        this.fecha = new Date();
+    
+        if (this.fecha.getMonth() + 1 >= 1 && this.fecha.getMonth() + 1 <= 9)
+        {
+          this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
+        } else{
+          this.fechaahora = this.fecha.getDate() + "/" + (this.fecha.getMonth() + 1) + "/" + this.fecha.getFullYear();
+        }
+
+        if(fecha > this.fechaahora)
+        {
+          this.alarma.showWarning("La fecha de corte no puede ser mayor a la fecha actual");
+          return;
+        }
+
+        Swal.fire({
+          title: 'Espere por favor, Consultando Datos',
+          allowOutsideClick:false,
+          didOpen: () => {
+              Swal.showLoading()
+            }
+          });
+        
       this.fechahoy = Date();
       this.fechafiltro = fecha;
 
