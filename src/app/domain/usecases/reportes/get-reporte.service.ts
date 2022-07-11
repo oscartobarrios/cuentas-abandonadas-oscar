@@ -18,6 +18,10 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
         return this._reporteGetway.getReporteCargueRechazadoExcel(estadocargue);
     }
 
+    getReporteConsolidadoEntidadexcel(estadocargue:any): Observable<any> {
+      return this._reporteGetway.getReporteConsolidadoEntidadexcel(estadocargue);
+  }
+
     getReporteDetalladoExcel(filtros: any): Observable<any> {
       return this._reporteGetway.getReporteDetalladoExcel(filtros);
     }

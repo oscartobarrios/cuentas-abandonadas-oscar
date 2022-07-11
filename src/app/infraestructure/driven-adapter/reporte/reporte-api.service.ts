@@ -72,6 +72,17 @@ import { environment } from "src/environments/environment";
 
     }
 
+    getReporteConsolidadoEntidadexcel(filtros: any): Observable<Blob> {
+
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteConsolidadoEntidadExcel/${filtros.entidad}/${filtros.fechaFinal}`, 
+            {responseType: 'blob'})
+      .pipe(
+              tap(data => console.log('Get mission report: ' + data)),
+              catchError(this.handleError)
+      )
+
+    }
+
     getReporteInterfazExcel(proceso: string): Observable<Blob> {
 
       return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteInterfazExcel/${proceso}`, 
