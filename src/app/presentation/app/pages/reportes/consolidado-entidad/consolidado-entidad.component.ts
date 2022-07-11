@@ -5,6 +5,7 @@ import { GetReporteService } from 'src/app/domain/usecases/reportes/get-reporte.
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import { StorageService } from 'src/app/presentation/shared/services/storage.service';
+import Swal from 'sweetalert2';
 import { Page } from '../../../interfaces/page';
 
 @Component({
@@ -28,6 +29,8 @@ export class ConsolidadoEntidadComponent implements OnInit {
   public dataQuery: any[] = [];
   usuario:any;
   idOrganizacion: any;
+  public nombreArchivo = 'Reporte Consolidado Entidad.xlsx';
+  dato: any;
 
   constructor(private _route: ActivatedRoute,
               private alarma: SweetAlertService,
@@ -54,7 +57,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
     this.idOrganizacion = this.usuario.idOrganizacion;
 
     this.columns = [
-      { prop: 'nombreCargue', name: 'Nombre cargue' },
+      { prop: 'cargueNombre', name: 'Nombre cargue' },
       { prop: 'fechaCargue', name: 'Fecha cargue' },
       { prop: 'nroCuenta', name: 'Número cuenta' },
       { prop: 'monto', name: 'Monto', cellTemplate: this.monedaTemplate },
@@ -72,6 +75,38 @@ export class ConsolidadoEntidadComponent implements OnInit {
  
   descargarExcel(){
 
+    if(this.fechaCorte === undefined || this.fechaCorte === "undefined" || this.fechaCorte === "")
+    {
+      this.alarma.showWarning("Información incompleta, por favor ingrese la fecha para poder consultar");
+      return;
+    }
+
+
+    this.setPage({ offset: 0 });
+      this.dato = {
+        "entidad": this.idOrganizacion,
+        "fechaFinal": this.fechaCorte
+      };
+
+      Swal.fire({
+        title: 'Espere por favor, Guardando Datos',
+        allowOutsideClick:false,
+        didOpen: () => {
+            Swal.showLoading()
+          }
+        });
+
+    this._getreportecase.getReporteConsolidadoEntidadexcel(this.dato).subscribe(response => {
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', this.nombreArchivo);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      Swal.close();
+    })
+  
   }
 
   buscar(){
