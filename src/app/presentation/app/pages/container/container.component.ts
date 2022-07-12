@@ -17,25 +17,25 @@ export class ContainerComponent implements OnInit {
       icon: 'description',
       text: 'Cargar archivos',
       url : 'listar',
-      rols: [1]
+      rols: [1,9]
     },
     {
       icon: 'description',
       text: 'Trámites',
       url : 'submenu/tramites',
-      rols: [4,5,6,7]
+      rols: [4,5,6,7,9]
     },
     {
       icon: 'description',
       text: 'Certificaciones',
       url : 'certificados',
-      rols: [1,4,5]
+      rols: [1,4,5,9]
     },
     {
       icon: 'description',
       text: 'Reportes',
       url : 'submenu/reportes',
-      rols: [1,4]
+      rols: [1,4,9]
     },
     {
       icon: 'description',
