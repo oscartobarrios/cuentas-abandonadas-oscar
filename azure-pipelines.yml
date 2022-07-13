@@ -119,8 +119,8 @@ stages:
           organization: 'icetex'
           scannerMode: 'CLI'
           configMode: 'manual'
-          cliProjectKey: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
-          cliProjectName: '$(OrganizationNameFinal)-CuentasAbandonadasFrontEnd'
+          cliProjectKey: '$(OrganizationNameFinal)-CuentasAbandonadas_FrontEnd'
+          cliProjectName: '$(OrganizationNameFinal)-CuentasAbandonadas_FrontEnd'
           cliSources: '.'
           extraProperties: |
             # Additional properties that will be passed to the scanner, 
