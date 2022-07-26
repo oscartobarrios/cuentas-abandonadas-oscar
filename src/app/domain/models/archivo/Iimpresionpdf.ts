@@ -10,5 +10,4 @@ export interface Iimpresionpdf{
     fechaTransmision: Date,
     tasaPonderada: number,
     observacion: string
-
 }

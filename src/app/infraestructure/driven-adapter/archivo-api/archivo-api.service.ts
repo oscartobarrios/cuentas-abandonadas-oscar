@@ -105,6 +105,11 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
+  RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipousuario: string,idUsuario:string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenTesorero/${idCargue}/${tipousuario}/${idUsuario}/${nroperacioncud}/${observacionreintegro}/${nrooperacion}/${nrotransacion}/${observacionsebra}/${observacionconfirmacion}/${tipoorden}`;
+    return this.http.get<any>(url);
+  }
+
   ActualizarVbnoOrdenTodos(idUsuario:string): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/ActualizarVbnoOrdenSeleccionarTodo/${idUsuario}`;
     return this.http.get<any>(url);

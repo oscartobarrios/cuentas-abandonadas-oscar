@@ -15,12 +15,16 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
   private id: any;
   public funcionarioAdmin:any = "";
   public funcionarioAutorizador:any = "";
-  
+  public datosOrden: any = "";
+  public funcionarioTesorero: any = "";
+  public fecha: string;
+
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
               private _servicioAdministrativo: GetAdministrativoService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.fecha = Date();
     this.id = this.route.snapshot.params['id'];
 
     this._getarchivousecase.GetPfd(this.id,"REINTEGRO").subscribe((ResultData) => {
@@ -32,6 +36,9 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
 
     this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.id).subscribe((ResultData) => {
       console.log(ResultData);
+
+      this.datosOrden =  ResultData;
+
       //para el funcionario administrativo
       if(ResultData.idFuncionarioAdmion != 0)
       {
@@ -54,6 +61,16 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
  
          });
        }
+
+        //para el funcionario tesorero
+      if(ResultData.idFuncionarioTesorero != 0)
+      {
+        this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioTesorero).subscribe((ResultData) => {
+          console.log(ResultData);
+          this.funcionarioTesorero = ResultData;
+
+        });
+      }
       
     });
 

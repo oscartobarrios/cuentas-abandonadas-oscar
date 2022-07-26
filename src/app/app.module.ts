@@ -74,6 +74,8 @@ import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/
 import {registerLocaleData} from '@angular/common';
 import localEs from '@angular/common/locales/es';
 import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/consolidado-entidad/consolidado-entidad.component';
+import { DatosReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-reintegro-tesorero/datos-reintegro-tesorero.component';
+import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-traslado-tesorero/datos-traslado-tesorero.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -126,7 +128,9 @@ registerLocaleData(localEs);
     EntidadRegistroComponent,
     CarguesRechazadosComponent,
     CertificacionSaldosComponent,
-    ConsolidadoEntidadComponent
+    ConsolidadoEntidadComponent,
+    DatosReintegroTesoreroComponent,
+    DatosTrasladoTesoreroComponent
   ],
   imports: [
     AppRoutingModule,

@@ -16,13 +16,17 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
   private id: any;
   public funcionarioAdmin:any = "";
   public funcionarioAutorizador:any = "";
-  
+  public funcionarioTesorero: any = "";
+  public datosOrden: any = "";
+  public fecha: string;
+
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
               private _servicioAdministrativo: GetAdministrativoService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
    
+    this.fecha = Date();
     this.id = this.route.snapshot.params['id'];
 
     this._getarchivousecase.GetPfd(this.id,"TRASLADO").subscribe((ResultData) => {
@@ -33,12 +37,15 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
 
     this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.id).subscribe((ResultData) => {
       console.log(ResultData);
+
+      this.datosOrden =  ResultData;
+
       //para el funcionario administrativo
       if(ResultData.idFuncionarioAdmion != 0)
       {
         this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioAdmion).subscribe((ResultData) => {
 
-          console.log(ResultData);
+          // console.log(ResultData);
           this.funcionarioAdmin = ResultData;
 
         });
@@ -48,8 +55,18 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
       if(ResultData.idFuncionarioAutorizador != 0)
       {
         this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioAutorizador).subscribe((ResultData) => {
-          console.log(ResultData);
+          // console.log(ResultData);
           this.funcionarioAutorizador = ResultData;
+
+        });
+      }
+
+      //para el funcionario tesorero
+      if(ResultData.idFuncionarioTesorero != 0)
+      {
+        this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioTesorero).subscribe((ResultData) => {
+          console.log(ResultData);
+          this.funcionarioTesorero = ResultData;
 
         });
       }

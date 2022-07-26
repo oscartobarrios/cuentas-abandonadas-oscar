@@ -32,6 +32,8 @@ import { EntidadRegistroComponent } from './presentation/app/pages/administrador
 import { CarguesRechazadosComponent } from './presentation/app/pages/reportes/cargues-rechazados/cargues-rechazados.component';
 import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/certificacion-saldos/certificacion-saldos.component';
 import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/consolidado-entidad/consolidado-entidad.component';
+import { DatosReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-reintegro-tesorero/datos-reintegro-tesorero.component';
+import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-traslado-tesorero/datos-traslado-tesorero.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -73,6 +75,8 @@ const routes: Routes = [
       {path: 'reportecarguerechazados', component: CarguesRechazadosComponent},
       {path: 'reportecertifiacionsaldos', component: CertificacionSaldosComponent},
       {path: 'consolidadoentidad', component: ConsolidadoEntidadComponent},
+      {path: 'datos-reintegro-tesorero/:id', component: DatosReintegroTesoreroComponent},
+      {path: 'datos-traslados-tesorero/:id', component: DatosTrasladoTesoreroComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

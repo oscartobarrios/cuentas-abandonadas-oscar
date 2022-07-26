@@ -60,6 +60,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.ActualizarVbnoOrden(idCargue,tipoUsuario,idUsuario);
   }
 
+  RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipoUsuario: string,idUsuario: string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any> {
+    return this._archivoGetway.RegistrarActualizarDatosOrdenTesorero(idCargue,tipoUsuario,idUsuario,nroperacioncud,observacionreintegro,nrooperacion,nrotransacion,observacionsebra,observacionconfirmacion,tipoorden);
+  }
+  
   ActualizarVbnoOrdenTodos(idUsuario: string): Observable<any> {
     return this._archivoGetway.ActualizarVbnoOrdenTodos(idUsuario);
   }
