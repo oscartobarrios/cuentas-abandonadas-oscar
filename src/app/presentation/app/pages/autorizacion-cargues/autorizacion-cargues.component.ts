@@ -195,4 +195,20 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
+  ingresoDatos(id:number,tipoArchivo: string){
+
+    if(tipoArchivo == "REINTEGRO")
+    {
+      this._router.navigate([`/datos-reintegro-tesorero/${id}`]);
+
+    }
+
+    if(tipoArchivo == "TRASLADO")
+    {
+      this._router.navigate([`/datos-traslados-tesorero/${id}`]);
+
+    }
+
+  }
+
 }

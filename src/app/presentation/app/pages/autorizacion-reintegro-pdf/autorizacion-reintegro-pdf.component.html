@@ -204,7 +204,7 @@
                 <b>Cuenta CUD Destino</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:30%;font-size: 80%">
-                &nbsp;
+                62011200
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:20%;font-size: 80%">
                 <b>Valor de Giro</b>
@@ -220,13 +220,13 @@
                 <b>Portafolio Destino</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                0
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>C&oacute;digo Transacci&oacute;n</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                11106
             </td>
         </tr>
 
@@ -236,7 +236,7 @@
                 <b>Cuenta CUD Origen</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                65818189
             </td>
             <td colspan="2" style="border-bottom:2px solid;font-size: 80%">
                 &nbsp;
@@ -263,7 +263,7 @@
                 <b>Fecha y Hora</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                {{ datosImpresion['fechaInicial']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Fecha y Hora</b>
@@ -278,7 +278,7 @@
                 <b>N° Operaci&oacute;n CUD</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                {{datosOrden['nroOperacionCud']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>N° Operaci&oacute;n CUD</b>
@@ -293,15 +293,13 @@
                 <b>Observaciones</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                {{datosOrden['observacionReintegro']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Observaciones</b>
             </td>
             <td style="border-bottom:2px solid;">
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
+                
             </td>
         </tr>
 
@@ -310,7 +308,7 @@
                 <b>Funcionario</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <!-- Yenny G&oacute;mez -->
+                {{funcionarioTesorero['nombreUsuario']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Funcionario</b>
@@ -325,13 +323,13 @@
                 <b>Cargo</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <!-- Contratista -->
+                {{funcionarioTesorero['nombreCargo']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Cargo</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-               <!-- Coordinador Pagaduria -->
+               
             </td>
         </tr>
 
@@ -341,7 +339,7 @@
                 <b>Firma</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Firma</b>
@@ -366,7 +364,7 @@
                 <b>Fecha y Hora Aplicaci&oacute;n</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                {{fecha | date: 'dd/MM/yyyy'}}
             </td>
         </tr>
 
@@ -409,7 +407,7 @@
                 <b>Funcionario</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <!-- Marco Montoya -->
+                {{funcionarioTesorero['nombreUsuario']}}
             </td>
         </tr>
 
@@ -419,7 +417,7 @@
                 <b>Cargo</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <!-- Contratista -->
+                {{funcionarioTesorero['nombreCargo']}}
             </td>
         </tr>
 
@@ -429,7 +427,7 @@
                 <b>Firma</b>
             </td>
             <td style="border-right:2px solid;">
-                <!-- <img src="../assets/images/firmacebra.png" style="width: 5%;height: auto;"/> -->
+                <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
             </td>
         </tr>
 

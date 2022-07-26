@@ -22,6 +22,7 @@ export abstract class ArchivoGateway {
   abstract CambiarEstadoCargue(data: ICambiarEstado): Observable<any>;
   abstract ActualizarVbno(idCargue: string, tipousuario: string): Observable<any>;
   abstract ActualizarVbnoOrden(idCargue: string, tipousuario: string,idUsuario:string): Observable<any>;
+  abstract RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipousuario: string,idUsuario:string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any>;
   abstract ActualizarVbnoOrdenTodos(idUsuario:string): Observable<any>;
   abstract CambiarEstadoCargueRechazada(data: ICambiarEstadoRechazada): Observable<any>;
   abstract GetConsolidado(tipoArchivo: string, estado: string, entidad: string, fechaInicial: string,fechaFinal: string): Observable<IConsolidado[]>;
