@@ -24,7 +24,7 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Autorización cargues",
       url: "autorizacion-cargues",
-      rols: [4,5,6,7]
+      rols: [4,5,6,7,10]
     },
     {
       title: "Configuración calendario",
