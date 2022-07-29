@@ -19,5 +19,6 @@ export abstract class AdministrativoGateway {
   abstract consultarFuncionario(idFuncionario:number): Observable<any>;
   abstract consultarUsuario(idUsuario:number): Observable<any>;
   abstract ListarEntidades(): Observable<IEntidad[]>;
-  
+  abstract Notificaciones(): Observable<any>;
+
 }
