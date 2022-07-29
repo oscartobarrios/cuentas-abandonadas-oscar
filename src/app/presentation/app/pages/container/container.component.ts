@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MediaChange, MediaObserver } from "@angular/flex-layout";
+import { Subscription } from 'rxjs';
+import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
 
 
 @Component({
@@ -9,7 +11,7 @@ import { MediaChange, MediaObserver } from "@angular/flex-layout";
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-
+  subscription: Subscription;
   public openedSidenav: boolean = true;
 	public title: string = "Consulta de tickets en proceso de cargue soportes en el repositorio de actos administrativos de expedientes DIAN";
   public itemsSidenav = [
@@ -62,12 +64,21 @@ export class ContainerComponent implements OnInit {
   ];
 
   constructor(
-    private mediaObserver: MediaObserver
+    private mediaObserver: MediaObserver,
+    private _servicioAdministrativo: GetAdministrativoService
   ) {
     this.mediaObserver.media$.subscribe((change: MediaChange) => this.openedSidenav = !(change.mqAlias == 'xs'));
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+
+      var res = setInterval(() => {
+        this._servicioAdministrativo.Notificaciones().subscribe();
+      }, 100000);
+
   }
 
   itemSeleccionado(event) {

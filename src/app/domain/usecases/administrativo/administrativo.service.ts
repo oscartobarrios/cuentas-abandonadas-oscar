@@ -64,4 +64,8 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.ListarEntidades();
   }
 
+  Notificaciones(): Observable<any> {
+    return this._administrativoGetway.Notificaciones();
+  }
+
 }
