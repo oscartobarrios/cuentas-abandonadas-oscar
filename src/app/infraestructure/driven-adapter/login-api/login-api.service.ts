@@ -24,4 +24,5 @@ export class LoginApiService {
   logIn(data: IRequestLogin): Observable<IResponseLogin> {
     return this.http.post<IResponseLogin>(`${this._url}`, data , this._httpOptions);
   }
+
 }

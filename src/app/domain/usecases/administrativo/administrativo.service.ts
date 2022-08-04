@@ -64,4 +64,20 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.ListarEntidades();
   }
 
+  Notificaciones(): Observable<any> {
+    return this._administrativoGetway.Notificaciones();
+  }
+
+  NotificacionInicioValoracion(): Observable<any> {
+    return this._administrativoGetway.NotificacionInicioValoracion();
+  }
+
+  NotificacionInicioReintegro(): Observable<any> {
+    return this._administrativoGetway.NotificacionInicioReintegro();
+  }
+
+  NotificacionInicioTraslado(): Observable<any> {
+    return this._administrativoGetway.NotificacionInicioTraslado();
+  }
+
 }

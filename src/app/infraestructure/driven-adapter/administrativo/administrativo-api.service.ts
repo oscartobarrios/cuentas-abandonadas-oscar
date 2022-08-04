@@ -28,7 +28,7 @@ import { environment } from "src/environments/environment";
 
     constructor(private http: HttpClient) {
     }
-  
+
     insertarCargo(dataQuery: ICargo): Observable<any> {
         const url = `${environment.rest.endpoint}/Administrativo/InsertarCargo`;
         return this.http.post<ICargo>(url, dataQuery);
@@ -90,6 +90,26 @@ import { environment } from "src/environments/environment";
     ListarEntidades(): Observable<IEntidad[]> {
       const url = `${environment.rest.endpoint}/Administrativo/GetEntidades`;
       return this.http.get<IEntidad[]>(url);
+    }
+
+    Notificaciones(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/Inicio`;
+      return this.http.get<any>(url);
+    }
+
+    NotificacionInicioValoracion(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioValoracion`;
+      return this.http.get<any>(url);
+    }
+
+    NotificacionInicioTraslado(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioTraslado`;
+      return this.http.get<any>(url);
+    }
+
+    NotificacionInicioReintegro(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioReintegro`;
+      return this.http.get<any>(url);
     }
 
 }
