@@ -97,5 +97,20 @@ import { environment } from "src/environments/environment";
       return this.http.get<any>(url);
     }
 
+    NotificacionInicioValoracion(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioValoracion`;
+      return this.http.get<any>(url);
+    }
+
+    NotificacionInicioTraslado(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioTraslado`;
+      return this.http.get<any>(url);
+    }
+
+    NotificacionInicioReintegro(): Observable<any> {
+      const url = `${environment.rest.endpoint}/Notificacion/InicioReintegro`;
+      return this.http.get<any>(url);
+    }
+
 }
 

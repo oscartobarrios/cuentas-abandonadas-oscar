@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICalendario } from 'src/app/domain/models/calendario/calendario';
+import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
 import { GetCalendarioUseCaseService } from 'src/app/domain/usecases/calendario/get-calendario-use-case-service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import Swal from 'sweetalert2';
@@ -28,7 +29,8 @@ export class EditarCalendarioComponent implements OnInit {
   constructor(private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
               private _notifications: NotificationsService,
               private _router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private _servicioAdministrativo: GetAdministrativoService) {
     this.formInit();
    }
 
@@ -212,5 +214,21 @@ export class EditarCalendarioComponent implements OnInit {
       this.tipoCalendarioForm.markAllAsTouched();
       console.log(this.tipoCalendarioForm);
     }
+  }
+
+  enviarNotificacion() {
+    const preloader = this._notifications.showPreloader();
+    switch(this.tipoCalendarioForm.controls['idTipoCargue'].value)
+    {
+      case '2045': this._servicioAdministrativo.NotificacionInicioValoracion().subscribe();
+                  break;
+      case '1': this._servicioAdministrativo.NotificacionInicioTraslado().subscribe();
+                break;
+      case '13560023': this._servicioAdministrativo.NotificacionInicioReintegro().subscribe();
+                       break;
+      default:  break;
+    }
+    preloader.close();
+
   }
 }
