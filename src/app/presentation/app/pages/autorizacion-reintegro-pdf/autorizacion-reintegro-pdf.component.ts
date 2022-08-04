@@ -17,6 +17,8 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
   public funcionarioAutorizador:any = "";
   public datosOrden: any = "";
   public funcionarioTesorero: any = "";
+  public funcionarioSebra: any = "";
+
   public fecha: string;
 
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
@@ -63,14 +65,24 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
        }
 
         //para el funcionario tesorero
-      if(ResultData.idFuncionarioTesorero != 0)
-      {
-        this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioTesorero).subscribe((ResultData) => {
-          console.log(ResultData);
-          this.funcionarioTesorero = ResultData;
+        if(ResultData.idFuncionarioTesorero != 0)
+        {
+          this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioTesorero).subscribe((ResultData) => {
+            this.funcionarioTesorero = ResultData;
 
-        });
-      }
+          });
+        }
+
+        //para el funcionario sebra
+        if(ResultData.idFuncionarioSebra != 0)
+        {
+          this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioSebra).subscribe((ResultData) => {
+            console.log(ResultData);
+            this.funcionarioSebra = ResultData;
+
+          });
+        }
+
       
     });
 

@@ -44,7 +44,20 @@ export class AutorizacionCarguesComponent implements OnInit {
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
-   
+
+   debugger;
+   if(this.usuario.idPerfil == "10")
+   {
+    this._getarchivousecase.CarguesSebra().subscribe((ResultData) => {
+      ResultData.map((resultado) =>{
+        console.log(resultado);
+        this.cargues.data.push(resultado)
+        this.cargues.paginator = this.paginator;
+        preloader.close();
+      })
+    });
+
+   }else{
     this._getarchivousecase.CarguesXEstado("PENDIENTE_AUTORIZACION").subscribe((ResultData) => {
       this.carguesPendienteAutorizacion = ResultData;
       this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
@@ -52,6 +65,7 @@ export class AutorizacionCarguesComponent implements OnInit {
 
          this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
           ResultData.map((resultado) =>{
+            console.log(resultado);
             this.cargues.data.push(resultado)
             this.cargues.paginator = this.paginator;
             preloader.close();
@@ -59,7 +73,9 @@ export class AutorizacionCarguesComponent implements OnInit {
 
          
       });
-    });    
+    });
+   }
+    
   }
 
   cambiarestado(idCargue:any, tipoestado:string,vbnotesoreria: number, vbnocontador: number,tipoArchivo: string): void{
@@ -210,5 +226,12 @@ export class AutorizacionCarguesComponent implements OnInit {
     }
 
   }
+
+  ingresoDatosSebra(id:number){
+
+    this._router.navigate([`/datos-sebra/${id}`]);
+
+  }
+
 
 }

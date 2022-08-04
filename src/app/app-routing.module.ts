@@ -34,6 +34,7 @@ import { CertificacionSaldosComponent } from './presentation/app/pages/reportes/
 import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/consolidado-entidad/consolidado-entidad.component';
 import { DatosReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-reintegro-tesorero/datos-reintegro-tesorero.component';
 import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-traslado-tesorero/datos-traslado-tesorero.component';
+import { DatosSebraComponent } from './presentation/app/pages/autorizacionDatos/datos-sebra/datos-sebra.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
       {path: 'consolidadoentidad', component: ConsolidadoEntidadComponent},
       {path: 'datos-reintegro-tesorero/:id', component: DatosReintegroTesoreroComponent},
       {path: 'datos-traslados-tesorero/:id', component: DatosTrasladoTesoreroComponent},
+      {path: 'datos-sebra/:id', component: DatosSebraComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
