@@ -31,7 +31,7 @@ export class ContainerComponent implements OnInit {
       icon: 'description',
       text: 'Certificaciones',
       url : 'certificados',
-      rols: [1,4,5,9]
+      rols: [1,4,5]
     },
     {
       icon: 'description',
