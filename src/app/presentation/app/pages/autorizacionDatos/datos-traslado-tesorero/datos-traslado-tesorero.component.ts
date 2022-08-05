@@ -77,7 +77,20 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
 
     if (!this.DatosTrasladosForm.invalid) {
 
-      debugger;
+      Swal.fire({
+        title: 'Esta seguro que desea Guardar estos Datos?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Rechazarlo!',
+        cancelButtonText: "Cancelar",
+        allowOutsideClick:false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
       const{nrotransaccion,nrooperacion,observacionsebra,observacionconfirmacion} = this.DatosTrasladosForm.value;
 
       var observacionS = observacionsebra;
@@ -112,6 +125,9 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
           this.alarma.showError(error.error.mensaje)
         });
         
+        }
+    })
+
     }
     else{
       this.alarma.showWarning("Información incompleta, por favor verifique");
