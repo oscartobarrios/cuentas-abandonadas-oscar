@@ -59,7 +59,7 @@ export class SubMenuOrganismComponent implements OnInit {
     },{
       title: "Certificación de Saldos",
       url: "reportecertifiacionsaldos",
-      rols: [1,9]
+      rols: [1]
     },{
       title: "Consolidado",
       url: "consolidadoentidad",
