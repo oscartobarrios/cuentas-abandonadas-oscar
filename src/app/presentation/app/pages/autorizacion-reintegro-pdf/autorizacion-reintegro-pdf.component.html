@@ -269,7 +269,7 @@
                 <b>Fecha y Hora</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                {{fecha | date: 'dd/MM/yyyy'}}
             </td>
         </tr>
 
@@ -284,7 +284,7 @@
                 <b>N° Operaci&oacute;n CUD</b>
             </td>
             <td style="border-bottom:2px solid;">
-                &nbsp;
+                {{datosOrden['nroOperacionCudSebra']}}
             </td>
         </tr>
 
@@ -299,7 +299,7 @@
                 <b>Observaciones</b>
             </td>
             <td style="border-bottom:2px solid;">
-                
+                {{datosOrden['observacionFuncionarioSebra']}}
             </td>
         </tr>
 
@@ -314,7 +314,7 @@
                 <b>Funcionario</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                <!-- Jorge Nelson Gait&aacute;n Le&oacute;n  -->
+                {{funcionarioSebra['nombreUsuario']}}
             </td>
         </tr>
 
@@ -329,7 +329,7 @@
                 <b>Cargo</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-               
+                {{funcionarioSebra['nombreCargo']}}
             </td>
         </tr>
 
@@ -345,7 +345,7 @@
                 <b>Firma</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                &nbsp;
+                <img *ngIf="funcionarioSebra.firma != null" [src]="funcionarioSebra.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
             </td>
         </tr>
 
