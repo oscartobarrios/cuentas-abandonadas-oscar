@@ -70,6 +70,19 @@ export class DatosReintegroTesoreroComponent implements OnInit {
   onSubmit(){
     if (!this.DatosReintegroForm.invalid) {
 
+      Swal.fire({
+        title: 'Esta seguro que desea Guardar estos Datos?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Rechazarlo!',
+        cancelButtonText: "Cancelar",
+        allowOutsideClick:false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+
       const{nroperacioncud,observacion} = this.DatosReintegroForm.value;
 
       var observacionreintegro = observacion;
@@ -97,9 +110,9 @@ export class DatosReintegroTesoreroComponent implements OnInit {
           Swal.close();
           this.alarma.showError(error.error.mensaje)
         });
-
-
-        
+      }
+      })
+  
     }
     else{
       this.alarma.showWarning("Información incompleta, por favor verifique");

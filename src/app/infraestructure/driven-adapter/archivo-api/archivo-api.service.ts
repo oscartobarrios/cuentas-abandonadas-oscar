@@ -57,6 +57,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  CarguesSebra(): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesSebra`;
+    return this.http.get<ICargue[]>(url);
+  }
+
   Cargar(data: IArchivo): Observable<any> {
     const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}`;
     const archivo: FormData = new FormData();
@@ -107,6 +112,16 @@ export class ArchivoApiService {
 
   RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipousuario: string,idUsuario:string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenTesorero/${idCargue}/${tipousuario}/${idUsuario}/${nroperacioncud}/${observacionreintegro}/${nrooperacion}/${nrotransacion}/${observacionsebra}/${observacionconfirmacion}/${tipoorden}`;
+    return this.http.get<any>(url);
+  }
+
+  RegistrarActualizarDatosOrdenSebra(idCargue: string, idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenSebra/${idCargue}/${idUsuario}/${nroperacioncud}/${observacion}`;
+    return this.http.get<any>(url);
+  }
+
+  RegistrarActualizarDatosOrdenSebraTodos(idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenSebraTodos/${idUsuario}/${nroperacioncud}/${observacion}`;
     return this.http.get<any>(url);
   }
 

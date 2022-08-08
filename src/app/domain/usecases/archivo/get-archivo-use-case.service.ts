@@ -34,6 +34,11 @@ export class GetArchivoUseCaseService {
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     return this._archivoGetway.CarguesXEstado(estado);
   }
+
+  CarguesSebra(): Observable<ICargue[]> {
+    return this._archivoGetway.CarguesSebra();
+  }
+
   Cargar(data: IArchivo): Observable<any> {
     return this._archivoGetway.Cargar(data);
   }
@@ -63,7 +68,15 @@ export class GetArchivoUseCaseService {
   RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipoUsuario: string,idUsuario: string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any> {
     return this._archivoGetway.RegistrarActualizarDatosOrdenTesorero(idCargue,tipoUsuario,idUsuario,nroperacioncud,observacionreintegro,nrooperacion,nrotransacion,observacionsebra,observacionconfirmacion,tipoorden);
   }
-  
+
+  RegistrarActualizarDatosOrdenSebra(idCargue: string, idUsuario: string,nroperacioncud: string,observacion: string): Observable<any> {
+    return this._archivoGetway.RegistrarActualizarDatosOrdenSebra(idCargue,idUsuario,nroperacioncud,observacion);
+  }
+
+  RegistrarActualizarDatosOrdenSebraTodos(idUsuario: string,nroperacioncud: string,observacion: string): Observable<any> {
+    return this._archivoGetway.RegistrarActualizarDatosOrdenSebraTodos(idUsuario,nroperacioncud,observacion);
+  }
+
   ActualizarVbnoOrdenTodos(idUsuario: string): Observable<any> {
     return this._archivoGetway.ActualizarVbnoOrdenTodos(idUsuario);
   }

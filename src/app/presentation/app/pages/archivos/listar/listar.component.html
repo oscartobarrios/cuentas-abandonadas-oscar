@@ -68,7 +68,7 @@
                   </button>
                   </div>
 
-                  <div *ngIf="(element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA') && usuario.idPerfil == 1">
+                  <div *ngIf="((element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA')) && (usuario.idPerfil == 1 || usuario.idPerfil == 9)">
                     <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
                       <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar
                     </button>
@@ -76,6 +76,8 @@
                       <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                     </button>
                   </div>
+                  
+
                 </div>
               </mat-cell>
             </ng-container>
