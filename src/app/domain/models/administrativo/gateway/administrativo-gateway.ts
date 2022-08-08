@@ -1,5 +1,6 @@
 import {Observable} from 'rxjs';
 import { EntidadFinanciera } from '../../entidad-financiera/entidad-financiera';
+import { IRequestLogin } from '../../login/ilogin';
 import { FuncionarioModelo } from '../funcionario';
 import { ICargo } from '../icargo';
 import { IEntidad } from '../ientidad';
@@ -23,4 +24,5 @@ export abstract class AdministrativoGateway {
   abstract NotificacionInicioValoracion(): Observable<any>;
   abstract NotificacionInicioReintegro(): Observable<any>;
   abstract NotificacionInicioTraslado(): Observable<any>;
+  abstract verificarLogin(data: IRequestLogin): Observable<any>;
 }

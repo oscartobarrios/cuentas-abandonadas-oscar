@@ -1,0 +1,62 @@
+<mat-card>
+    <h2>CAMBIO DE CONTRASEÑA</h2>
+    <form [formGroup]="DatosFormVerificar" method="post" (ngSubmit)="onSubmitverificar()" (keydown.enter)="$event.preventDefault()">
+
+            <mat-card-content style="margin-top: 40px;">
+                <div>Usted va a realizar el cambio de contraseña para el usuario: {{this.usuario.nombreUsuario}}</div>
+                <br>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Usuario *</label>
+                    <input type="text" formControlName="usuario" class="form-control" maxlength="50">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Contraseña *</label>
+                    <input type="password" formControlName="contrasena" class="form-control" maxlength="50">
+                </div>
+                <br>
+                <div class="row" fxLayoutAlign="center center" *ngIf="!sw">
+                    <div class="col-sm-3 col-md-3" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Verificar">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/perfil']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+
+    </form>
+   
+</mat-card>
+<mat-card *ngIf="sw">
+    <h2>DATOS DE ACTUALIZACION</h2>
+    <form [formGroup]="DatosFormCambiar" method="post" (ngSubmit)="onSubmitcambiar()" (keydown.enter)="$event.preventDefault()">
+            <mat-card-content style="margin-top: 40px;">
+                <div>Nombre de usuario: {{this.usuario.nombreUsuario}}</div>
+                <br>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Contraseña</label>
+                    <input type="password" formControlName="contrasenacambio" class="form-control" maxlength="50">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Confirmar Contraseña</label>
+                    <input type="password" formControlName="contrasenaconfirmar" class="form-control" maxlength="50">
+                </div>
+                <br>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+
+                    <div class="col-sm-3 col-md-3" *ngIf="sw">
+                        <input type="submit" class="form-control btn-primary-icetex" value="Cambiar Contraseña">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/perfil']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+
+    </form>
+   
+</mat-card>
+

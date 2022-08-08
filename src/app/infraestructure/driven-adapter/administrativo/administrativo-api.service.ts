@@ -8,6 +8,7 @@ import { IEntidad } from "src/app/domain/models/administrativo/ientidad";
 import { IFuncionario } from "src/app/domain/models/administrativo/iFuncionario";
 import { IUsuario } from "src/app/domain/models/administrativo/iusuario";
 import { EntidadFinanciera } from "src/app/domain/models/entidad-financiera/entidad-financiera";
+import { IRequestLogin } from "src/app/domain/models/login/ilogin";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -111,6 +112,12 @@ import { environment } from "src/environments/environment";
       const url = `${environment.rest.endpoint}/Notificacion/InicioReintegro`;
       return this.http.get<any>(url);
     }
+
+    verificarLogin(data: IRequestLogin): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/VerificarLogin`;
+      return this.http.post<EntidadFinanciera>(url, data);
+    }
+
 
 }
 
