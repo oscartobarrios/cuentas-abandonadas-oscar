@@ -31,6 +31,8 @@ export class ConsolidadoEntidadComponent implements OnInit {
   idOrganizacion: any;
   public nombreArchivo = 'Reporte Consolidado Entidad.xlsx';
   dato: any;
+  public fecha: Date;
+  public fechaahora: string;
 
   constructor(private _route: ActivatedRoute,
               private alarma: SweetAlertService,
@@ -58,11 +60,11 @@ export class ConsolidadoEntidadComponent implements OnInit {
 
     this.columns = [
       { prop: 'cargueNombre', name: 'Nombre cargue' },
-      { prop: 'fechaCargue', name: 'Fecha cargue' },
-      { prop: 'nroCuenta', name: 'Número cuenta' },
+      { prop: 'fechCargue', name: 'Fecha cargue' },
+      { prop: 'numeroCuenta', name: 'Número cuenta' },
       { prop: 'monto', name: 'Monto', cellTemplate: this.monedaTemplate },
-      { prop: 'tasaPonderada', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
-      { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
+      { prop: 'tasa', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
+      { prop: 'remuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
 
     ];
   }
@@ -78,6 +80,16 @@ export class ConsolidadoEntidadComponent implements OnInit {
     if(this.fechaCorte === undefined || this.fechaCorte === "undefined" || this.fechaCorte === "")
     {
       this.alarma.showWarning("Información incompleta, por favor ingrese la fecha para poder consultar");
+      return;
+    }
+
+    if(this.fechaCorte === undefined || this.fechaCorte === "undefined" || this.fechaCorte === "")
+    {
+      this.alarma.showWarning("Información incompleta, por favor ingrese la fecha para poder consultar");
+      return;
+    }
+
+    if(this.validarFechaCorte() == 1){
       return;
     }
 
@@ -117,6 +129,10 @@ export class ConsolidadoEntidadComponent implements OnInit {
       return;
     }
 
+    if(this.validarFechaCorte() == 1){
+      return;
+    }
+
     this.setPage({ offset: 0 });
     this.page.data = {
       "entidad": this.idOrganizacion,      
@@ -127,6 +143,38 @@ export class ConsolidadoEntidadComponent implements OnInit {
 
 
   }
+
+  validarFechaCorte(){
+
+    this.fecha = new Date();
+
+    if (this.fecha.getMonth() + 1 >= 1 && this.fecha.getMonth() + 1 <= 9)
+    {
+     
+      if (this.fecha.getDate() + 1 >= 1 && this.fecha.getDate() + 1 <= 9)
+      {
+        this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();        
+      }else{
+        this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
+      }
+    } else{
+      if (this.fecha.getDate() + 1 >= 1 && this.fecha.getDate() + 1 <= 9)
+      {
+        this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();        
+      }else{
+        this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
+      }
+    }
+
+    if(this.fechaCorte > this.fechaahora)
+    {
+      this.alarma.showWarning("La fecha de corte no puede ser mayor a la fecha actual");
+      return 1;
+    }else{
+      return 0;
+    }
+  }
+
 
   // Conulta de registros
  consultarRegistros(): void {
