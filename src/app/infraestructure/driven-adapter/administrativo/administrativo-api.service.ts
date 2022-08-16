@@ -117,7 +117,10 @@ import { environment } from "src/environments/environment";
       const url = `${environment.rest.endpoint}/Administrativo/VerificarLogin`;
       return this.http.post<EntidadFinanciera>(url, data);
     }
-
+    ActualizarClave(data: any): Observable<any>{
+      const url = `${environment.rest.endpoint}/Administrativo/ActualizarClaveUsuario`;
+      return this.http.post<any>(url,data);
+    }
 
 }
 

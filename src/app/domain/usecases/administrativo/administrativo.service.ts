@@ -85,4 +85,8 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.verificarLogin(data);
   }
 
+  ActualizarClave(data: any): Observable<any> {
+    return this._administrativoGetway.ActualizarClave(data);
+  }
+
 }
