@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICalendario } from 'src/app/domain/models/calendario/calendario';
 import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
 import { GetCalendarioUseCaseService } from 'src/app/domain/usecases/calendario/get-calendario-use-case-service';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import Swal from 'sweetalert2';
 
@@ -30,7 +31,8 @@ export class EditarCalendarioComponent implements OnInit {
               private _notifications: NotificationsService,
               private _router: Router,
               private route: ActivatedRoute,
-              private _servicioAdministrativo: GetAdministrativoService) {
+              private _servicioAdministrativo: GetAdministrativoService,
+              private alarma: SweetAlertService) {
     this.formInit();
    }
 
@@ -220,15 +222,34 @@ export class EditarCalendarioComponent implements OnInit {
     const preloader = this._notifications.showPreloader();
     switch(this.tipoCalendarioForm.controls['idTipoCargue'].value)
     {
-      case '2045': this._servicioAdministrativo.NotificacionInicioValoracion().subscribe();
+      case '2045': this._servicioAdministrativo.NotificacionInicioValoracion().subscribe((res) => {
+                    console.log(res);
+                    this.alarma.showSuccess("Notificación enviada exitosamente");
+                    preloader.close();
+                  },  (error: any)  => {
+                    console.log(error);
+                    preloader.close();
+                  });
                   break;
-      case '1': this._servicioAdministrativo.NotificacionInicioTraslado().subscribe();
+      case '1': this._servicioAdministrativo.NotificacionInicioTraslado().subscribe((res) => {
+                  console.log(res);
+                  this.alarma.showSuccess("Notificación enviada exitosamente");
+                  preloader.close();
+                },  (error: any)  => {
+                  console.log(error);
+                  preloader.close();
+                });
                 break;
-      case '13560023': this._servicioAdministrativo.NotificacionInicioReintegro().subscribe();
+      case '13560023': this._servicioAdministrativo.NotificacionInicioReintegro().subscribe((res) => {
+                          console.log(res);
+                          this.alarma.showSuccess("Notificación enviada exitosamente");
+                          preloader.close();
+                        },  (error: any)  => {
+                          console.log(error);
+                          preloader.close();
+                        });
                        break;
       default:  break;
     }
-    preloader.close();
-
   }
 }
