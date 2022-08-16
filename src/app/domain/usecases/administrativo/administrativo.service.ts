@@ -7,6 +7,7 @@ import { IEntidad } from '../../models/administrativo/ientidad';
 import { IFuncionario } from '../../models/administrativo/iFuncionario';
 import { IUsuario } from '../../models/administrativo/iusuario';
 import { EntidadFinanciera } from '../../models/entidad-financiera/entidad-financiera';
+import { IRequestLogin } from '../../models/login/ilogin';
 import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
 
 @Injectable({
@@ -78,6 +79,14 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
 
   NotificacionInicioTraslado(): Observable<any> {
     return this._administrativoGetway.NotificacionInicioTraslado();
+  }
+
+  verificarLogin(data: IRequestLogin): Observable<any> {
+    return this._administrativoGetway.verificarLogin(data);
+  }
+
+  ActualizarClave(data: any): Observable<any> {
+    return this._administrativoGetway.ActualizarClave(data);
   }
 
 }

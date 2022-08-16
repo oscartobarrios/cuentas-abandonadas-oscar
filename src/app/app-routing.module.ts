@@ -35,6 +35,7 @@ import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/c
 import { DatosReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-reintegro-tesorero/datos-reintegro-tesorero.component';
 import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-traslado-tesorero/datos-traslado-tesorero.component';
 import { DatosSebraComponent } from './presentation/app/pages/autorizacionDatos/datos-sebra/datos-sebra.component';
+import { CambioContrasenaComponent } from './presentation/app/pages/administrador/cambio-contrasena/cambio-contrasena.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -79,6 +80,7 @@ const routes: Routes = [
       {path: 'datos-reintegro-tesorero/:id', component: DatosReintegroTesoreroComponent},
       {path: 'datos-traslados-tesorero/:id', component: DatosTrasladoTesoreroComponent},
       {path: 'datos-sebra/:id', component: DatosSebraComponent},
+      {path: 'cambiocontrasena', component: CambioContrasenaComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

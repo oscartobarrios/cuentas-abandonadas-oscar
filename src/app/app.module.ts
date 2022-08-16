@@ -77,6 +77,7 @@ import { ConsolidadoEntidadComponent } from './presentation/app/pages/reportes/c
 import { DatosReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-reintegro-tesorero/datos-reintegro-tesorero.component';
 import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-traslado-tesorero/datos-traslado-tesorero.component';
 import { DatosSebraComponent } from './presentation/app/pages/autorizacionDatos/datos-sebra/datos-sebra.component';
+import { CambioContrasenaComponent } from './presentation/app/pages/administrador/cambio-contrasena/cambio-contrasena.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -132,7 +133,8 @@ registerLocaleData(localEs);
     ConsolidadoEntidadComponent,
     DatosReintegroTesoreroComponent,
     DatosTrasladoTesoreroComponent,
-    DatosSebraComponent
+    DatosSebraComponent,
+    CambioContrasenaComponent
   ],
   imports: [
     AppRoutingModule,
