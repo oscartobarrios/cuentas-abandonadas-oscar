@@ -27,6 +27,7 @@ export class EditarCalendarioComponent implements OnInit {
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);
+  public notificacion: boolean = true;
   constructor(private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
               private _notifications: NotificationsService,
               private _router: Router,
@@ -99,6 +100,15 @@ export class EditarCalendarioComponent implements OnInit {
       this.tipoCalendarioForm.controls['fechaCorteCertificaciones'].setValue(formatDate(ResponseData.fechaCorteCertificaciones,'yyyy-MM-dd',"en-US"));
       this.tipoCalendarioForm.controls['fechaTrasMon'].setValue(formatDate(ResponseData.fechaTrasMon,'yyyy-MM-dd',"en-US"));
       this.tipoCalendarioForm.controls['uvr'].setValue(ResponseData.uvr);
+
+      let date: Date = new Date();
+      var fechaHasta = new Date(ResponseData.fechaHasta);
+      var difference= fechaHasta.getTime() - date.getTime();
+
+      if(difference <= 0){
+        this.notificacion = false;
+      }
+
     },  (error: any)  => {
         console.log(error);
     });
