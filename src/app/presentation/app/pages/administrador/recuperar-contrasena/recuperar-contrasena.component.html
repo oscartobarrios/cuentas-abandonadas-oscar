@@ -1,0 +1,178 @@
+<header-organism></header-organism>
+<div fxLayout fxLayoutAlign="center center" class="login-container">
+    
+        <mat-card class="mat-elevation-z8" style="padding: 80px">
+            <mat-card-header>
+            <img src="./assets/img/svg/logo-icetex-blue.svg" alt="ICETEX" class="img-fluid d-block mx-auto"/>
+            </mat-card-header>
+            <form [formGroup]="DatosFormVerificar" method="POST" fxLayout="column" (ngSubmit)="onSubmitverificar()">
+            <mat-card-content>
+               
+                    <h2>RECUPERACIÓN DE CONTRASEÑA</h2>   
+                    <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-24">
+                        <!-- <label>Usuario *</label>
+                        <input type="text" formControlName="usuario" class="form-control" maxlength="50"> -->
+
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Usuario</mat-label>
+                            <input matInput formControlName="usuario" placeholder="Usuario" maxlength="50"/>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="row" fxLayoutAlign="center center" *ngIf="!swenviar">
+                        <div class="col-sm-6 col-md-6" >
+                            <input type="submit" class="form-control btn-primary-icetex" value="Enviar">
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <button [routerLink]="['/login']" class="form-control btn-primary-icetex">Rechazar</button>
+                        </div>
+                    </div>
+               
+            </mat-card-content>
+            </form>
+
+            <form [formGroup]="DatosFormCodigo" method="POST" fxLayout="column" (ngSubmit)="onSubmitCodigo()" *ngIf="swenviar">
+              <h2>CÓDIGO DE VERIFICACIÓN</h2>
+                <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-10">
+
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Código de Verificación</mat-label>
+                        <input matInput formControlName="codigo" placeholder="Usuario" maxlength="50"/>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="row" fxLayoutAlign="center center" *ngIf="!swcodigo">
+                    <div class="col-sm-6 col-md-6" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Verificar">
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button [routerLink]="['/login']" class="form-control btn-primary-icetex">Rechazar</button>
+                    </div>
+                </div>
+            </form>
+
+            <form [formGroup]="frmSignup" method="POST" fxLayout="column" (ngSubmit)="onSubmitcambiar()" *ngIf="swcodigo">
+              <h2>CAMBIO DE CONTRASEÑA</h2>
+                <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-10">
+
+                    <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" matInput formControlName="password" placeholder="Contraseña" maxlength="50"/>
+                    </mat-form-field>
+
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('minlength') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Mínimo 12 caracteres alfanuméricos
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasNumber') ? 'cancel' :
+                            'check_circle' }}</i>
+                          Debe contener al menos 1 Numero
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                            'check_circle' }}</i>
+                          Debe contener al menos 1 letra mayuscula
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Debe contener al menos 1 letra minúsculas
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Debe contener al menos 1 carácter especial
+                        </label>
+                        <br>
+
+                        <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Confirmar Contraseña</mat-label>
+                            <input type="password" matInput formControlName="confirmPassword" placeholder="Confirmar Contraseña" maxlength="50"/>
+                        </mat-form-field>
+                        <label class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                            La contraseña no coincide
+                        </label>
+
+
+                </div>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+                    <div class="col-sm-6 col-md-6" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Aceptar">
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button [routerLink]="['/login']" class="form-control btn-primary-icetex">Rechazar</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <!-- <form [formGroup]="frmSignup" method="POST" fxLayout="column" (submit)="onSubmitcambiar()">
+                <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-10">
+                <mat-form-field appearance="outline" fxFlex>
+
+                        <label for="password" >Contraseña:</label>
+                        <input id="password" formControlName="password" type="password" class="form-control" maxlength="50">
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('minlength') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Mínimo 12 caracteres alfanuméricos
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasNumber') ? 'cancel' :
+                            'check_circle' }}</i>
+                          Debe contener al menos 1 Numero
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                            'check_circle' }}</i>
+                          Debe contener al menos 1 letra mayuscula
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Debe contener al menos 1 letra minúsculas
+                        </label>
+                        <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                          <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                            frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                            'check_circle' }}</i>
+                            Debe contener al menos 1 carácter especial
+                        </label>
+              
+                      <label>Confirmar Contraseña</label>
+                      <input type="password" formControlName="confirmPassword" class="form-control" maxlength="50">
+                      <label class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                          La contraseña no coincide
+                      </label>
+                    </mat-form-field>
+                </div>
+                <br>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+                    <div class="col-sm-6 col-md-6" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Verificar">
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <button [routerLink]="['/login']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+        
+              </form> -->
+        </mat-card>
+
+</div>
+<footer-organism></footer-organism>

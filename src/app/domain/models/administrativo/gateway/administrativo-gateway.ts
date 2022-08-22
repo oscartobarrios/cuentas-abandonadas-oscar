@@ -26,4 +26,6 @@ export abstract class AdministrativoGateway {
   abstract NotificacionInicioTraslado(): Observable<any>;
   abstract verificarLogin(data: IRequestLogin): Observable<any>;
   abstract ActualizarClave(data:any): Observable<any>;
+  abstract enviarcodigoverificacion(usuario: string): Observable<any>;
+  abstract ConsultarUsuarioPorNombre(usuario: string): Observable<any>;
 }
