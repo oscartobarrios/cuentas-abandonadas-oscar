@@ -122,5 +122,16 @@ import { environment } from "src/environments/environment";
       return this.http.post<any>(url,data);
     }
 
+    enviarcodigoverificacion(usuario:number): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/enviarcodigoverificacion/${usuario}`;
+      return this.http.get<any>(url);
+    }
+
+    ConsultarUsuarioPorNombre(usuario:number): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetUsuarioByUsername/${usuario}`;
+      return this.http.get<any>(url);
+    }
+
+
 }
 

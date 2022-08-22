@@ -89,4 +89,12 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.ActualizarClave(data);
   }
 
+  enviarcodigoverificacion(usuario: string): Observable<any> {
+    return this._administrativoGetway.enviarcodigoverificacion(usuario);
+  }
+
+  ConsultarUsuarioPorNombre(usuario: string): Observable<any> {
+    return this._administrativoGetway.ConsultarUsuarioPorNombre(usuario);
+  }
+
 }
