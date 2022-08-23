@@ -117,7 +117,12 @@ export class ConsolidadoEntidadComponent implements OnInit {
       downloadLink.click();
 
       Swal.close();
-    })
+    },  (error: any)  => {
+      console.log(error);
+      Swal.close();
+      this.alarma.showError(error);
+      
+    });
   
   }
 
