@@ -123,7 +123,7 @@ export class SubMenuOrganismComponent implements OnInit {
     },
     {
       title: "Generar valor de subastas",
-      url: "#",
+      url: "listarvalorsubasta",
       rols: [4,5]
     },
     {
