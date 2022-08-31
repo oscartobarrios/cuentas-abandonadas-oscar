@@ -33,7 +33,7 @@ export class DatosSebraComponent implements OnInit {
   formInit(){
 
     this.DatosSebraForm = new FormGroup({
-      nroperacioncud: new FormControl('', [Validators.required]),
+      nroperacioncud: new FormControl('0'),
       observacion: new FormControl(''),
       
       });

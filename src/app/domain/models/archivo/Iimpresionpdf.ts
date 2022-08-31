@@ -9,5 +9,7 @@ export interface Iimpresionpdf{
     numeroCuenta: number,
     fechaTransmision: Date,
     tasaPonderada: number,
-    observacion: string
+    observacion: string,
+    cuentaCudDestino: number,
+    portafolioDestino: number,
 }

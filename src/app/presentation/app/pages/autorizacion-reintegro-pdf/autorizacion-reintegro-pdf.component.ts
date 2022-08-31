@@ -31,14 +31,15 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
 
     this._getarchivousecase.GetPfd(this.id,"REINTEGRO").subscribe((ResultData) => {
 
+      
       this.datosImpresion = ResultData;
-      console.log(this.datosImpresion);
+     
       
     });
 
     this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.id).subscribe((ResultData) => {
-      console.log(ResultData);
 
+      console.log(ResultData);
       this.datosOrden =  ResultData;
 
       //para el funcionario administrativo
@@ -48,8 +49,6 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
 
           this.funcionarioAdmin = ResultData;
 
-          console.log(this.funcionarioAdmin);
-          
 
         });
       }
@@ -77,7 +76,6 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
         if(ResultData.idFuncionarioSebra != 0)
         {
           this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioSebra).subscribe((ResultData) => {
-            console.log(ResultData);
             this.funcionarioSebra = ResultData;
 
           });
