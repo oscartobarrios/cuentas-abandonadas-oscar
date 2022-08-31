@@ -204,7 +204,7 @@
                 <b>Cuenta CUD Destino</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:30%;font-size: 80%">
-                62011200
+                {{ datosImpresion['cuentaCudDestino']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;width:20%;font-size: 80%">
                 <b>Valor de Giro</b>
@@ -220,7 +220,7 @@
                 <b>Portafolio Destino</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                0
+                {{ datosImpresion['portafolioDestino']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>C&oacute;digo Transacci&oacute;n</b>
@@ -263,13 +263,13 @@
                 <b>Fecha y Hora</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                {{ datosImpresion['fechaInicial']}}
+                {{datosOrden['fechaVbnoTesorero']}}
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Fecha y Hora</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                {{fecha | date: 'dd/MM/yyyy'}}
+                {{datosOrden['fechaVbnoSebra']}}
             </td>
         </tr>
 
@@ -284,7 +284,8 @@
                 <b>N° Operaci&oacute;n CUD</b>
             </td>
             <td style="border-bottom:2px solid;">
-                {{datosOrden['nroOperacionCudSebra']}}
+                <!-- {{datosOrden['nroOperacionCudSebra']}} -->
+                {{datosOrden['nroOperacionCud']}}
             </td>
         </tr>
 
@@ -338,14 +339,18 @@
             <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
                 <b>Firma</b>
             </td>
-            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
+            <td style="border-right:2px solid;border-bottom:2px solid">
+                <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <p style="font-size: 10px;margin-bottom: 20px;">{{datosOrden['fechaVbnoTesorero']}}</p>
+                <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
                 <b>Firma</b>
             </td>
             <td style="border-bottom:2px solid;font-size: 80%">
-                <img *ngIf="funcionarioSebra.firma != null" [src]="funcionarioSebra.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
+                <!-- <img *ngIf="funcionarioSebra.firma != null" [src]="funcionarioSebra.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <p style="font-size: 10px;margin-bottom: 20px;">{{datosOrden['fechaVbnoSebra']}}</p>
+                <p style="font-weight: bold;font-size: 15px;">{{funcionarioSebra['nombreUsuario']}}</p>
             </td>
         </tr>
 
@@ -364,7 +369,8 @@
                 <b>Fecha y Hora Aplicaci&oacute;n</b>
             </td>
             <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
-                {{fecha | date: 'dd/MM/yyyy'}}
+                <!-- {{fecha | date: 'dd/MM/yyyy'}} -->
+                {{datosOrden['fechaVbnoTesorero']}}
             </td>
         </tr>
 
@@ -427,7 +433,9 @@
                 <b>Firma</b>
             </td>
             <td style="border-right:2px solid;">
-                <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
+                <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <p style="font-size: 10px;margin-bottom: 20px;">{{datosOrden['fechaVbnoTesorero']}}</p>
+                <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>
             </td>
         </tr>
 

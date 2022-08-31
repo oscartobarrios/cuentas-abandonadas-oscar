@@ -86,7 +86,12 @@ export class CertificacionSaldosComponent implements OnInit {
         
         this.swimpresion = true;
         Swal.close();
-      })
+      },  (error: any)  => {
+        console.log(error.error);
+        Swal.close();
+        this.alarma.showError(error.error);
+        
+      });
 
       // this.swimpresion = true;
     }

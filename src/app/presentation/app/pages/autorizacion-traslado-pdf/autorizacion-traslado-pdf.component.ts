@@ -30,14 +30,14 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this._getarchivousecase.GetPfd(this.id,"TRASLADO").subscribe((ResultData) => {
-
+     
       this.datosImpresion = ResultData;
       
     });
 
     this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.id).subscribe((ResultData) => {
+    
       console.log(ResultData);
-
       this.datosOrden =  ResultData;
 
       //para el funcionario administrativo
@@ -65,7 +65,6 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
       if(ResultData.idFuncionarioTesorero != 0)
       {
         this._servicioAdministrativo.consultarUsuario(ResultData.idFuncionarioTesorero).subscribe((ResultData) => {
-          console.log(ResultData);
           this.funcionarioTesorero = ResultData;
 
         });
