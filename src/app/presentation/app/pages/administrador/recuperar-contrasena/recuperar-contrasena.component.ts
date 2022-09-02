@@ -102,7 +102,7 @@ export class RecuperarContrasenaComponent implements OnInit {
       this._servicioAdministrativo.enviarcodigoverificacion(usuario).subscribe((ResponseData) => {
         Swal.close()
         console.log(ResponseData.idUsuario);
-        this.alarma.showSuccess("Correo enviado exitosamente con el código de verificación, por favor verifique...");
+        this.alarma.showSuccess("Correo enviado exitosamente con el código de verificación, por favor revise su correo");
         this.DatosFormVerificar.get("usuario").disable();
         this.swenviar = true;
         
@@ -130,7 +130,6 @@ export class RecuperarContrasenaComponent implements OnInit {
       const{usuario} = this.DatosFormVerificar.value;
       const{codigo} = this.DatosFormCodigo.value;
 
-
       Swal.fire({
         title: 'Espere por favor, Verificando',
         allowOutsideClick:false,
@@ -144,12 +143,13 @@ export class RecuperarContrasenaComponent implements OnInit {
         // console.log(ResponseData.idUsuario);
         this.idusuario = ResponseData.idUsuario;
         debugger;
-        if(ResponseData.codigoVerificacion == codigo){
+
+        if(ResponseData.codigoVerificacion.toString() === codigo){
           this.alarma.showSuccess("Código de verificación ingresado exitosamente");
           this.DatosFormCodigo.get("codigo").disable();
           this.swcodigo = true;
         }else{
-          this.alarma.showWarning("El Código de verificación ingresado no es correcto, por favor verifique...");
+          this.alarma.showWarning("El Código de verificación ingresado no es correcto, por favor intente nuevamente...");
         }
        
         
