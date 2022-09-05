@@ -2,14 +2,15 @@
 <div fxLayout fxLayoutAlign="center center" class="login-container">
     
         <mat-card class="mat-elevation-z8" style="padding: 80px">
-            <mat-card-header>
+            <!-- <mat-card-header> -->
             <img src="./assets/img/svg/logo-icetex-blue.svg" alt="ICETEX" class="img-fluid d-block mx-auto"/>
-            </mat-card-header>
+            <!-- </mat-card-header> -->
             <form [formGroup]="DatosFormVerificar" method="POST" fxLayout="column" (ngSubmit)="onSubmitverificar()">
             <mat-card-content>
-               
-                    <h2 style="text-align:center">CUENTAS ABANDONADAS</h2>
-                    <h2>RECUPERACIÓN DE CONTRASEÑA</h2>
+            <br>
+            <br>               
+                    <h1 style="text-align:center;font-weight: bold;">CUENTAS ABANDONADAS</h1>
+                    <h2 style="text-align:center">RECUPERACIÓN DE CONTRASEÑA</h2>
                     <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-24" style="color: blue;">
                         <!-- <label>Usuario *</label>
                         <input type="text" formControlName="usuario" class="form-control" maxlength="50"> -->
@@ -34,7 +35,7 @@
             </form>
 
             <form [formGroup]="DatosFormCodigo" method="POST" fxLayout="column" (ngSubmit)="onSubmitCodigo()" *ngIf="swenviar">
-              <h2>CÓDIGO DE VERIFICACIÓN</h2>
+              <!-- <h2>CÓDIGO DE VERIFICACIÓN</h2> -->
                 <div fxLayout="column" fxLayoutAlign="space-around" class="padding-top-10">
 
                     <mat-form-field appearance="outline" fxFlex>
