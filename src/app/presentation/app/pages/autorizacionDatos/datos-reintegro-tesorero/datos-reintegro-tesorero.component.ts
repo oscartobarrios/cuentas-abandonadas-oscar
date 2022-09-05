@@ -26,8 +26,8 @@ export class DatosReintegroTesoreroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargardatos();
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
+    this.idcargo = this.route.snapshot.params['id'];
   }
 
   
@@ -38,33 +38,6 @@ export class DatosReintegroTesoreroComponent implements OnInit {
       observacion: new FormControl(''),
       
       });
-  }
-
-
-  cargardatos(){
-
-    Swal.fire({
-      title: 'Espere por favor, Consultando Datos',
-      allowOutsideClick:false,
-      didOpen: () => {
-        Swal.showLoading()
-      }
-    });
-
-    this.idcargo = this.route.snapshot.params['id'];
-    this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.idcargo).subscribe((ResultData) => {
-      console.log(ResultData);
-
-      if(ResultData.nroOperacionCud != 0)
-      {
-        this.DatosReintegroForm.controls["nroperacioncud"].setValue(ResultData.nroOperacionCud);
-      }
-
-      this.DatosReintegroForm.controls["observacion"].setValue(ResultData.observacionReintegro);
-
-      Swal.close()
-      
-    });
   }
 
   onSubmit(){
@@ -100,8 +73,16 @@ export class DatosReintegroTesoreroComponent implements OnInit {
           }
         });
 
+        const data:any = {
+          idCargue: this.idcargo,
+          idusuario: this.usuario.idUsuario,
+          nroOperacionCud:nroperacioncud,
+          observacionReintegro:observacionreintegro,
+          tipo: 'REINTEGRO'
+        }; 
 
-        this._getarchivousecase.RegistrarActualizarDatosOrdenTesorero(this.idcargo,this.usuario.idPerfil,this.usuario.idUsuario,nroperacioncud,observacionreintegro,'0','0','undefined','undefined','REINTEGRO').subscribe((ResponseData) => {
+
+        this._getarchivousecase.RegistrarActualizarDatosOrdenTesoreroReintegro(data).subscribe((ResponseData) => {
           Swal.close()
           this.alarma.showSuccess("Guardado exitosamente");
           this._router.navigate([`/autorizacion-cargues`]);

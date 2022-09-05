@@ -72,6 +72,7 @@ export class CargoRegistroComponent implements OnInit {
     if (!this.cargoForm.invalid) {
 
       const{nombre} = this.cargoForm.value;
+      
       const data:ICargo = {
         idCargo: this.idcargo,
         nombre: nombre

@@ -110,9 +110,15 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
-  RegistrarActualizarDatosOrdenTesorero(idCargue: string, tipousuario: string,idUsuario:string,nroperacioncud: string,observacionreintegro: string,nrooperacion:string,nrotransacion: string,observacionsebra: string,observacionconfirmacion:string,tipoorden:string): Observable<any>{
-    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenTesorero/${idCargue}/${tipousuario}/${idUsuario}/${nroperacioncud}/${observacionreintegro}/${nrooperacion}/${nrotransacion}/${observacionsebra}/${observacionconfirmacion}/${tipoorden}`;
-    return this.http.get<any>(url);
+  RegistrarActualizarDatosOrdenTesoreroReintegro(dato:any): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenTesoreroReintegro`;
+    return this.http.post<any>(url, dato);
+  }
+
+  RegistrarActualizarDatosOrdenTesoreroTraslado(dato: any): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenTesoreroTraslado`;
+        return this.http.post<any>(url, dato);
+
   }
 
   RegistrarActualizarDatosOrdenSebra(idCargue: string, idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>{
