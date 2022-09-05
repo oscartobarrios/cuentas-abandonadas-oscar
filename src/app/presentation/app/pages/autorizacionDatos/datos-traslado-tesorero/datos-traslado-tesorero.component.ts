@@ -26,7 +26,6 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargardatos();
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
   }
 
@@ -38,38 +37,9 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
       observacionsebra: new FormControl(''),
       observacionconfirmacion: new FormControl(''),
       });
-  }
 
-  cargardatos(){
+      this.idcargo = this.route.snapshot.params['id'];
 
-    Swal.fire({
-      title: 'Espere por favor, Consultando Datos',
-      allowOutsideClick:false,
-      didOpen: () => {
-        Swal.showLoading()
-      }
-    });
-
-    this.idcargo = this.route.snapshot.params['id'];
-    this._getarchivousecase.GetObtenerOrdenCumplimientoIdCargue(this.idcargo).subscribe((ResultData) => {
-      console.log(ResultData);
-
-      if(ResultData.nroOperacion != 0)
-      {
-        this.DatosTrasladosForm.controls["nrooperacion"].setValue(ResultData.nroOperacion);
-      }
-
-      if(ResultData.nroTransacion != 0)
-      {
-        this.DatosTrasladosForm.controls["nrotransaccion"].setValue(ResultData.nroTransacion);
-      }
-      
-      this.DatosTrasladosForm.controls["observacionsebra"].setValue(ResultData.observacionSebra);
-      this.DatosTrasladosForm.controls["observacionconfirmacion"].setValue(ResultData.observacionConfirmacion);
-
-      Swal.close()
-
-    });
   }
 
   onSubmit(){
@@ -114,8 +84,19 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
           }
         });
 
+        debugger;
 
-      this._getarchivousecase.RegistrarActualizarDatosOrdenTesorero(this.idcargo,this.usuario.idPerfil,this.usuario.idUsuario,'0','undefined',nrooperacion,nrotransaccion,observacionS,observacionC,'TRANSACCION').subscribe((ResponseData) => {
+        const data:any = {
+          idCargue: this.idcargo,
+          idusuario: this.usuario.idUsuario,
+          nroOperacion:nrooperacion,
+          nroTransacion:nrotransaccion,
+          observacionSebra: observacionS,
+          observacionConfirmacion:observacionC,
+          tipo: 'TRANSACCION'
+        };  
+
+      this._getarchivousecase.RegistrarActualizarDatosOrdenTesoreroTraslado(data).subscribe((ResponseData) => {
           Swal.close()
           this.alarma.showSuccess("Guardado exitosamente");
           this._router.navigate([`/autorizacion-cargues`]);
