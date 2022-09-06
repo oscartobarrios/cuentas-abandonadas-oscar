@@ -29,5 +29,10 @@ import { environment } from "src/environments/environment";
         return this.http.post<any>(url, dataQuery);
     }
 
+    ListarSubastas(): Observable<any[]> {
+      const url = `${environment.rest.endpoint}/Subasta/GetValoresSubastas`;
+      return this.http.get<any[]>(url);
+    }
+
     
   }

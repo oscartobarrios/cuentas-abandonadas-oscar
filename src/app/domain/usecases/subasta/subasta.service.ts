@@ -13,5 +13,9 @@ import { SubastaGateway } from "../../models/subasta/gateway/subasta-gateway";
         return this._subastaGetway.generarvalorsubasta(IValor);
     }
 
+    ListarSubastas(): Observable<any[]> {
+      return this._subastaGetway.ListarSubastas();
+    }
+
 
   }
