@@ -48,13 +48,13 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
     if (!this.DatosTrasladosForm.invalid) {
 
       Swal.fire({
-        title: 'Esta seguro que desea Guardar estos Datos?',
-        text: "No podrás revertir esto!",
+        title: '¿Está seguro que desea guardar estos datos?',
+        text: "Una vez guradado no se podrá revertir",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Rechazarlo!',
+        confirmButtonText: 'Si, Guardar',
         cancelButtonText: "Cancelar",
         allowOutsideClick:false,
       }).then((result) => {
