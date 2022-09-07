@@ -15,10 +15,11 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
   private id: any;
   public funcionarioAdmin:any = "";
   public funcionarioAutorizador:any = "";
-  public datosOrden: any = "";
+  public datosOrden: any = {};
   public funcionarioTesorero: any = "";
   public funcionarioSebra: any = "";
-
+  public vbnotesoreria: number = 0;
+  public vbnosebra: number = 0;
   public fecha: string;
 
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
@@ -28,6 +29,8 @@ export class AutorizacionReintegroPdfComponent implements OnInit {
   ngOnInit(): void {
     this.fecha = Date();
     this.id = this.route.snapshot.params['id'];
+    this.vbnotesoreria = this.route.snapshot.params['vnotesorero'];
+    this.vbnosebra = this.route.snapshot.params['vnosebra'];
 
     this._getarchivousecase.GetPfd(this.id,"REINTEGRO").subscribe((ResultData) => {
 

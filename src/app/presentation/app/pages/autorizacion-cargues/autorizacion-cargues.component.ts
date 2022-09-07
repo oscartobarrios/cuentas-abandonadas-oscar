@@ -45,7 +45,6 @@ export class AutorizacionCarguesComponent implements OnInit {
     this.idOrganizacion = this.usuario.idOrganizacion;
     const preloader = this._notifications.showPreloader();
 
-   debugger;
    if(this.usuario.idPerfil == "10")
    {
     this._getarchivousecase.CarguesSebra().subscribe((ResultData) => {
@@ -133,15 +132,15 @@ export class AutorizacionCarguesComponent implements OnInit {
     }
   }
 
-  llevarpdf(id: number,tipo: string)
+  llevarpdf(id: number,tipo: string,vbnotesorero: number,vbnosebra: number)
   {
-
+    debugger
 
     if(tipo === 'TRASLADO')
     {
-      this._router.navigate([`/autorizacion-traslado-pdf/${id}`]);
+      this._router.navigate([`/autorizacion-traslado-pdf/${id}/${vbnotesorero}/${vbnosebra}`]);
     }else{
-      this._router.navigate([`/autorizacion-reintegro-pdf/${id}`]);
+      this._router.navigate([`/autorizacion-reintegro-pdf/${id}/${vbnotesorero}/${vbnosebra}`]);
     }
 
 
