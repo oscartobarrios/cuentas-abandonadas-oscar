@@ -171,8 +171,8 @@
         <td style="border-right:2px solid;border-bottom:2px solid;width:16%;font-size: 70%"><b>Fecha y Hora de Traslado:</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;width:34%;font-size: 70%"> 
             
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
-                {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy'}}
+            <div *ngIf="vbnotesoreria != 0">
+                {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
             </div>
 
            
@@ -181,8 +181,8 @@
         <td style="border-right:2px solid;border-bottom:2px solid;width:13%;font-size: 70%"><b>Fecha y Hora de Autorización:</b></td>
         <td style="border-bottom:2px solid;width:37%;font-size: 70%">
             
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
-                {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy'}}
+            <div *ngIf="vbnotesoreria != 0">
+                {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
             </div>
         
         </td>
@@ -191,7 +191,7 @@
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Cuenta CUD Entidad:</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%">
         
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
+            <div *ngIf="vbnotesoreria != 0">
                 {{ datosImpresion['cuentaCudDestino']}}
             </div>
           
@@ -211,7 +211,7 @@
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Número de Transacción:</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"> 
             
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
+            <div *ngIf="vbnotesoreria != 0">
                 {{datosOrden['nroTransacion']}}
             </div>
         
@@ -223,7 +223,7 @@
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%"><b>Número de Operación:</b></td>
         <td style="border-right:2px solid;border-bottom:2px solid;font-size: 70%">
 
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
+            <div *ngIf="vbnotesoreria != 0">
                 {{datosOrden['nroOperacion']}}
             </div>
            
@@ -276,10 +276,10 @@
         <td style="border-right:2px solid;border-bottom:2px solid;">
             <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
                 
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
+            <div *ngIf="vbnotesoreria != 0">
                 <p style="font-size: 10px;margin-bottom: 20px;">
                     
-                    {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy'}}
+                    {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
                 
                 </p>
                 <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>
@@ -289,10 +289,10 @@
         <td style="border-bottom:2px solid;">
             <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
             
-            <div *ngIf="datosOrden['idFuncionarioTesorero'] != 0">
+            <div *ngIf="vbnotesoreria != 0">
                 <p style="font-size: 10px;margin-bottom: 20px;">
                     
-                    {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy'}}
+                    {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
                 
                 </p>
                 <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>

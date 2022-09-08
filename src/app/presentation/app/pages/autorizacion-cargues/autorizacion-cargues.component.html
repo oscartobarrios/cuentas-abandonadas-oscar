@@ -100,7 +100,7 @@
                     </div>
 
                     <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)">
-                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Orden</button>
+                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
                     </div>
 
                     <div *ngIf="car.estado === 'CARGA_PROCESADA' && (car.vbnotesoreriaorden == 1) && (usuario.idPerfil == 5)">
@@ -119,7 +119,7 @@
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)">
-                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Orden</button>
+                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
                         
                     </div>
 
@@ -138,7 +138,7 @@
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 4)">
                        
-                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo)">Descargar Orden</button>
+                        <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
                          
                     </div>
 

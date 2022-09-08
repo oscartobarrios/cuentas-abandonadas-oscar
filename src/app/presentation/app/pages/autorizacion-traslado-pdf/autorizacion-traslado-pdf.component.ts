@@ -17,8 +17,10 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
   public funcionarioAdmin:any = "";
   public funcionarioAutorizador:any = "";
   public funcionarioTesorero: any = "";
-  public datosOrden: any = "";
+  public datosOrden: any = {};
   public fecha: string;
+  public vbnotesoreria: number = 0;
+  public vbnosebra: number = 0;
 
   constructor(private _getarchivousecase: GetArchivoUseCaseService,
               private _servicioAdministrativo: GetAdministrativoService,
@@ -28,6 +30,8 @@ export class AutorizacionTrasladoPdfComponent implements OnInit {
    
     this.fecha = Date();
     this.id = this.route.snapshot.params['id'];
+    this.vbnotesoreria = this.route.snapshot.params['vnotesorero'];
+    this.vbnosebra = this.route.snapshot.params['vnosebra'];
 
     this._getarchivousecase.GetPfd(this.id,"TRASLADO").subscribe((ResultData) => {
      
