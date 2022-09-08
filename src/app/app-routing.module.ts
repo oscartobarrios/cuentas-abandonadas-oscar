@@ -37,6 +37,9 @@ import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autoriz
 import { DatosSebraComponent } from './presentation/app/pages/autorizacionDatos/datos-sebra/datos-sebra.component';
 import { CambioContrasenaComponent } from './presentation/app/pages/administrador/cambio-contrasena/cambio-contrasena.component';
 import { RecuperarContrasenaComponent } from './presentation/app/pages/administrador/recuperar-contrasena/recuperar-contrasena.component';
+import { ListarValorComponent } from './presentation/app/pages/subasta/GenerarValor/listar-valor/listar-valor.component';
+import { CalcularValorComponent } from './presentation/app/pages/subasta/GenerarValor/calcular-valor/calcular-valor.component';
+
 
 const routes: Routes = [
   {path: 'recuperarcontrasena', component: RecuperarContrasenaComponent},
@@ -83,7 +86,9 @@ const routes: Routes = [
       {path: 'datos-traslados-tesorero/:id', component: DatosTrasladoTesoreroComponent},
       {path: 'datos-sebra/:id', component: DatosSebraComponent},
       {path: 'cambiocontrasena', component: CambioContrasenaComponent},
-      
+      {path: 'listarvalorsubasta', component: ListarValorComponent},
+      {path: 'generarvalorsubasta', component: CalcularValorComponent},
+
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

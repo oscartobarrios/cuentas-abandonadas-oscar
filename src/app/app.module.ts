@@ -79,6 +79,10 @@ import { DatosTrasladoTesoreroComponent } from './presentation/app/pages/autoriz
 import { DatosSebraComponent } from './presentation/app/pages/autorizacionDatos/datos-sebra/datos-sebra.component';
 import { CambioContrasenaComponent } from './presentation/app/pages/administrador/cambio-contrasena/cambio-contrasena.component';
 import { RecuperarContrasenaComponent } from './presentation/app/pages/administrador/recuperar-contrasena/recuperar-contrasena.component';
+import { ListarValorComponent } from './presentation/app/pages/subasta/GenerarValor/listar-valor/listar-valor.component';
+import { CalcularValorComponent } from './presentation/app/pages/subasta/GenerarValor/calcular-valor/calcular-valor.component';
+import { SubastaGateway } from './domain/models/subasta/gateway/subasta-gateway';
+import { SubastaApiService } from './infraestructure/driven-adapter/subasta/subasta-api-service';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -89,6 +93,7 @@ export const API_GATEWAYS_PROVIDERS = [
   { provide: CalendarioGateway, useClass: CalendarioService},
   { provide: EntidadGateway, useClass: EntidadApiService},
   { provide: AdministrativoGateway, useClass: AministrativoApiService},
+  { provide: SubastaGateway, useClass: SubastaApiService},
 ];
 
 registerLocaleData(localEs);
@@ -136,7 +141,9 @@ registerLocaleData(localEs);
     DatosTrasladoTesoreroComponent,
     DatosSebraComponent,
     CambioContrasenaComponent,
-    RecuperarContrasenaComponent
+    RecuperarContrasenaComponent,
+    ListarValorComponent,
+    CalcularValorComponent
   ],
   imports: [
     AppRoutingModule,
