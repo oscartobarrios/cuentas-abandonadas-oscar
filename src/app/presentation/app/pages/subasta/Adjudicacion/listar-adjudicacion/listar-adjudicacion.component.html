@@ -1,0 +1,48 @@
+<mat-card>
+    <div>Cuentas abandonadas - Listado de Adjudicación de subasta</div>
+    <br>
+      <mat-card-content>
+        <mat-card-actions align="start">
+          <div class="row" fxLayoutAlign="left">
+            <div class="col-sm-4 col-md-4" >
+              <button [routerLink]="['/registraradjudicacionsubasta']" class="form-control btn-primary-icetex">Registrar Adjudicación de Subasta</button>
+            </div>
+          </div>      
+        </mat-card-actions>
+  
+        <div fxLayout="column">
+          <div class="mat-elevation-z8">
+    
+            <div class="table-responsive">
+              <table mat-table [dataSource]="dataSource" matSort>
+  
+                <ng-container matColumnDef="FechaSubasta" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de la subasta</th>
+                  <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+    
+                <ng-container matColumnDef="TipoSubasta" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de subasta</th>
+                    <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+
+                <ng-container matColumnDef="Entidad" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>
+                  <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+
+                <ng-container matColumnDef="ValorAdjudicacion" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor adjudicado</th>
+                  <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    

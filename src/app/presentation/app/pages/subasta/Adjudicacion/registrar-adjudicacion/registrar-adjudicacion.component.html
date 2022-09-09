@@ -1,0 +1,65 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Cuentas abandonadas – Registro de adjudicación de subastas</div>
+    </div>
+    <form [formGroup]="adjudicacionForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">              
+                    <div class="col-5">
+                        <label>Fecha Inicial de Subasta *</label> 
+                        <input type="date" formControlName="fechainicial" class="form-control">  
+                    </div> 
+                    <div class="col-5">
+                        <label>Fecha Final de Subasta *</label> 
+                        <input type="date" formControlName="fechafinal" class="form-control">  
+                    </div> 
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">              
+                    <div class="col-8">
+                        <label>Entidad financiera *</label>
+                        <select class="form-control" formControlName="entidad">
+                          <option value=""></option>
+                          <option
+                              *ngFor="let ent of entidades"
+                              value="{{ent.idOrganizacion}}">
+                              {{ent.nombre}}
+                          </option>
+                        </select>
+                    </div> 
+                    <div class="col-4">
+                        <label>Tipo de Subasta *</label> 
+                        <select class="form-control" formControlName="tipo">
+                            <option value="null" disabled="true" [selected]="true" ></option>
+                            <option
+                                *ngFor="let tipo of tipos"
+                                value="{{tipo.id}}">
+                                {{tipo.nombre}}
+                            </option>
+                          </select>
+                    </div> 
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">              
+                    <div class="col-5">
+                        <label>Valor adjudicado *</label> 
+                        <input formControlName="valor" class="form-control" type="number">  
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row" fxLayoutAlign="center center">
+            <div class="col-sm-3 col-md-3" >
+                <input type="submit" class="form-control btn-primary-icetex" value="Generar">
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <button [routerLink]="['/listaradjudicacionsubasta']" class="form-control btn-primary-icetex">Regresar</button>
+            </div>
+        </div>
+    </form>
+</div>

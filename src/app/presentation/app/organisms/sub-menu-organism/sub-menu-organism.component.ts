@@ -127,10 +127,15 @@ export class SubMenuOrganismComponent implements OnInit {
       rols: [4,5,11]
     },
     {
-      title: "Histórico subastas",
-      url: "#",
+      title: "Registro de adjudicación de subastas",
+      url: "listaradjudicacionsubasta",
       rols: [4,5,11]
-    }
+    },
+    // {
+    //   title: "Histórico subastas",
+    //   url: "#",
+    //   rols: [4,5,11]
+    // }
   ]
 
   public menuType = [];
