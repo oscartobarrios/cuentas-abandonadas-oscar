@@ -36,7 +36,7 @@ export class DatosReintegroTesoreroComponent implements OnInit {
     this.DatosReintegroForm = new FormGroup({
       nroperacioncud: new FormControl('', [Validators.required]),
       observacion: new FormControl(''),
-      
+      observacionAutorizacion: new FormControl(''),
       });
   }
 
@@ -56,14 +56,21 @@ export class DatosReintegroTesoreroComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
 
-      const{nroperacioncud,observacion} = this.DatosReintegroForm.value;
+      const{nroperacioncud,observacion,observacionAutorizacion} = this.DatosReintegroForm.value;
 
       var observacionreintegro = observacion;
-      
+      var observacionaut = observacionAutorizacion;
+
       if(observacion == '')
       {
         observacionreintegro = 'undefined';
       }
+
+      if(observacionAutorizacion == '')
+      {
+        observacionaut = 'undefined';
+      }
+
 
       Swal.fire({
         title: 'Espere por favor, Guardando Datos',
@@ -78,6 +85,7 @@ export class DatosReintegroTesoreroComponent implements OnInit {
           idusuario: this.usuario.idUsuario,
           nroOperacionCud:nroperacioncud,
           observacionReintegro:observacionreintegro,
+          observacionAutorizacion: observacionaut,
           tipo: 'REINTEGRO'
         }; 
 
