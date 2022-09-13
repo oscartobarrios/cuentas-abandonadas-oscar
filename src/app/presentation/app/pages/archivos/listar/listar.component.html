@@ -58,12 +58,12 @@
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
                   <div>
-                    <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                    <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA' || element.estado === 'CARGANDO' || element.estado == 'VALIDANDO'" >
                       <mat-icon color="warn">launch</mat-icon> ver Errores
                     </button>
                   </div>
                   <div>
-                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue, element.nombreArchivo)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue, element.nombreArchivo)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA' || element.estado === 'CARGANDO' || element.estado === 'VALIDANDO'" >
                     <mat-icon color="warn">launch</mat-icon> Descargar Errores
                   </button>
                   </div>
@@ -76,7 +76,7 @@
                       <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                     </button>
                   </div>
-                  
+
 
                 </div>
               </mat-cell>

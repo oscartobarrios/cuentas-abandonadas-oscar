@@ -17,6 +17,8 @@ export class CrearCalendarioComponent implements OnInit {
     { codigo: 13560023, nombre: "Reintegro"},
     { codigo: 1, nombre: "Traslado"},
     { codigo: 2045, nombre: "Valoración"},
+    { codigo: 3, nombre: "Actualización de cuentas"},
+
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);
@@ -55,6 +57,9 @@ export class CrearCalendarioComponent implements OnInit {
       case '13560023': this.tipoCalendarioForm.controls["fechaCorteCertificaciones"].setValidators(Validators.required);
                        this.tipoCalendarioForm.controls["fechaCorte"].setValidators(Validators.required);
                        break;
+      case '3': this.tipoCalendarioForm.controls["fechaDesde"].setValidators(Validators.required);
+                this.tipoCalendarioForm.controls["fechaHasta"].setValidators(Validators.required);
+                break;
       default:  this.tipoCalendarioForm.controls["fechaInicial"].clearValidators();
                 this.tipoCalendarioForm.controls["fechaInicial"].updateValueAndValidity();
                 this.tipoCalendarioForm.controls["fechaFinal"].clearValidators();
