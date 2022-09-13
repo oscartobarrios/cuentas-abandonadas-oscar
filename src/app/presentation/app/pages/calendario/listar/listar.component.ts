@@ -21,16 +21,22 @@ export class ListarCalendarioComponent implements OnInit {
 
   @ViewChild('MatPaginatorTraslado') MatPaginatorTraslado: MatPaginator;
   @ViewChild('MatPaginatorValoracion') MatPaginatorValoracion: MatPaginator;
+  @ViewChild('MatPaginatorCuenta') MatPaginatorCuenta: MatPaginator;
+
 
   calendariosCargueCesion = new MatTableDataSource<ICalendario>();
   calendariosCargueReintegro = new MatTableDataSource<ICalendario>();
   calendariosCargueTraslado = new MatTableDataSource<ICalendario>();
   calendariosCargueValoracion = new MatTableDataSource<ICalendario>();
+  calendariosCargueCuenta = new MatTableDataSource<ICalendario>();
+
   displayedColumns: string[] = ['nombre', 'configuracion'];
   displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal', 'idTipoCargue'];
   displayedColumnsConfTras: string[] = ['fechaDesde', 'fechaHasta','uvr','fechaTrasMon', 'idTipoCargue'];
   displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
   displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
+  displayedColumnsConfCuenta: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
+
   constructor(private _notifications: NotificationsService,
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
     private _router: Router
@@ -48,12 +54,15 @@ export class ListarCalendarioComponent implements OnInit {
           case 13560023: this.calendariosCargueReintegro.data.push(cal);break;
           case 2045: this.calendariosCargueValoracion.data.push(cal);break;
           case 1: this.calendariosCargueTraslado.data.push(cal);break;
+          case 3: this.calendariosCargueCuenta.data.push(cal);break;
         }
       })
       this.calendariosCargueCesion.paginator = this.MatPaginatorCesion;
       this.calendariosCargueReintegro.paginator = this.MatPaginatorReintegro;
       this.calendariosCargueValoracion.paginator = this.MatPaginatorValoracion;
       this.calendariosCargueTraslado.paginator = this.MatPaginatorTraslado;
+      this.calendariosCargueCuenta.paginator = this.MatPaginatorCuenta;
+
       preloader.close();
     })).subscribe()
   }
