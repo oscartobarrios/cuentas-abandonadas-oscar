@@ -61,6 +61,12 @@ export class DatosReintegroTesoreroComponent implements OnInit {
       var observacionreintegro = observacion;
       var observacionaut = observacionAutorizacion;
 
+      if(nroperacioncud.toString().length > 15)
+      {
+        this.alarma.showError("El número de operación CUD debe ser menor o igual a 15 caracteres numéricos");
+        return;
+      }
+
       if(observacion == '')
       {
         observacionreintegro = 'undefined';
@@ -70,6 +76,8 @@ export class DatosReintegroTesoreroComponent implements OnInit {
       {
         observacionaut = 'undefined';
       }
+
+
 
 
       Swal.fire({
