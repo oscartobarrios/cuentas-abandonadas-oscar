@@ -7,5 +7,6 @@ export interface ICalendario {
     fechaFinal: Date,
     fechaTrasMon: Date,
     fechaCorteCertificaciones: Date,
-    fechaCorte: Date
+    fechaCorte: Date,
+    idOrganizacion: string
 }

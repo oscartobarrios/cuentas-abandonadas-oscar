@@ -39,7 +39,7 @@ export class CargarComponent implements OnInit {
   ngOnInit(): void {
     this._getarchivousecase.TipoCargue().subscribe((ResulData) => {
       this.tipos = ResulData;
-     
+
     });
   }
 
@@ -71,7 +71,7 @@ export class CargarComponent implements OnInit {
       this.estadoenvio = 'RECHAZADO';
       this.mensaje = 'El archivo debe ser de extension .txt';
     }
-    
+
   }
 
   onSubmit(): void {
@@ -82,9 +82,10 @@ export class CargarComponent implements OnInit {
         tipoArchivo: this.tipoArchivo.value,
         nombreCargue: this.nombreCargue.value,
         usuario: this.usuario,
+        idOrganizacion: this._storageservice.getItem('payload')?.infoUsuario.idOrganizacion,
         file: this.archivo
       };
-      
+
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.Cargar(data).subscribe((ResponseData) => {
         preloader.close();
