@@ -6,19 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">              
-                    <div class="col-5">
-                        <label>Fecha Inicial de Subasta *</label> 
-                        <input type="date" formControlName="fechainicial" class="form-control">  
-                    </div> 
-                    <div class="col-5">
-                        <label>Fecha Final de Subasta *</label> 
-                        <input type="date" formControlName="fechafinal" class="form-control">  
-                    </div> 
-                </div>
-            </div>
-            <div class="col-12" style="margin-top: 10px;">
-                <div class="row">              
-                    <div class="col-8">
+                    <div class="col-10">
                         <label>Entidad financiera *</label>
                         <select class="form-control" formControlName="entidad">
                           <option value=""></option>
@@ -29,7 +17,16 @@
                           </option>
                         </select>
                     </div> 
-                    <div class="col-4">
+                   
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">              
+                    <div class="col-5">
+                        <label>Fecha Adjudicación*</label> 
+                        <input type="date" formControlName="fechaadjudicacion" class="form-control">  
+                    </div> 
+                    <div class="col-5">
                         <label>Tipo de Subasta *</label> 
                         <select class="form-control" formControlName="tipo">
                             <option value="null" disabled="true" [selected]="true" ></option>
@@ -42,12 +39,25 @@
                     </div> 
                 </div>
             </div>
-            <div class="col-12">
-                <div class="row">              
+            
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">       
+                    <div class="col-5">
+                        <label>Porcentaje *</label> 
+                        <input formControlName="porcentaje" class="form-control" type="number">  
+                    </div>        
                     <div class="col-5">
                         <label>Valor adjudicado *</label> 
-                        <input formControlName="valor" class="form-control" type="number">  
+                        <input formControlName="valoradjudicado" class="form-control" type="number">  
                     </div> 
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">       
+                    <div class="col-5">
+                        <label>Tasa de Interes *</label> 
+                        <input formControlName="tasainteres" class="form-control" type="number">  
+                    </div>        
                     
                 </div>
             </div>
@@ -55,7 +65,7 @@
         <br><br><br>
         <div class="row" fxLayoutAlign="center center">
             <div class="col-sm-3 col-md-3" >
-                <input type="submit" class="form-control btn-primary-icetex" value="Generar">
+                <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
             </div>
             <div class="col-sm-3 col-md-3">
                 <button [routerLink]="['/listaradjudicacionsubasta']" class="form-control btn-primary-icetex">Regresar</button>

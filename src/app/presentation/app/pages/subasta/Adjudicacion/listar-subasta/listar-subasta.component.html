@@ -1,0 +1,52 @@
+<mat-card>
+    <div>Cuentas abandonadas - Listado de Subastas</div>
+    <br>
+      <mat-card-content>
+        <mat-card-actions align="start">
+          <div class="row" fxLayoutAlign="left">
+            <div class="col-sm-3 col-md-3" >
+              <button [routerLink]="['/generarvalorsubasta']" class="form-control btn-primary-icetex">Generar Valor</button>
+            </div>
+          </div>      
+        </mat-card-actions>
+  
+        <div fxLayout="column">
+          <div class="mat-elevation-z8">
+    
+            <div class="table-responsive">
+              <table mat-table [dataSource]="dataSource" matSort>
+  
+                <ng-container matColumnDef="FechaSubasta" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Subasta</th>
+                  <td mat-cell *matCellDef="let element" style="width: 600px;">{{element.fechaSubasta | date: 'dd/MM/yyyy'}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="ValorSubasta" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor Subasta</th>
+                    <td mat-cell *matCellDef="let element" style="width: 600px;">{{element.valorSubastaTrimestre | number}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="Actions">
+                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-cell *matCellDef="let element;">
+                      <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                      <div style="margin: 3px;width: 200px">
+                        <div>
+                          <button (click)="listaradjudicacion(element.idValor,element.valorSubastaTrimestre)" class="form-control btn-primary-icetex">Adjudicación de Subasta</button> 
+                        </div>
+                       
+                      </div>
+                    </mat-cell>
+                  </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    
+

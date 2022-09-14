@@ -119,17 +119,17 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Notificación subastas",
       url: "#",
-      rols: [4,11]
+      rols: [5]
     },
     {
       title: "Generar valor de subastas",
       url: "listarvalorsubasta",
-      rols: [4,5,11]
+      rols: [5]
     },
     {
       title: "Registro de adjudicación de subastas",
-      url: "listaradjudicacionsubasta",
-      rols: [4,5,11]
+      url: "listarsubasta",
+      rols: [5]
     },
     // {
     //   title: "Histórico subastas",

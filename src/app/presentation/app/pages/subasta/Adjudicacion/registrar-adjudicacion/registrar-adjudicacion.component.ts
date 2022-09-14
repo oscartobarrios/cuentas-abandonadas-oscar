@@ -32,11 +32,12 @@ export class RegistrarAdjudicacionComponent implements OnInit {
   formInit(){
 
     this.adjudicacionForm = new FormGroup({
-      fechainicial: new FormControl('', [Validators.required]),
-      fechafinal: new FormControl('', [Validators.required]),
+      fechaadjudicacion: new FormControl('', [Validators.required]),
       entidad: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
-      valor: new FormControl('', [Validators.required]),
+      valoradjudicado: new FormControl('', [Validators.required]),
+      porcentaje: new FormControl('', [Validators.required]),
+      tasainteres: new FormControl('', [Validators.required]),
       });
   }
 
@@ -44,11 +45,11 @@ export class RegistrarAdjudicacionComponent implements OnInit {
     this.tipos = [
       {
         nombre:"Liquidez (3 meses)",
-        id: 1
+        id: "Liquidez"
       },
       {
         nombre:"Largo Plazo (1 año)",
-        id: 2
+        id: "Largo plazo"
       }
     ]
   }

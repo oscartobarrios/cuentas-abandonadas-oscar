@@ -16,24 +16,32 @@
             <div class="table-responsive">
               <table mat-table [dataSource]="dataSource" matSort>
   
-                <ng-container matColumnDef="FechaSubasta" >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de la subasta</th>
-                  <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
-                </ng-container>
-    
-                <ng-container matColumnDef="TipoSubasta" >
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de subasta</th>
-                    <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
-                </ng-container>
-
                 <ng-container matColumnDef="Entidad" >
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad financiera</th>
                   <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
                 </ng-container>
 
-                <ng-container matColumnDef="ValorAdjudicacion" >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor adjudicado</th>
+                <ng-container matColumnDef="Porcentaje" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Porcentaje</th>
                   <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+
+                <ng-container matColumnDef="Valor" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor</th>
+                  <td mat-cell *matCellDef="let element" style="width: 600px;"></td>
+                </ng-container>
+
+                <ng-container matColumnDef="Actions">
+                  <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                  <mat-cell *matCellDef="let element;">
+                    <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                    <div style="margin: 3px;width: 200px">
+                      <div>
+                        <button class="form-control btn-primary-icetex">Editar</button> 
+                      </div>
+                     
+                    </div>
+                  </mat-cell>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
