@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ICalendario } from 'src/app/domain/models/calendario/calendario';
 import { GetCalendarioUseCaseService } from 'src/app/domain/usecases/calendario/get-calendario-use-case-service';
+import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 
 @Component({
@@ -22,9 +23,17 @@ export class CrearCalendarioComponent implements OnInit {
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);
+  entidades:any;
+
   constructor(private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
               private _notifications: NotificationsService,
-              private _router: Router) {
+              private _router: Router,
+              private _entidadUseCase: GetEntidadUseCaseService,
+              ) {
+
+      this._entidadUseCase.ListadoEntidades().subscribe(res => {
+      this.entidades = res;
+    });
     this.formInit();
    }
 
@@ -39,6 +48,7 @@ export class CrearCalendarioComponent implements OnInit {
       "fechaFinal": new FormControl(this.calendario?.fechaFinal),
       "fechaCorteCertificaciones": new FormControl(this.calendario?.fechaCorteCertificaciones),
       "fechaCorte": new FormControl(this.calendario?.fechaCorte ),
+      "idOrganizacion": new FormControl(this.calendario?.idOrganizacion ),
     })
   }
 

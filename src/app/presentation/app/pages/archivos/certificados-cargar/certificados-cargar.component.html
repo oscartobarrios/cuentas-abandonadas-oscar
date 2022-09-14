@@ -59,7 +59,7 @@
             <div *ngIf="(usuario.idPerfil == 4)"mat>
               <mat-checkbox disabled [checked] = "element.vbnotesoreria">VoBno Tesorero</mat-checkbox>
             </div>
-            <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4) && element.vbnotesoreria == 1">
+            <div *ngIf="element.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4)">
               <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;"  (click)="aproparCertificacion(element)">
                   <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
               </button>
