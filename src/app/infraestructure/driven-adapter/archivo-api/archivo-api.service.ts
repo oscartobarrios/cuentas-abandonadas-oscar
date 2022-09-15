@@ -63,7 +63,7 @@ export class ArchivoApiService {
   }
 
   Cargar(data: IArchivo): Observable<any> {
-    const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}`;
+    const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}&idOrganizacion=${data.idOrganizacion}`;
     const archivo: FormData = new FormData();
     archivo.append('file', data.file, data.file.name);
     return this.http.post<any>(url, archivo);

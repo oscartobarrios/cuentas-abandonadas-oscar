@@ -65,6 +65,18 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
 
       var observacionS = observacionsebra;
       var observacionC = observacionconfirmacion;
+
+      if(nrooperacion.toString().length > 15)
+      {
+        this.alarma.showError("El número de operación debe ser menor o igual a 15 caracteres numéricos");
+        return;
+      }
+
+      if(nrotransaccion.toString().length > 15)
+      {
+        this.alarma.showError("El número de transacción debe ser menor o igual a 15 caracteres numéricos");
+        return;
+      }
       
       if(observacionS == '' || observacionS == null)
       {
@@ -83,8 +95,6 @@ export class DatosTrasladoTesoreroComponent implements OnInit {
             Swal.showLoading()
           }
         });
-
-        debugger;
 
         const data:any = {
           idCargue: this.idcargo,
