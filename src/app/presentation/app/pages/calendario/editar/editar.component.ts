@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICalendario } from 'src/app/domain/models/calendario/calendario';
 import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
 import { GetCalendarioUseCaseService } from 'src/app/domain/usecases/calendario/get-calendario-use-case-service';
+import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import Swal from 'sweetalert2';
@@ -24,16 +25,23 @@ export class EditarCalendarioComponent implements OnInit {
     { codigo: 13560023, nombre: "Reintegro"},
     { codigo: 1, nombre: "Traslado"},
     { codigo: 2045, nombre: "Valoración"},
+    { codigo: 3, nombre: "Actualización de cuentas"}
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);
   public notificacion: boolean = true;
+  entidades:any;
+
   constructor(private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
               private _notifications: NotificationsService,
               private _router: Router,
               private route: ActivatedRoute,
               private _servicioAdministrativo: GetAdministrativoService,
-              private alarma: SweetAlertService) {
+              private alarma: SweetAlertService,
+              private _entidadUseCase: GetEntidadUseCaseService,) {
+            this._entidadUseCase.ListadoEntidades().subscribe(res => {
+              this.entidades = res;
+            });
     this.formInit();
    }
 
@@ -48,6 +56,8 @@ export class EditarCalendarioComponent implements OnInit {
       "fechaFinal": new FormControl(this.calendario?.fechaFinal),
       "fechaCorteCertificaciones": new FormControl(this.calendario?.fechaCorteCertificaciones),
       "fechaCorte": new FormControl(this.calendario?.fechaCorte ),
+      "idOrganizacion": new FormControl(this.calendario?.idOrganizacion ),
+
     })
   }
 
@@ -100,6 +110,7 @@ export class EditarCalendarioComponent implements OnInit {
       this.tipoCalendarioForm.controls['fechaCorteCertificaciones'].setValue(formatDate(ResponseData.fechaCorteCertificaciones,'yyyy-MM-dd',"en-US"));
       this.tipoCalendarioForm.controls['fechaTrasMon'].setValue(formatDate(ResponseData.fechaTrasMon,'yyyy-MM-dd',"en-US"));
       this.tipoCalendarioForm.controls['uvr'].setValue(ResponseData.uvr);
+      this.tipoCalendarioForm.controls['idOrganizacion'].setValue(ResponseData.idOrganizacion);
 
       let date: Date = new Date();
       var fechaHasta = new Date(ResponseData.fechaHasta);
