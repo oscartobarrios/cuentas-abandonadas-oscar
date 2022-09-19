@@ -187,13 +187,14 @@ export class CrearCalendarioComponent implements OnInit {
       this._getCalendarioUseCaseService.GenerarCalendario(this.tipoCalendarioForm.value).subscribe((res) => {
         console.log(res);
         if(res==0){
-          this._notifications.showError("Por favor Valide los campos");
+          this._notifications.showError("Por favor valide los campos");
         }else{
           this._router.navigate(['calendario']);
         }
         preloader.close();
       },  (error: any)  => {
         console.log(error);
+        this._notifications.showError("Calendario ya existe por favor valide los campos");
         preloader.close();
       });
     }
