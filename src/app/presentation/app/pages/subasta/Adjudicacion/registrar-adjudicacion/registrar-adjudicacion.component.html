@@ -1,6 +1,6 @@
 <div class="container" style="min-height: 420px;">
     <div class="row mb-5">
-        <div class="col-8">Cuentas abandonadas – Registro de adjudicación de subastas</div>
+        <div class="col-8">{{title}}</div>
     </div>
     <form [formGroup]="adjudicacionForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
         <div class="row">
@@ -68,7 +68,7 @@
                 <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
             </div>
             <div class="col-sm-3 col-md-3">
-                <button [routerLink]="['/listaradjudicacionsubasta']" class="form-control btn-primary-icetex">Regresar</button>
+                <button (click)="regresar()" class="form-control btn-primary-icetex">Regresar</button>
             </div>
         </div>
     </form>

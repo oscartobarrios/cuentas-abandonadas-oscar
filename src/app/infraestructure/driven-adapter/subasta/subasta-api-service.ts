@@ -34,5 +34,19 @@ import { environment } from "src/environments/environment";
       return this.http.get<any[]>(url);
     }
 
+    InsertarActualizarAdjudicacion(dataQuery: any): Observable<any> {
+      const url = `${environment.rest.endpoint}/Subasta/InsertarActualizarAdjudicacion`;
+      return this.http.post<any>(url, dataQuery);
+    }
+
+    ListarAdjudicacionesIdValor(idValor:number): Observable<any> {
+      const url = `${environment.rest.endpoint}/Subasta/GetAdjudicacionIdValor/${idValor}`;
+      return this.http.get<any[]>(url);
+    }
+
+    ListarAdjudicacionesIdAdjudicacion(idAdjudicacion:number): Observable<any> {
+      const url = `${environment.rest.endpoint}/Subasta/GetAdjudicacionIdAdjudicacion/${idAdjudicacion}`;
+      return this.http.get<any>(url);
+    }
     
   }

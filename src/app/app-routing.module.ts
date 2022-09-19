@@ -92,7 +92,7 @@ const routes: Routes = [
       {path: 'listarvalorsubasta', component: ListarValorComponent},
       {path: 'generarvalorsubasta', component: CalcularValorComponent},
       {path: 'listaradjudicacionsubasta/:id/:valorsubasta', component: ListarAdjudicacionComponent},
-      {path: 'registraradjudicacionsubasta', component: RegistrarAdjudicacionComponent},
+      {path: 'registraradjudicacionsubasta/:id/:idvalor/:valorsubasta', component: RegistrarAdjudicacionComponent},
       {path: 'listarsubasta', component: ListarSubastaComponent},
       
       //NotFound
