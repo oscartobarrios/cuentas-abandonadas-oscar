@@ -39,6 +39,9 @@ import { CambioContrasenaComponent } from './presentation/app/pages/administrado
 import { RecuperarContrasenaComponent } from './presentation/app/pages/administrador/recuperar-contrasena/recuperar-contrasena.component';
 import { ListarValorComponent } from './presentation/app/pages/subasta/GenerarValor/listar-valor/listar-valor.component';
 import { CalcularValorComponent } from './presentation/app/pages/subasta/GenerarValor/calcular-valor/calcular-valor.component';
+import { ListarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-adjudicacion/listar-adjudicacion.component';
+import { RegistrarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/registrar-adjudicacion/registrar-adjudicacion.component';
+import { ListarSubastaComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-subasta/listar-subasta.component';
 
 
 const routes: Routes = [
@@ -88,7 +91,10 @@ const routes: Routes = [
       {path: 'cambiocontrasena', component: CambioContrasenaComponent},
       {path: 'listarvalorsubasta', component: ListarValorComponent},
       {path: 'generarvalorsubasta', component: CalcularValorComponent},
-
+      {path: 'listaradjudicacionsubasta/:id/:valorsubasta', component: ListarAdjudicacionComponent},
+      {path: 'registraradjudicacionsubasta/:id/:idvalor/:valorsubasta', component: RegistrarAdjudicacionComponent},
+      {path: 'listarsubasta', component: ListarSubastaComponent},
+      
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

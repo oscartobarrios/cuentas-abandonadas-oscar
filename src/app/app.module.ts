@@ -83,6 +83,9 @@ import { ListarValorComponent } from './presentation/app/pages/subasta/GenerarVa
 import { CalcularValorComponent } from './presentation/app/pages/subasta/GenerarValor/calcular-valor/calcular-valor.component';
 import { SubastaGateway } from './domain/models/subasta/gateway/subasta-gateway';
 import { SubastaApiService } from './infraestructure/driven-adapter/subasta/subasta-api-service';
+import { ListarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-adjudicacion/listar-adjudicacion.component';
+import { RegistrarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/registrar-adjudicacion/registrar-adjudicacion.component';
+import { ListarSubastaComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-subasta/listar-subasta.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -143,7 +146,10 @@ registerLocaleData(localEs);
     CambioContrasenaComponent,
     RecuperarContrasenaComponent,
     ListarValorComponent,
-    CalcularValorComponent
+    CalcularValorComponent,
+    ListarAdjudicacionComponent,
+    RegistrarAdjudicacionComponent,
+    ListarSubastaComponent
   ],
   imports: [
     AppRoutingModule,
