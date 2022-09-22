@@ -14,5 +14,6 @@ export interface IConsolidado {
     FechaCorte:Date,
     TotalRemuneracionAcumulada:string,
     TotalSaldoInicial:string,
-    TotalSolicitado:string
+    TotalSolicitado:string,
+    FechaCesion:Date,
 }
