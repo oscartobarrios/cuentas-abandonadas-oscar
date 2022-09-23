@@ -126,6 +126,22 @@ export class DetalladosComponent implements OnInit {
       ];
     }
 
+    if(this.type == "cesion")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'fechaCesion', name: 'Fecha cesión' },
+        { prop: 'nroCuenta', name: 'Número cuenta' },
+        { prop: 'totalSaldoInicial', name: 'Saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'totalRemuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
+        { prop: 'tipoEntidadRecibe', name: 'Tipo Entidad Recibe' },
+        { prop: 'codigoEntidadRecibe', name: 'Codigo Entidad Recibe' },
+        { prop: 'tipoEntidadCede', name: 'Tipo Entidad Cede' },
+        { prop: 'codigoEntidadCede', name: 'Codigo Entidad Cede' },
+
+      ];
+    }
+
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -151,6 +167,11 @@ export class DetalladosComponent implements OnInit {
     if(this.type == "traslado")
     {
       this.tipoDetallado = "traslado";
+    }
+
+    if(this.type == "cesion")
+    {
+      this.tipoDetallado = "cesion";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -231,13 +252,18 @@ export class DetalladosComponent implements OnInit {
           this.consultarRegistros()
     }
 
-    if(this.type == "cesion" && this.entidad != "")
+    if(this.type == "cesion")
     {
-      this._getarchivousecase.GetConsolidadoXEntidad('CESION', 'CARGA_PROCESADA', this.entidad)
-        .subscribe(res => {
-          //this.detalladosDataSource.data = res,
-          this.detalladosDataSource.paginator = this.paginator;
-        });
+      this.tipoDetallado = "cesion";
+
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "CESION",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
     }
 
   }
