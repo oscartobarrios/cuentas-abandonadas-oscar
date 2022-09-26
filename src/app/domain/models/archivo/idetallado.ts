@@ -15,5 +15,10 @@ export interface IDetallado {
     TotalSaldoInicial:string,
     TipoArchivo:string,
     FechaInicial:Date,
-    FechaFinal:Date
+    FechaFinal:Date,
+    TipoEntidadRecibe:string,
+    CodigoEntidadRecibe:string,
+    TipoEntidadCede:string,
+    CodigoEntidadCede:string,
+
 }

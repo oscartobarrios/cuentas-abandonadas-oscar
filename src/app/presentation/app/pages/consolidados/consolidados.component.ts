@@ -103,7 +103,17 @@ export class ConsolidadosComponent implements OnInit {
       ];
     }
 
-
+    if(this.type == "cesion")
+    {
+      this.columns = [
+        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'tipoArchivo', name: 'Tipo archivo' },
+        { prop: 'fechaCesion', name: 'Fecha Cesion' },
+        { prop: 'nroCuentas', name: 'Número cuentas' },
+        { prop: 'totalSaldoInicial', name: 'Total saldo inicial', cellTemplate: this.monedaTemplate },
+        { prop: 'totalRemuneracionAcumulada', name: 'Total remuneración acumulada', cellTemplate: this.monedaTemplate }
+      ];
+    }
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
@@ -139,6 +149,10 @@ export class ConsolidadosComponent implements OnInit {
     if(this.type == "administradas")
     {
       this.tipoConsolidado = "traslado";
+    }
+    if(this.type == "cesion")
+    {
+      this.tipoConsolidado = "cesion";
     }
 
     this._entidadUseCase.ListadoEntidades().subscribe(res => {
@@ -189,6 +203,21 @@ export class ConsolidadosComponent implements OnInit {
       this.page.data = {
         "entidad": this.entidad,
         "tipoArchivo": "ADMINISTRADAS",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+      this.consultarRegistros()
+    }
+
+    if(this.type == "cesion")
+    {
+      this.tipoConsolidado = "cesion";
+
+
+      this.setPage({ offset: 0 });
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "CESION",
         "fechaInicial": this.fechaInicio,
         "fechaFinal": this.fechaFin
       };
@@ -254,6 +283,16 @@ export class ConsolidadosComponent implements OnInit {
       this.page.data = {
         "entidad": this.entidad,
         "tipoArchivo": "ADMINISTRADAS",
+        "fechaInicial": this.fechaInicio,
+        "fechaFinal": this.fechaFin
+      };
+    }
+
+    if(this.type == "cesion")
+    {
+      this.page.data = {
+        "entidad": this.entidad,
+        "tipoArchivo": "CESION",
         "fechaInicial": this.fechaInicio,
         "fechaFinal": this.fechaFin
       };
