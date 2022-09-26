@@ -64,6 +64,10 @@ export class SubMenuOrganismComponent implements OnInit {
       title: "Consolidado",
       url: "consolidadoentidad",
       rols: [1,9]
+    },{
+      title: "Adjudicacion de Subasta",
+      url: "reporteadjudicacionsubasta",
+      rols: [4,5,10,11]
     }
   ]
 

@@ -12,4 +12,6 @@ export abstract class ReporteGateway {
   abstract getReporteInterfazExcel(proceso: string): Observable<any>;
   abstract getReporteCertificacionSaldos(entidad: string,fecha: string): Observable<any>;
   abstract GetConsolidadoEntidadFilter(dataQuery): Observable<any>;
+  abstract GetAdjudicacionSubastaFilter(dataQuery): Observable<any>;
+  abstract GetAdjudicacionSubastaExcel(data:any): Observable<any>;
 }
