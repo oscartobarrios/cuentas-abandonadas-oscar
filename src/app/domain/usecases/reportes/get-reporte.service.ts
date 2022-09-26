@@ -50,6 +50,12 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
       return this._reporteGetway.GetConsolidadoEntidadFilter(dataQuery);
     }
 
+    GetAdjudicacionSubastaFilter(dataQuery): Observable<any>{
+      return this._reporteGetway.GetAdjudicacionSubastaFilter(dataQuery);
+    }
 
+    GetAdjudicacionSubastaExcel(data:any): Observable<any> {
+      return this._reporteGetway.GetAdjudicacionSubastaExcel(data);
+    }
 
 }

@@ -126,5 +126,19 @@ import { environment } from "src/environments/environment";
       const url = `${environment.rest.endpoint}/Reporte/GetCOnsolidadoEntidadFilter`;
       return this.http.post<any>(url, dataQuery);
     }
-  
+
+    GetAdjudicacionSubastaFilter(dataQuery): Observable<any>{
+      const url = `${environment.rest.endpoint}/Reporte/GetAdjudicacionSubastaFilter`;
+      return this.http.post<any>(url, dataQuery);
+    }
+    
+    GetAdjudicacionSubastaExcel(filtros:any): Observable<any>{
+      return this.http.get(`${environment.rest.endpoint}/Reporte/GetReporteAdjudicacionSubastaExcel/${filtros.tipoSubasta}/${filtros.fechaInicial}/${filtros.fechaFinal}`, 
+            {responseType: 'blob'})
+      .pipe(
+              tap(data => console.log('Get mission report: ' + data)),
+              catchError(this.handleError)
+      )
+    }
+
   }

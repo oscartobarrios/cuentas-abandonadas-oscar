@@ -42,6 +42,7 @@ import { CalcularValorComponent } from './presentation/app/pages/subasta/Generar
 import { ListarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-adjudicacion/listar-adjudicacion.component';
 import { RegistrarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/registrar-adjudicacion/registrar-adjudicacion.component';
 import { ListarSubastaComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-subasta/listar-subasta.component';
+import { AdjudicacionSubastaComponent } from './presentation/app/pages/reportes/adjudicacion-subasta/adjudicacion-subasta.component';
 
 
 const routes: Routes = [
@@ -94,7 +95,8 @@ const routes: Routes = [
       {path: 'listaradjudicacionsubasta/:id/:valorsubasta', component: ListarAdjudicacionComponent},
       {path: 'registraradjudicacionsubasta/:id/:idvalor/:valorsubasta', component: RegistrarAdjudicacionComponent},
       {path: 'listarsubasta', component: ListarSubastaComponent},
-      
+      {path: 'reporteadjudicacionsubasta', component: AdjudicacionSubastaComponent},
+
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
