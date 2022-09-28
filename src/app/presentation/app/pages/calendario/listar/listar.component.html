@@ -221,6 +221,13 @@
                   </td>
               </ng-container>
 
+              <ng-container matColumnDef="nombreOrganizacion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">Entidad Financiera</th>
+                <td mat-cell *matCellDef="let cal">
+                    <h2 >{{cal.nombreOrganizacion}}</h2>
+                </td>
+            </ng-container>
+
               <ng-container matColumnDef="idTipoCargue">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
                 <td mat-cell *matCellDef="let cal" >

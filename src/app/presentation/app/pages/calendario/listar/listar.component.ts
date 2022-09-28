@@ -35,7 +35,7 @@ export class ListarCalendarioComponent implements OnInit {
   displayedColumnsConfTras: string[] = ['fechaDesde', 'fechaHasta','uvr','fechaTrasMon', 'idTipoCargue'];
   displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
   displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
-  displayedColumnsConfCuenta: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
+  displayedColumnsConfCuenta: string[] = ['fechaDesde', 'fechaHasta','nombreOrganizacion', 'idTipoCargue'];
 
   constructor(private _notifications: NotificationsService,
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,

@@ -8,5 +8,6 @@ export interface ICalendario {
     fechaTrasMon: Date,
     fechaCorteCertificaciones: Date,
     fechaCorte: Date,
-    idOrganizacion: string
+    idOrganizacion: string,
+    nombreOrganizacion: string
 }

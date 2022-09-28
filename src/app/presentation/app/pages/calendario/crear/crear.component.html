@@ -31,7 +31,8 @@
                 </div>
                 <div class="mb-3 col-sm-12 col-md-12" *ngIf="tipoCalendarioForm.controls['idTipoCargue'].value == 3">
                     <label>Entidad financiera</label>
-                    <select class="form-control" id="idOrganizacion" formControlName="idOrganizacion" required>
+                    <select class="form-control" id="idOrganizacion" formControlName="idOrganizacion" [ngClass]="{'is-valid': tipoCalendarioForm.controls['idOrganizacion'].valid &&  tipoCalendarioForm.touched,
+                    'is-invalid': tipoCalendarioForm.controls['idOrganizacion'].invalid &&  tipoCalendarioForm.touched}">
                       <option value="null" [selected]="true" >Seleccione</option>
                       <option
                           *ngFor="let ent of entidades"
