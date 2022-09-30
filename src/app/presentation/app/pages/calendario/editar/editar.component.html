@@ -1,6 +1,6 @@
 <div class="container" style="height: 580px;">
   <div style="max-width: 620px; margin: 0 auto;">
-    <button *ngIf="notificacion" mat-raised-button style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary-icetex" (click)="enviarNotificacion()">Enviar notificación</button>
+    <button *ngIf="notificacion && tipoCalendarioForm.controls['idTipoCargue'].value != 3" mat-raised-button style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-primary-icetex" (click)="enviarNotificacion()">Enviar notificación</button>
       <form [formGroup]="tipoCalendarioForm" method="post" (ngSubmit)="onSubmit()"
           (keydown.enter)="$event.preventDefault()">
           <div class="row mb-3">
