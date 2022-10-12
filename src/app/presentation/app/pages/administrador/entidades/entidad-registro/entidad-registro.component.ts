@@ -99,7 +99,38 @@ export class EntidadRegistroComponent implements OnInit {
     debugger;
     if(this.financieraForm.valid)
     {
-       console.log(this.financieraForm.value);
+       
+      const{codigoEntidad,idOrganizacion,telefonoArea,telefonoNumero,telefonoExtension} = this.financieraForm.value;
+
+      if(isNaN(codigoEntidad))
+      {
+        this.alarma.showWarning("El campo Código entidad debe ser numérico");
+        return;
+      }
+      
+      if(isNaN(idOrganizacion))
+      {
+        this.alarma.showWarning("El campo Nit debe ser numérico");
+        return;
+      }
+
+      if(isNaN(telefonoArea))
+      {
+        this.alarma.showWarning("El campo Area Teléfono debe ser numérico");
+        return;
+      }
+
+      if(isNaN(telefonoNumero))
+      {
+        this.alarma.showWarning("El campo Número Teléfono debe ser numérico");
+        return;
+      }
+
+      if(isNaN(telefonoExtension))
+      {
+        this.alarma.showWarning("El campo Extensión Teléfono debe ser numérico");
+        return;
+      }
 
        Swal.fire({
         title: 'Espere por favor, Guardando Datos',

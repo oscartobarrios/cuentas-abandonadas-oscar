@@ -132,6 +132,20 @@ import { environment } from "src/environments/environment";
       return this.http.get<any>(url);
     }
 
+    insertarActualizarFuncionarioEntidad(data: any): Observable<any> {
+      const url = `${environment.rest.endpoint}/Administrativo/InsertarActualizarFuncionarioEntidad`;
+      return this.http.post<any>(url, data);
+    }
+
+    ListarFuncionarioEntidadPorTipo(tipo:string): Observable<any[]> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetFuncionarioEntidadPorTipo/${tipo}`;
+      return this.http.get<any[]>(url);
+    }
+
+    ListarFuncionarioEntidadPorId(id:number): Observable<any[]> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetFuncionarioEntidadPorId/${id}`;
+      return this.http.get<any[]>(url);
+    }
 
 }
 

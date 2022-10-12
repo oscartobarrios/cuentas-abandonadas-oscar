@@ -97,4 +97,16 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.ConsultarUsuarioPorNombre(usuario);
   }
 
+  insertarActualizarFuncionarioEntidad(data:any): Observable<any> {
+    return this._administrativoGetway.insertarActualizarFuncionarioEntidad(data);
+  }
+
+  ListarFuncionarioEntidadPorTipo(tipo:string): Observable<any[]> {
+    return this._administrativoGetway.ListarFuncionarioEntidadPorTipo(tipo);
+  }
+
+  ListarFuncionarioEntidadPorId(id:number): Observable<any> {
+    return this._administrativoGetway.ListarFuncionarioEntidadPorId(id);
+  }
+
 }

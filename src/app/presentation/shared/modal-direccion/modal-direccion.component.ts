@@ -2,6 +2,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Direccion } from 'src/app/domain/models/shared/direccion';
+import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 
 @Component({
   selector: 'app-modal-direccion',
@@ -12,41 +13,21 @@ export class ModalDireccionComponent implements OnInit {
   direccionForm: FormGroup;
   direccion: Direccion;
   vias:any = [
-    { valor: "CL", nombre: "CALLE"},
-    { valor: "AC", nombre: "AVENIDA CALLE"},
-    { valor: "KR", nombre: "CARRERA"},
-    { valor: "AK", nombre: "AVENIDA CARRERA"},
-    { valor: "TV", nombre: "TRANSVERSAL"},
-    { valor: "DG", nombre: "DIAGONAL"},
-    { valor: "AV", nombre: "AVENIDA"},
-    { valor: "AU", nombre: "AUTOPISTA"},
+
+    { valor: "CALLE", nombre: "CALLE"},
+    { valor: "CARRERA", nombre: "CARRERA"},
+    { valor: "AVENIDA", nombre: "AVENIDA"},
+    { valor: "TRANSVERSAL", nombre: "TRANSVERSAL"},
+    { valor: "DIAGONAL", nombre: "DIAGONAL"},
+    { valor: "AV CARRERA", nombre: "AV CARRERA"},
+    { valor: "CIRCULAR", nombre: "CIRCULAR"},
   ];
 
-  complementos:any = [
-    { valor: "BQ", nombre: "Bloque"},
-    { valor: "BG", nombre: "Bodega"},
-    { valor: "CA", nombre: "Casa"},
-    { valor: "CO", nombre: "Conjunto"},
-    { valor: "ED", nombre: "Edificio"},
-    { valor: "EQ", nombre: "Esquina"},
-    { valor: "ET", nombre: "Etapa"},
-    { valor: "IN", nombre: "Interior"},
-    { valor: "LC", nombre: "Local"},
-    { valor: "LT", nombre: "Lote"},
-    { valor: "MZ", nombre: "Manzana"},
-    { valor: "PI", nombre: "Piso"},
-  ]
 
-  cardinales:any = [
-    { valor: "N", nombre: "NORTE"},
-    { valor: "S", nombre: "SUR"},
-    { valor: "E", nombre: "ESTE"},
-    { valor: "O", nombre: "OESTE"}
-  ];
+  abc:string[] = ["A","B","C","D","E","F","ESTE","SUR","NORTE"];
 
-  abc:string[] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","U","V","W","X","Y","Z"];
-
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal,
+              private alarma: SweetAlertService,) {
   }
 
   ngOnInit(): void {  
@@ -58,14 +39,8 @@ export class ModalDireccionComponent implements OnInit {
       "Via" : new FormControl(this.direccion?.Via, Validators.required),
       "Numero" : new FormControl(this.direccion?.Numero, Validators.required),
       "Letra" : new FormControl(this.direccion?.Letra,),
-      "Bis" : new FormControl(this.direccion?.Bis),
-      "Cardinal" : new FormControl(this.direccion?.Cardinal),
       "NumeroDos" : new FormControl(this.direccion?.NumeroDos, Validators.required),
-      "LetraDos" : new FormControl(this.direccion?.LetraDos),
       "NumeroTres" : new FormControl(this.direccion?.NumeroTres, Validators.required),
-      "CardinalDos" : new FormControl(this.direccion?.CardinalDos),
-      "Complemento" : new FormControl(this.direccion?.Complemento),
-      "ComplementoDos" : new FormControl(this.direccion?.ComplementoDos),
       "DireccionEstandar" : new FormControl(this.direccion?.DireccionEstandar),
     })
   }
@@ -85,6 +60,10 @@ export class ModalDireccionComponent implements OnInit {
     if(this.direccionForm.valid)
     {
       this.activeModal.close(this.direccionForm.value.DireccionEstandar);
+    }
+    else{
+      this.alarma.showWarning("Información incompleta, por favor verifique");
+
     }
   }
 }
