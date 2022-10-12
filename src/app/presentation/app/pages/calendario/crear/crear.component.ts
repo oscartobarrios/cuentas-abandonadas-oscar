@@ -69,6 +69,7 @@ export class CrearCalendarioComponent implements OnInit {
                        break;
       case '3': this.tipoCalendarioForm.controls["fechaDesde"].setValidators(Validators.required);
                 this.tipoCalendarioForm.controls["fechaHasta"].setValidators(Validators.required);
+                this.tipoCalendarioForm.controls["idOrganizacion"].setValidators(Validators.required);
                 break;
       default:  this.tipoCalendarioForm.controls["fechaInicial"].clearValidators();
                 this.tipoCalendarioForm.controls["fechaInicial"].updateValueAndValidity();

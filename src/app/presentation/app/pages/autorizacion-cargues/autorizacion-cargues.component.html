@@ -3,7 +3,7 @@
         <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
         <div class="col-8">Cuentas Abandonadas - Autorización cargues</div>
         <!-- <div class="col-2">
-            <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex" 
+            <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
             (click)="vobuenoordenTodos()">Seleccionar Todo</button>
           </div> -->
     </div>
@@ -42,16 +42,16 @@
 
             <ng-container matColumnDef="Acciones">
             <mat-header-cell *matHeaderCellDef>Acciones
-                <button *ngIf="usuario.idPerfil == 7" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex" 
+                <button *ngIf="usuario.idPerfil == 7" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
                 (click)="vobuenoordenTodos()">Seleccionar Todo
                 </button>
-                <button *ngIf="usuario.idPerfil == 10" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex" 
+                <button *ngIf="usuario.idPerfil == 10" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
                 (click)="ingresoDatosSebra(0)">Seleccionar Todo
                 </button>
             </mat-header-cell>
-            
+
             <mat-cell *matCellDef="let car;">
-                
+
                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                 <div style="margin: 3px;">
 
@@ -76,18 +76,18 @@
 
                     <!-- TESORERO -->
 
-                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION'  && (usuario.idPerfil == 5)">
+                    <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION'  && (usuario.idPerfil == 5) && car.tipoArchivo != 'ACTUALIZACION CUENTA'">
                         <mat-checkbox (click)="vobueno(car.idCargue,'tesorero')" [checked] = "car.vbnotesoreria">Vo Bueno</mat-checkbox>
                         <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
-                        
-                        
+
+
                     </div>
 
                     <!-- CONTABILIDAD -->
                     <div *ngIf="car.estado === 'PENDIENTE_AUTORIZACION' && car.tipoArchivo === 'VALORACION' &&(usuario.idPerfil == 6)">
                         <mat-checkbox (click)="vobueno(car.idCargue,'contabilidad')" [checked] = "car.vbnocontador">Vo Bueno</mat-checkbox>
                         <mat-checkbox (click)="rechazar(car.idCargue)" [id]="car.idCargue + '_chkrechazar'">Rechazar</mat-checkbox>
-                        
+
                     </div>
 
 
@@ -96,7 +96,7 @@
                      <!-- TESORERO -->
 
                      <div *ngIf="(car.vbnoautorizadororden == 1) && (car.vbnotesoreriaorden == 0) && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
-                        <button class="btn btn-primary mt-2" (click)="ingresoDatos(car.idCargue,car.tipoArchivo)">Ingresar Datos Orden</button> 
+                        <button class="btn btn-primary mt-2" (click)="ingresoDatos(car.idCargue,car.tipoArchivo)">Ingresar Datos Orden</button>
                     </div>
 
                     <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)">
@@ -105,78 +105,78 @@
 
                     <div *ngIf="car.estado === 'CARGA_PROCESADA' && (car.vbnotesoreriaorden == 1) && (usuario.idPerfil == 5)">
                         <mat-checkbox disabled [checked] = "car.vbnotesoreriaorden">Vo Bo Orden de Cumplimiento</mat-checkbox>
-                        
+
                     </div>
 
                     <!-- SEBRA -->
                     <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 0) && (usuario.idPerfil == 10)">
-                        <button class="btn btn-primary mt-2" (click)="ingresoDatosSebra(car.idCargue)">Ingresar Datos Orden</button> 
+                        <button class="btn btn-primary mt-2" (click)="ingresoDatosSebra(car.idCargue)">Ingresar Datos Orden</button>
                     </div>
-                    
+
                     <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)">
                         <mat-checkbox disabled [checked] = "car.vbnosebra">Vo Bo Orden de Cumplimiento</mat-checkbox>
-                        
+
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
-                        
+
                     </div>
 
                      <!-- ADMINISTRADOR -->
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'PENDIENTE_AUTORIZACION' && (usuario.idPerfil == 4)">
                         <mat-checkbox disabled [checked] = "car.vbnotesoreria">VoBno Tesorero</mat-checkbox>
-                        
+
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnoadminorden == 1) && (usuario.idPerfil == 4)">
-                       
+
                         <mat-checkbox disabled [checked] = "car.vbnoadminorden">Vo Bo Orden de Cumplimiento</mat-checkbox>
-                         
+
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 4)">
-                       
+
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
-                         
+
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && car.vbnoadminorden == 0 && (usuario.idPerfil == 4)">
-                       
+
                         <button class="btn btn-primary mt-2" (click)="vobuenoorden(car.idCargue,car.vbnoadminorden)">Vo Bo Autorizar Orden</button>
-                        
+
                     </div>
 
                     <!-- AUTORIZADOR VOT -->
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnoautorizadororden == 1) && (usuario.idPerfil == 7)">
-                       
+
                         <mat-checkbox disabled [checked] = "car.vbnoautorizadororden">Vo Bo Orden de Cumplimiento</mat-checkbox>
-                         
+
                     </div>
 
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 7)">
-                       
+
                         <mat-checkbox disabled [checked] = "car.vbnoadminorden">Vo Bo Administrador</mat-checkbox>
-                         
+
                     </div>
 
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && car.vbnoautorizadororden == 0 && (usuario.idPerfil == 7)">
-                       
+
                         <button class="btn btn-primary mt-2" (click)="vobuenoorden(car.idCargue,car.vbnoadminorden)">Vo Bo Autorizar Orden</button>
-                        
+
                     </div>
 
-                   
 
-                 
+
+
                 </div>
             </mat-cell>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>  
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
     </div>
 </div>
