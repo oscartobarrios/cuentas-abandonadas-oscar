@@ -5,6 +5,7 @@ import { EntidadFinanciera } from 'src/app/domain/models/entidad-financiera/enti
 import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { ConsoleLoggerService } from 'src/app/presentation/shared/services/console-logger.service';
+import { StorageService } from 'src/app/presentation/shared/services/storage.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -27,16 +28,22 @@ export class EntidadRegistroComponent implements OnInit {
 
   financieraForm: FormGroup;
   entidadFinanciera: EntidadFinanciera;
-  
+  usuario : any;
+
   constructor(private alarma: SweetAlertService,
               private _servicioAdministrativo: GetAdministrativoService,
               private _router : Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private _storageservice: StorageService,) {
     this.formInit();
   }
 
   ngOnInit(): void {
     this.cargardatos();
+
+    this.usuario = this._storageservice.getItem('payload').infoUsuario;
+    console.log(this.usuario.idUsuario);
+
   }
 
   cargardatos(){
@@ -54,8 +61,6 @@ export class EntidadRegistroComponent implements OnInit {
       });
 
       this._servicioAdministrativo.consultarEntidad(this.identidad).subscribe((ResponseData) => {
-
-        console.log(ResponseData);
 
         this.financieraForm.controls["nombre"].setValue(ResponseData.nombre);
         this.financieraForm.controls["idOrganizacion"].setValue(ResponseData.idOrganizacion);
@@ -84,53 +89,31 @@ export class EntidadRegistroComponent implements OnInit {
     this.financieraForm  = new FormGroup({
       "idOrganizacion": new FormControl(this.entidadFinanciera?.IdOrganizacion,[Validators.required]),
       "nombre": new FormControl(this.entidadFinanciera?.Nombre, [Validators.required]),
-      "tipoEntidad": new FormControl(this.entidadFinanciera != null ? this.entidadFinanciera.TipoEntidad : null),
-      "codigoEntidad": new FormControl(''),
+      "tipoEntidad": new FormControl(this.entidadFinanciera != null ? this.entidadFinanciera.TipoEntidad : null, [Validators.required]),
+      "codigoEntidad": new FormControl('', [Validators.required]),
       "telefonoArea": new FormControl(''),
       "telefonoNumero": new FormControl(this.entidadFinanciera?.TelefonoNumero, [Validators.required]),
       "telefonoExtension": new FormControl(''),
       "direccion": new FormControl('',[Validators.required]),
       "centroCosto": new FormControl(''),
+      "idUsuario":new FormControl(0),
+      
     })
   }
 
   
   onSubmit(){
-    debugger;
+
     if(this.financieraForm.valid)
     {
        
-      const{codigoEntidad,idOrganizacion,telefonoArea,telefonoNumero,telefonoExtension} = this.financieraForm.value;
+      // if(isNaN(codigoEntidad))
+      // {
+      //   this.alarma.showWarning("El campo Código entidad debe ser numérico");
+      //   return;
+      // }
 
-      if(isNaN(codigoEntidad))
-      {
-        this.alarma.showWarning("El campo Código entidad debe ser numérico");
-        return;
-      }
-      
-      if(isNaN(idOrganizacion))
-      {
-        this.alarma.showWarning("El campo Nit debe ser numérico");
-        return;
-      }
-
-      if(isNaN(telefonoArea))
-      {
-        this.alarma.showWarning("El campo Area Teléfono debe ser numérico");
-        return;
-      }
-
-      if(isNaN(telefonoNumero))
-      {
-        this.alarma.showWarning("El campo Número Teléfono debe ser numérico");
-        return;
-      }
-
-      if(isNaN(telefonoExtension))
-      {
-        this.alarma.showWarning("El campo Extensión Teléfono debe ser numérico");
-        return;
-      }
+      this.financieraForm.controls["idUsuario"].setValue(this.usuario.idUsuario);
 
        Swal.fire({
         title: 'Espere por favor, Guardando Datos',
