@@ -1,0 +1,84 @@
+<mat-card>
+    <div>{{title}}</div>
+    <br><br>
+    
+<div class="container">
+<form [formGroup]="recursoHumanoForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+   
+    <div class="mb-3 col-sm-12 col-md-12">
+        <select class="form-control" formControlName="TipoIdentificacion">
+            <option value="null" disabled="true" [selected]="true" >Tipo documento *</option>
+            <option
+                *ngFor="let tipo of tipoDocumento"
+                value="{{tipo.nombre}}">
+                {{tipo.nombre}}
+            </option>
+        </select>
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="number" formControlName="Identificacion" class="form-control" placeholder="Identificación *">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="PrimerNombre" class="form-control" placeholder="Primer nombre *" maxlength="15">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="SegundoNombre" class="form-control" placeholder="Segundo nombre" maxlength="15">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="PrimerApellido" class="form-control" placeholder="Primer apellido *" maxlength="15">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="SegundoApellido" class="form-control" placeholder="Segundo apellido" maxlength="15">
+    </div>
+    <div class="row mb-3">
+        <div class="mb-3 col-sm-12 col-md-4">
+            <input type="text" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-4">
+            <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-4">
+            <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoExtension" class="form-control" placeholder="Extensión Teléfono">
+        </div>
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="Area" class="form-control" placeholder="Área">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="text" formControlName="DireccionCorrespondencia" class="form-control" placeholder="Dirección *" readonly (click)="openModal(content)">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="number" formControlName="Celular" class="form-control" placeholder="Celular *">
+    </div>
+    <div class="mb-3 col-sm-12 col-md-12">
+        <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *">
+    </div>
+    <div class="row">
+        <div class="col mb-4">
+            <label class="form-check-label" for="BisCheck">Estado</label>&nbsp;&nbsp;
+            <input class="form-check-input" type="checkbox" formControlName="Estado">
+        </div>
+        <div class="col mb-1">
+            
+        </div>
+    </div>
+   
+
+
+    <div class="row" fxLayoutAlign="center center">
+        <div class="col-sm-3 col-md-3">
+            <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <button [routerLink]="['/entidad-financiera']" class="form-control btn-primary-icetex">Regresar</button>
+        </div>
+    </div>
+    
+</form>
+</div>
+</mat-card>
+
+
+<ng-template #content let-modal>
+    <app-modal-direccion></app-modal-direccion>  
+</ng-template>

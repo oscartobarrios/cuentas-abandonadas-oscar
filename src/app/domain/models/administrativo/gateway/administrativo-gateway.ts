@@ -28,4 +28,8 @@ export abstract class AdministrativoGateway {
   abstract ActualizarClave(data:any): Observable<any>;
   abstract enviarcodigoverificacion(usuario: string): Observable<any>;
   abstract ConsultarUsuarioPorNombre(usuario: string): Observable<any>;
+  abstract ConsultarUsuarioPorNombre(usuario: string): Observable<any>;
+  abstract insertarActualizarFuncionarioEntidad(data: any): Observable<any>;
+  abstract ListarFuncionarioEntidadPorTipo(tipo: string): Observable<any[]>;
+  abstract ListarFuncionarioEntidadPorId(id: number): Observable<any>;
 }

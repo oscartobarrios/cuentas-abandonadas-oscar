@@ -1,14 +1,12 @@
 <div class="container">
     <form [formGroup]="direccionForm" #formDir="ngForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
         <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
-            <label class="text-white ps-2 pt-2 pb-2">Dirección</label> 
+            <label class="text-white ps-2 pt-2 pb-2">Asistente de Dirección</label> 
         </div>
         <div class="row mb-3">
             <div class="mb-3 col-sm-12 col-md-6">
-                <select class="form-control" (change)="buildAddress()" formControlName="Via"
-                [ngClass]="{'is-valid': direccionForm.controls['Via'].valid &&  direccionForm.controls['Via'].touched,
-                        'is-invalid': direccionForm.controls['Via'].invalid &&  direccionForm.controls['Via'].touched}">
-                    <option value="null" disabled="true" [selected]="true">Vía</option>
+                <select class="form-control" (change)="buildAddress()" formControlName="Via">
+                    <option value="null" disabled="true" [selected]="true">Vía *</option>
                     <option
                         *ngFor="let via of vias"
                         value="{{via.valor}}">
@@ -17,9 +15,7 @@
                 </select>
             </div>
             <div class="mb-3 col-sm-12 col-md-3">
-                <input type="text" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="Numero" class="form-control" (change)="buildAddress()" placeholder="Número"
-                [ngClass]="{'is-valid': direccionForm.controls['Numero'].valid &&  direccionForm.controls['Numero'].touched,
-                        'is-invalid': direccionForm.controls['Numero'].invalid &&  formDir.submitted}">
+                <input type="number" formControlName="Numero" class="form-control" (change)="buildAddress()" placeholder="Número">
             </div>
             <div class="mb-3 col-sm-12 col-md-3">
                 <select class="form-control" (change)="buildAddress()" formControlName="Letra">
@@ -33,71 +29,22 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="mb-3 col-sm-12 col-md-2">
-                <input class="form-check-input" (change)="buildAddress()" type="checkbox" formControlName="Bis" value="" id="BisCheck">
-                <label class="form-check-label ps-2" for="BisCheck">Bis</label>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-4">
-                <select class="form-control" (change)="buildAddress()" formControlName="Cardinal">
-                    <option value="null" disabled="true" [selected]="true">Sur/Este</option>
-                    <option
-                        *ngFor="let cardinal of cardinales"
-                        value="{{cardinal.valor}}">
-                        {{cardinal.nombre}}
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-3" style="display: flex;">
+            
+           
+            <div class="mb-4 col-sm-12 col-md-4" style="display: flex;">
                 <span style="width: 15%;">#</span>
-                <input type="text" style="width: 85%;" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="NumeroDos" class="form-control" (change)="buildAddress()" placeholder="Número"
-                [ngClass]="{'is-valid': direccionForm.controls['NumeroDos'].valid &&  direccionForm.controls['NumeroDos'].touched,
-                        'is-invalid': direccionForm.controls['NumeroDos'].invalid &&  formDir.submitted}">
+                <input type="number" style="width: 85%;" formControlName="NumeroDos" class="form-control" (change)="buildAddress()" placeholder="Número *">
             </div>
-            <div class="mb-3 col-sm-12 col-md-3">
-                <select class="form-control" (change)="buildAddress()" formControlName="LetraDos">
-                    <option value="null" disabled="true" [selected]="true">Letra</option>
-                    <option
-                        *ngFor="let letra of abc"
-                        value="{{letra}}">
-                        {{letra}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="mb-3 col-sm-12 col-md-6">
-                <input type="text" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="NumeroTres" class="form-control" (change)="buildAddress()" placeholder="Número secundario"
-                [ngClass]="{'is-valid': direccionForm.controls['NumeroTres'].valid &&  direccionForm.controls['NumeroTres'].touched,
-                        'is-invalid': direccionForm.controls['NumeroTres'].invalid &&  formDir.submitted}">
+            <span style="width:5%;">-</span>
+            <div class="mb-6 col-sm-12 col-md-6">
+                <input type="number" formControlName="NumeroTres" class="form-control" (change)="buildAddress()" placeholder="Número secundario *">
              </div>
-            <div class="mb-3 col-sm-12 col-md-6">
-                <select class="form-control" (change)="buildAddress()" formControlName="CardinalDos">
-                    <option value="null" disabled="true" [selected]="true">Sur/Este</option>
-                    <option
-                        *ngFor="let cardinal of cardinales"
-                        value="{{cardinal.valor}}">
-                        {{cardinal.nombre}}
-                    </option>
-                </select>
-            </div>
+
         </div>
-        <div class="row mb-3">
-            <div class="mb-3 col-sm-12 col-md-6">
-                <select class="form-control" (change)="buildAddress()" formControlName="Complemento">
-                    <option value="null" disabled="true" [selected]="true">Complemento</option>
-                    <option
-                        *ngFor="let complemento of complementos"
-                        value="{{complemento.valor}}">
-                        {{complemento.nombre}}
-                    </option>
-                </select>
-            </div>
-            <div class="mb-3 col-sm-12 col-md-6">
-                <input type="text" pattern="[0-9]+" title="Por favor ingrese solo números" formControlName="ComplementoDos" class="form-control" (change)="buildAddress()" placeholder="Complemento">
-             </div>
-        </div>
+        
+        
         <div class="mb-3 col-sm-12 col-md-12">
-            <input type="text" formControlName="DireccionEstandar" class="form-control" readonly placeholder="Dirección estandarizada">
+            <input type="text" formControlName="DireccionEstandar" class="form-control" readonly placeholder="Dirección Completa">
         </div>
         <div class="mb-3 col-sm-12 col-md-12" >
             <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" value="Enviar">

@@ -87,6 +87,13 @@ import { ListarAdjudicacionComponent } from './presentation/app/pages/subasta/Ad
 import { RegistrarAdjudicacionComponent } from './presentation/app/pages/subasta/Adjudicacion/registrar-adjudicacion/registrar-adjudicacion.component';
 import { ListarSubastaComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-subasta/listar-subasta.component';
 import { AdjudicacionSubastaComponent } from './presentation/app/pages/reportes/adjudicacion-subasta/adjudicacion-subasta.component';
+import { RegistrarActualizarFuncionarioEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/registrar-actualizar-funcionario-entidad/registrar-actualizar-funcionario-entidad.component';
+import { ListarFuncionarioSubataComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-funcionario-subata/listar-funcionario-subata.component';
+import { ListarFuncionarioTecnologicoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-funcionario-tecnologico/listar-funcionario-tecnologico.component';
+import { ListarFuncionarioAplicativoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-funcionario-aplicativo/listar-funcionario-aplicativo.component';
+import { ListarFuncionarioFinancieroComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-funcionario-financiero/listar-funcionario-financiero.component';
+import { ListarRevisorFiscalComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-revisor-fiscal/listar-revisor-fiscal.component';
+import { ListarRepresentanteLegalComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-representante-legal/listar-representante-legal.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -151,7 +158,14 @@ registerLocaleData(localEs);
     ListarAdjudicacionComponent,
     RegistrarAdjudicacionComponent,
     ListarSubastaComponent,
-    AdjudicacionSubastaComponent
+    AdjudicacionSubastaComponent,
+    RegistrarActualizarFuncionarioEntidadComponent,
+    ListarFuncionarioSubataComponent,
+    ListarFuncionarioTecnologicoComponent,
+    ListarFuncionarioAplicativoComponent,
+    ListarFuncionarioFinancieroComponent,
+    ListarRevisorFiscalComponent,
+    ListarRepresentanteLegalComponent
   ],
   imports: [
     AppRoutingModule,
