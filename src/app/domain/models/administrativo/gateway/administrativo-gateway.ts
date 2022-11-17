@@ -30,6 +30,11 @@ export abstract class AdministrativoGateway {
   abstract ConsultarUsuarioPorNombre(usuario: string): Observable<any>;
   abstract ConsultarUsuarioPorNombre(usuario: string): Observable<any>;
   abstract insertarActualizarFuncionarioEntidad(data: any): Observable<any>;
+  abstract insertarActualizarFuncionarioEntidadFiscalLegal(data: any): Observable<any>;
   abstract ListarFuncionarioEntidadPorTipo(tipo: string): Observable<any[]>;
   abstract ListarFuncionarioEntidadPorId(id: number): Observable<any>;
+  abstract EnvioCorreoLiderEntidad(data: any): Observable<any>;
+  abstract ConsultarNotificacionesLiderPorIdOrganizacion(idOrganizacion: string,estado:string): Observable<any>;
+  abstract ListarNotificacionesLiderEntidad(): Observable<any[]>;
+  abstract ActualizarEstadoNotificacionLider(data:any): Observable<any>;
 }

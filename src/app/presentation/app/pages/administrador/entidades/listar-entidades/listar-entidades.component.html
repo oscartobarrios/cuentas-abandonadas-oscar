@@ -17,8 +17,8 @@
                         <div class="col-sm-3 col-md-3" >
                           <button [routerLink]="['/entidadRegistro',0]" class="form-control btn-primary-icetex">Registrar Entidad</button>
                         </div>
-                        <div class="col-sm-3 col-md-3" >
-                          
+                        <div class="col-sm-4 col-md-4" >
+                            <button class="form-control btn-primary-icetex" [routerLink]="['/listarCorreoLiderEntidad']">Notificaciónes Lider Entidad</button>
                         </div>
                       </div>      
                     </mat-card-actions>
@@ -74,21 +74,40 @@
                 <div *ngIf="usuario.idPerfil == 9"> 
 
                   <mat-card-content>
+                    <mat-card-actions align="start">
+                      <div class="row" fxLayoutAlign="left">
+                        <div class="col-sm-3 col-md-3" *ngIf="swCorreo == 1 || swCorreo == 2">
+                          <button class="form-control btn-primary-icetex" (click)="envioCorreoLider()" disabled>Envio Correo</button>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3" *ngIf="swCorreo == 0">
+                          <button class="form-control btn-primary-icetex" (click)="envioCorreoLider()">Envio Correo</button>
+                        </div>
+
+                        <div class="col-sm-4 col-md-4" style="color:blue;font-size: medium;font-weight: bold;">
+                          <label>{{estadoCorreo}}</label>
+                        </div>
+                      </div>      
+                    </mat-card-actions>
                     <form [formGroup]="financieraForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
                       <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
                       </div>
                      
-                      <div class="mb-3 col-sm-12 col-md-12">
-                              <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250">
+                      <div class="mb-3 col-sm-12 col-md-12" *ngIf="swCorreo == 0 || swCorreo == 1">
+                              <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250" disabled>
                       </div>
               
+                      <div class="mb-3 col-sm-12 col-md-12" *ngIf="swCorreo == 2">
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250">
+                      </div>
+        
                       <div class="row mb-3">
                         
-                          <div class="mb-3 col-sm-12 col-md-4">
+                          <div class="mb-3 col-sm-12 col-md-4" >
                               <input type="text" formControlName="idOrganizacion" class="form-control" placeholder="NIT *" maxlength="20"  disabled>
                           </div>
               
-                          <div class="mb-3 col-sm-12 col-md-4">
+                          <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 0 || swCorreo == 1">
                               <select class="form-control" formControlName="tipoEntidad" style="color: grey;" disabled>
                                   <option value="null" disabled="true" [selected]="true" >Tipo entidad</option>
                                   <option
@@ -99,11 +118,25 @@
                               </select>
                           </div>
 
+                          <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 2">
+                            <select class="form-control" formControlName="tipoEntidad" style="color: grey;">
+                                <option value="null" disabled="true" [selected]="true" >Tipo entidad</option>
+                                <option
+                                    *ngFor="let tipo of tipoEntidad"
+                                    value="{{tipo.codigo}}">
+                                    {{tipo.nombre}}
+                                </option>
+                            </select>
+                          </div>
 
-                          <div class="mb-3 col-sm-12 col-md-4">
+                          <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 0 || swCorreo == 1">
                               <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad" maxlength="3" disabled>
                           </div>
               
+                          <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 2">
+                            <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad" maxlength="3">
+                          </div>
+
                       </div>
                      
                       <div class="row mb-3">

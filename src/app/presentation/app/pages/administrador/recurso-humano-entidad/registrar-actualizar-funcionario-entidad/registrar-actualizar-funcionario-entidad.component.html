@@ -2,7 +2,7 @@
     <div>{{title}}</div>
     <br><br>
     
-<div class="container">
+<div class="container" *ngIf="tipo != 'FISCAL' && tipo != 'LEGAL'">
 <form [formGroup]="recursoHumanoForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
    
     <div class="mb-3 col-sm-12 col-md-12">
@@ -62,7 +62,6 @@
             
         </div>
     </div>
-   
 
 
     <div class="row" fxLayoutAlign="center center">
@@ -76,6 +75,94 @@
     
 </form>
 </div>
+
+<div class="container" *ngIf="tipo === 'FISCAL' || tipo === 'LEGAL'">
+    <form fxLayout="column" [formGroup]="recursoHumanoFormFiscalLegal">
+       
+        <div class="mb-3 col-sm-12 col-md-12">
+            <select class="form-control" formControlName="TipoIdentificacion">
+                <option value="null" disabled="true" [selected]="true" >Tipo documento *</option>
+                <option
+                    *ngFor="let tipo of tipoDocumento"
+                    value="{{tipo.nombre}}">
+                    {{tipo.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="number" formControlName="Identificacion" class="form-control" placeholder="Identificación *">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="PrimerNombre" class="form-control" placeholder="Primer nombre *" maxlength="15">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="SegundoNombre" class="form-control" placeholder="Segundo nombre" maxlength="15">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="PrimerApellido" class="form-control" placeholder="Primer apellido *" maxlength="15">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="SegundoApellido" class="form-control" placeholder="Segundo apellido" maxlength="15">
+        </div>
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoExtension" class="form-control" placeholder="Extensión Teléfono">
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="Area" class="form-control" placeholder="Área">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="DireccionCorrespondencia" class="form-control" placeholder="Dirección *" readonly (click)="openModalFiscalLegal(content)">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="number" formControlName="Celular" class="form-control" placeholder="Celular *">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *">
+        </div>
+        <div class="row">
+            <div class="col mb-4">
+                <label class="form-check-label" for="BisCheck">Estado</label>&nbsp;&nbsp;
+                <input class="form-check-input" type="checkbox" formControlName="Estado">
+            </div>
+            <div class="col mb-1">
+                
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="mb-5 col-sm-12 col-md-4">
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <h2>Subir Archivo</h2>
+                  <button mat-raised-button   (click)="fileInput.click()">
+                    <mat-icon color="primary">file_present</mat-icon>
+                    <span>Selecione el archivo</span>
+                    <input #fileInput type="file" formControlName="file" (change)="fileChange($event)" style="display:none;" />
+                    <p>{{archivo?.name}}</p>
+                  </button>
+                </div>
+            </div>
+        </div>
+       
+    
+        <div class="row" fxLayoutAlign="center center">
+            <div class="col-sm-3 col-md-3">
+                <input type="submit" class="form-control btn-primary-icetex" value="Guardar" (click)="onSubmitFiscalLegal()">
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <button [routerLink]="['/entidad-financiera']" class="form-control btn-primary-icetex">Regresar</button>
+            </div>
+        </div>
+        
+    </form>
+    </div>
+
 </mat-card>
 
 

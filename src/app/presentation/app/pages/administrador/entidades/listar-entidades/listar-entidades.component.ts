@@ -25,6 +25,8 @@ export class ListarEntidadesComponent implements OnInit {
   financieraForm: FormGroup;
   entidadFinanciera: EntidadFinanciera;
   idOrganizacion: any;
+  estadoCorreo: string = "";
+  swCorreo: number = 0;
 
   tipoEntidad: any = [
     { codigo:"01", nombre: "Establecimiento Bancario"},
@@ -46,7 +48,41 @@ export class ListarEntidadesComponent implements OnInit {
   ngOnInit(): void {
 
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
-   
+    this.swCorreo = 0;
+    this._servicioAdministrativo.ConsultarNotificacionesLiderPorIdOrganizacion(this.usuario.idOrganizacion,"PENDIENTE").subscribe((ResponseData) => {
+      debugger;
+      if(ResponseData != null)
+      {
+        this.swCorreo = 1;
+        this.estadoCorreo = "Estado del Correo: Pendiente por aprobar";
+      }else{
+        this._servicioAdministrativo.ConsultarNotificacionesLiderPorIdOrganizacion(this.usuario.idOrganizacion,"APROBADO").subscribe((ResponseData) => {
+          debugger;
+          if(ResponseData != null)
+          {
+            this.swCorreo = 2;
+            this.estadoCorreo = "Estado del Correo: Aprobado";
+          }else{
+            this.swCorreo = 0;
+          }
+    
+        },  (error: any)  => {
+          console.log(error);
+          Swal.close();
+          this.alarma.showError(error.error.mensaje);
+    
+        });
+      }
+
+    },  (error: any)  => {
+      console.log(error);
+      Swal.close();
+      this.alarma.showError(error.error.mensaje);
+
+    });
+
+    
+
 
     if(this.usuario.idPerfil == "4")
     {
@@ -100,6 +136,8 @@ export class ListarEntidadesComponent implements OnInit {
       "telefonoExtension": new FormControl(''),
       "direccion": new FormControl('',[Validators.required]),
       "centroCosto": new FormControl(''),
+      "swModificar": new FormControl(0),
+      "idUsuario":new FormControl(0),
     })
   }
   
@@ -108,34 +146,73 @@ export class ListarEntidadesComponent implements OnInit {
 
     if(this.financieraForm.valid)
     {
+      if(this.swCorreo == 2)
+      {
+            Swal.fire({
+              title: 'Esta seguro que desea actualizar la entidad?, después de actualizado no se podrá modificar de nuevo el nombre código y tipo, se deberia mandar de nuevo otro correo solicitando dicho cambio',
+              text: "No podrás revertir esto!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Si, Actualizar!',
+              cancelButtonText: "Cancelar",
+              allowOutsideClick:false,
+            }).then((result) => {
+              if (result.isConfirmed) {
 
-      Swal.fire({
-        title: 'Espere por favor, Actualizando Datos de la Entidad',
-        allowOutsideClick:false,
-        didOpen: () => {
-            Swal.showLoading()
-          }
-        });
+            Swal.fire({
+              title: 'Espere por favor, Actualizando Datos de la Entidad',
+              allowOutsideClick:false,
+              didOpen: () => {
+                  Swal.showLoading()
+                }
+              });
 
-      
-        this._servicioAdministrativo.actualizarEntidad(this.financieraForm.value).subscribe((ResponseData) => {
-          Swal.close()
-          this.alarma.showSuccess("Actualizado exitosamente");
-          this._router.navigate([`/entidad-financiera`]);
-          
-        },  (error: any)  => {
-          console.log(error);
-          Swal.close();
-          this.alarma.showError(error.error.mensaje);
-          
-        });
+              this.financieraForm.controls['swModificar'].setValue(this.swCorreo);
+              this.financieraForm.controls["idUsuario"].setValue(this.usuario.idUsuario);
 
+              this._servicioAdministrativo.actualizarEntidad(this.financieraForm.value).subscribe((ResponseData) => {
+              
+                alert("Actualizado exitosamente");
+                Swal.close();
+                window.location.reload();
+                // this.alarma.showSuccess("Actualizado exitosamente");
+                // this._router.navigate([`/entidad-financiera`]);
+               
+              },  (error: any)  => {
+                console.log(error);
+                Swal.close();
+                this.alarma.showError(error.error.mensaje);
+                
+              });
+            }
+          })
+      }else{
+        this.financieraForm.controls['swModificar'].setValue(this.swCorreo);
 
+              this._servicioAdministrativo.actualizarEntidad(this.financieraForm.value).subscribe((ResponseData) => {
+                Swal.close()
+                this.alarma.showSuccess("Actualizado exitosamente");
+                this.swCorreo = 0;
+                this._router.navigate([`/entidad-financiera`]);
+                
+              },  (error: any)  => {
+                console.log(error);
+                Swal.close();
+                this.alarma.showError(error.error.mensaje);
+                
+              });
+      }
     }
     else{
       this.alarma.showWarning("Información incompleta, por favor verifique");
-
     }
+  }
+
+  envioCorreoLider(){
+    this._router.navigate([`/envioCorreoLiderEntidad`]);
+
   }
 
 }

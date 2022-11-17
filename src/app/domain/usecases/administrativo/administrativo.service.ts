@@ -101,12 +101,32 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.insertarActualizarFuncionarioEntidad(data);
   }
 
+  insertarActualizarFuncionarioEntidadFiscalLegal(data:any): Observable<any> {
+    return this._administrativoGetway.insertarActualizarFuncionarioEntidadFiscalLegal(data);
+  }
+  
   ListarFuncionarioEntidadPorTipo(tipo:string): Observable<any[]> {
     return this._administrativoGetway.ListarFuncionarioEntidadPorTipo(tipo);
   }
 
   ListarFuncionarioEntidadPorId(id:number): Observable<any> {
     return this._administrativoGetway.ListarFuncionarioEntidadPorId(id);
+  }
+
+  EnvioCorreoLiderEntidad(data: any): Observable<any> {
+    return this._administrativoGetway.EnvioCorreoLiderEntidad(data);
+  }
+
+  ConsultarNotificacionesLiderPorIdOrganizacion(idOrganizacion: string,estado:string): Observable<any> {
+    return this._administrativoGetway.ConsultarNotificacionesLiderPorIdOrganizacion(idOrganizacion,estado);
+  }
+
+  ListarNotificacionesLiderEntidad(): Observable<any[]> {
+    return this._administrativoGetway.ListarNotificacionesLiderEntidad();
+  }
+
+  ActualizarEstadoNotificacionLider(data:any): Observable<any> {
+    return this._administrativoGetway.ActualizarEstadoNotificacionLider(data);
   }
 
 }

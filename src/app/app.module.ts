@@ -94,6 +94,9 @@ import { ListarFuncionarioAplicativoComponent } from './presentation/app/pages/a
 import { ListarFuncionarioFinancieroComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-funcionario-financiero/listar-funcionario-financiero.component';
 import { ListarRevisorFiscalComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-revisor-fiscal/listar-revisor-fiscal.component';
 import { ListarRepresentanteLegalComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/listar-representante-legal/listar-representante-legal.component';
+import { EnvioCorreoLiderEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/envio-correo-lider-entidad/envio-correo-lider-entidad.component';
+import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
+import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -165,7 +168,10 @@ registerLocaleData(localEs);
     ListarFuncionarioAplicativoComponent,
     ListarFuncionarioFinancieroComponent,
     ListarRevisorFiscalComponent,
-    ListarRepresentanteLegalComponent
+    ListarRepresentanteLegalComponent,
+    EnvioCorreoLiderEntidadComponent,
+    RechazarNotificacionComponent,
+    ListarCorreoComponent
   ],
   imports: [
     AppRoutingModule,

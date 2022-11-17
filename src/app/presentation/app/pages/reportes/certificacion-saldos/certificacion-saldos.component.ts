@@ -48,7 +48,7 @@ export class CertificacionSaldosComponent implements OnInit {
     {
 
       this.swimpresion = false;
-
+      debugger;
         const{fecha} = this.certificadoForm.value;
         this.fecha = new Date();
     
@@ -56,7 +56,8 @@ export class CertificacionSaldosComponent implements OnInit {
         {
           this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
         } else{
-          this.fechaahora = this.fecha.getDate() + "/" + (this.fecha.getMonth() + 1) + "/" + this.fecha.getFullYear();
+          // this.fechaahora = this.fecha.getDate() + "-" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getFullYear();
+          this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
         }
 
         if(fecha > this.fechaahora)
