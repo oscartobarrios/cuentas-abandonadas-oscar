@@ -1,0 +1,59 @@
+<mat-card-content>
+    <div class="row mb-5">
+        <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+        <div class="col-8">Cuentas Abandonadas - Lista de Notificaciones de Lider de Entidad</div>
+        <!-- <div class="col-2">
+            <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
+            (click)="vobuenoordenTodos()">Seleccionar Todo</button>
+          </div> -->
+    </div>
+    <div fxLayout="column">
+      <div class="mat-elevation-z8">
+
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="Entidad" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad</th>
+              <td mat-cell *matCellDef="let element" style="width: 300px;">{{element.nombreEntidad}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Estado" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+              <td mat-cell *matCellDef="let element" style="width: 400px;">{{element.estado}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Fecha" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.fechaCreacion | date: 'dd/MM/yyyy'}}</td>
+              </ng-container>
+            
+            <ng-container matColumnDef="Actions">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+              <mat-cell *matCellDef="let element;">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                <div style="margin: 3px;">
+
+                    <div *ngIf="element.estado === 'PENDIENTE'">
+                        <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="aprobar(element.idNotificacion,element.usuario)" >
+                            <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Aprobar
+                        </button>
+                        <button mat-raised-button matTooltip="Rechazar" (click)="rechazar(element.idNotificacion,element.usuario)">
+                            <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                        </button>
+                    </div>
+                   
+                 
+                </div>
+              </mat-cell>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </mat-card-content>
+
+

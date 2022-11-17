@@ -44,6 +44,9 @@ import { RegistrarAdjudicacionComponent } from './presentation/app/pages/subasta
 import { ListarSubastaComponent } from './presentation/app/pages/subasta/Adjudicacion/listar-subasta/listar-subasta.component';
 import { AdjudicacionSubastaComponent } from './presentation/app/pages/reportes/adjudicacion-subasta/adjudicacion-subasta.component';
 import { RegistrarActualizarFuncionarioEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/registrar-actualizar-funcionario-entidad/registrar-actualizar-funcionario-entidad.component';
+import { EnvioCorreoLiderEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/envio-correo-lider-entidad/envio-correo-lider-entidad.component';
+import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
+import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
 
 
 const routes: Routes = [
@@ -98,6 +101,9 @@ const routes: Routes = [
       {path: 'listarsubasta', component: ListarSubastaComponent},
       {path: 'reporteadjudicacionsubasta', component: AdjudicacionSubastaComponent},
       {path: 'funcionarioEntidadRegistrarActualizar/:id/:tipo', component: RegistrarActualizarFuncionarioEntidadComponent},
+      {path: 'envioCorreoLiderEntidad', component: EnvioCorreoLiderEntidadComponent},
+      {path: 'listarCorreoLiderEntidad', component: ListarCorreoComponent},
+      {path: 'autorizacion-rechazo-lider-entidad/:id/:usuario', component: RechazarNotificacionComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]

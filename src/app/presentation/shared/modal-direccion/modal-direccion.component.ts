@@ -49,7 +49,7 @@ export class ModalDireccionComponent implements OnInit {
     let direccion = this.direccionForm.value;
     console.log(this.direccionForm.value.Bis);
     this.direccionForm.value.DireccionEstandar = `${direccion.Via} ${direccion.Numero ? direccion.Numero : ''} ${direccion.Letra ? direccion.Letra : ''} ${direccion.Bis ? 'Bis' : ''} ` +
-    `${direccion.Cardinal ? direccion.Cardinal : ''} # ${direccion.NumeroDos ? direccion.NumeroDos : ''} ${direccion.LetraDos ? direccion.LetraDos : ''} ` +
+    `${direccion.Cardinal ? direccion.Cardinal : ''} Nro. ${direccion.NumeroDos ? direccion.NumeroDos : ''} ${direccion.LetraDos ? direccion.LetraDos : ''} ` +
     ` - ${direccion.NumeroTres ? direccion.NumeroTres : ''} ${direccion.CardinalDos ? direccion.CardinalDos : ''} ` +
     `${direccion.Complemento ? direccion.Complemento : ''} ${direccion.ComplementoDos ? direccion.ComplementoDos : ''}`;
 

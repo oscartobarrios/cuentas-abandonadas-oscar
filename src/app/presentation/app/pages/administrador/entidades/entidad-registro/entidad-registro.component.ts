@@ -97,7 +97,7 @@ export class EntidadRegistroComponent implements OnInit {
       "direccion": new FormControl('',[Validators.required]),
       "centroCosto": new FormControl(''),
       "idUsuario":new FormControl(0),
-      
+      "swModificar": new FormControl(0),
     })
   }
 
