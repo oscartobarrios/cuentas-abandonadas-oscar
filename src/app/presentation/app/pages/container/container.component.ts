@@ -55,7 +55,7 @@ export class ContainerComponent implements OnInit {
       icon: 'description',
       text: 'Subastas',
       url : 'submenu/subastas',
-      rols: [4,5,11]
+      rols: [5]
     }/*,
     {
       icon: 'account_balance',
