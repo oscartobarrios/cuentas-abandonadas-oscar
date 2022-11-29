@@ -109,6 +109,10 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
     return this._administrativoGetway.ListarFuncionarioEntidadPorTipo(tipo);
   }
 
+  ListarFuncionarioEntidadPorTipoIdOrganizacion(tipo:string,idorganizacion:string): Observable<any[]> {
+    return this._administrativoGetway.ListarFuncionarioEntidadPorTipoIdOrganizacion(tipo,idorganizacion);
+  }
+
   ListarFuncionarioEntidadPorId(id:number): Observable<any> {
     return this._administrativoGetway.ListarFuncionarioEntidadPorId(id);
   }
@@ -127,6 +131,14 @@ import { ReporteGateway } from '../../models/reporte/gateway/reporte-gateway';
 
   ActualizarEstadoNotificacionLider(data:any): Observable<any> {
     return this._administrativoGetway.ActualizarEstadoNotificacionLider(data);
+  }
+
+  getCargaexcelEntidadTesorero(entidad: string): Observable<any> {
+    return this._administrativoGetway.getCargaexcelEntidadTesorero(entidad);
+  }
+
+  getCargaexcelEntidadesTesorero(): Observable<any> {
+    return this._administrativoGetway.getCargaexcelEntidadesTesorero();
   }
 
 }

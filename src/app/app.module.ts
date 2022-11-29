@@ -97,6 +97,7 @@ import { ListarRepresentanteLegalComponent } from './presentation/app/pages/admi
 import { EnvioCorreoLiderEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/envio-correo-lider-entidad/envio-correo-lider-entidad.component';
 import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
 import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
+import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -171,7 +172,8 @@ registerLocaleData(localEs);
     ListarRepresentanteLegalComponent,
     EnvioCorreoLiderEntidadComponent,
     RechazarNotificacionComponent,
-    ListarCorreoComponent
+    ListarCorreoComponent,
+    DetalleTesoreroEntidadComponent
   ],
   imports: [
     AppRoutingModule,

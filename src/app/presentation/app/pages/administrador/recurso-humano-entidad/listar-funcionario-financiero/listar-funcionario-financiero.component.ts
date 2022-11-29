@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetAdministrativoService } from 'src/app/domain/usecases/administrativo/administrativo.service';
@@ -12,9 +12,10 @@ import { StorageService } from 'src/app/presentation/shared/services/storage.ser
 })
 export class ListarFuncionarioFinancieroComponent implements OnInit {
   usuario : any;
-  displayedColumns: string[] = ['TipoIdentificacion','Identificacion','PrimerNombre', 'SegundoNombre','PrimerApellido','segundoApellido','Telefono','Direccion','Actions'];
+  displayedColumns: string[] = ['NombreEntidad','TipoIdentificacion','Identificacion','PrimerNombre', 'SegundoNombre','PrimerApellido','segundoApellido','Telefono','Direccion','Actions'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @Input('identidad') identidad: string;
   
   constructor(private _servicioAdministrativo: GetAdministrativoService,
               private _notifications: NotificationsService,
@@ -23,12 +24,27 @@ export class ListarFuncionarioFinancieroComponent implements OnInit {
 ngOnInit(): void {
   this.usuario = this._storageservice.getItem('payload').infoUsuario;
 const preloader = this._notifications.showPreloader();
-this._servicioAdministrativo.ListarFuncionarioEntidadPorTipo("FINANCIERO").subscribe((ResultData) => {
 
-this.dataSource.data = ResultData;
-this.dataSource.paginator = this.paginator;
-preloader.close();
-});
+if(this.usuario.idPerfil == "4")
+    {
+      this._servicioAdministrativo.ListarFuncionarioEntidadPorTipo("FINANCIERO").subscribe((ResultData) => {
+
+        this.dataSource.data = ResultData;
+        this.dataSource.paginator = this.paginator;
+        preloader.close();
+      });
+    }
+
+    if(this.usuario.idPerfil == "5" || this.usuario.idPerfil == "9")
+    {
+      this._servicioAdministrativo.ListarFuncionarioEntidadPorTipoIdOrganizacion("FINANCIERO",this.identidad).subscribe((ResultData) => {
+
+        this.dataSource.data = ResultData;
+        this.dataSource.paginator = this.paginator;
+        preloader.close();
+      });
+    }
+
 }
 
 }

@@ -12,7 +12,7 @@ import { IEstadoCargue } from '../../models/reporte/iestadocargue';
 
     getReporteEstadoCargaexcel(estadocargue:any): Observable<any> {
         return this._reporteGetway.getReporteEstadoCargueExcel(estadocargue);
-      }
+    }
 
     getReporteCargaRechazadoexcel(estadocargue:any): Observable<any> {
         return this._reporteGetway.getReporteCargueRechazadoExcel(estadocargue);

@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 export class ListarEntidadesComponent implements OnInit {
 
   usuario : any;
-  displayedColumns: string[] = ['Nit', 'Nombre','Direccion','Telefono','Actions'];
+  displayedColumns: string[] = ['Nit', 'Nombre','Direccion','Telefono','NombreTipo','Actions'];
   dataSource = new MatTableDataSource<IEntidad>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   financieraForm: FormGroup;
@@ -27,6 +27,7 @@ export class ListarEntidadesComponent implements OnInit {
   idOrganizacion: any;
   estadoCorreo: string = "";
   swCorreo: number = 0;
+  public nombreArchivo = 'Reporte Entidades Tesorero.xlsx';
 
   tipoEntidad: any = [
     { codigo:"01", nombre: "Establecimiento Bancario"},
@@ -50,14 +51,14 @@ export class ListarEntidadesComponent implements OnInit {
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.swCorreo = 0;
     this._servicioAdministrativo.ConsultarNotificacionesLiderPorIdOrganizacion(this.usuario.idOrganizacion,"PENDIENTE").subscribe((ResponseData) => {
-      debugger;
+
       if(ResponseData != null)
       {
         this.swCorreo = 1;
         this.estadoCorreo = "Estado del Correo: Pendiente por aprobar";
       }else{
         this._servicioAdministrativo.ConsultarNotificacionesLiderPorIdOrganizacion(this.usuario.idOrganizacion,"APROBADO").subscribe((ResponseData) => {
-          debugger;
+
           if(ResponseData != null)
           {
             this.swCorreo = 2;
@@ -81,14 +82,12 @@ export class ListarEntidadesComponent implements OnInit {
 
     });
 
-    
-
-
-    if(this.usuario.idPerfil == "4")
+    if(this.usuario.idPerfil == "4" || this.usuario.idPerfil == "5")
     {
       const preloader = this._notifications.showPreloader();
       this._servicioAdministrativo.ListarEntidades().subscribe((ResultData) => {
   
+        console.log(ResultData);
         this.dataSource.data = ResultData;
         this.dataSource.paginator = this.paginator;
         preloader.close();
@@ -214,5 +213,28 @@ export class ListarEntidadesComponent implements OnInit {
     this._router.navigate([`/envioCorreoLiderEntidad`]);
 
   }
+
+  descargarExcelEntidad(){
+
+    Swal.fire({
+      title: 'Espere por favor, Descargando Datos',
+      allowOutsideClick:false,
+      didOpen: () => {
+          Swal.showLoading()
+        }
+      });
+
+    this._servicioAdministrativo.getCargaexcelEntidadesTesorero().subscribe(response => {
+    
+      const downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(response);
+      downloadLink.setAttribute('download', this.nombreArchivo);
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      Swal.close();
+    })
+
+  }
+
 
 }
