@@ -152,6 +152,12 @@ import { environment } from "src/environments/environment";
       return this.http.get<any[]>(url);
     }
 
+    ListarFuncionarioEntidadPorTipoIdOrganizacion(tipo:string,idorganizacion:string): Observable<any[]> {
+      const url = `${environment.rest.endpoint}/Administrativo/GetFuncionarioEntidadPorTipoIdOrganizacion/${tipo}/${idorganizacion}`;
+      return this.http.get<any[]>(url);
+    }
+
+
     ListarFuncionarioEntidadPorId(id:number): Observable<any[]> {
       const url = `${environment.rest.endpoint}/Administrativo/GetFuncionarioEntidadPorId/${id}`;
       return this.http.get<any[]>(url);
@@ -180,6 +186,36 @@ import { environment } from "src/environments/environment";
       return this.http.post<any>(url,data);
     }
 
+    getCargaexcelEntidadTesorero(entidad: string): Observable<Blob> {
+   
+    return this.http.get(`${environment.rest.endpoint}/Administrativo/getCargaexcelEntidadTesorero/${entidad}`, 
+          {responseType: 'blob'})
+    .pipe(
+      tap(data => console.log('Get mission report: ' + data)),
+      catchError(this.handleError)
+    )
+   }
+
+   getCargaexcelEntidadesTesorero(): Observable<Blob> {
+   
+    return this.http.get(`${environment.rest.endpoint}/Administrativo/getCargaexcelEntidadesTesorero`, 
+          {responseType: 'blob'})
+    .pipe(
+      tap(data => console.log('Get mission report: ' + data)),
+      catchError(this.handleError)
+    )
+   }
+
+   private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+        errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+        errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 
 }
 

@@ -1,0 +1,93 @@
+<mat-card>
+    <div>Visualizar Datos Entidad</div>
+<div class="container">
+    <form [formGroup]="financieraForm">
+        <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+        </div>
+       
+        <div class="mb-3 col-sm-12 col-md-12">
+                <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera" disabled>
+        </div>
+
+        <div class="row mb-3">
+           
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="idOrganizacion" class="form-control" placeholder="NIT" disabled>
+            </div>
+
+            <div class="mb-3 col-sm-12 col-md-4">
+                <select class="form-control" formControlName="tipoEntidad" style="color: grey;" disabled>
+                    <option value="null" disabled="true" [selected]="true" >Tipo entidad *</option>
+                    <option
+                        *ngFor="let tipo of tipoEntidad"
+                        value="{{tipo.codigo}}">
+                        {{tipo.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad *" disabled>
+            </div>
+
+        </div>
+       
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoArea" class="form-control" placeholder="Área Teléfono" disabled>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoNumero" class="form-control" placeholder="Número Teléfono *" disabled>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="text" formControlName="telefonoExtension" class="form-control" placeholder="Extensión Teléfono" disabled>
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="direccion" class="form-control" placeholder="Dirección *" disabled>
+        </div>
+
+        <div class="mb-3 col-sm-4 col-md-4">
+            <input type="text" formControlName="centroCosto" class="form-control" placeholder="Centro de costo" disabled>
+        </div>
+    </form>
+    <div>
+        <h2>Representante legal</h2>
+        <app-listar-representante-legal identidad={{identidad}}></app-listar-representante-legal>
+    </div>
+    
+    <div>
+        <h2>Revisor Fiscal</h2>
+        <app-listar-revisor-fiscal identidad={{identidad}}></app-listar-revisor-fiscal>
+    </div>
+
+    <div>
+        <h2> Funcionarios Autorizados Para Acceso Al Aplicativo</h2>
+        <app-listar-funcionario-aplicativo identidad={{identidad}}></app-listar-funcionario-aplicativo>
+    </div>
+
+    <div>
+        <h2>Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero</h2>
+        <app-listar-funcionario-financiero identidad={{identidad}}></app-listar-funcionario-financiero>
+    </div>
+
+    <div>
+        <h2>Funcionarios Autorizados para Soporte Operativo y Tecnológico</h2>
+        <app-listar-funcionario-tecnologico identidad={{identidad}}></app-listar-funcionario-tecnologico>
+    </div>
+
+    <div>
+        <h2>Funcionarios Autorizados para Información de Subasta</h2>
+        <app-listar-funcionario-subata identidad={{identidad}}></app-listar-funcionario-subata>
+    </div>
+
+    <div class="row" fxLayoutAlign="center center">
+        <div class="col-sm-3 col-md-3" >
+            <input type="submit" class="form-control btn-primary-icetex" (click)="descargarExcel()" value="Descargar Excel">
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <button [routerLink]="['/entidad-financiera']" class="form-control btn-primary-icetex">Regresar</button>
+        </div>
+    </div>
+
+</div>
+</mat-card>

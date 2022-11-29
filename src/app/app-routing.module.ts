@@ -47,6 +47,7 @@ import { RegistrarActualizarFuncionarioEntidadComponent } from './presentation/a
 import { EnvioCorreoLiderEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/envio-correo-lider-entidad/envio-correo-lider-entidad.component';
 import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
 import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
+import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
 
 
 const routes: Routes = [
@@ -104,6 +105,7 @@ const routes: Routes = [
       {path: 'envioCorreoLiderEntidad', component: EnvioCorreoLiderEntidadComponent},
       {path: 'listarCorreoLiderEntidad', component: ListarCorreoComponent},
       {path: 'autorizacion-rechazo-lider-entidad/:id/:usuario', component: RechazarNotificacionComponent},
+      {path: 'visualizarentidadtesorero/:id', component: DetalleTesoreroEntidadComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
