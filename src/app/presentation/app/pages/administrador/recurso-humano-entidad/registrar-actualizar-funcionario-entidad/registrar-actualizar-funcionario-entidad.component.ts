@@ -217,7 +217,7 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
     this.recursoHumanoForm = new FormGroup({
       
       TipoIdentificacion : new FormControl(this.recursoHumano?.TipoIdentificacion, Validators.required),
-      Identificacion : new FormControl(this.recursoHumano?.Identificacion, Validators.required),
+      Identificacion : new FormControl(this.recursoHumano?.Identificacion,[Validators.required]),
       PrimerNombre : new FormControl(this.recursoHumano?.PrimerNombre, [Validators.required, Validators.maxLength(15)]),
       SegundoNombre : new FormControl('', Validators.maxLength(15)),
       PrimerApellido : new FormControl(this.recursoHumano?.PrimerApellido, [Validators.required, Validators.maxLength(15)]),
