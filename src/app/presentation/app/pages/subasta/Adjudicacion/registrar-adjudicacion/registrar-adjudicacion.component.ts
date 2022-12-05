@@ -114,6 +114,18 @@ export class RegistrarAdjudicacionComponent implements OnInit {
 
       const{fechaadjudicacion,entidad,tipo,valoradjudicado,porcentaje,tasainteres} = this.adjudicacionForm.value;
 
+      if(porcentaje.toString().length > 3)
+      {
+        this.alarma.showInfo("El campo porcentaje no debe ser mayor a 3 caracteres");
+        return;
+      }
+
+      if(porcentaje > 100)
+      {
+        this.alarma.showInfo("El valor del porcentaje no debe ser mayor al 100%");
+        return;
+      }
+
       const data:any = {
         idAdjudicacion: this.id,
         fechaAdjudicacion: fechaadjudicacion,
