@@ -126,6 +126,24 @@ export class RegistrarAdjudicacionComponent implements OnInit {
         return;
       }
 
+      if(tasainteres.toString().length > 3)
+      {
+        this.alarma.showInfo("El campo tasa de interes no debe ser mayor a 3 caracteres");
+        return;
+      }
+
+      if(tasainteres > 100)
+      {
+        this.alarma.showInfo("El valor de la tasa de interes no debe ser mayor al 100%");
+        return;
+      }
+      
+      if(valoradjudicado.toString().length > 15)
+      {
+        this.alarma.showInfo("El campo Valor adjudicado no debe ser mayor a 15 caracteres y es requerido");
+        return;
+      }
+
       const data:any = {
         idAdjudicacion: this.id,
         fechaAdjudicacion: fechaadjudicacion,

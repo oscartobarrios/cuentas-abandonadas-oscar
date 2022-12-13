@@ -299,6 +299,22 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
         
       }
 
+      if(Celular.toString().length > 10)
+        {
+          this.alarma.showInfo("El campo Celular no debe ser mayor a 10 caracteres");
+          return;
+        }
+
+        //VALIDAR EMAIL
+        var EMAIL_REGEX = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var rpt = EMAIL_REGEX.test(Email);
+
+        if(rpt == false){
+          this.alarma.showInfo("Correo Electrónico no valido");
+          return;
+        }
+
+
       Swal.fire({
         title: 'Espere por favor, Guardando Datos',
         allowOutsideClick:false,
