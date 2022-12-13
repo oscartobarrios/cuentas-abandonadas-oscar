@@ -32,7 +32,7 @@
     </div>
     <div class="row mb-3">
         <div class="mb-3 col-sm-12 col-md-4">
-            <input type="text" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+            <input type="text" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono" maxlength="15">
         </div>
         <div class="mb-3 col-sm-12 col-md-4">
             <input type="number" title="Por favor ingrese solo números" onkeypress="return event.charCode >= 48" min="1" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *">
@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="mb-3 col-sm-12 col-md-12">
-        <input type="text" formControlName="Area" class="form-control" placeholder="Área">
+        <input type="text" formControlName="Area" class="form-control" placeholder="Área" maxlength="50" onkeydown="return /[a-z, ]/i.test(event.key)">
     </div>
     <div class="mb-3 col-sm-12 col-md-12">
         <input type="text" formControlName="DireccionCorrespondencia" class="form-control" placeholder="Dirección *" readonly (click)="openModal(content)">
@@ -51,7 +51,7 @@
         <input type="number" formControlName="Celular" class="form-control" onkeypress="return event.charCode >= 48" min="1" placeholder="Celular *">
     </div>
     <div class="mb-3 col-sm-12 col-md-12">
-        <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *">
+        <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *" maxlength="50">
     </div>
     <div class="row">
         <div class="col mb-4">
@@ -106,7 +106,7 @@
         </div>
         <div class="row mb-3">
             <div class="mb-3 col-sm-12 col-md-4">
-                <input type="text" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+                <input type="text" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono" maxlength="15">
             </div>
             <div class="mb-3 col-sm-12 col-md-4">
                 <input type="number" title="Por favor ingrese solo números" onkeypress="return event.charCode >= 48" min="1" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *">
@@ -116,7 +116,7 @@
             </div>
         </div>
         <div class="mb-3 col-sm-12 col-md-12">
-            <input type="text" formControlName="Area" class="form-control" placeholder="Área">
+            <input type="text" formControlName="Area" class="form-control" placeholder="Área" maxlength="50" onkeydown="return /[a-z, ]/i.test(event.key)">
         </div>
         <div class="mb-3 col-sm-12 col-md-12">
             <input type="text" formControlName="DireccionCorrespondencia" class="form-control" placeholder="Dirección *" readonly (click)="openModalFiscalLegal(content)">
@@ -125,7 +125,7 @@
             <input type="number" onkeypress="return event.charCode >= 48" min="1" formControlName="Celular" class="form-control" placeholder="Celular *">
         </div>
         <div class="mb-3 col-sm-12 col-md-12">
-            <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *">
+            <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *" maxlength="50">
         </div>
         <div class="row">
             <div class="col mb-4">
