@@ -106,7 +106,8 @@ export class ConsolidadosComponent implements OnInit {
     if(this.type == "cesion")
     {
       this.columns = [
-        { prop: 'nombre', name: 'Entidad financiera' },
+        { prop: 'nombre', name: 'Entidad financiera Origen' },
+        { prop: 'nombreEntidadDestino', name: 'Entidad financiera Destino' },        
         { prop: 'tipoArchivo', name: 'Tipo archivo' },
         { prop: 'fechaCesion', name: 'Fecha Cesion' },
         { prop: 'nroCuentas', name: 'Número cuentas' },
@@ -129,6 +130,7 @@ export class ConsolidadosComponent implements OnInit {
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.GetConsolidadoFilter(this.page)
         .subscribe(res => {
+          console.log(res);
           this.configurarTablaConRespuesta(res);
           preloader.close();
         });

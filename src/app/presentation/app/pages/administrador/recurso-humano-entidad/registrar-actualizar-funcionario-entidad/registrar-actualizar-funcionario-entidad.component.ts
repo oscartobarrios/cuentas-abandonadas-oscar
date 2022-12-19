@@ -256,6 +256,8 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
 
   onSubmit(){
 
+    debugger;
+
     if(this.recursoHumanoForm.valid)
     {
 
@@ -299,7 +301,7 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
         
       }
 
-      if(Celular.toString().length > 10)
+        if(Celular.toString().length > 10)
         {
           this.alarma.showInfo("El campo Celular no debe ser mayor a 10 caracteres");
           return;
@@ -381,15 +383,146 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
     }
   }
 
-  onSubmitFiscalLegal(){
+
+  onSubmit2(){
 
     debugger;
+
+    const{TipoIdentificacion,Identificacion,PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,Area,DireccionCorrespondencia,
+      TelefonoArea,TelefonoNumero,TelefonoExtension,Celular,Email,Estado} = this.recursoHumanoFormFiscalLegal.value;
+
+    if(Celular != null && TipoIdentificacion != null && Identificacion != null && PrimerNombre != null && PrimerApellido != null && TelefonoNumero != null && DireccionCorrespondencia != null && Email != "")
+    {
+      var telextension = 0;
+      var estadocheck = 0;
+
+      if(TelefonoExtension != '')
+      {
+        telextension = TelefonoExtension;
+      }
+
+      if (TipoIdentificacion === 'Cédula')
+      {
+        if(Identificacion.toString().length > 11)
+        {
+          this.alarma.showInfo("El campo Identificación no debe ser mayor a 11 caracteres y es requerido");
+          return;
+        }
+        
+      }
+      else if (TipoIdentificacion === 'Cédula extranjería')
+      {
+        if(Identificacion.toString().length > 6)
+        {
+          this.alarma.showInfo("El campo Identificación no debe ser mayor a 6 caracteres y es requerido");
+          return;
+        }
+  
+      }
+      else
+      {
+        if(Identificacion.toString().length > 9)
+        {
+          this.alarma.showInfo("El campo Identificación no debe ser mayor a 9 caracteres y es requerido");
+          return;
+        }
+  
+        
+      }
+
+        if(Celular.toString().length > 10)
+        {
+          this.alarma.showInfo("El campo Celular no debe ser mayor a 10 caracteres");
+          return;
+        }
+
+        //VALIDAR EMAIL
+        var EMAIL_REGEX = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var rpt = EMAIL_REGEX.test(Email);
+
+        if(rpt == false){
+          this.alarma.showInfo("Correo Electrónico no valido");
+          return;
+        }
+
+
+      Swal.fire({
+        title: 'Espere por favor, Guardando Datos',
+        allowOutsideClick:false,
+        didOpen: () => {
+            Swal.showLoading()
+          }
+        });
+
+        if(Estado === true)
+        {
+          estadocheck = 1;
+        }else{
+          estadocheck = 0;
+        }
+
+
+        const data:any = {
+          idFuncionario: this.identidad,
+          idOrganizacion: this.idOrganizacion,
+          tipoIdentificacion: TipoIdentificacion,
+          identificacion: Identificacion,
+          primerNombre:PrimerNombre,
+          segundoNombre:SegundoNombre,
+          primerApellido:PrimerApellido,
+          segundoApellido:SegundoApellido,
+          area:Area,
+          direccionCorrespondencia:DireccionCorrespondencia,
+          telefonoArea:TelefonoArea,
+          telefonoNumero:TelefonoNumero,
+          telefonoExtension:telextension,
+          celular:Celular,
+          email:Email,
+          tipoFuncionario:this.tipo,
+          estado : estadocheck,
+          archivo: this.rutaArchivo
+        };
+
+        console.log(data);
+
+        this._servicioAdministrativo.insertarActualizarFuncionarioEntidad(data).subscribe((ResponseData) => {
+          Swal.close();
+
+          if(this.identidad ==0){
+          this.alarma.showSuccess("Guardado exitosamente");
+          }
+          else{
+            this.alarma.showSuccess("Actualizado exitosamente");
+          }
+
+          this._router.navigate([`/entidad-financiera`]);
+          
+        },  (error: any)  => {
+          console.log(error);
+          Swal.close();
+          this.alarma.showError(error.error.mensaje);
+          
+        });
+        
+    }
+    else{
+      this.alarma.showWarning("Información incompleta, por favor verifique");
+
+    }
+
+      
+
+      
+
+  }
+
+  onSubmitFiscalLegal(){
 
     if(this.archivo === undefined)
     {
       if(this.rutaArchivo != null)
       {
-        this.onSubmit();
+        this.onSubmit2();
         return;
       }
     }
@@ -436,6 +569,22 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
   
         
       }
+
+      if(Celular.toString().length > 10)
+        {
+          this.alarma.showInfo("El campo Celular no debe ser mayor a 10 caracteres");
+          return;
+        }
+
+        //VALIDAR EMAIL
+        var EMAIL_REGEX = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        var rpt = EMAIL_REGEX.test(Email);
+
+        if(rpt == false){
+          this.alarma.showInfo("Correo Electrónico no valido");
+          return;
+        }
+
 
       Swal.fire({
         title: 'Espere por favor, Guardando Datos',
