@@ -188,14 +188,21 @@ export class DetalladosComponent implements OnInit {
 
     if(!this.fechaInicio || !this.fechaFin){
       this.alarma.showWarning("Debe seleccionar un rango de fechas para realizar la consulta");
-    }else{
+      return;
+    }
+
+    if(!this.entidad){
+      this.alarma.showWarning("Debe seleccionar una entidad para realizar la descarga", "Atención");
+      return;
+    }
+
       const preloader = this._notifications.showPreloader();
       this._getarchivousecase.GetDetalladoFilter(this.page)
         .subscribe(res => {
           this.configurarTablaConRespuesta(res);
           preloader.close();
         });
-    }
+    
   }
 
   buscar() {
