@@ -99,7 +99,8 @@
                         <button class="btn btn-primary mt-2" (click)="ingresoDatos(car.idCargue,car.tipoArchivo)">Ingresar Datos Orden</button>
                     </div>
 
-                    <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)">
+                    <!-- <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)"> -->
+                    <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
                     </div>
 
@@ -118,7 +119,8 @@
 
                     </div>
 
-                    <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)">
+                    <!-- <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)"> -->
+                    <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 10)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
 
                     </div>

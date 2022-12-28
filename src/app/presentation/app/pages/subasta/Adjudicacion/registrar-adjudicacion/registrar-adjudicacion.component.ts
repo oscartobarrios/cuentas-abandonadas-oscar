@@ -65,7 +65,15 @@ export class RegistrarAdjudicacionComponent implements OnInit {
         this.adjudicacionForm.controls["fechaadjudicacion"].setValue(fechaAdjudicacion);
         this.adjudicacionForm.controls["tipo"].setValue(ResponseData.tipo);
         this.adjudicacionForm.controls["valoradjudicado"].setValue(ResponseData.valorAdjudicacion);
-        this.adjudicacionForm.controls["porcentaje"].setValue(ResponseData.porcentaje);
+
+        if(ResponseData.tipo == 'Liquidez')
+        {
+          this.adjudicacionForm.controls["porcentaje"].setValue(20);
+        }
+        else{
+          this.adjudicacionForm.controls["porcentaje"].setValue(ResponseData.porcentaje);
+        }
+       
         this.adjudicacionForm.controls["tasainteres"].setValue(ResponseData.tasaInteres);
 
         console.log(ResponseData);
@@ -82,7 +90,6 @@ export class RegistrarAdjudicacionComponent implements OnInit {
     }
 
   }
-
 
   formInit(){
 
@@ -109,46 +116,78 @@ export class RegistrarAdjudicacionComponent implements OnInit {
     ]
   }
 
+
+  validar(event){
+
+    if(event == 'Liquidez')
+    {
+      this.adjudicacionForm.get("porcentaje").disable();
+      this.adjudicacionForm.controls["porcentaje"].setValue(20);
+    }else{
+      this.adjudicacionForm.get("porcentaje").enable();
+      this.adjudicacionForm.controls["porcentaje"].setValue('');
+
+    }
+   
+  }
+
   onSubmit(){
     if (!this.adjudicacionForm.invalid) {
 
+      var porcentaje2;
+
       const{fechaadjudicacion,entidad,tipo,valoradjudicado,porcentaje,tasainteres} = this.adjudicacionForm.value;
 
-      if(porcentaje.toString().length > 3)
+      // if(porcentaje.toString().length > 3)
+      // {
+      //   this.alarma.showInfo("El campo porcentaje no debe ser mayor a 3 caracteres");
+      //   return;
+      // }
+
+      debugger;
+
+      if(tipo == "Liquidez")
       {
-        this.alarma.showInfo("El campo porcentaje no debe ser mayor a 3 caracteres");
+        porcentaje2 = 20;
+      }else{
+        porcentaje2 = porcentaje
+      }
+
+      if(porcentaje < 0)
+      {
+        this.alarma.showError("El valor del porcentaje no puede ser negativo");
         return;
       }
 
       if(porcentaje > 100)
       {
-        this.alarma.showInfo("El valor del porcentaje no debe ser mayor al 100%");
+        this.alarma.showError("El valor del porcentaje no debe ser mayor al 100%");
         return;
       }
 
-      if(tasainteres.toString().length > 3)
-      {
-        this.alarma.showInfo("El campo tasa de interes no debe ser mayor a 3 caracteres");
-        return;
-      }
+      // if(tasainteres.toString().length > 3)
+      // {
+      //   this.alarma.showInfo("El campo tasa de interes no debe ser mayor a 3 caracteres");
+      //   return;
+      // }
 
       if(tasainteres > 100)
       {
-        this.alarma.showInfo("El valor de la tasa de interes no debe ser mayor al 100%");
+        this.alarma.showError("El valor de la tasa de interes no debe ser mayor al 100%");
         return;
       }
       
-      if(valoradjudicado.toString().length > 15)
-      {
-        this.alarma.showInfo("El campo Valor adjudicado no debe ser mayor a 15 caracteres y es requerido");
-        return;
-      }
+      // if(valoradjudicado.toString().length > 15)
+      // {
+      //   this.alarma.showInfo("El campo Valor adjudicado no debe ser mayor a 15 caracteres y es requerido");
+      //   return;
+      // }
 
       const data:any = {
         idAdjudicacion: this.id,
         fechaAdjudicacion: fechaadjudicacion,
         valorAdjudicacion:valoradjudicado,
-        porcentaje:porcentaje,
+        porcentaje:porcentaje2,
         tasaInteres:tasainteres,
         tipo:tipo,
         idOrganizacion:entidad,
