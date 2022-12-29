@@ -95,12 +95,12 @@
 
                      <!-- TESORERO -->
 
-                     <div *ngIf="(car.vbnoautorizadororden == 1) && (car.vbnotesoreriaorden == 0) && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
+                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && (car.vbnoautorizadororden == 1) && (car.vbnotesoreriaorden == 0) && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
                         <button class="btn btn-primary mt-2" (click)="ingresoDatos(car.idCargue,car.tipoArchivo)">Ingresar Datos Orden</button>
                     </div>
 
                     <!-- <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)"> -->
-                    <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
+                    <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra)">Descargar Orden</button>
                     </div>
 
