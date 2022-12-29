@@ -171,12 +171,24 @@ export class RegistrarAdjudicacionComponent implements OnInit {
       //   return;
       // }
 
+      if(tasainteres < 0)
+      {
+        this.alarma.showError("El valor de la tasa de interes no puede ser negativo");
+        return;
+      }
+
       if(tasainteres > 100)
       {
         this.alarma.showError("El valor de la tasa de interes no debe ser mayor al 100%");
         return;
       }
       
+      if(valoradjudicado < 0)
+      {
+        this.alarma.showError("El valor adjudicado no puede ser negativo");
+        return;
+      }
+
       // if(valoradjudicado.toString().length > 15)
       // {
       //   this.alarma.showInfo("El campo Valor adjudicado no debe ser mayor a 15 caracteres y es requerido");

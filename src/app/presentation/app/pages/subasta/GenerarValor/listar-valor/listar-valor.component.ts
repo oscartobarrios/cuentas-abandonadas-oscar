@@ -11,7 +11,7 @@ import { NotificationsService } from 'src/app/presentation/shared/services/notif
 })
 export class ListarValorComponent implements OnInit {
 
-  displayedColumns: string[] = ['FechaSubasta','ValorSubasta','ValorSubastaAnual','ValorNominal'];
+  displayedColumns: string[] = ['FechaSubasta','ValorSubasta','ValorSubastaAnual'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
