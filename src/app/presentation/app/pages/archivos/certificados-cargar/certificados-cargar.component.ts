@@ -21,7 +21,7 @@ export class CertificadosCargarComponent implements OnInit {
   usuario : any;
   public files: File;
   certificacionesForm: FormGroup;
-  typesCertificacion = ['Certificación representante legal','Certificación revisor fiscal', 'Otra'];
+  typesCertificacion = ['Certificación representante legal','Certificación revisor fiscal','Certificación representante legal y revisor fiscal', 'Otra'];
   public idCargue: number;
   displayedColumns: string[] = ['Fecha', 'Nombre', 'Estado', 'Observacion', 'Acciones', 'Descargar'];
   dataSource = new MatTableDataSource<any>();
