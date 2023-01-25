@@ -151,7 +151,7 @@ export class SubMenuOrganismComponent implements OnInit {
     {
       title: "Certificaciones aprobadas",
       url: "certificados-aprobados",
-      rols: [1,4,5]
+      rols: [4,5]
     },
 
   ]
