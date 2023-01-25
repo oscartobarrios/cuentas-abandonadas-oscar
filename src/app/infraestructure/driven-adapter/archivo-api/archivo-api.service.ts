@@ -68,20 +68,19 @@ export class ArchivoApiService {
     archivo.append('file', data.file, data.file.name);
     return this.http.post<any>(url, archivo);
   }
+
   LogCargue(idCargue): Observable<any> {
     const url = `${environment.rest.endpoint}/Cargue/getLogErroresCargue/${idCargue}`;
     return this.http.get<Itipocargue>(url);
   }
 
   LogCargueDescarga(idCargue): Observable<any> {
-
     return this.http.get(`${environment.rest.endpoint}/Cargue/getLogErroresCargueDescarga/${idCargue}`,
             {responseType: 'blob'})
       .pipe(
               tap(data => console.log('Get mission report: ' + data)),
               catchError(this.handleError)
       )
-
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -152,14 +151,17 @@ export class ArchivoApiService {
     const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}/${entidadId}`;
     return this.http.get<IConsolidado[]>(url);
   }
+
   GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetConsolidado/${tipoArchivo}/${estado}/${fechaInicio}/${fechaFin}`;
     return this.http.get<IConsolidado[]>(url);
   }
+
   GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
     const url = `${environment.rest.endpoint}/Cargue/GetDetallado/${entidad}/${tipoArchivo}/${fechaInicial}/${fechaFinal}`;
     return this.http.get<IDetallado[]>(url);
   }
+
   GetDetalladoFilter(dataQuery): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/GetDetalladoFilter`;
     return this.http.post<any>(url, dataQuery);
@@ -175,9 +177,13 @@ export class ArchivoApiService {
     return this.http.get<any>(url);
   }
 
-
   GetCargueFilter(dataQuery): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesByIdOrganizacionFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
+  GetCargueCertificadosFilter(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesCertificacionesFilter`;
     return this.http.post<any>(url, dataQuery);
   }
 
