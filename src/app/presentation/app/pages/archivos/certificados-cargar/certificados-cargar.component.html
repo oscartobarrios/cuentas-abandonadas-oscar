@@ -34,7 +34,10 @@
     </form>
     <br>
     <hr>
-    <h4>Listado de certificaciones cargadas.</h4>
+    <div class="row mb-5">
+      <div class="col-10"><h4>Listado de certificaciones cargadas.</h4></div>
+      <div class="col-2"><button mat-raised-button class="btn btn-primary-icetex" (click)="back()">Regresar</button></div>
+    </div>
     <div class="table-responsive">
       <table mat-table [dataSource]="dataSource" matSort width = "1100px">
         <ng-container matColumnDef="Fecha">
