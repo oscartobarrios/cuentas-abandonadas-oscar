@@ -9,6 +9,7 @@ import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import { NotificationsService } from 'src/app/presentation/shared/services/notifications.service';
 import { StorageService } from 'src/app/presentation/shared/services/storage.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-certificados-cargar',
@@ -35,7 +36,8 @@ export class CertificadosCargarComponent implements OnInit {
                private _storageservice: StorageService,
                private modalService: NgbModal,
                private formBuilder: FormBuilder,
-               private _notifications: NotificationsService) { }
+               private _notifications: NotificationsService,
+               private location: Location) { }
 
   ngOnInit(): void {
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
@@ -192,6 +194,10 @@ export class CertificadosCargarComponent implements OnInit {
   openModal(element:any){
     this.certificacion = element;
     this.modalService.open(this.myModalInfo);
+  }
+
+  back(): void {
+    this.location.back()
   }
 
 }
