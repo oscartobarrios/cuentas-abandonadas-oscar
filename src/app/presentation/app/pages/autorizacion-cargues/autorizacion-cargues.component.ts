@@ -232,5 +232,10 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
+  visualizarOrdenesSebra(){
+    this._router.navigate([`/autorizacion-ordenes-sebra`]);
+  }
+
+
 
 }
