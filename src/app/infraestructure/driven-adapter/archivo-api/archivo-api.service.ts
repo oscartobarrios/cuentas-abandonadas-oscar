@@ -62,6 +62,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  CarguesSebraFilter(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetCargueSebraFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
   Cargar(data: IArchivo): Observable<any> {
     const url = `${environment.rest.endpoint}/Cargue/CargarArchivoEntidad?tipoArchivo=${data.tipoArchivo}&nombreCargue=${data.nombreCargue}&usuario=${data.usuario}&idOrganizacion=${data.idOrganizacion}`;
     const archivo: FormData = new FormData();

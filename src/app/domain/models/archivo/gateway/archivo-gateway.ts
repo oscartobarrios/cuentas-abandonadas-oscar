@@ -17,6 +17,7 @@ export abstract class ArchivoGateway {
   abstract ListarCertificaciones(idCargue: any): Observable<any>;
   abstract CarguesXEstado(estado: any): Observable<ICargue[]>;
   abstract CarguesSebra(): Observable<ICargue[]>;
+  abstract CarguesSebraFilter(dataQuery): Observable<any>;
   abstract Cargar(data: IArchivo): Observable<any>;
   abstract LogCargue(idCargue): Observable<any>;
   abstract LogCargueDescarga(idCargue): Observable<any>;

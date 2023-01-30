@@ -1,11 +1,12 @@
 <div class="container" style="min-height: 420px;">
     <div class="row mb-5">
         <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
-        <div class="col-8">Cuentas Abandonadas - Autorización cargues</div>
-        <!-- <div class="col-2">
-            <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
-            (click)="vobuenoordenTodos()">Seleccionar Todo</button>
-          </div> -->
+        <div class="col-7">Cuentas Abandonadas - Autorización cargues</div>
+        <div class="col-2">
+            <button *ngIf="usuario.idPerfil == 10" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
+                (click)="visualizarOrdenesSebra()">Ordenes de Cumplimiento
+                </button>
+        </div>
     </div>
 
     <div class="row">
@@ -48,6 +49,8 @@
                 <button *ngIf="usuario.idPerfil == 10" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
                 (click)="ingresoDatosSebra(0)">Seleccionar Todo
                 </button>
+                
+
             </mat-header-cell>
 
             <mat-cell *matCellDef="let car;">

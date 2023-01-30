@@ -48,6 +48,7 @@ import { EnvioCorreoLiderEntidadComponent } from './presentation/app/pages/admin
 import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
 import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
 import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
+import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
 import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
 
 
@@ -108,6 +109,7 @@ const routes: Routes = [
       {path: 'listarCorreoLiderEntidad', component: ListarCorreoComponent},
       {path: 'autorizacion-rechazo-lider-entidad/:id/:usuario', component: RechazarNotificacionComponent},
       {path: 'visualizarentidadtesorero/:id', component: DetalleTesoreroEntidadComponent},
+      {path: 'autorizacion-ordenes-sebra', component: AutorizacionOrdenesSebraComponent},
       //NotFound
       {path: '**', component: NotFoundComponent}
     ]
