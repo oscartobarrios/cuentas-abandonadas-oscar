@@ -3,5 +3,5 @@ export const environment = {
     rest: {
       endpoint: 'https://appsitiospruebas.icetex.gov.co/AppCuentasAbandonadas/ApiCuentasAbandonadas'
     },
-    recaptchaKey: '6LeBY9AcAAAAAD9fnMbTWQUSJQgsk2JBqRrS5wiF',
+    recaptchaKey: '6LelJDkkAAAAAJ6OAmAXRjwjTWaS4kM0_Y7ldvQ8',
   };
