@@ -25,8 +25,8 @@ export abstract class ArchivoGateway {
   abstract ActualizarVbno(idCargue: string, tipousuario: string): Observable<any>;
   abstract ActualizarVbnoOrden(idCargue: string, tipousuario: string,idUsuario:string): Observable<any>;
   abstract RegistrarActualizarDatosOrdenTesoreroReintegro(dato: any): Observable<any>;
-  abstract RegistrarActualizarDatosOrdenTesoreroTraslado(dato: any): Observable<any>;  
-  
+  abstract RegistrarActualizarDatosOrdenTesoreroTraslado(dato: any): Observable<any>;
+
   abstract RegistrarActualizarDatosOrdenSebra(idCargue: string, idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>;
   abstract RegistrarActualizarDatosOrdenSebraTodos(idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>;
   abstract ActualizarVbnoOrdenTodos(idUsuario:string): Observable<any>;
@@ -39,6 +39,7 @@ export abstract class ArchivoGateway {
   abstract GetConsolidadoFilter(dataQuery): Observable<any>;
   abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
   abstract GetCargueFilter(dataQuery): Observable<any>;
+  abstract GetCargueCertificadosFilter(dataQuery): Observable<any>;
   abstract CargarCertificado(data: any): Observable<any>;
   abstract ActualizarCertificacion(data: any): Observable<any>;
 

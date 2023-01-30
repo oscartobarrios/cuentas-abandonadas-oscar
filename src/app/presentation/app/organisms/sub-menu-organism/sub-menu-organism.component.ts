@@ -142,6 +142,20 @@ export class SubMenuOrganismComponent implements OnInit {
     // }
   ]
 
+  certificaciones: CardItem[] = [
+    {
+      title: "Certificaciones cargadas",
+      url: "certificados",
+      rols: [1,4,5]
+    },
+    {
+      title: "Certificaciones aprobadas",
+      url: "certificados-aprobados",
+      rols: [4,5]
+    },
+
+  ]
+
   public menuType = [];
 
   constructor(private _route : ActivatedRoute,
@@ -176,6 +190,10 @@ export class SubMenuOrganismComponent implements OnInit {
       case 'subastas' :
         this.menuType = [];
         this.menuType = this.subastas;
+        break;
+      case 'certificaciones' :
+        this.menuType = [];
+        this.menuType = this.certificaciones;
         break;
     }
   }

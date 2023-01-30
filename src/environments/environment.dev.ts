@@ -4,5 +4,5 @@ export const environment = {
   rest: {
     endpoint: 'http://10.1.18.124:5600'
   },
-  recaptchaKey: '6LeBY9AcAAAAAD9fnMbTWQUSJQgsk2JBqRrS5wiF',
+  recaptchaKey: '6LelJDkkAAAAAJ6OAmAXRjwjTWaS4kM0_Y7ldvQ8',
 };

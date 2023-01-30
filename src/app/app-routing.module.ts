@@ -49,6 +49,7 @@ import { ListarCorreoComponent } from './presentation/app/pages/administrador/re
 import { RechazarNotificacionComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/rechazar-notificacion/rechazar-notificacion.component';
 import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
 import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
+import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'main', pathMatch: 'full'},
       {path: 'listar', component: ListarComponent},
       {path: 'certificados', component: CertificadosComponent},
+      {path: 'certificados-aprobados', component: CertificadosAprobadosComponent},
       {path: 'certificados-cargar/:id', component: CertificadosCargarComponent},
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},

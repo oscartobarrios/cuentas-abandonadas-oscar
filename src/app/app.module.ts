@@ -99,6 +99,7 @@ import { RechazarNotificacionComponent } from './presentation/app/pages/administ
 import { ListarCorreoComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/administrador-lider-entidad/listar-correo/listar-correo.component';
 import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
 import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
+import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -147,6 +148,7 @@ registerLocaleData(localEs);
     ListarCargosComponent,
     CargoRegistroComponent,
     CertificadosComponent,
+    CertificadosAprobadosComponent,
     CertificadosCargarComponent,
     ListarEntidadesComponent,
     EntidadRegistroComponent,

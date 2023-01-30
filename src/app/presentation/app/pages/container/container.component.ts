@@ -30,7 +30,7 @@ export class ContainerComponent implements OnInit {
     {
       icon: 'description',
       text: 'Certificaciones',
-      url : 'certificados',
+      url : 'submenu/certificaciones',
       rols: [1,4,5]
     },
     {

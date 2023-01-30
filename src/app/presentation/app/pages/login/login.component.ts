@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.reactiveForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      recaptchaReactive: new FormControl('', []),
+      recaptchaReactive: new FormControl('', Validators.required),
     });
 
   }
@@ -52,16 +52,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    /*
-    this._getLoginUseCase.logIn({userName: "clopez", password: "clopez35424163"}).subscribe((ResponseData) => {
-      this._storageservice.clear();
-      this._storageservice.setItem('payload', ResponseData);
-      this._storageservice.setItem('auth', true);
-      this._router.navigate(['/perfil']);
-
-    });
-    */
-   if(!this.userName.errors || !this.password.errors){
+   if((!this.userName.errors || !this.password.errors) && !this.recaptchaReactive.errors){
     this._getLoginUseCase.logIn({userName: this.userName.value, password: this.password.value}).subscribe(
       (ResponseData) => {
         if(ResponseData && ResponseData.infoUsuario && ResponseData.token)

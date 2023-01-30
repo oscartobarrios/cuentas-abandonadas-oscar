@@ -46,6 +46,7 @@ export class GetArchivoUseCaseService {
   Cargar(data: IArchivo): Observable<any> {
     return this._archivoGetway.Cargar(data);
   }
+
   LogCargue(idCargue): Observable<any> {
     return this._archivoGetway.LogCargue(idCargue);
   }
@@ -97,24 +98,26 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.GetConsolidado(tipoArchivo, estado, entidad, fechaInicial, fechaFinal);
   }
 
- GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>{
-   return this._archivoGetway.GetConsolidadoXEntidad(tipoArchivo, estado, entidadId);
- }
- GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]> {
-  return this._archivoGetway.GetConsolidadoXFechaCargue(tipoArchivo, estado, fechaInicio, fechaFin);
- }
- GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
-   return this._archivoGetway.GetDetallado(entidad, tipoArchivo,fechaInicial, fechaFinal);
- }
-
-CargarCertificado(data: any): Observable<any> {
-  return this._archivoGetway.CargarCertificado(data);
-}
-
- //Filtros y paginado
- GetDetalladoFilter(dataQuery): Observable<any>{
-  return this._archivoGetway.GetDetalladoFilter(dataQuery);
+  GetConsolidadoXEntidad(tipoArchivo: string, estado: string, entidadId: string): Observable<IConsolidado[]>{
+    return this._archivoGetway.GetConsolidadoXEntidad(tipoArchivo, estado, entidadId);
   }
+
+  GetConsolidadoXFechaCargue(tipoArchivo: string, estado: string, fechaInicio: string, fechaFin: string): Observable<IConsolidado[]> {
+    return this._archivoGetway.GetConsolidadoXFechaCargue(tipoArchivo, estado, fechaInicio, fechaFin);
+  }
+
+  GetDetallado(entidad: string, tipoArchivo: string, fechaInicial: string,fechaFinal: string): Observable<IDetallado[]>{
+    return this._archivoGetway.GetDetallado(entidad, tipoArchivo,fechaInicial, fechaFinal);
+  }
+
+  CargarCertificado(data: any): Observable<any> {
+    return this._archivoGetway.CargarCertificado(data);
+  }
+
+  GetDetalladoFilter(dataQuery): Observable<any>{
+    return this._archivoGetway.GetDetalladoFilter(dataQuery);
+  }
+
   GetConsolidadoFilter(dataQuery): Observable<any>{
     return this._archivoGetway.GetConsolidadoFilter(dataQuery);
   }
@@ -122,7 +125,12 @@ CargarCertificado(data: any): Observable<any> {
   GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>{
     return this._archivoGetway.GetObtenerOrdenCumplimientoIdCargue(idCargue);
   }
- GetCargueFilter(dataQuery): Observable<any>{
-  return this._archivoGetway.GetCargueFilter(dataQuery);
- }
+
+  GetCargueFilter(dataQuery): Observable<any>{
+    return this._archivoGetway.GetCargueFilter(dataQuery);
+  }
+
+  GetCargueCertificadosFilter(dataQuery): Observable<any>{
+    return this._archivoGetway.GetCargueCertificadosFilter(dataQuery);
+  }
 }
