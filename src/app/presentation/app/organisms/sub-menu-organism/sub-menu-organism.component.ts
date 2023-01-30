@@ -68,6 +68,10 @@ export class SubMenuOrganismComponent implements OnInit {
       title: "Adjudicacion de Subasta",
       url: "reporteadjudicacionsubasta",
       rols: [4,5,10,11]
+    },{
+      title: "Ordenes de Cumplimiento Sebra",
+      url: "autorizacion-ordenes-sebra",
+      rols: [4,5]
     }
   ]
 
