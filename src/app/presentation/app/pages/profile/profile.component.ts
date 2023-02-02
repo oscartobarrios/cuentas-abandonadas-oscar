@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.info = this._storageservice.getItem('payload')?.infoUsuario;
+    console.log(this.info);
   }
 
 }
