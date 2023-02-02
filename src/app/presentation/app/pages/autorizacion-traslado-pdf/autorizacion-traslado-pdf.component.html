@@ -144,15 +144,29 @@
     <tr>
         <td style="border-right:2px solid;height:20px;font-size: 70%"><b>Firma</b>
         </td>
-        <td style="text-align: center;border-right:2px solid">
-          <!-- <img src="../assets/img/png/Grafo JV.png" style="margin-top: 5px; width: 15%;height: auto;text-align: center;"/> -->
-          <img *ngIf="funcionarioAdmin.firma != null" [src]="funcionarioAdmin.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
+        <td style="text-align: left;border-right:2px solid">
+          <!-- <img *ngIf="funcionarioAdmin.firma != null" [src]="funcionarioAdmin.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+          <div *ngIf="vbnoadmin != 0">
+            <p style="font-size: 10px;margin-bottom: 20px;">
+                
+                {{datosOrden['fechaVbnoAdmin'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+            
+            </p>
+            <p style="font-weight: bold;font-size: 15px;">{{funcionarioAdmin['nombreUsuario']}}</p>
+          </div>
 
         </td>
       <td style="border-right:2px solid;font-size: 70%"><b>Firma</b>
-        <td style="text-align: center">
-            <!-- <img src="../assets/img/png/Grafo Jose.png" style="width: 20%;height: auto;"/> -->
-            <img *ngIf="funcionarioAutorizador.firma != null" [src]="funcionarioAutorizador.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/>
+        <td style="text-align: left">
+            <!-- <img *ngIf="funcionarioAutorizador.firma != null" [src]="funcionarioAutorizador.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+            <div *ngIf="vbnoaut != 0">
+                <p style="font-size: 10px;margin-bottom: 20px;">
+                    
+                    {{datosOrden['fechaVbnoAut'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                
+                </p>
+                <p style="font-weight: bold;font-size: 15px;">{{funcionarioAutorizador['nombreUsuario']}}</p>
+            </div>
         </td>
     </tr>
   </table>
