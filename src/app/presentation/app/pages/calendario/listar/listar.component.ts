@@ -16,6 +16,8 @@ export class ListarCalendarioComponent implements OnInit {
   calendarios = new MatTableDataSource<ICalendario>();
 
   @ViewChild('MatPaginatorCesion') MatPaginatorCesion: MatPaginator;
+  @ViewChild('MatPaginatorSubasta') MatPaginatorSubasta: MatPaginator;
+  
 
   @ViewChild('MatPaginatorReintegro') MatPaginatorReintegro: MatPaginator;
 
@@ -29,6 +31,8 @@ export class ListarCalendarioComponent implements OnInit {
   calendariosCargueTraslado = new MatTableDataSource<ICalendario>();
   calendariosCargueValoracion = new MatTableDataSource<ICalendario>();
   calendariosCargueCuenta = new MatTableDataSource<ICalendario>();
+  calendariosCargueSubasta = new MatTableDataSource<ICalendario>();
+  
 
   displayedColumns: string[] = ['nombre', 'configuracion'];
   displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal', 'idTipoCargue'];
@@ -36,6 +40,7 @@ export class ListarCalendarioComponent implements OnInit {
   displayedColumnsConfRei: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
   displayedColumnsConfCes: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
   displayedColumnsConfCuenta: string[] = ['fechaDesde', 'fechaHasta','nombreOrganizacion', 'idTipoCargue'];
+  displayedColumnsConfSub: string[] = ['fechaDesde', 'fechaHasta', 'idTipoCargue'];
 
   constructor(private _notifications: NotificationsService,
     private _getCalendarioUseCaseService: GetCalendarioUseCaseService,
@@ -55,9 +60,12 @@ export class ListarCalendarioComponent implements OnInit {
           case 2045: this.calendariosCargueValoracion.data.push(cal);break;
           case 1: this.calendariosCargueTraslado.data.push(cal);break;
           case 3: this.calendariosCargueCuenta.data.push(cal);break;
+          case 4: this.calendariosCargueSubasta.data.push(cal);break;
+          
         }
       })
       this.calendariosCargueCesion.paginator = this.MatPaginatorCesion;
+      this.calendariosCargueSubasta.paginator = this.MatPaginatorSubasta;      
       this.calendariosCargueReintegro.paginator = this.MatPaginatorReintegro;
       this.calendariosCargueValoracion.paginator = this.MatPaginatorValoracion;
       this.calendariosCargueTraslado.paginator = this.MatPaginatorTraslado;
