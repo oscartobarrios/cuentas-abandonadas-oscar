@@ -19,7 +19,7 @@ export class CrearCalendarioComponent implements OnInit {
     { codigo: 1, nombre: "Traslado"},
     { codigo: 2045, nombre: "Valoración"},
     { codigo: 3, nombre: "Actualización de cuentas"},
-
+    { codigo: 4, nombre: "Subasta"},
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);
@@ -53,8 +53,10 @@ export class CrearCalendarioComponent implements OnInit {
   }
 
   setExtraValidation(){
+
     switch(this.tipoCalendarioForm.controls['idTipoCargue'].value)
     {
+
       case '2045': this.tipoCalendarioForm.controls["fechaInicial"].setValidators(Validators.required);
                   this.tipoCalendarioForm.controls["fechaFinal"].setValidators(Validators.required);
                   this.tipoCalendarioForm.controls["fechaCorteCertificaciones"].setValidators(Validators.required);
@@ -181,6 +183,7 @@ export class CrearCalendarioComponent implements OnInit {
   }
 
   onSubmit(){
+    debugger;
     console.log(this.tipoCalendarioForm.value);
     if(!this.tipoCalendarioForm.invalid) {
       const preloader = this._notifications.showPreloader();
