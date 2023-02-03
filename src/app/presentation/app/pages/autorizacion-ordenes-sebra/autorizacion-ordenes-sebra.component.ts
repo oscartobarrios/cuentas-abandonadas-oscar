@@ -59,14 +59,15 @@ export class AutorizacionOrdenesSebraComponent implements OnInit {
 
   ngOnInit(): void {
     this.columns = [
-      { prop: 'entidad', name: 'Entidad' },
+      { prop: 'entidad', name: 'Nombre de la Entidad' },
       { prop: 'nombreArchivo', name: 'Nombre del archivo'},
       { prop: 'fecCargue', name: 'Fecha de cargue', cellTemplate: this.fecha },
       { prop: 'tipoArchivo', name: 'Tipo de archivo'},
-      { prop: 'idCargue', name: 'idCargue' },
+      // { prop: 'idCargue', name: 'idCargue' },
       { prop: 'monto', name: 'Saldo inicial/Total' , cellTemplate: this.monedaTemplate},
+      { prop: 'estado', name: 'Estado' },
       { prop: 'idCargue', name: 'Acciones', cellTemplate: this.accionesTemplate }
-      // { prop: 'estado', name: 'Estado' },
+
       ];
 
   }
