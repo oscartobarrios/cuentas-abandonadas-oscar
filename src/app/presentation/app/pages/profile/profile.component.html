@@ -50,13 +50,17 @@
             <mat-label>ID organización</mat-label>
             <input matInput placeholder="Nombre" value="{{info.idOrganizacion}}" readonly>
           </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 1 || info.idPerfil === 9">
+          <!-- <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 1 || info.idPerfil === 9">
             <mat-label>Entidad</mat-label>
             <input matInput placeholder="Nombre" value="{{info.nombreEntidad}}" readonly>
           </mat-form-field>
           <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil != 1">
             <mat-label>Entidad</mat-label>
             <input matInput placeholder="Nombre" value="Icetex" readonly>
+          </mat-form-field> -->
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Entidad</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.nombreEntidad}}" readonly>
           </mat-form-field>
         </div>
       </div>
