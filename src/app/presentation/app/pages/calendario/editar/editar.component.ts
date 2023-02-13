@@ -25,7 +25,8 @@ export class EditarCalendarioComponent implements OnInit {
     { codigo: 13560023, nombre: "Reintegro"},
     { codigo: 1, nombre: "Traslado"},
     { codigo: 2045, nombre: "Valoración"},
-    { codigo: 3, nombre: "Actualización de cuentas"}
+    { codigo: 3, nombre: "Actualización de cuentas"},
+    { codigo: 4, nombre: "Subasta"},
   ]
   calendario: ICalendario;
   private regex: RegExp = new RegExp(/^\d{0,6}(\.\d{0,4})?$/);

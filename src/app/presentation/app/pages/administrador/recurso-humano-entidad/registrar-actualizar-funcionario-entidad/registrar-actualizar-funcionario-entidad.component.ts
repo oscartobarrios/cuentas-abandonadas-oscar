@@ -95,7 +95,8 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
 
     if(this.tipo === "FINANCIERO")
     {
-      this.title="Cuentas abandonadas - Registrar Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero";
+      // this.title="Cuentas abandonadas - Registrar Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero";
+      this.title="Cuentas abandonadas - Registrar Funcionarios Autorizados Para Cuentas Abandonadas";
     }
 
     if(this.tipo === "FISCAL")
@@ -129,7 +130,8 @@ export class RegistrarActualizarFuncionarioEntidadComponent implements OnInit {
 
       if(this.tipo === "FINANCIERO")
       {
-        this.title="Cuentas abandonadas - Actualizar Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero";
+        // this.title="Cuentas abandonadas - Actualizar Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero";
+        this.title="Cuentas abandonadas - Actualizar Funcionarios Autorizados Para Cuentas Abandonadas";
       }
 
       if(this.tipo === "FISCAL")
