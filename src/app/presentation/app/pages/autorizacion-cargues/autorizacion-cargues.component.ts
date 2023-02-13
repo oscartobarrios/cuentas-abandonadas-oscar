@@ -132,15 +132,15 @@ export class AutorizacionCarguesComponent implements OnInit {
     }
   }
 
-  llevarpdf(id: number,tipo: string,vbnotesorero: number,vbnosebra: number)
+  llevarpdf(id: number,tipo: string,vbnotesorero: number,vbnosebra: number,vbnoadmin:number,vbnoaut:number)
   {
     debugger
 
     if(tipo === 'TRASLADO')
     {
-      this._router.navigate([`/autorizacion-traslado-pdf/${id}/${vbnotesorero}/${vbnosebra}`]);
+      this._router.navigate([`/autorizacion-traslado-pdf/${id}/${vbnotesorero}/${vbnosebra}/${vbnoadmin}/${vbnoaut}`]);
     }else{
-      this._router.navigate([`/autorizacion-reintegro-pdf/${id}/${vbnotesorero}/${vbnosebra}`]);
+      this._router.navigate([`/autorizacion-reintegro-pdf/${id}/${vbnotesorero}/${vbnosebra}/${vbnoadmin}/${vbnoaut}`]);
     }
 
 
