@@ -46,15 +46,24 @@
           </mat-form-field>
         </div>
         <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
-          <mat-form-field appearance="outline" fxFlex>
+          
+          <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 1 || info.idPerfil === 9">
             <mat-label>ID organización</mat-label>
             <input matInput placeholder="Nombre" value="{{info.idOrganizacion}}" readonly>
           </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 2 || info.idPerfil === 3 || info.idPerfil === 4 || info.idPerfil === 5 
+          || info.idPerfil === 6 || info.idPerfil === 7 || info.idPerfil === 8 || info.idPerfil === 10 || info.idPerfil === 11">
+            <mat-label>ID organización</mat-label>
+            <input matInput placeholder="Nombre" value="899.999.035-7" readonly>
+          </mat-form-field>
+
           <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 1 || info.idPerfil === 9">
             <mat-label>Entidad</mat-label>
             <input matInput placeholder="Nombre" value="{{info.nombreEntidad}}" readonly>
           </mat-form-field>
-          <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil != 1">
+          <mat-form-field appearance="outline" fxFlex *ngIf="info.idPerfil === 2 || info.idPerfil === 3 || info.idPerfil === 4 || info.idPerfil === 5 
+          || info.idPerfil === 6 || info.idPerfil === 7 || info.idPerfil === 8 || info.idPerfil === 10 || info.idPerfil === 11">
             <mat-label>Entidad</mat-label>
             <input matInput placeholder="Nombre" value="Icetex" readonly>
           </mat-form-field>
