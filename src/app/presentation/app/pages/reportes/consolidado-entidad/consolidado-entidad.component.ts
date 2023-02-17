@@ -17,7 +17,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
 
   @ViewChild('numberTemplate', { static: true }) numberTemplate: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
-  
+
   fechaCorte: string;
   public columns = [];
   public pagination = [10, 20, 30, 40, 50, 60];
@@ -39,7 +39,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
               private _notifications: NotificationsService,
               private _getreportecase: GetReporteService,
               private _storageservice: StorageService,
-              ) { 
+              ) {
     this._route.params.subscribe(params => {
       this.type = params.type;
       this.setDefaultValues();
@@ -47,7 +47,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
   }
 
   setDefaultValues() {
-   
+
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
@@ -59,13 +59,12 @@ export class ConsolidadoEntidadComponent implements OnInit {
     this.idOrganizacion = this.usuario.idOrganizacion;
 
     this.columns = [
-      { prop: 'nombre', name: 'Nombre' },
-      { prop: 'fechCargue', name: 'Fecha cargue' },
       { prop: 'cargueNombre', name: 'Nombre Cargue' },
+      { prop: 'fechCargue', name: 'Fecha cargue' },
+      { prop: 'numeroCuenta', name: 'Numero de cuenta' },
       { prop: 'monto', name: 'Monto', cellTemplate: this.monedaTemplate },
       { prop: 'tasa2', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
-      { prop: 'remuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate },
-
+      { prop: 'remuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate }
     ];
   }
 
@@ -74,7 +73,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
     if (this.page.data && fromPagination) this.consultarRegistros();
   }
 
- 
+
   descargarExcel(){
 
     if(this.fechaCorte === undefined || this.fechaCorte === "undefined" || this.fechaCorte === "")
@@ -121,9 +120,9 @@ export class ConsolidadoEntidadComponent implements OnInit {
       console.log(error);
       Swal.close();
       this.alarma.showError(error);
-      
+
     });
-  
+
   }
 
   buscar(){
@@ -140,10 +139,10 @@ export class ConsolidadoEntidadComponent implements OnInit {
 
     this.setPage({ offset: 0 });
     this.page.data = {
-      "entidad": this.idOrganizacion,      
+      "entidad": this.idOrganizacion,
       "fechaFinal": this.fechaCorte
     };
-    
+
     this.consultarRegistros();
 
 
@@ -155,17 +154,17 @@ export class ConsolidadoEntidadComponent implements OnInit {
 
     if (this.fecha.getMonth() + 1 >= 1 && this.fecha.getMonth() + 1 <= 9)
     {
-     
+
       if (this.fecha.getDate() + 1 >= 1 && this.fecha.getDate() + 1 <= 9)
       {
-        this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();        
+        this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();
       }else{
         this.fechaahora = this.fecha.getFullYear() + "-" + "0" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
       }
     } else{
       if (this.fecha.getDate() + 1 >= 1 && this.fecha.getDate() + 1 <= 9)
       {
-        this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();        
+        this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + "0" + this.fecha.getDate();
       }else{
         this.fechaahora = this.fecha.getFullYear() + "-" + (this.fecha.getMonth() + 1) + "-" + this.fecha.getDate();
       }
@@ -184,7 +183,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
   // Conulta de registros
  consultarRegistros(): void {
   const preloader = this._notifications.showPreloader();
-  
+
   this._getreportecase.GetConsolidadoEntidadFilter(this.page)
     .subscribe(res => {
 
@@ -193,7 +192,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
       this.configurarTablaConRespuesta(res);
       preloader.close();
     });
-    
+
   }
 
    // Configuración de la tabla con respuesta
