@@ -125,6 +125,12 @@ export class ArchivoApiService {
 
   }
 
+  ActualizarDatosOrdenCumplimientoReintegroTesoreroSebra(dato: any): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/ActualizarDatosOrdenCumplimientoReintegroTesoreroSebra`;
+        return this.http.post<any>(url, dato);
+
+  }
+
   RegistrarActualizarDatosOrdenSebra(idCargue: string, idUsuario: string,nroperacioncud: string,observacion: string): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/RegistrarActualizarDatosOrdenSebra/${idCargue}/${idUsuario}/${nroperacioncud}/${observacion}`;
     return this.http.get<any>(url);
