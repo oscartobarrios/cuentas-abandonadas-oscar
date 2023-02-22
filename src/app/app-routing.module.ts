@@ -50,6 +50,7 @@ import { RechazarNotificacionComponent } from './presentation/app/pages/administ
 import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/administrador/recurso-humano-entidad/detalle-tesorero-entidad/detalle-tesorero-entidad.component';
 import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
 import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
+import { DatosActualizacionReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-actualizacion-reintegro-tesorero/datos-actualizacion-reintegro-tesorero.component';
 
 
 const routes: Routes = [
@@ -95,6 +96,7 @@ const routes: Routes = [
       {path: 'reportecertifiacionsaldos', component: CertificacionSaldosComponent},
       {path: 'consolidadoentidad', component: ConsolidadoEntidadComponent},
       {path: 'datos-reintegro-tesorero/:id', component: DatosReintegroTesoreroComponent},
+      {path: 'datos-modificacion-reintegro-tesorero/:id', component: DatosActualizacionReintegroTesoreroComponent},
       {path: 'datos-traslados-tesorero/:id', component: DatosTrasladoTesoreroComponent},
       {path: 'datos-sebra/:id', component: DatosSebraComponent},
       {path: 'cambiocontrasena', component: CambioContrasenaComponent},

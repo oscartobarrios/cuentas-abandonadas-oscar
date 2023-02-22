@@ -226,6 +226,10 @@ export class AutorizacionCarguesComponent implements OnInit {
 
   }
 
+  modificarDatos(id:number){
+    this._router.navigate([`/datos-modificacion-reintegro-tesorero/${id}`]);
+  }
+
   ingresoDatosSebra(id:number){
 
     this._router.navigate([`/datos-sebra/${id}`]);

@@ -74,6 +74,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.RegistrarActualizarDatosOrdenTesoreroReintegro(dato);
   }
 
+  ActualizarDatosOrdenCumplimientoReintegroTesoreroSebra(dato: any): Observable<any> {
+    return this._archivoGetway.ActualizarDatosOrdenCumplimientoReintegroTesoreroSebra(dato);
+  }
+
   RegistrarActualizarDatosOrdenTesoreroTraslado(dato: any): Observable<any> {
     return this._archivoGetway.RegistrarActualizarDatosOrdenTesoreroTraslado(dato);
   }
