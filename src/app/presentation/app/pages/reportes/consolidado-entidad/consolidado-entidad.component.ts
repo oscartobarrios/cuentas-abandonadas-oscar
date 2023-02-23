@@ -61,7 +61,7 @@ export class ConsolidadoEntidadComponent implements OnInit {
     this.columns = [
       { prop: 'cargueNombre', name: 'Nombre Cargue' },
       { prop: 'fechCargue', name: 'Fecha cargue' },
-      { prop: 'numeroCuenta', name: 'Numero de cuenta' },
+      { prop: 'numeroCuenta', name: 'Número de cuenta' },
       { prop: 'monto', name: 'Monto', cellTemplate: this.monedaTemplate },
       { prop: 'tasa2', name: 'Tasa ponderada', cellTemplate: this.numberTemplate},
       { prop: 'remuneracionAcumulada', name: 'Remuneración acumulada', cellTemplate: this.monedaTemplate }
