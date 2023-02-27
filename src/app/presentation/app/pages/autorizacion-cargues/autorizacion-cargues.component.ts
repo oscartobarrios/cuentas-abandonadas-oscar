@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ConsoleLoggerService } from 'src/app/presentation/shared/services/console-logger.service';
 import { SweetAlertService } from 'src/app/infraestructure/sweet-alert.service';
 import Swal from 'sweetalert2';
+import { GetEntidadUseCaseService } from 'src/app/domain/usecases/entidad/get-entidad-use-case.service';
 
 @Component({
   selector: 'app-autorizacion-cargues',
@@ -25,6 +26,14 @@ export class AutorizacionCarguesComponent implements OnInit {
   carguesCargaProcesada: ICargue[];
   ip: any;
 
+  entidades:any;
+  tipos: any;
+  tiposant: any;
+  entidad: string;
+  tipoArchivo: string;
+  fechaInicial: string;
+  fechaFinal: string;
+  data: any;
 
   @ViewChild(MatPaginator) paginator:  MatPaginator;
 
@@ -33,7 +42,31 @@ export class AutorizacionCarguesComponent implements OnInit {
               private _notifications: NotificationsService,
               private _http: HttpClient,
               private _router : Router,
-              private alarma: SweetAlertService,) { }
+              private alarma: SweetAlertService,
+              private _entidadUseCase: GetEntidadUseCaseService,) { 
+
+                this._entidadUseCase.ListadoEntidades().subscribe(ResulData => {
+                  this.entidades = ResulData;
+                });
+
+                this._getarchivousecase.TipoCargue().subscribe((ResulData) => {
+                  this.tipos = ResulData;
+                  console.log(ResulData);
+                    this.tipos.forEach((element, index) => {
+                      
+                      if(element.idTipoCargue == 4)
+                      {
+                        this.tipos.splice(index,1)
+                      }
+                    });   
+
+                
+                });
+
+
+              }
+
+
 
   ngOnInit(): void {
 
@@ -49,32 +82,108 @@ export class AutorizacionCarguesComponent implements OnInit {
    {
     this._getarchivousecase.CarguesSebra().subscribe((ResultData) => {
       ResultData.map((resultado) =>{
-        console.log(resultado);
+        // console.log(resultado);
         this.cargues.data.push(resultado)
         this.cargues.paginator = this.paginator;
         preloader.close();
       })
     });
 
-   }else{
-    this._getarchivousecase.CarguesXEstado("PENDIENTE_AUTORIZACION").subscribe((ResultData) => {
-      this.carguesPendienteAutorizacion = ResultData;
-      this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
-      this.cargues.data = ResultData;
+   }
+   
+   else{
+    
+    this._getarchivousecase.Cargues().subscribe((ResultData) => {
+      ResultData.map((resultado) =>{
+        // console.log(resultado);
+        this.cargues.data.push(resultado)
+        this.cargues.paginator = this.paginator;
+        preloader.close();
+      })
+    });
 
-         this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
+    // this._getarchivousecase.CarguesXEstado("PENDIENTE_AUTORIZACION").subscribe((ResultData) => {
+    //   this.carguesPendienteAutorizacion = ResultData;
+    //   this.cargues.data = this.carguesPendienteAutorizacion.concat(this.carguesCargaProcesada);
+    //   this.cargues.data = ResultData;
+
+    //      this._getarchivousecase.CarguesXEstado("CARGA_PROCESADA").subscribe((ResultData) => {
+    //       ResultData.map((resultado) =>{
+    //         console.log(resultado);
+    //         this.cargues.data.push(resultado)
+    //         this.cargues.paginator = this.paginator;
+    //         preloader.close();
+    //       })
+
+         
+    //   });
+    // });
+
+
+   }
+    
+  }
+
+  buscar(){
+
+    var entidad = this.entidad;
+    var fechainicial = this.fechaInicial;
+    var fechafinal = this.fechaFinal;
+    var tipo = this.tipoArchivo;
+
+    if(entidad === undefined || entidad === "undefined" || entidad === "")
+    {
+      entidad = 'undefined';
+    }
+
+    if(fechainicial === undefined || fechainicial === "undefined" || fechainicial === "")
+    {
+      fechainicial = 'undefined';
+    }
+
+    if(fechafinal === undefined || fechafinal === "undefined" || fechafinal === "")
+    {
+      fechafinal = 'undefined';
+    }
+    
+    if(tipo === undefined || tipo === "undefined" || tipo === "")
+    {
+      tipo = 'undefined';
+    }
+    
+    
+
+    this.data = {
+      "entidad": entidad,
+      "fechaInicial": fechainicial,
+      "fechaFinal": fechafinal,
+      "tipoArchivo": tipo
+    };
+
+    const preloader = this._notifications.showPreloader();
+
+    this.cargues.data = [];
+
+
+    if(this.usuario.idPerfil == "4" ||  this.usuario.idPerfil == "5")
+    {
+      this._getarchivousecase.CarguesFilter(this.data).subscribe((ResultData) => {
+
+        if(ResultData.length > 0)
+        {
           ResultData.map((resultado) =>{
             console.log(resultado);
             this.cargues.data.push(resultado)
             this.cargues.paginator = this.paginator;
-            preloader.close();
+           
           })
-
-         
+        }
+      
+        preloader.close();
       });
-    });
-   }
-    
+    }
+
+
   }
 
   cambiarestado(idCargue:any, tipoestado:string,vbnotesoreria: number, vbnocontador: number,tipoArchivo: string): void{
