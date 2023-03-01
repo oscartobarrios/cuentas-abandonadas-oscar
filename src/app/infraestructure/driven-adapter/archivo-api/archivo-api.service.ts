@@ -52,6 +52,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  ListarCertificacionesSinCargue(idTipoCargue: any, idOrganizacion: any): Observable<any> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCertificacionSinCargue/${idTipoCargue}/${idOrganizacion}`;
+    return this.http.get<ICargue[]>(url);
+  }
+
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesXEstado/${estado}`;
     return this.http.get<ICargue[]>(url);
@@ -208,6 +213,11 @@ export class ArchivoApiService {
     return this.http.post<any>(url, dataQuery);
   }
 
+  GetTipoArchivosSinCargue(dataQuery): Observable<any>{
+    const url = `${environment.rest.endpoint}/Cargue/GetTipoArchivosSinCargueFilter`;
+    return this.http.post<any>(url, dataQuery);
+  }
+
   GetCargueCertificadosFilter(dataQuery): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesCertificacionesFilter`;
     return this.http.post<any>(url, dataQuery);
@@ -216,6 +226,14 @@ export class ArchivoApiService {
   CargarCertificado(data: any): Observable<any> {
 
     const url = `${environment.rest.endpoint}/Cargue/GuardarCertificacion?idCargue=${data.idCargue}&nombre=${data.nombre}`;
+    const archivo: FormData = new FormData();
+    archivo.append('file', data.file, data.file.name);
+    return this.http.post<any>(url, archivo);
+  }
+
+  CargarCertificadoSinCargue(data: any): Observable<any> {
+
+    const url = `${environment.rest.endpoint}/Cargue/GuardarCertificacionSinCargue?idTipoCargue=${data.idTipoCargue}&idOrganizacion=${data.idOrganizacion}&nombre=${data.nombre}`;
     const archivo: FormData = new FormData();
     archivo.append('file', data.file, data.file.name);
     return this.http.post<any>(url, archivo);

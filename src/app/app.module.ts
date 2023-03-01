@@ -101,6 +101,7 @@ import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/admini
 import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
 import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
 import { DatosActualizacionReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-actualizacion-reintegro-tesorero/datos-actualizacion-reintegro-tesorero.component';
+import { CertificadosSinCargueComponent } from './presentation/app/pages/archivos/certificados-sin-cargue/certificados-sin-cargue.component';
 
 //Api services
 export const API_GATEWAYS_PROVIDERS = [
@@ -151,6 +152,7 @@ registerLocaleData(localEs);
     CertificadosComponent,
     CertificadosAprobadosComponent,
     CertificadosCargarComponent,
+    CertificadosSinCargueComponent,
     ListarEntidadesComponent,
     EntidadRegistroComponent,
     CarguesRechazadosComponent,

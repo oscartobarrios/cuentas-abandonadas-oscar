@@ -15,6 +15,7 @@ export abstract class ArchivoGateway {
   abstract TipoCargue(): Observable<Itipocargue[]>;
   abstract Listar(idOrganizacion: any): Observable<ICargue[]>;
   abstract ListarCertificaciones(idCargue: any): Observable<any>;
+  abstract ListarCertificacionesSinCargue(idTipoCargue: any, idOrganizacion: any): Observable<any>;
   abstract CarguesXEstado(estado: any): Observable<ICargue[]>;
   abstract Cargues(): Observable<ICargue[]>;
   abstract CarguesFilter(dataQuery): Observable<ICargue[]>;
@@ -42,8 +43,10 @@ export abstract class ArchivoGateway {
   abstract GetConsolidadoFilter(dataQuery): Observable<any>;
   abstract GetObtenerOrdenCumplimientoIdCargue(idCargue: string): Observable<any>;
   abstract GetCargueFilter(dataQuery): Observable<any>;
+  abstract GetTipoArchivosSinCargue(dataQuery): Observable<any>;
   abstract GetCargueCertificadosFilter(dataQuery): Observable<any>;
   abstract CargarCertificado(data: any): Observable<any>;
+  abstract CargarCertificadoSinCargue(data: any): Observable<any>;
   abstract ActualizarCertificacion(data: any): Observable<any>;
 
 }
