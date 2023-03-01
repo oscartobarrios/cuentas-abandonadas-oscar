@@ -160,14 +160,16 @@ export class AutorizacionCarguesComponent implements OnInit {
       "tipoArchivo": tipo
     };
 
-    const preloader = this._notifications.showPreloader();
+   
 
     this.cargues.data = [];
 
-
+    const preloader = this._notifications.showPreloader();
     if(this.usuario.idPerfil == "4" ||  this.usuario.idPerfil == "5")
     {
       this._getarchivousecase.CarguesFilter(this.data).subscribe((ResultData) => {
+
+        debugger;
 
         if(ResultData.length > 0)
         {
@@ -175,12 +177,37 @@ export class AutorizacionCarguesComponent implements OnInit {
             console.log(resultado);
             this.cargues.data.push(resultado)
             this.cargues.paginator = this.paginator;
-           
+            preloader.close();
           })
+        }else{
+          preloader.close();
         }
       
-        preloader.close();
       });
+    }
+
+    if(this.usuario.idPerfil == "10")
+    {
+
+      this._getarchivousecase.CarguesSebraFilterAutorizacion(this.data).subscribe((ResultData) => {
+
+        debugger;
+
+        if(ResultData.length > 0)
+        {
+          ResultData.map((resultado) =>{
+            console.log(resultado);
+            this.cargues.data.push(resultado)
+            this.cargues.paginator = this.paginator;
+            preloader.close();
+          })
+        }else{
+          preloader.close();
+        }
+      
+      
+      });
+
     }
 
 

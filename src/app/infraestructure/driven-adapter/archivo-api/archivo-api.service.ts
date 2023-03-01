@@ -72,6 +72,11 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  CarguesSebraFilterAutorizacion(dataQuery): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesSebraFilterAutorizacion/${dataQuery.entidad}/${dataQuery.fechaInicial}/${dataQuery.fechaFinal}`;
+    return this.http.get<ICargue[]>(url);
+  }
+
   CarguesSebraFilter(dataQuery): Observable<any>{
     const url = `${environment.rest.endpoint}/Cargue/GetCargueSebraFilter`;
     return this.http.post<any>(url, dataQuery);

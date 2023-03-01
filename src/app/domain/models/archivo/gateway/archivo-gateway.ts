@@ -18,6 +18,7 @@ export abstract class ArchivoGateway {
   abstract CarguesXEstado(estado: any): Observable<ICargue[]>;
   abstract Cargues(): Observable<ICargue[]>;
   abstract CarguesFilter(dataQuery): Observable<ICargue[]>;
+  abstract CarguesSebraFilterAutorizacion(dataQuery): Observable<ICargue[]>;
   abstract CarguesSebra(): Observable<ICargue[]>;
   abstract CarguesSebraFilter(dataQuery): Observable<any>;
   abstract Cargar(data: IArchivo): Observable<any>;
