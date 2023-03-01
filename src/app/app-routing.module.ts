@@ -51,6 +51,7 @@ import { DetalleTesoreroEntidadComponent } from './presentation/app/pages/admini
 import { AutorizacionOrdenesSebraComponent } from './presentation/app/pages/autorizacion-ordenes-sebra/autorizacion-ordenes-sebra.component';
 import { CertificadosAprobadosComponent } from './presentation/app/pages/archivos/certificados-aprobados/certificados-aprobados.component';
 import { DatosActualizacionReintegroTesoreroComponent } from './presentation/app/pages/autorizacionDatos/datos-actualizacion-reintegro-tesorero/datos-actualizacion-reintegro-tesorero.component';
+import { CertificadosSinCargueComponent } from './presentation/app/pages/archivos/certificados-sin-cargue/certificados-sin-cargue.component';
 
 
 const routes: Routes = [
@@ -71,6 +72,7 @@ const routes: Routes = [
       {path: 'certificados', component: CertificadosComponent},
       {path: 'certificados-aprobados', component: CertificadosAprobadosComponent},
       {path: 'certificados-cargar/:id', component: CertificadosCargarComponent},
+      {path: 'certificados-sin-cargue/:id/:entidad', component: CertificadosSinCargueComponent},
       {path: 'cargar', component: CargarComponent},
       {path: 'perfil', component: ProfileComponent},
       {path: 'submenu/:type', component: SubMenuOrganismComponent},

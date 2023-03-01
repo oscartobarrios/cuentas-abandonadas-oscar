@@ -16,6 +16,7 @@ import { Page } from '../../../interfaces/page';
 export class CertificadosComponent implements OnInit {
 
   @ViewChild('accionesTemplate', { static: true }) accionesTemplate: TemplateRef<any>;
+  @ViewChild('acciones2Template', { static: true }) acciones2Template: TemplateRef<any>;
   @ViewChild('monedaTemplate', { static: true }) monedaTemplate: TemplateRef<any>;
   @ViewChild('fechaTemplate', { static: true }) fehcaTemplate: TemplateRef<any>;
 
@@ -24,12 +25,18 @@ export class CertificadosComponent implements OnInit {
   public pagination = [10, 20, 30, 40, 50, 60];
   public page = new Page();
   public rows = new Array<any>();
+  public rows2 = new Array<any>();
   public columnMode = ColumnMode;
   public dataQuery: ICargue[] = [];
+  public dataQuery2: ICargue[] = [];
   public resultSearch = false;
   public columns = [];
+  public columns2 = [];
+
   public resultadosBusqueda: any[] = [];
-  public titulo = 'Cargue de certificaciones';
+  public titulo = 'Certificaciones con un cargue de archivos';
+  public titulo2 = 'Certificaciones sin cargue de archivos';
+
   public boton = 'Seleccionar';
 
   constructor(private _notifications: NotificationsService,
@@ -51,6 +58,12 @@ export class CertificadosComponent implements OnInit {
       { prop: 'idCargue', name: 'Acciones', cellTemplate: this.accionesTemplate }
     ];
 
+    this.columns2 = [
+      { prop: 'usuario', name: 'Entidad' },
+      { prop: 'tipoArchivo', name: 'Tipo' },
+      { prop: 'idCargue', name: 'Acciones', cellTemplate: this.acciones2Template }
+    ];
+
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
@@ -61,7 +74,7 @@ export class CertificadosComponent implements OnInit {
       this.page.data = {
         "entidad": ""
       };
-      this.titulo = "Certificaciones cargadas";
+      this.titulo = "Certificaciones relacionacionadas con un cargue de la entidad";
       this.boton = "Ver certificaciones";
 
     }
@@ -85,6 +98,12 @@ export class CertificadosComponent implements OnInit {
           preloader.close();
         });
 
+      this._getarchivousecase.GetTipoArchivosSinCargue(this.page)
+      .subscribe(res => {
+        this.configurarTabla2ConRespuesta(res);
+        preloader.close();
+      });
+
   }
 
    // Configuración de la tabla con respuesta
@@ -98,6 +117,19 @@ export class CertificadosComponent implements OnInit {
       this.resultSearch = false;
     }
   }
+
+  // Configuración de la tabla con respuesta
+  private configurarTabla2ConRespuesta(modelo: any): void {
+    //this.loadingService.loadingOff();
+    this.resultSearch = true;
+    this.dataQuery2 = modelo.data;
+    this.rows2 = modelo.data;
+    this.definirValoresPagina(modelo);
+    if (this.rows2 === null || this.rows2.length === 0) {
+      this.resultSearch = false;
+    }
+  }
+
   // definicion de valores del paginador
   private definirValoresPagina(values): void {
     this.page.pageNumber = values.pageNumber;

@@ -31,6 +31,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.ListarCertificaciones(idCargue);
   }
 
+  ListarCertificacionesSinCargue(idTipoCargue: any, idOrganizacion: any): Observable<any> {
+    return this._archivoGetway.ListarCertificacionesSinCargue(idTipoCargue, idOrganizacion);
+  }
+
   CarguesXEstado(estado: string): Observable<ICargue[]> {
     return this._archivoGetway.CarguesXEstado(estado);
   }
@@ -130,6 +134,10 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.CargarCertificado(data);
   }
 
+  CargarCertificadoSinCargue(data: any): Observable<any> {
+    return this._archivoGetway.CargarCertificadoSinCargue(data);
+  }
+
   GetDetalladoFilter(dataQuery): Observable<any>{
     return this._archivoGetway.GetDetalladoFilter(dataQuery);
   }
@@ -144,6 +152,10 @@ export class GetArchivoUseCaseService {
 
   GetCargueFilter(dataQuery): Observable<any>{
     return this._archivoGetway.GetCargueFilter(dataQuery);
+  }
+
+  GetTipoArchivosSinCargue(dataQuery): Observable<any>{
+    return this._archivoGetway.GetTipoArchivosSinCargue(dataQuery);
   }
 
   GetCargueCertificadosFilter(dataQuery): Observable<any>{
