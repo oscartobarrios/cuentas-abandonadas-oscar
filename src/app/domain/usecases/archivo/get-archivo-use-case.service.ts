@@ -35,8 +35,20 @@ export class GetArchivoUseCaseService {
     return this._archivoGetway.CarguesXEstado(estado);
   }
 
+  Cargues(): Observable<ICargue[]> {
+    return this._archivoGetway.Cargues();
+  }
+
+  CarguesFilter(dataQuery): Observable<ICargue[]> {
+    return this._archivoGetway.CarguesFilter(dataQuery);
+  }
+
   CarguesSebra(): Observable<ICargue[]> {
     return this._archivoGetway.CarguesSebra();
+  }
+
+  CarguesSebraFilterAutorizacion(dataQuery): Observable<ICargue[]> {
+    return this._archivoGetway.CarguesSebraFilterAutorizacion(dataQuery);
   }
 
   CarguesSebraFilter(dataQuery): Observable<any>{

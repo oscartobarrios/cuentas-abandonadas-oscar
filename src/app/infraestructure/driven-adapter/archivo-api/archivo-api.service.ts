@@ -57,8 +57,23 @@ export class ArchivoApiService {
     return this.http.get<ICargue[]>(url);
   }
 
+  Cargues(): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCargues`;
+    return this.http.get<ICargue[]>(url);
+  }
+
+  CarguesFilter(dataQuery): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesFilter/${dataQuery.entidad}/${dataQuery.tipoArchivo}/${dataQuery.fechaInicial}/${dataQuery.fechaFinal}`;
+    return this.http.get<ICargue[]>(url);
+  }
+
   CarguesSebra(): Observable<ICargue[]> {
     const url = `${environment.rest.endpoint}/Cargue/GetCarguesSebra`;
+    return this.http.get<ICargue[]>(url);
+  }
+
+  CarguesSebraFilterAutorizacion(dataQuery): Observable<ICargue[]> {
+    const url = `${environment.rest.endpoint}/Cargue/GetCarguesSebraFilterAutorizacion/${dataQuery.entidad}/${dataQuery.fechaInicial}/${dataQuery.fechaFinal}`;
     return this.http.get<ICargue[]>(url);
   }
 
