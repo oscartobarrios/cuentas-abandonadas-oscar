@@ -51,3 +51,44 @@
 
 
 </div>
+
+<div class="container" style="min-height: 420px;">
+  <div class="row mb-5">
+      <div class="col-8">{{titulo2}}</div>
+      <div class="col-4">
+
+      </div>
+  </div>
+
+  <div class="row">
+
+    <ng-container>
+    <ngx-datatable class="material"
+            [rows]="rows2"
+            [columns]="columns2"
+            [columnMode]="columnMode.force"
+            [sorts]="[{prop: 'codigo', dir: 'asc'}]"
+            [headerHeight]="'auto'"
+            [footerHeight]="100"
+            [limit]="page.size"
+            rowHeight="auto"
+            [externalPaging]="true"
+            [count]="page.totalElements"
+            [offset]="page.pageNumber"
+            (page)="setPage($event, true)">
+      </ngx-datatable>
+    </ng-container>
+  </div>
+
+  <ng-template #acciones2Template let-value="value" let-row="row">
+    <div>
+    </div>
+    <div>
+      <mat-card-actions align="start">
+        <button mat-raised-button color="primary" class="button-primary"
+           [routerLink]="['/certificados-sin-cargue', value, row.idOrganizacion]">{{boton}}</button>
+      </mat-card-actions>
+    </div>
+  </ng-template>
+
+</div>
