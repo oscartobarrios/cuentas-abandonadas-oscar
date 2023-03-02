@@ -151,7 +151,17 @@ export class AutorizacionCarguesComponent implements OnInit {
       tipo = 'undefined';
     }
     
-    
+    //para validar que la fecha inicial no sea mayor a la fecha final
+    if(fechainicial != "undefined" && fechafinal != "undefined")
+    {
+
+      if(fechainicial > fechafinal)
+      {
+        this.alarma.showError("La fecha inicial no puede ser mayor a la fecha final");
+        return;
+      }
+     
+    }
 
     this.data = {
       "entidad": entidad,
