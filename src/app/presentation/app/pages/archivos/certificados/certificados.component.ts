@@ -109,11 +109,16 @@ export class CertificadosComponent implements OnInit {
         .subscribe(res => {
           this.configurarTablaConRespuesta(res);
 
-          this._getarchivousecase.GetTipoArchivosSinCargue(this.page2)
-          .subscribe(res2 => {
-            this.configurarTabla2ConRespuesta(res2);
+          if (res.data === null || res.data.length === 0) {
+            this._getarchivousecase.GetTipoArchivosSinCargue(this.page2)
+            .subscribe(res2 => {
+              this.configurarTabla2ConRespuesta(res2);
+              preloader.close();
+            });
+          }else{
             preloader.close();
-          });
+          }
+
 
         });
 
