@@ -24,12 +24,14 @@ export class CertificadosComponent implements OnInit {
   // Variables NgxTable
   public pagination = [10, 20, 30, 40, 50, 60];
   public page = new Page();
+  public page2 = new Page();
   public rows = new Array<any>();
   public rows2 = new Array<any>();
   public columnMode = ColumnMode;
   public dataQuery: ICargue[] = [];
   public dataQuery2: ICargue[] = [];
   public resultSearch = false;
+  public resultSearch2 = false;
   public columns = [];
   public columns2 = [];
 
@@ -66,12 +68,19 @@ export class CertificadosComponent implements OnInit {
 
     // Establecer la página de inicio de la tabla en 1
     this.setPage({ offset: 0 });
+    this.setPage2({ offset: 0 });
     this.usuario = this._storageservice.getItem('payload').infoUsuario;
     this.page.data = {
       "entidad": this.usuario.idOrganizacion
     };
+    this.page2.data = {
+      "entidad": this.usuario.idOrganizacion
+    };
     if(this.usuario.idPerfil != 1){
       this.page.data = {
+        "entidad": ""
+      };
+      this.page2.data = {
         "entidad": ""
       };
       this.titulo = "Certificaciones relacionacionadas con un cargue de la entidad";
@@ -86,6 +95,10 @@ export class CertificadosComponent implements OnInit {
     this.page.pageNumber = 1;
     this.page.size = 10;
     this.page.totalElements = 0;
+
+    this.page2.pageNumber = 1;
+    this.page2.size = 10;
+    this.page2.totalElements = 0;
   }
 
   // Conulta de registros
@@ -95,14 +108,21 @@ export class CertificadosComponent implements OnInit {
       this._getarchivousecase.GetCargueFilter(this.page)
         .subscribe(res => {
           this.configurarTablaConRespuesta(res);
-          preloader.close();
+
+          if (res.data === null || res.data.length === 0) {
+            this._getarchivousecase.GetTipoArchivosSinCargue(this.page2)
+            .subscribe(res2 => {
+              this.configurarTabla2ConRespuesta(res2);
+              preloader.close();
+            });
+          }else{
+            preloader.close();
+          }
+
+
         });
 
-      this._getarchivousecase.GetTipoArchivosSinCargue(this.page)
-      .subscribe(res => {
-        this.configurarTabla2ConRespuesta(res);
-        preloader.close();
-      });
+
 
   }
 
@@ -121,12 +141,12 @@ export class CertificadosComponent implements OnInit {
   // Configuración de la tabla con respuesta
   private configurarTabla2ConRespuesta(modelo: any): void {
     //this.loadingService.loadingOff();
-    this.resultSearch = true;
+    this.resultSearch2 = true;
     this.dataQuery2 = modelo.data;
     this.rows2 = modelo.data;
-    this.definirValoresPagina(modelo);
+    this.definirValoresPagina2(modelo);
     if (this.rows2 === null || this.rows2.length === 0) {
-      this.resultSearch = false;
+      this.resultSearch2 = false;
     }
   }
 
@@ -138,9 +158,22 @@ export class CertificadosComponent implements OnInit {
     this.page.totalPages = values.totalPages;
   }
 
+  // definicion de valores del paginador
+  private definirValoresPagina2(values): void {
+    this.page2.pageNumber = values.pageNumber;
+    this.page2.size = values.size;
+    this.page2.totalElements = values.totalElements;
+    this.page2.totalPages = values.totalPages;
+  }
+
   public setPage(pageInfo: any, fromPagination?: boolean) {
     this.page.pageNumber = pageInfo.offset;
     if (this.page.data && fromPagination) this.consultarRegistros();
+  }
+
+  public setPage2(pageInfo: any, fromPagination?: boolean) {
+    this.page2.pageNumber = pageInfo.offset;
+    if (this.page2.data && fromPagination) this.consultarRegistros();
   }
 
 }

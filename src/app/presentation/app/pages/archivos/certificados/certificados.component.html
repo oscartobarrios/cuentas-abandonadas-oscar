@@ -70,12 +70,12 @@
             [sorts]="[{prop: 'codigo', dir: 'asc'}]"
             [headerHeight]="'auto'"
             [footerHeight]="100"
-            [limit]="page.size"
+            [limit]="page2.size"
             rowHeight="auto"
             [externalPaging]="true"
-            [count]="page.totalElements"
-            [offset]="page.pageNumber"
-            (page)="setPage($event, true)">
+            [count]="page2.totalElements"
+            [offset]="page2.pageNumber"
+            (page)="setPage2($event, true)">
       </ngx-datatable>
     </ng-container>
   </div>
