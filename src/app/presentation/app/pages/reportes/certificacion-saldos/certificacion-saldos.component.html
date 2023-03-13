@@ -2,19 +2,32 @@
     <div class="row mb-5">
         <div class="col-8">Cuentas abandonadas – Reporte Certificación de Saldos</div>
     </div>
-    <form role="form" (ngSubmit)="buscar()" [formGroup]="certificadoForm">
 
     <div class="row">
+
+        <div class="col-4" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5">
+          <div class="row">
+            <label>Entidad financiera</label>
+            <select class="form-control" [(ngModel)]="entidad">
+              <option value=""></option>
+              <option
+                  *ngFor="let ent of entidades"
+                  value="{{ent.idOrganizacion}}">
+                  {{ent.nombre}}
+              </option>
+            </select>
+          </div>
+        </div>
+
           <div class="col-4">
             <label>Fecha Corte</label> 
-            <input type="date" class="form-control" formControlName="fecha">  
+            <input type="date" class="form-control" [(ngModel)]="fechafinal">  
           </div> 
           <div class="col-4">
             <br>
-            <button type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;">Consultar</button>
+            <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="Consultar">
           </div> 
     </div>
-  </form>
 
   <div class="container" id="imprimircertificado" style="font-size: 22px;" *ngIf="swimpresion">
 
