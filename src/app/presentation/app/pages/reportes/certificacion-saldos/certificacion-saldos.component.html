@@ -8,7 +8,7 @@
         <div class="col-4" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5">
           <div class="row">
             <label>Entidad financiera</label>
-            <select class="form-control" [(ngModel)]="entidad">
+            <select class="form-control" [(ngModel)]="entidad" id="ListaEntidad">
               <option value=""></option>
               <option
                   *ngFor="let ent of entidades"
@@ -54,7 +54,7 @@
 
     <div class="row text-justify" style="font-size: 80%">
       <div class="col-md-12">
-        La Dirección de Tesorería del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior - ICETEX certifica que de acuerdo a la información reportada en los traslados y reintegros monetarios del proceso de cuentas abandonadas por la Institución Financiera <label style="font-weight: bold;"><uppercase>{{usuario.nombreEntidad}}</uppercase></label> NIT <label style="font-weight: bold;">{{idOrganizacion}}</label> con corte al {{fechafiltro | date:'dd'}} de {{fechafiltro | date:'MMMM'}} de {{fechafiltro | date:'yyyy'}}, el estado de cuenta es el siguiente:
+        La Dirección de Tesorería del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior - ICETEX certifica que de acuerdo a la información reportada en los traslados y reintegros monetarios del proceso de cuentas abandonadas por la Institución Financiera <label style="font-weight: bold;"><uppercase>{{nombreentidad}}</uppercase></label> NIT <label style="font-weight: bold;">{{idOrganizacion}}</label> con corte al {{fechafiltro | date:'dd'}} de {{fechafiltro | date:'MMMM'}} de {{fechafiltro | date:'yyyy'}}, el estado de cuenta es el siguiente:
       </div>
     </div>
 
@@ -62,12 +62,13 @@
 
     <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
       <tr>
-        <td colspan="4" style="border-bottom:2px solid;height:20px">
-            <div style="text-align:center;font-size: 80%">
-              <label style="font-weight: bold;">Institución Financiera {{usuario.nombreEntidad}}</label>
-            </div>
-        </td>
-    </tr>
+
+          <td colspan="4" style="border-bottom:2px solid;height:20px" *ngIf="usuario.idPerfil != 4 || usuario.idPerfil != 5">
+              <div style="text-align:center;font-size: 80%">
+                <label style="font-weight: bold;">Institución Financiera {{nombreentidad}}</label>
+              </div>
+          </td>
+      </tr>
     </table>
 
     <br>
@@ -199,7 +200,7 @@
       <div class="col-md-2"></div>
   </div>
 
-  <!-- <div class="row text-center" style="margin-bottom:-20px;">
+  <div class="row text-center" style="margin-bottom:-20px;">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <img class="image-slide" [src]="datos.firma">
@@ -214,7 +215,7 @@
           ______________________________________________
       </div>
       <div class="col-md-2"></div>
-  </div> -->
+  </div>
 
   <div class="row text-center">
       <div class="col-md-2"></div>

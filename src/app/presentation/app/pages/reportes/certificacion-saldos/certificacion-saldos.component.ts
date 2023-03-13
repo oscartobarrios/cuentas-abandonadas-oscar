@@ -27,6 +27,7 @@ export class CertificacionSaldosComponent implements OnInit {
   entidades:any;
   entidad: string;
   fechafinal: string;
+  public nombreentidad: string;
 
   constructor(private fb: FormBuilder,
               private alarma: SweetAlertService,
@@ -59,6 +60,8 @@ export class CertificacionSaldosComponent implements OnInit {
     // if(this.certificadoForm.valid)
     // {
 
+    debugger;
+
     var fechafinal = this.fechafinal;
     var identidad ="";
 
@@ -70,9 +73,13 @@ export class CertificacionSaldosComponent implements OnInit {
         return;
       }
 
+      const miDesplegable = document.getElementById("ListaEntidad") as HTMLSelectElement;
+      this.nombreentidad = miDesplegable.selectedOptions[0].text;
+
       identidad = this.entidad
 
     }else{
+      this.nombreentidad = this.usuario.nombreEntidad
       identidad = this.idOrganizacion
     }
 
