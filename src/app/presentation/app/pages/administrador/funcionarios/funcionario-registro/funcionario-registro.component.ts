@@ -101,9 +101,8 @@ export class FuncionarioRegistroComponent implements OnInit {
       if(foto != "")
       {
 
-        if(this.files.size > 20000)
-        {
-          this.alarma.showWarning("El archivo debe pesar máximo 20kb");
+        if (this.files.size > 1000000) {
+          this.alarma.showWarning("El archivo debe pesar máximo 1MB");
           return;
         }
         
@@ -159,9 +158,8 @@ export class FuncionarioRegistroComponent implements OnInit {
     debugger;
     this.files = event.target.files[0];
 
-    if(this.files.size > 20000)
-    {
-      this.alarma.showWarning("El archivo debe pesar máximo 20kb");
+    if (this.files.size > 1000000) {
+      this.alarma.showWarning("El archivo debe pesar máximo 1MB");
       return;
     }
 
