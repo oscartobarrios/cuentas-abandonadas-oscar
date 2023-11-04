@@ -1,0 +1,35 @@
+<mat-card>
+    <div>Ingreso de Datos</div>
+    <form [formGroup]="DatosReintegroForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <mat-card-header>
+       
+        </mat-card-header>
+            <mat-card-content style="margin-top: 40px;">
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Número Operación CUD *</label>
+                    <input type="number" formControlName="nroperacioncud" class="form-control" maxlength="20">
+                </div>
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Observaciones(Verificación cargue información)</label>
+                    <input type="text" formControlName="observacion" class="form-control" maxlength="250">
+                </div>
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Observaciones(Autorización aplicativo cuentas abandonadas)</label>
+                    <input type="text" formControlName="observacionAutorizacion" class="form-control" maxlength="250">
+                </div>
+
+                <br>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+                    <div class="col-sm-3 col-md-3" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="VoBno Orden de cumplimiento">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/autorizacion-cargues']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+    </form>
+   
+</mat-card>

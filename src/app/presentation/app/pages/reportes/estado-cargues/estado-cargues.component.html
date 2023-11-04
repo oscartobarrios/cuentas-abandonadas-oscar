@@ -1,0 +1,119 @@
+<div class="container" style="min-height: 420px;">
+  <div class="row mb-5">
+      <div class="col-8">Cuentas abandonadas – Reporte estados cargues</div>
+      <div class="col-2">
+        <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
+        (click)="descargarExcel()">Descargar Reporte</button>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <label>Entidad financiera</label>
+          <select class="form-control" [(ngModel)]="entidad">
+            <option value=""></option>
+            <option
+                *ngFor="let ent of entidades"
+                value="{{ent.idOrganizacion}}">
+                {{ent.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="col-8">
+          <div class="row">
+            <div class="col-3">
+              <label>Tipo Archivo</label> 
+              <select class="form-control" [(ngModel)]="tipoArchivo">
+                  <option value="null" disabled="true" [selected]="true" ></option>
+                  <option
+                      *ngFor="let tipo of tipos"
+                      value="{{tipo.tipoCargue}}">
+                      {{tipo.tipoCargue}}
+                  </option>
+                </select>
+            </div>
+            <div class="col-4">
+              <label>Fecha Inicio</label> 
+              <input type="date" class="form-control" [(ngModel)]="fechaInicial">  
+            </div> 
+            <div class="col-4">
+              <label>Fecha Fin</label> 
+              <input type="date" class="form-control" [(ngModel)]="fechaFinal">  
+            </div> 
+          </div>
+      </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-6">
+          <div class="row">
+            <label>Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="nombre">  
+          </div>
+      </div>
+      <div class="col-3">
+          <label>Estado</label> 
+          <select class="form-control" [(ngModel)]="estado">
+              <option value="null" disabled="true" [selected]="true" ></option>
+              <option
+                  *ngFor="let estado of estados"
+                  value="{{estado.nombre}}">
+                  {{estado.nombre}}
+              </option>
+            </select>
+      </div>
+
+      <div class="col-3">
+        <div class="row">
+          <label>Id Cargue</label>
+          <input type="text" class="form-control" [(ngModel)]="idCargue">  
+        </div>
+    </div>
+
+
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="buscar">
+    </div>
+  </div>
+
+  <div class="row mt-5">
+      
+    <ng-container>
+    <ngx-datatable class="material"
+            [rows]="rows" 
+            [columns]="columns" 
+            [columnMode]="columnMode.force"
+            [sorts]="[{prop: 'codigo', dir: 'asc'}]" 
+            [headerHeight]="'auto'" 
+            [footerHeight]="100" 
+            [limit]="page.size"
+            rowHeight="auto" 
+            [externalPaging]="true" 
+            [count]="page.totalElements" 
+            [offset]="page.pageNumber"
+            (page)="setPage($event, true)">
+      </ngx-datatable>
+    </ng-container>
+  </div>
+  <ng-template #monedaTemplate let-value="value" let-row="row">
+    <div>
+      $ {{value | number }}
+    </div>
+  </ng-template>
+  <ng-template #numberTemplate let-value="value" let-row="row">
+    <div>
+       {{value | number }}
+    </div>
+  </ng-template>
+  <ng-template #fecha let-value="value" let-row="row">
+    <div>
+       {{value | date: 'dd/MM/yyyy'}}
+    </div>
+  </ng-template>
+
+<!-- </form> -->
+

@@ -1,0 +1,49 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Cuentas abandonadas - Reporte Consolidado</div>
+        <div class="col-4">
+            <button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"(click)="descargarExcel()">Descargar detallado</button>
+        </div>
+    </div>
+    <div class="row">
+          <div class="col-3">
+            <label>Fecha Corte</label>          
+            <input type="date" class="form-control" [(ngModel)]="fechaCorte" required>
+          </div>
+    </div>   
+    <div class="row mt-3">
+      <div class="col-12">
+        <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="buscar">
+      </div>
+    </div>
+    <div class="row mt-5">
+      
+      <ng-container>
+      <ngx-datatable class="material"
+              [rows]="rows" 
+              [columns]="columns" 
+              [columnMode]="columnMode.force"
+              [sorts]="[{prop: 'codigo', dir: 'asc'}]" 
+              [headerHeight]="'auto'" 
+              [footerHeight]="100" 
+              [limit]="page.size"
+              rowHeight="auto" 
+              [externalPaging]="true" 
+              [count]="page.totalElements" 
+              [offset]="page.pageNumber"
+              (page)="setPage($event, true)">
+        </ngx-datatable>
+      </ng-container>
+    </div>
+
+    <ng-template #monedaTemplate let-value="value" let-row="row">
+      <div>
+        $ {{value | number }}
+      </div>
+    </ng-template>
+    <ng-template #numberTemplate let-value="value" let-row="row">
+      <div>
+         {{value | number }}
+      </div>
+    </ng-template>
+</div>

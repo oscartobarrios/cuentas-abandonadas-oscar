@@ -1,0 +1,93 @@
+<mat-card>
+  <h4>Listado de archivos cargados.</h4>
+  <mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-raised-button color="primary" class="button-primary" style="margin-bottom: 20px;margin-left: 15px;"
+         [routerLink]="['/cargar']">Cargar Archivo</button>
+    </mat-card-actions>
+    <div fxLayout="column">
+      <div class="mat-elevation-z8">
+
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="Usuario" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</th>
+              <td mat-cell *matCellDef="let element">{{element.usuario}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Nombre" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+              <td mat-cell *matCellDef="let element">{{element.nombreArchivo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Tipo" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+              <td mat-cell *matCellDef="let element">{{element.tipoArchivo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="NroCuentas" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de cuentas</th>
+              <td mat-cell *matCellDef="let element">{{element.nroCuentas}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="SaldoInicial" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Saldo inicial/ Total traslado</th>
+              <td mat-cell *matCellDef="let element">$ {{element.saldoInicial2 | number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Remuneración" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Remuneración</th>
+              <td mat-cell *matCellDef="let element">$ {{element.totalRemuneracionPeriodo | number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Fecha" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+              <td mat-cell *matCellDef="let element">{{element.fecModificacion | date :'dd-MM-yyyy h:mm a'}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Estado" >
+              <th mat-header-cell *matHeaderCellDef  mat-sort-header>Estado</th>
+              <td mat-cell *matCellDef="let element">{{element.estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Actions">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+              <mat-cell *matCellDef="let element;">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
+                <div style="margin: 3px;">
+                  <div>
+                    <button mat-raised-button matTooltip="Ver Errores" (click)="openError(element.idCargue)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                      <mat-icon color="warn">launch</mat-icon> ver Errores
+                    </button>
+                  </div>
+                  <div>
+                  <button mat-raised-button matTooltip="Ver Errores" (click)="openErrorPantalla(element.idCargue, element.nombreArchivo)" *ngIf=" element.estado === 'CARGA_RECHAZADA' || element.estado === 'VALIDACION_FALLIDA'" >
+                    <mat-icon color="warn">launch</mat-icon> Descargar Errores
+                  </button>
+                  </div>
+
+                  <div *ngIf="((element.estado === 'CARGA_EXITOSA' || element.estado === 'VALIDACION_EXITOSA')) && (usuario.idPerfil == 1 || usuario.idPerfil == 9)">
+                    <button mat-raised-button matTooltip="Aprobar" style="margin: 3px;" (click)="cambiarestado(element.idCargue,'confirmar_entidad')" >
+                      <mat-icon color="primary" class="material-icons-outlined">check_circle</mat-icon> Confirmar
+                    </button>
+                    <button mat-raised-button matTooltip="Rechazar" (click)="cambiarestado(element.idCargue,'rechazar_entidad')">
+                      <mat-icon color="accent">highlight_off</mat-icon> Rechazar
+                    </button>
+                  </div>
+
+
+                </div>
+              </mat-cell>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

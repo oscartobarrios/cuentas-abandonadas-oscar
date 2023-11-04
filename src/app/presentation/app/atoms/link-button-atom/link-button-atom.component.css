@@ -1,0 +1,8 @@
+a.link-button-atom {
+	color: #08cffb;
+	text-decoration: underline;
+}
+
+a.link-button-atom:visited {
+	color: #08cffb;
+}

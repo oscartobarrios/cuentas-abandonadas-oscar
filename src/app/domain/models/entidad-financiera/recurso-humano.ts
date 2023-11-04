@@ -1,0 +1,20 @@
+export interface RecursoHumano {
+    IdOrganizacion: string,
+    IdRecurso:  number,
+    TipoIdentificacion: number,
+    Identificacion: string,
+    PrimerNombre: string,
+    SegundoNombre: string,
+    PrimerApellido: string,
+    SegundoApellido: string,
+    Area: string,
+    DireccionCorrespondencia: string,
+    TelefonoArea: string,
+    TelefonoNumero: string,
+    TelefonoExtension: string,
+    Celular: string,
+    Email: string,
+    Rol: string,
+    InicioVigencia: string,
+    FinVigencia: string
+}

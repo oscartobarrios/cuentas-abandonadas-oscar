@@ -1,0 +1,10 @@
+.item-card {
+    min-height: 200px;
+    margin-top: 15%;
+    text-align: center;
+}
+
+.item-card .btn {
+    margin-top: 75px;
+    margin-bottom: 25px;
+  }

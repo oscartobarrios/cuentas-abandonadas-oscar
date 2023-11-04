@@ -1,0 +1,39 @@
+<mat-card>
+    <div>Ingreso de Datos</div>
+    <form [formGroup]="DatosTrasladosForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <mat-card-header>
+       
+        </mat-card-header>
+            <mat-card-content style="margin-top: 40px;">
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Número de Transacción *</label>
+                    <input type="number" formControlName="nrotransaccion" class="form-control" maxlength="20">
+                </div>
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Número Operación *</label>
+                    <input type="number" formControlName="nrooperacion" class="form-control" maxlength="20">
+                </div>
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Observaciones(Confirmación SEBRA)</label>
+                    <input type="text" formControlName="observacionsebra" class="form-control" maxlength="250">
+                </div>
+                <div class="mb-3 col-sm-8 col-md-8">
+                    <label>Observaciones(Confirmación aplicativo cuentas abandonadas)</label>
+                    <input type="text" formControlName="observacionconfirmacion" class="form-control" maxlength="250">
+                </div>
+
+                <br>
+                <br>
+                <div class="row" fxLayoutAlign="center center">
+                    <div class="col-sm-3 col-md-3" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="VoBno Orden de cumplimiento">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/autorizacion-cargues']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+    </form>
+   
+</mat-card>

@@ -1,0 +1,262 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Cuentas abandonadas – Reporte Certificación de Saldos</div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-4" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5">
+          <div class="row">
+            <label>Entidad financiera</label>
+            <select class="form-control" [(ngModel)]="entidad" id="ListaEntidad">
+              <option value=""></option>
+              <option
+                  *ngFor="let ent of entidades"
+                  value="{{ent.idOrganizacion}}">
+                  {{ent.nombre}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+          <div class="col-4">
+            <label>Fecha Corte</label> 
+            <input type="date" class="form-control" [(ngModel)]="fechafinal">  
+          </div> 
+          <div class="col-4">
+            <br>
+            <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="Consultar">
+          </div> 
+    </div>
+
+  <div class="container" id="imprimircertificado" style="font-size: 22px;" *ngIf="swimpresion">
+
+    <br><br>
+    <div class="row">
+
+        <div class="col-md-12 text-left">
+          <img src="./assets/img/jpg/LogoIcetex.jpg" style="width: 20%;height: auto;"/>
+        </div>
+    </div>
+
+    <br>
+    <hr>    
+    <br>
+
+    <div class="row text-center" style="font-weight: bold;">
+        <div class="col-md-12">
+            <p style="font-size: 80%">CERTIFICACIÓN CUENTAS ABANDONADAS</p>
+            <!-- <p style="font-size: 80%">VFN-DTE-20201130-001030-01</p> -->
+        </div>
+    </div>
+  
+    <br><br>
+
+    <div class="row text-justify" style="font-size: 80%">
+      <div class="col-md-12">
+        La Dirección de Tesorería del Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior - ICETEX certifica que de acuerdo a la información reportada en los traslados y reintegros monetarios del proceso de cuentas abandonadas por la Institución Financiera <label style="font-weight: bold;"><uppercase>{{nombreentidad}}</uppercase></label> NIT <label style="font-weight: bold;">{{nitentidad}}</label> con corte al {{fechafiltro | date:'dd'}} de {{fechafiltro | date:'MMMM'}} de {{fechafiltro | date:'yyyy'}}, el estado de cuenta es el siguiente:
+      </div>
+    </div>
+
+    <br>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+      <tr>
+
+          <td colspan="4" style="border-bottom:2px solid;height:20px" *ngIf="usuario.idPerfil != 4 || usuario.idPerfil != 5">
+              <div style="text-align:center;font-size: 80%">
+                <label style="font-weight: bold;">Institución Financiera {{nombreentidad}}</label>
+              </div>
+          </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+      <tr>
+        <td  class="text-center" style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%;width:37%">
+          <label style="font-weight: bold;">Concepto</label>
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%;width:37%">
+          <label style="font-weight: bold;">Valor del Capital</label>
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%;width:36%">
+          <label style="font-weight: bold;">Número de Cuentas</label>
+        </td>
+       
+      </tr>
+
+      <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+          Traslado de Recursos
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+         {{datos.saldoTraslados |number}}
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{datos.numeroTraslados}}
+        </td>
+       
+      </tr>
+
+      <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+          Reintegro Solicitado
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+         {{datos.saldoReintegros |number}}
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{datos.numeroReintegros}}
+        </td>
+       
+      </tr>
+
+    </table>
+  
+    <br>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+      <tr>
+        <td  class="text-center" style="border-right:2px solid;border-bottom:2px solid;height:20px;width:35.2%;font-size: 80%">
+          <label style="font-weight: bold;">Concepto</label>
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%;width: 60%">
+          <label style="font-weight: bold;">Valor Intereses</label>
+        </td>
+    
+      </tr>
+
+      <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+          Valoración Reportada
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{datos.totalRemuneracionAcumulada |number}}
+        </td>
+       
+       
+      </tr>
+
+      <tr>
+        <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+          Intereses Reintegrados
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{datos.totalRemuneracion |number}}
+        </td>
+       
+       
+      </tr>
+
+    </table>
+
+    <br>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+      <tr>
+        <td  class="text-center" style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%;width:37%">
+          <label style="font-weight: bold;">Concepto</label>
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%;width:37%">
+          <label style="font-weight: bold;">Saldo de capital e intereses</label>
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%;width:36%">
+          <label style="font-weight: bold;">Número de Cuentas administradas</label>
+        </td>
+       
+      </tr>
+
+      <tr>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+          Saldo Institución Financiera a la fecha
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{saldocapitalintereses |number}}
+        </td>
+        <td class="text-center" style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+          {{numerocuentas}}
+        </td>
+       
+      </tr>
+
+    </table>
+    <p style="font-size: 60%;">Fuente: Dirección de Tesorería, aplicativo Cuentas Abandonadas.</p>
+
+    <br>
+    <br>
+
+    <p style="font-size: 80%;">La presente certificación se firma el {{fechahoy | date:'dd'}} de {{fechahoy | date:'MMMM'}} de {{fechahoy | date:'yyyy'}}.</p>
+
+    <br><br><br><br>
+    <br><br><br><br>
+
+    <div class="row text-center" style="margin-bottom:-40px;">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <!-- <img class="image-slide" [src]="fotorespuesta['foto']"> -->
+      </div>
+      <div class="col-md-2"></div>
+  </div>
+
+  <div class="row text-center" style="margin-bottom:-20px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <img class="image-slide" [src]="datos.firma">
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          ______________________________________________
+      </div>
+      <div class="col-md-2"></div>
+  </div>
+
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" style="font-weight: bold;margin-bottom: 1%;margin-top: 1%;">
+        {{datos.nombreUsuario}}
+      </div>
+      <div class="col-md-2"></div>
+  </div>
+
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        {{datos.nombreCargo}}
+      </div>
+      <div class="col-md-2"></div>
+  </div>
+
+  <br><br><br>
+  <br><br><br>
+
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-10">
+        <img src="./assets/img/jpg/piepagina.jpg" width="750px">
+    </div>
+  </div>
+  
+  </div>
+
+  <br>
+
+  
+
+      <div class="row justify-content-center" *ngIf="swimpresion">
+
+        <div class="col-md-2">
+            <button class="btn btn-primary mt-2" printSectionId="imprimircertificado" ngxPrint [useExistingCss]="true">Descargar en PDF</button>
+        </div>
+
+      </div>
+
+</div>

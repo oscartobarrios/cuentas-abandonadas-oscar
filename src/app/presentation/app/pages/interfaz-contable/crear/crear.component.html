@@ -1,0 +1,50 @@
+<div class="container">
+    <div style="max-width: 620px; margin: 0 auto;">
+        <form [formGroup]="interfazContableForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+            <div class="row mb-3">
+                <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+                    <label class="text-white ps-2 pt-2 pb-2">Crear interfaz</label> 
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <input type="text" pattern="\d*" maxlength="4" formControlName="nmAnoInt" class="form-control" placeholder="Año *" 
+                    [ngClass]="{'is-valid': interfazContableForm.controls['nmAnoInt'].valid &&  interfazContableForm.touched,
+                        'is-invalid': interfazContableForm.controls['nmAnoInt'].invalid &&  interfazContableForm.touched}">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <select class="form-control" formControlName="nmMesInt" style="color: grey;"
+                    [ngClass]="{'is-valid': interfazContableForm.controls['nmMesInt'].valid &&  interfazContableForm.touched,
+                    'is-invalid': interfazContableForm.controls['nmMesInt'].invalid &&  interfazContableForm.touched}">
+                        <option value="null" disabled="true" [selected]="true" >Mes</option>
+                        <option
+                            *ngFor="let mes of meses"
+                            value="{{mes.codigo}}">
+                            {{mes.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="mb-3 col-sm-12 col-md-12">
+                    <select class="form-control" formControlName="vaTipInt" style="color: grey;"
+                    [ngClass]="{'is-valid': interfazContableForm.controls['vaTipInt'].valid &&  interfazContableForm.touched,
+                    'is-invalid': interfazContableForm.controls['vaTipInt'].invalid &&  interfazContableForm.touched}">
+                        <option value="null" disabled="true" [selected]="true" >Tipo de interfaz</option>
+                        <option
+                            *ngFor="let tipo of tipoInterfaz"
+                            value="{{tipo.codigo}}">
+                            {{tipo.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-sm-6 col-md-6" >
+                    <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" value="Guardar">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6" >
+                    <a [routerLink]="['/interfaz-contable-listar']" class="btn btn-secondary btn-icetex"><i class="fas fa-chevron-left"></i> Atrás</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

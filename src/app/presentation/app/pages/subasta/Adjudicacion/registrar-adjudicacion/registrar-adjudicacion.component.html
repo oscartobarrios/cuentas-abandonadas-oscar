@@ -1,0 +1,77 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">{{title}}</div>
+    </div>
+    <form [formGroup]="adjudicacionForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">              
+                    <div class="col-10">
+                        <label>Entidad financiera *</label>
+                        <select class="form-control" formControlName="entidad">
+                          <option value=""></option>
+                          <option
+                              *ngFor="let ent of entidades"
+                              value="{{ent.idOrganizacion}}">
+                              {{ent.nombre}}
+                          </option>
+                        </select>
+                    </div> 
+                   
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">              
+                    <div class="col-5">
+                        <label>Fecha Adjudicación*</label> 
+                        <input type="date" formControlName="fechaadjudicacion" class="form-control">  
+                    </div> 
+                    <div class="col-5">
+                        <label>Tipo de Subasta *</label> 
+                        <select class="form-control" formControlName="tipo" (ngModelChange)="validar($event)">
+                            <option value="null" disabled="true" [selected]="true" ></option>
+                            <option
+                                *ngFor="let tipo of tipos"
+                                value="{{tipo.id}}">
+                                {{tipo.nombre}}
+                            </option>
+                          </select>
+                    </div> 
+                </div>
+            </div>
+            
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">       
+                    <div class="col-5">
+                        <label>Porcentaje *</label> 
+                        <input formControlName="porcentaje" class="form-control" type="number" min="1" step="any">  
+                       
+                    </div> 
+
+                    <div class="col-5">
+                        <label>Valor adjudicado *</label> 
+                        <input formControlName="valoradjudicado" class="form-control" type="number" min="1" step="any">  
+                    </div> 
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <div class="row">       
+                    <div class="col-5">
+                        <label>Tasa de Interes *</label> 
+                        <input formControlName="tasainteres" class="form-control" type="number" min="1" step="any">  
+                    </div>        
+                    
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row" fxLayoutAlign="center center">
+            <div class="col-sm-3 col-md-3" >
+                <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <button (click)="regresar()" class="form-control btn-primary-icetex">Regresar</button>
+            </div>
+        </div>
+    </form>
+</div>

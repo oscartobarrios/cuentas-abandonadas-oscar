@@ -1,0 +1,505 @@
+<div class="row mb-5">
+    <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+    <div class="col-2">&nbsp;</div>
+</div>
+<div id="imprimirreintegro">
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px; border: 2px solid">
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>C&oacute;digo F362</b>
+            </td>
+            <td rowspan="4" style="text-align:center;vertical-align:middle;border-right:2px solid;font-size: 90%">
+                <strong>ORDEN DE CUMPLIMIENTO REINTEGRO DE RECURSOS N° {{ datosImpresion['consecutivo']}}</strong>
+            </td>
+            <td rowspan="4" style="width: 20%;text-align:center;vertical-align:middle">
+                <img src="./assets/img/jpg/LogoIcetex.jpg" style="width: 70%;height: auto;"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Versi&oacute;n 1</b>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Fecha: 05/12/2016</b>
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;height:20px;font-size: 80%"><b>P&aacute;gina 1 de 1</b></td>
+        </tr>
+    </table>
+
+    <div style="text-align:center;height:25px;font-size: 80%"><b>SOLICITUD DE REINTEGRO DE RECURSOS ENTIDAD FINANCIERA.</b></div>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%; margin-bottom:5px;margin-top:10px; border: 2px solid">
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:25px;font-size: 80%">
+                <b>Fecha Generaci&oacute;n</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
+                {{ datosImpresion['fechaInicial']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
+                <b> N&uacute;mero de Cuentas Solicitadas</b>
+            </td>
+            <td style="border-bottom:2px solid;width:25%;font-size: 80%">
+                {{ datosImpresion['numeroCuentas']}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;height:20px;font-size: 80%">
+                <b>Nombre Instituci&oacute;n Financiera</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
+                {{ datosImpresion['nombreInstitucion']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:25%;font-size: 80%">
+                <b> Valor Total Solicitado</b>
+            </td>
+            <td style="border-bottom:2px solid;width:25%;font-size: 80%">
+                $ {{ datosImpresion['valorTotal'] | number}}
+
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Nombre del Archivo</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{ datosImpresion['nombreArchivo']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Total Saldo Inicial Solicitado</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valor'] | number}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Fecha de Transmisi&oacute;n</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{ datosImpresion['fechaTransmision']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Total Remuneraci&oacute;n Solicitada</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valorRemuneracion'] | number}}
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4" style="border-bottom:2px solid;height:20px">
+                <div style="text-align:center;font-size: 80%">
+                    La Vicepresidencia de Operaciones y Tecnolog&iacute;a luego de verificar la informaci&oacute;n transmitida por las Instituciones Financieras en el marco de la Ley 1777  de 2016, autoriza el reintegro de recursos del saldo registrado de cuentas abandonadas bajo las siguientes condiciones:
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Valor Saldo Inicial Autorizado</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valor'] | number}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Valor Remuneraci&oacute;n Autorizada</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                $ {{ datosImpresion['valorRemuneracion'] | number}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Valor de Giro Autorizado</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+              $ {{ datosImpresion['valorTotal'] | number}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Valor Pendiente de Reintegro</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                &nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;width:12.5%;height:60px;font-size: 80%">
+                <b>Observaciones</b>
+            </td>
+            <td colspan="3"></td>
+        </tr>
+
+    </table>
+
+    <div>
+
+    </div>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;">
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;text-align:center;height:20px;font-size: 90%" colspan="2"><b>VERIFICA</b></td>
+            <td style="border-bottom:2px solid;text-align:center;font-size: 90%" colspan="2"><b>AUTORIZA</b></td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;height:20px;font-size: 80%"><b>Funcionario</b></td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:37.5%;font-size: 80%">
+                <!-- JESUS VARGAS AGUAS -->
+                {{funcionarioAdmin.nombreUsuario}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:12.5%;font-size: 80%"><b>Funcionario</b></td>
+            <td style="border-bottom:2px solid;width:37.5%;font-size: 80%">
+                <!-- JOSE EDUARDO PARADA JIMENEZ -->
+                {{funcionarioAutorizador.nombreUsuario}}
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%"><b>Cargo</b></td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <!-- PROFESION UNIVERSITARIO -->
+                {{funcionarioAdmin.nombreCargo}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%"><b>Cargo</b></td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                <!-- COORDINADOR GRUPO ADMINISTRACION DE CARTERA -->
+                {{funcionarioAutorizador.nombreCargo}}
+            </td>
+        </tr>
+        <tr>
+            <td style="border-right:2px solid;height:20px;font-size: 80%"><b>Firma</b></td>
+            <td style="border-right:2px solid;text-align:left">
+                <!-- <img *ngIf="funcionarioAdmin.firma != null" [src]="funcionarioAdmin.firma" style="width: 40px;height: 40px;margin-top: 5px;"/> -->
+                <div *ngIf="vbnoadmin != 0">
+                    <p style="font-size: 10px;margin-bottom: 20px;">
+                        
+                        {{datosOrden['fechaVbnoAdmin'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                    
+                    </p>
+                    <p style="font-weight: bold;font-size: 15px;">{{funcionarioAdmin['nombreUsuario']}}</p>
+                </div>
+            </td>
+            <td style="border-right:2px solid;font-size: 80%"><b>Firma</b></td>
+            <td style="border-right:2px solid;text-align:lefft">
+                <!-- <img *ngIf="funcionarioAutorizador.firma != null" [src]="funcionarioAutorizador.firma" style="width: 40px;height: 40px;margin-top:5px;"/> -->
+                <div *ngIf="vbnoaut != 0">
+                    <p style="font-size: 10px;margin-bottom: 20px;">
+                        
+                        {{datosOrden['fechaVbnoAut'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                    
+                    </p>
+                    <p style="font-weight: bold;font-size: 15px;">{{funcionarioAutorizador['nombreUsuario']}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table cellpadding="5" cellspacing="0" style="width:100%;border:2px solid; margin-bottom:5px;margin-top:10px">
+        <tr>
+            <td style="text-align:center; background-color:#bfbfbf;border-bottom:2px solid;height:20px;font-size: 90%" colspan="4">
+                <b>VICEPRESIDENCIA FINANCIERA - DIRECCI&Oacute;N DE TESORER&Iacute;A</b>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:20%;height:20px;font-size: 80%">
+                <b>Cuenta CUD Destino</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:30%;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                    {{ datosImpresion['cuentaCudDestino']}}
+                </div>
+                
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;width:20%;font-size: 80%">
+                <b>Valor de Giro</b>
+            </td>
+            <td style="border-bottom:2px solid;width:30%;font-size: 80%">
+              $ {{ datosImpresion['valorTotal'] | number}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Portafolio Destino</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                    {{ datosImpresion['portafolioDestino']}}
+                </div>
+             
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>C&oacute;digo Transacci&oacute;n</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                    11106
+                </div>
+               
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Cuenta CUD Origen</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                    65818189
+                </div>
+                
+            </td>
+            <td colspan="2" style="border-bottom:2px solid;font-size: 80%">
+                &nbsp;
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px;font-size: 90%">
+                <b>VERIFICACI&Oacute;N CARGUE INFORMACI&Oacute;N</b>
+            </td>
+            <td colspan="2" style="border-bottom:2px solid;background-color:#bfbfbf;text-align:center;font-size: 90%">
+                <b>APROBADOR SEBRA</b>
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Fecha y Hora</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                </div>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Fecha y Hora</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnosebra != 0">
+                    {{datosOrden['fechaVbnoSebra'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                </div>
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>N° Operaci&oacute;n CUD</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <div *ngIf="vbnotesoreria != 0">
+                    {{datosOrden['nroOperacionCud']}}
+                </div>
+               
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>N° Operaci&oacute;n CUD</b>
+            </td>
+            <td style="border-bottom:2px solid;">
+                <div *ngIf="vbnosebra != 0">
+                    {{datosOrden['nroOperacionCud']}}
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Observaciones</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{datosOrden['observacionReintegro']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Observaciones</b>
+            </td>
+            <td style="border-bottom:2px solid;">
+                {{datosOrden['observacionFuncionarioSebra']}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Funcionario</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{funcionarioTesorero['nombreUsuario']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Funcionario</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                {{funcionarioSebra['nombreUsuario']}}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Cargo</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{funcionarioTesorero['nombreCargo']}}
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Cargo</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                {{funcionarioSebra['nombreCargo']}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Firma</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid">
+                <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="marvbnotesoreriagin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <div *ngIf="vbnotesoreria != 0">
+                    <p style="font-size: 10px;margin-bottom: 20px;">
+                        
+                        {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                    
+                    </p>
+                    <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>
+                </div>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Firma</b>
+            </td>
+            <td style="border-bottom:2px solid;font-size: 80%">
+                <!-- <img *ngIf="funcionarioSebra.firma != null" [src]="funcionarioSebra.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <div *ngIf="vbnosebra != 0">
+                
+                    <p style="font-size: 10px;margin-bottom: 20px;">{{datosOrden['fechaVbnoSebra'] | date: 'dd/MM/yyyy h:mm:ss a'}}</p>
+                    <p style="font-weight: bold;font-size: 15px;">{{funcionarioSebra['nombreUsuario']}}</p>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" style="border-right:2px solid;border-bottom:2px solid;background-color:#bfbfbf;text-align:center;height:20px;font-size: 90%">
+                <b>AUTORIZACI&Oacute;N APLICATIVO CUENTAS ABANDONADAS</b>
+            </td>
+            <td colspan="2" rowspan="7" style="valign:top;;font-size: 80%">
+                <b>Verificado por</b>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Fecha y Hora Aplicaci&oacute;n</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <!-- {{fecha | date: 'dd/MM/yyyy'}} -->
+                <div *ngIf="vbnotesoreria != 0">
+                    {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                </div>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Acci&oacute;n a Ejecutar</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;">
+                <table>
+                    <tr>
+                        <td style="width:30%;font-size: 80%">Verifica</td>
+                        <td style="width:10%;">&nbsp;</td>
+                        <td style="width:10%;border-left:2px solid;border-right:2px solid;border-bottom:2px solid;border-top:2px solid;">X&nbsp;</td>
+                        <td style="width:30%;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 80%">Rechaza</td>
+                        <td>&nbsp;</td>
+                        <td style="border-left:2px solid;border-right:2px solid;border-bottom:2px solid;border-top:2px solid;">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                <b>Observaciones</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{datosOrden['observacionReintegroAutorizacion']}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Funcionario</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{funcionarioTesorero['nombreUsuario']}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;border-bottom:2px solid;height:20px;font-size: 80%">
+                <b>Cargo</b>
+            </td>
+            <td style="border-right:2px solid;border-bottom:2px solid;font-size: 80%">
+                {{funcionarioTesorero['nombreCargo']}}
+            </td>
+        </tr>
+
+
+        <tr>
+            <td style="border-right:2px solid;height:20px;font-size: 80%">
+                <b>Firma</b>
+            </td>
+            <td style="border-right:2px solid;">
+                <!-- <img *ngIf="funcionarioTesorero.firma != null" [src]="funcionarioTesorero.firma" style="margin-top: 10px; width: 40px;height: 40px;text-align: center"/> -->
+                <div *ngIf="vbnotesoreria != 0">
+                    <p style="font-size: 10px;margin-bottom: 20px;">
+                        
+                        {{datosOrden['fechaVbnoTesorero'] | date: 'dd/MM/yyyy h:mm:ss a'}}
+                    
+                    </p>
+                    <p style="font-weight: bold;font-size: 15px;">{{funcionarioTesorero['nombreUsuario']}}</p>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-2">
+            <button class="btn btn-primary mt-2" printSectionId="imprimirreintegro" ngxPrint [useExistingCss]="true">Descargar en PDF</button>
+        </div>
+
+    </div>
+

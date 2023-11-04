@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+      <form fxLayout="column" [formGroup]="reactiveForm" fxFlex>
+        <mat-card-header>
+          <mat-card-title>Envio de Correo para modificación de campos en Entidad</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <br>
+        
+          <div fxLayout="column" fxLayoutGap="10px">
+            <h2>Camara de Comercio</h2>
+          <button mat-raised-button   (click)="fileInput.click()">
+            <mat-icon color="primary">file_present</mat-icon>
+            <span>Selecione el archivo</span>
+            <input #fileInput type="file" formControlName="file" (change)="fileChange($event)" style="display:none;" />
+            <p>{{archivo?.name}}</p>
+          </button>
+          </div>
+          <div fxLayout="column" fxLayoutGap="10px">
+            <h2>Certificado de superfinanciera</h2>
+          <button mat-raised-button   (click)="fileInput2.click()">
+            <mat-icon color="primary">file_present</mat-icon>
+            <span>Selecione el archivo</span>
+            <input #fileInput2 type="file" formControlName="file2" (change)="fileChange2($event)" style="display:none;" />
+            <p>{{archivo2?.name}}</p>
+
+          </button>
+          </div>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button-atom text="Aceptar" type="submit" (click)="onSubmit()"></button-atom>
+          <button mat-raised-button type="submit" [routerLink]="['/entidad-financiera']" style="margin-right: 10px;">Regresar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+  
+
+  
+

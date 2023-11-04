@@ -1,0 +1,21 @@
+div.subheader {
+	color: #004884;
+}
+
+.width-spacer {
+  flex: 1 1 auto;
+}
+
+.title-user-menu {
+	background-color: #00256e;
+    color: white;
+    padding: 20px;
+    font-size: 1.5em;
+    margin-top: -9px;
+}
+
+@media only screen and (max-width: 599px) {
+  .img-logo {
+    width: 30%;
+  }
+}

@@ -1,0 +1,51 @@
+<div class="dialog">
+
+	<!-- preloader -->
+	<div fxLayout="column" fxLayoutAlign="center center" *ngIf="data.type === 'preloader'">
+		<mat-spinner [color]="data.data.theme" [strokeWidth]="6"></mat-spinner>
+		<span>Espere...</span>
+	</div>
+
+	<!-- info -->
+	<div fxLayout="column" fxLayoutAlign="center center" *ngIf="data.type === 'info'">
+		<!-- title -->			
+		<h1 mat-dialog-title>{{data.data.title}}</h1>
+		<!-- content -->
+		<div mat-dialog-content class="alert">
+			<p [innerHTML]="data.data.message"></p>
+		</div>
+		<div mat-dialog-actions fxLayout fxLayoutAlign="center center">
+			<button mat-button mat-dialog-close>Cerrar</button>
+		</div>
+	</div>
+
+	<!-- error -->
+	<div fxLayout="column" fxLayoutAlign="center center" *ngIf="data.type === 'error'">
+		<!-- title -->
+		<h1 mat-dialog-title>{{data.data.title}}</h1>
+		<!-- content -->
+		<div mat-dialog-content class="alert">
+			<p class="alert-error" [innerHTML]="data.data.message"></p>
+		</div>
+		<div mat-dialog-actions fxLayout fxLayoutAlign="center center">
+			<button mat-button mat-dialog-close>Cerrar</button>
+		</div>
+	</div>
+
+	<!-- confirm -->
+	<div fxLayout="column" fxLayoutAlign="center center" *ngIf="data.type === 'confirm'">
+		<!-- title -->
+      	<h1 mat-dialog-title>{{data.data.title}}</h1>
+    	<!-- content -->
+		<div mat-dialog-content class="alert">
+			<p [innerHTML]="data.data.message"></p>
+		</div>
+		<!-- actions -->
+		<div mat-dialog-actions fxLayoutAlign="space-around center">
+			<button mat-button *ngFor="let item of data.data.buttons" [color]="item.color" (click)="confirmResponse(item)">
+				{{item.text}}
+			</button>
+		</div>
+	</div>
+
+</div>

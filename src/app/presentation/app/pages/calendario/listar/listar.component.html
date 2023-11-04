@@ -1,0 +1,297 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
+        <div class="col-8">Cuentas Abandonadas - Configuracion Calendario</div>
+        <div class="col-2">&nbsp;</div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12">A continuación se puede consultar o crear la informacion de calendarios activos o futuros
+            para cada tipo de archivo de cargue.Si esta adicionando un nuevo periodo
+            <br> debe hacer click en el ícono inferior derecho para ir al formulario de creación de período
+        </div>
+    </div>
+    <div class="row mb-5 bg-white">
+        <div class="col-md-4">
+            <h2>CESION</h2> Archivo de cargue de cesiones cuentas abandonadas
+        </div>
+        <div class="col-md-8">
+            <table width="100%" mat-table [dataSource]="calendariosCargueCesion" matSort>
+                <ng-container matColumnDef="fechaDesde">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaHasta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaInicial">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">INICIAL</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaInicial | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaFinal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">FINAL</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaFinal | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="idTipoCargue">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+                  <td mat-cell *matCellDef="let cal" >
+                    <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConfCes"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConfCes;">
+
+                </tr>
+            </table>
+            <mat-paginator #MatPaginatorCesion [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    
+    <div class="row mb-5 bg-white">
+        <div class="col-md-4">
+            <h2>REINTEGRO</h2> Archivo de cargue de reintegros cuentas abandonadas
+        </div>
+        <div class="col-md-8">
+            <table width="100%" mat-table [dataSource]="calendariosCargueReintegro" matSort>
+                <ng-container matColumnDef="fechaDesde">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaHasta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaInicial">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">INICIAL</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaInicial | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaFinal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">FINAL</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaFinal | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="idTipoCargue">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+                  <td mat-cell *matCellDef="let cal" >
+                    <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConfRei"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConfRei;">
+
+                </tr>
+            </table>
+            <mat-paginator #MatPaginatorReintegro [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    <div class="row mb-5 bg-white">
+        <div class="col-md-4">
+            <h2>TRASLADO</h2> Archivo de cargue de traslado cuentas abandonadas
+        </div>
+        <div class="col-md-8">
+            <table width="100%" mat-table [dataSource]="calendariosCargueTraslado" matSort>
+                <ng-container matColumnDef="fechaDesde">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaHasta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaInicial">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">INICIAL</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaInicial | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaFinal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">FINAL</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaFinal | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="uvr">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">UVR</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.uvr}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaTrasMon">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">F. TRASLADO MONETARIO</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaTrasMon | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="idTipoCargue">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+                  <td mat-cell *matCellDef="let cal" >
+                    <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConfTras"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConfTras;">
+
+                </tr>
+            </table>
+            <mat-paginator #MatPaginatorTraslado [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    <div class="row mb-5 bg-white">
+        <div class="col-md-4">
+            <h2>VALORACIÓN</h2> Archivo de cargue de valoración cuentas abandonadas
+        </div>
+        <div class="col-md-8">
+            <table width="100%" mat-table [dataSource]="calendariosCargueValoracion" matSort>
+                <ng-container matColumnDef="fechaDesde">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaHasta">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaInicial">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">INICIAL</th>
+                    <td mat-cell *matCellDef="let cal">
+                        <h2 >{{cal.fechaInicial | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="fechaFinal">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">FINAL</th>
+                    <td mat-cell *matCellDef="let cal" >
+                        <h2 >{{cal.fechaFinal | date :'dd/MM/yy'}}</h2>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="idTipoCargue">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+                  <td mat-cell *matCellDef="let cal" >
+                    <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsConf"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsConf;">
+
+                </tr>
+            </table>
+            <mat-paginator #MatPaginatorValoracion [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    <div class="row mb-5 bg-white">
+      <div class="col-md-4">
+          <h2>ACTUALIZACIÓN DE CUENTAS</h2> Archivo de cargue de actualización de cuentas
+      </div>
+      <div class="col-md-8">
+          <table width="100%" mat-table [dataSource]="calendariosCargueCuenta" matSort>
+              <ng-container matColumnDef="fechaDesde">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                  <td mat-cell *matCellDef="let cal" >
+                      <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                  </td>
+              </ng-container>
+              <ng-container matColumnDef="fechaHasta">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                  <td mat-cell *matCellDef="let cal">
+                      <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombreOrganizacion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">Entidad Financiera</th>
+                <td mat-cell *matCellDef="let cal">
+                    <h2 >{{cal.nombreOrganizacion}}</h2>
+                </td>
+            </ng-container>
+
+              <ng-container matColumnDef="idTipoCargue">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+                <td mat-cell *matCellDef="let cal" >
+                  <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsConfCuenta"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsConfCuenta;">
+
+              </tr>
+          </table>
+          <mat-paginator #MatPaginatorCuenta [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+  </div>
+  <div class="row mb-5 bg-white">
+    <div class="col-md-4">
+        <h2>SUBASTA</h2> Subasta para funcionarios de entidades
+    </div>
+    <div class="col-md-8">
+        <table width="100%" mat-table [dataSource]="calendariosCargueSubasta" matSort>
+            <ng-container matColumnDef="fechaDesde">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
+                <td mat-cell *matCellDef="let cal" >
+                    <h2 >{{cal.fechaDesde | date :'dd/MM/yy'}}</h2>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaHasta">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">HASTA</th>
+                <td mat-cell *matCellDef="let cal">
+                    <h2 >{{cal.fechaHasta | date :'dd/MM/yy'}}</h2>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaInicial">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">INICIAL</th>
+                <td mat-cell *matCellDef="let cal">
+                    <h2 >{{cal.fechaInicial | date :'dd/MM/yy'}}</h2>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="fechaFinal">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">FINAL</th>
+                <td mat-cell *matCellDef="let cal" >
+                    <h2 >{{cal.fechaFinal | date :'dd/MM/yy'}}</h2>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="idTipoCargue">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">OPCIONES</th>
+              <td mat-cell *matCellDef="let cal" >
+                <a [routerLink]="['/calendario-editar/',cal.idTipoCargue,cal.fechaDesde]"><i class="fas fa-edit"></i></a>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsConfCes"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsConfCes;">
+
+            </tr>
+        </table>
+        <mat-paginator #MatPaginatorSubasta [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+    <div class="row justify-content-end mt-3">
+        <div class="col-2" style="font-size: 2rem;">
+            <a [routerLink]="['/calendario-crear']"><i class="fas fa-plus-circle"></i></a> &nbsp;
+        </div>
+    </div>
+</div>

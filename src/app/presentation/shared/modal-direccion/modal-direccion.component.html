@@ -1,0 +1,53 @@
+<div class="container">
+    <form [formGroup]="direccionForm" #formDir="ngForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+            <label class="text-white ps-2 pt-2 pb-2">Asistente de Dirección</label> 
+        </div>
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-6">
+                <select class="form-control" (change)="buildAddress()" formControlName="Via">
+                    <option value="null" disabled="true" [selected]="true">Vía *</option>
+                    <option
+                        *ngFor="let via of vias"
+                        value="{{via.valor}}">
+                        {{via.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-12 col-md-3">
+                <input type="number" formControlName="Numero" class="form-control" (change)="buildAddress()" placeholder="Número">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-3">
+                <select class="form-control" (change)="buildAddress()" formControlName="Letra">
+                    <option value="null" disabled="true" [selected]="true">Letra</option>
+                    <option
+                        *ngFor="let letra of abc"
+                        value="{{letra}}">
+                        {{letra}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            
+           
+            <div class="mb-4 col-sm-12 col-md-4" style="display: flex;">
+                <span style="width: 15%;">#</span>
+                <input type="number" style="width: 85%;" formControlName="NumeroDos" class="form-control" (change)="buildAddress()" placeholder="Número *">
+            </div>
+            <span style="width:5%;">-</span>
+            <div class="mb-6 col-sm-12 col-md-6">
+                <input type="number" formControlName="NumeroTres" class="form-control" (change)="buildAddress()" placeholder="Número secundario *">
+             </div>
+
+        </div>
+        
+        
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="DireccionEstandar" class="form-control" readonly placeholder="Dirección Completa">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12" >
+            <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" value="Enviar">
+        </div>
+    </form>
+</div>

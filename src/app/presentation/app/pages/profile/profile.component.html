@@ -1,0 +1,61 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Perfil de usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxFlex>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>ID usuario</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.idUsuario}}" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.nombreUsuario}}" readonly>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Tipo Documento</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.tipoId}}" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Documento</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.identificacion}}" readonly>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.usuario}}" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="Correo" value="{{info.correo}}" readonly>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Estado</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.estado}}" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Perfil</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.nombrePerfil}}" readonly>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+          
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>ID organización</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.idOrganizacion}}" readonly>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Entidad</mat-label>
+            <input matInput placeholder="Nombre" value="{{info.nombreEntidad}}" readonly>
+          </mat-form-field>
+
+        </div>
+      </div>

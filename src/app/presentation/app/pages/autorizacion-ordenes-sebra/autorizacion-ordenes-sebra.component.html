@@ -1,0 +1,86 @@
+<div class="container" style="min-height: 420px;">
+    <div class="row mb-5">
+        <div class="col-8">Cuentas abandonadas – Ordenes de Cumplimiento Sebra</div>
+       
+    </div>
+    <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <label>Entidad financiera</label>
+            <select class="form-control" [(ngModel)]="entidad">
+              <option value=""></option>
+              <option
+                  *ngFor="let ent of entidades"
+                  value="{{ent.idOrganizacion}}">
+                  {{ent.nombre}}
+              </option>
+            </select>
+          </div>
+        </div>
+    
+           
+        <div class="col-3">
+            <label>Fecha Inicio</label> 
+            <input type="date" class="form-control" [(ngModel)]="fechaInicial">  
+        </div> 
+
+        <div class="col-3">
+            <label>Fecha Fin</label> 
+            <input type="date" class="form-control" [(ngModel)]="fechaFinal">  
+        </div>
+
+    </div>
+
+<div class="row mt-3">
+    <div class="col-12">
+      <input type="button" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" (click)="buscar()" value="buscar">
+    </div>
+  </div>
+
+  <div class="row mt-5">
+        
+    <ng-container>
+    <ngx-datatable class="material"
+            [rows]="rows" 
+            [columns]="columns" 
+            [columnMode]="columnMode.force"
+            [sorts]="[{prop: 'codigo', dir: 'asc'}]" 
+            [headerHeight]="'auto'" 
+            [footerHeight]="100" 
+            [limit]="page.size"
+            rowHeight="auto" 
+            [externalPaging]="true" 
+            [count]="page.totalElements" 
+            [offset]="page.pageNumber"
+            (page)="setPage($event, true)">
+      </ngx-datatable>
+    </ng-container>
+  </div>
+
+  <ng-template #accionesTemplate let-value="value" let-row="row">
+    <div>
+    </div>
+    <div>
+      <mat-card-actions align="start">
+        <button mat-raised-button color="primary" class="button-primary"
+           [routerLink]="['/autorizacion-reintegro-pdf/', value,1,1,1,1]">Descargar Orden</button>
+      </mat-card-actions>
+    </div>
+  </ng-template>
+
+  <ng-template #monedaTemplate let-value="value" let-row="row">
+    <div>
+      $ {{value | number }}
+    </div>
+  </ng-template>
+  <ng-template #numberTemplate let-value="value" let-row="row">
+    <div>
+       {{value | number }}
+    </div>
+  </ng-template>
+  <ng-template #fecha let-value="value" let-row="row">
+    <div>
+       {{value | date: 'dd/MM/yyyy'}}
+    </div>
+  </ng-template>
+

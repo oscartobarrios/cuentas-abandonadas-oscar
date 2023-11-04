@@ -1,0 +1,93 @@
+<mat-card>
+    <h2>CAMBIO DE CONTRASEÑA</h2>
+    <form [formGroup]="DatosFormVerificar" method="post" (ngSubmit)="onSubmitverificar()" (keydown.enter)="$event.preventDefault()">
+
+            <mat-card-content style="margin-top: 40px;">
+                <div>Usted va a realizar el cambio de contraseña para el usuario: {{this.usuario.nombreUsuario}}</div>
+                <br>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Usuario *</label>
+                    <input type="text" formControlName="usuario" class="form-control" maxlength="50">
+                </div>
+                <div class="mb-3 col-sm-6 col-md-6">
+                    <label>Contraseña *</label>
+                    <input type="password" formControlName="contrasena" class="form-control" maxlength="50">
+                </div>
+                <br>
+                <div class="row" fxLayoutAlign="center center" *ngIf="!sw">
+                    <div class="col-sm-3 col-md-3" >
+                        <input type="submit" class="form-control btn-primary-icetex" value="Verificar">
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <button [routerLink]="['/perfil']" class="form-control btn-primary-icetex">Regresar</button>
+                    </div>
+                </div>
+
+            </mat-card-content>
+
+    </form>
+   
+</mat-card>
+<mat-card *ngIf="sw">
+    <h2>DATOS DE ACTUALIZACION</h2>
+    <form [formGroup]="frmSignup" (submit)="onSubmitcambiar()">
+        <div class="mb-3 col-sm-6 col-md-6">
+            <div class="form-group">
+                <label for="password" >Contraseña:</label>
+                <input id="password" formControlName="password" type="password" class="form-control" maxlength="50">
+                <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                  <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                    frmSignup.controls['password'].hasError('minlength') ? 'cancel' :
+                    'check_circle' }}</i>
+                    Mínimo 12 caracteres alfanuméricos
+                </label>
+                <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                  <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                    frmSignup.controls['password'].hasError('hasNumber') ? 'cancel' :
+                    'check_circle' }}</i>
+                  Debe contener al menos 1 Numero
+                </label>
+                <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                  <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                    frmSignup.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                    'check_circle' }}</i>
+                  Debe contener al menos 1 letra mayuscula
+                </label>
+                <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                  <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                    frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                    'check_circle' }}</i>
+                    Debe contener al menos 1 letra minúsculas
+                </label>
+                <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                  <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+                    frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                    'check_circle' }}</i>
+                    Debe contener al menos 1 carácter especial
+                </label>
+              </div>
+      
+        </div>
+        <div class="mb-3 col-sm-6 col-md-6">
+            <label>Confirmar Contraseña</label>
+            <input type="password" formControlName="confirmPassword" class="form-control" maxlength="50">
+            <label class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
+                La contraseña no coincide
+              </label>
+        </div>
+        <br>
+        <br>
+        <div class="row" fxLayoutAlign="center center">
+
+            <div class="col-sm-3 col-md-3" *ngIf="sw">
+                <input type="submit" class="form-control btn-primary-icetex" value="Cambiar Contraseña">
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <button [routerLink]="['/perfil']" class="form-control btn-primary-icetex">Regresar</button>
+            </div>
+        </div>
+
+      </form>
+   
+</mat-card>
+

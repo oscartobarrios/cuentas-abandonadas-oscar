@@ -1,0 +1,92 @@
+<div class="container">
+    <form [formGroup]="recursoHumanoForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+        <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
+            <label class="text-white ps-2 pt-2 pb-2">Recurso humano entidad</label> 
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <select class="form-control" formControlName="Rol" style="color: grey;"
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['Rol'].valid &&  recursoHumanoForm.controls['Rol'].touched,
+                        'is-invalid': recursoHumanoForm.controls['Rol'].invalid &&  recursoHumanoForm.controls['Rol'].touched}">
+                <option value="null" disabled="true" [selected]="true" >Rol</option>
+                <option
+                    *ngFor="let rol of roles"
+                    value="{{rol}}">
+                    {{rol}}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <select class="form-control" formControlName="TipoIdentificacion" style="color: grey;" (change) = "setTipoIdentificacionMaxLength()"
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['TipoIdentificacion'].valid &&  recursoHumanoForm.controls['TipoIdentificacion'].touched,
+                        'is-invalid': recursoHumanoForm.controls['TipoIdentificacion'].invalid &&  recursoHumanoForm.controls['TipoIdentificacion'].touched}">
+                <option value="null" disabled="true" [selected]="true" >Tipo documento</option>
+                <option
+                    *ngFor="let tipo of tipoDocumento"
+                    value="{{tipo.codigo}}">
+                    {{tipo.nombre}}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="number" formControlName="Identificacion" class="form-control" placeholder="Identificación *" 
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['Identificacion'].valid &&  recursoHumanoForm.controls['Identificacion'].touched,
+                        'is-invalid': recursoHumanoForm.controls['Identificacion'].invalid &&  recursoHumanoForm.controls['Identificacion'].touched}">
+            <div class="alert alert-danger" role="alert" [hidden]="recursoHumanoForm.controls['Identificacion'].untouched">
+                {{lenghtIdentificacion}}
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="PrimerNombre" class="form-control" placeholder="Primer nombre *"
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['PrimerNombre'].valid &&  recursoHumanoForm.controls['PrimerNombre'].touched,
+                        'is-invalid': recursoHumanoForm.controls['PrimerNombre'].invalid &&  recursoHumanoForm.controls['PrimerNombre'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="SegundoNombre" class="form-control" placeholder="Segundo nombre">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="PrimerApellido" class="form-control" placeholder="Primer apellido *"
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['PrimerApellido'].valid &&  recursoHumanoForm.controls['PrimerApellido'].touched,
+                        'is-invalid': recursoHumanoForm.controls['PrimerApellido'].invalid &&  recursoHumanoForm.controls['PrimerApellido'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="SegundoApellido" class="form-control" placeholder="Segundo apellido">
+        </div>
+        <div class="row mb-3">
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoArea" class="form-control" placeholder="Área Teléfono">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoNumero" class="form-control" placeholder="Número Teléfono *"
+                [ngClass]="{'is-valid': recursoHumanoForm.controls['TelefonoNumero'].valid &&  recursoHumanoForm.controls['TelefonoNumero'].touched,
+                'is-invalid': recursoHumanoForm.controls['TelefonoNumero'].invalid &&  recursoHumanoForm.controls['TelefonoNumero'].touched}">
+            </div>
+            <div class="mb-3 col-sm-12 col-md-4">
+                <input type="number" title="Por favor ingrese solo números" formControlName="TelefonoExtension" class="form-control" placeholder="Extensión Teléfono"
+                [ngClass]="{'is-valid': recursoHumanoForm.controls['TelefonoExtension'].valid &&  recursoHumanoForm.controls['TelefonoExtension'].touched,
+                'is-invalid': recursoHumanoForm.controls['TelefonoExtension'].invalid &&  recursoHumanoForm.controls['TelefonoExtension'].touched}">
+            </div>
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="Area" class="form-control" placeholder="Área">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="text" formControlName="DireccionCorrespondencia" class="form-control" placeholder="Dirección" readonly (click)="openModal(content)">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="number" formControlName="Celular" class="form-control" placeholder="Celular *"
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['Celular'].valid &&  recursoHumanoForm.controls['Celular'].touched,
+                        'is-invalid': recursoHumanoForm.controls['Celular'].invalid &&  recursoHumanoForm.controls['Celular'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12">
+            <input type="email" formControlName="Email" class="form-control" placeholder="Correo electrónico *" 
+            [ngClass]="{'is-valid': recursoHumanoForm.controls['Email'].valid &&  recursoHumanoForm.controls['Email'].touched,
+                        'is-invalid': recursoHumanoForm.controls['Email'].invalid &&  recursoHumanoForm.controls['Email'].touched}">
+        </div>
+        <div class="mb-3 col-sm-12 col-md-12" >
+            <input type="submit" class="form-control btn-primary-icetex" style="width: 30%;margin: 0 auto;" value="Guardar">
+        </div>
+    </form>
+</div>
+<ng-template #content let-modal>
+  <app-modal-direccion></app-modal-direccion>  
+</ng-template>
