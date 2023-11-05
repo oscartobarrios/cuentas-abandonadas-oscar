@@ -17,7 +17,7 @@ export class ListarCalendarioComponent implements OnInit {
 
   @ViewChild('MatPaginatorCesion') MatPaginatorCesion: MatPaginator;
   @ViewChild('MatPaginatorSubasta') MatPaginatorSubasta: MatPaginator;
-  
+
 
   @ViewChild('MatPaginatorReintegro') MatPaginatorReintegro: MatPaginator;
 
@@ -32,7 +32,7 @@ export class ListarCalendarioComponent implements OnInit {
   calendariosCargueValoracion = new MatTableDataSource<ICalendario>();
   calendariosCargueCuenta = new MatTableDataSource<ICalendario>();
   calendariosCargueSubasta = new MatTableDataSource<ICalendario>();
-  
+
 
   displayedColumns: string[] = ['nombre', 'configuracion'];
   displayedColumnsConf: string[] = ['fechaDesde', 'fechaHasta', 'fechaInicial', 'fechaFinal', 'idTipoCargue'];
@@ -53,19 +53,30 @@ export class ListarCalendarioComponent implements OnInit {
   ngOnInit(): void {
     const preloader = this._notifications.showPreloader();
     this._getCalendarioUseCaseService.ListarCalendarios().pipe(map((cals: ICalendario[]) => {
-      cals.map((cal) => {
-        switch (cal.idTipoCargue){
-          case 2: this.calendariosCargueCesion.data.push(cal);break;
-          case 13560023: this.calendariosCargueReintegro.data.push(cal);break;
-          case 2045: this.calendariosCargueValoracion.data.push(cal);break;
-          case 1: this.calendariosCargueTraslado.data.push(cal);break;
-          case 3: this.calendariosCargueCuenta.data.push(cal);break;
-          case 4: this.calendariosCargueSubasta.data.push(cal);break;
-          
+      cals.forEach((cal) => {
+        switch (cal.idTipoCargue) {
+          case 2:
+            this.calendariosCargueCesion.data.push(cal);
+            break;
+          case 13560023:
+            this.calendariosCargueReintegro.data.push(cal);
+            break;
+          case 2045:
+            this.calendariosCargueValoracion.data.push(cal);
+            break;
+          case 1:
+            this.calendariosCargueTraslado.data.push(cal);
+            break;
+          case 3:
+            this.calendariosCargueCuenta.data.push(cal);
+            break;
+          case 4:
+            this.calendariosCargueSubasta.data.push(cal);
+            break;
         }
-      })
+      });
       this.calendariosCargueCesion.paginator = this.MatPaginatorCesion;
-      this.calendariosCargueSubasta.paginator = this.MatPaginatorSubasta;      
+      this.calendariosCargueSubasta.paginator = this.MatPaginatorSubasta;
       this.calendariosCargueReintegro.paginator = this.MatPaginatorReintegro;
       this.calendariosCargueValoracion.paginator = this.MatPaginatorValoracion;
       this.calendariosCargueTraslado.paginator = this.MatPaginatorTraslado;
