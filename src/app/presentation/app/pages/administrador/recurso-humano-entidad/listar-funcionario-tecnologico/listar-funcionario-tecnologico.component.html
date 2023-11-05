@@ -4,62 +4,48 @@
         <div class="col-sm-3 col-md-3" *ngIf="usuario.idPerfil == 9">
           <button [routerLink]="['/funcionarioEntidadRegistrarActualizar',0,'TECNOLOGICO']" class="form-control btn-primary-icetex">Registrar</button>
         </div>
-        <div class="col-sm-3 col-md-3" >
-        </div>
       </div>
     </mat-card-actions>
-
     <div fxLayout="column">
       <div class="mat-elevation-z8">
-
         <div class="table-responsive">
-          <table mat-table [dataSource]="dataSource" matSort>
-            <caption></caption>
+          <table mat-table [dataSource]="dataSource" matSort><caption>Tabla</caption>
             <ng-container matColumnDef="NombreEntidad">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad</th>
               <td mat-cell *matCellDef="let element" style="width: 300px;">{{element.nombreEntidad}}</td>
             </ng-container>
-
             <ng-container matColumnDef="TipoIdentificacion" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Identificación</th>
               <td mat-cell *matCellDef="let element" style="width: 300px;">{{element.tipoIdentificacion}}</td>
             </ng-container>
-
             <ng-container matColumnDef="Identificacion" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</th>
               <td mat-cell *matCellDef="let element" style="width: 400px;">{{element.identificacion}}</td>
             </ng-container>
-
             <ng-container matColumnDef="PrimerNombre" >
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Primer Nombre</th>
                 <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.primerNombre}}</td>
               </ng-container>
-
             <ng-container matColumnDef="SegundoNombre" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Segundo Nombre</th>
               <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.segundoNombre}}</td>
             </ng-container>
-
             <ng-container matColumnDef="PrimerApellido" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Primer Apellido</th>
               <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.primerApellido}}</td>
             </ng-container>
-
             <ng-container matColumnDef="segundoApellido" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Segundo Apellido</th>
               <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.segundoApellido}}</td>
             </ng-container>
-
             <ng-container matColumnDef="Telefono" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
               <td mat-cell *matCellDef="let element" style="width: 300px;">{{element.telefonoNumero}}</td>
             </ng-container>
-
             <ng-container matColumnDef="Direccion" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
               <td mat-cell *matCellDef="let element" style="width:2200px;">{{element.direccionCorrespondencia}}</td>
             </ng-container>
-
             <ng-container matColumnDef="Actions">
               <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
               <mat-cell *matCellDef="let element;">
@@ -68,7 +54,6 @@
                   <div>
                     <button [routerLink]="['/funcionarioEntidadRegistrarActualizar',element.idFuncionario,'TECNOLOGICO']" class="form-control btn-primary-icetex">Actualizar</button>
                   </div>
-
                 </div>
               </mat-cell>
             </ng-container>
@@ -80,7 +65,3 @@
       </div>
     </div>
   </mat-card-content>
-
-
-
-
