@@ -133,6 +133,6 @@ La creación de menos componentes implica que el tiempo de diseño y desarrollo
 
 Permite crear un inventario de todos los componentes creados. Así se puede hacer rápidamente una auditoría y tener controlados todos ellos.
 
-Todos los elementos básicos quedan jerarquizados en las fases iniciales para facilitar posteriormente las iteraciones.
+Todos los elementos básicos quedan jerarquizados en las fases iniciales para facilitar posteriormente las iteraciones. Tets
 
 Una vez tenemos definida la plantilla, la creación de páginas se hace de forma mucho más rápida.
