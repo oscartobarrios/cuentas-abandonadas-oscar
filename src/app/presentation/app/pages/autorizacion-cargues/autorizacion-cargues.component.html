@@ -2,16 +2,11 @@
     <div class="row mb-5">
         <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
         <div class="col-7">Cuentas Abandonadas - Autorización cargues</div>
-        <!-- <div class="col-2">
-            <button *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
-                (click)="visualizarOrdenesSebra()">Ordenes de Cumplimiento
-                </button>
-        </div> -->
     </div>
 
     <div *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5 || usuario.idPerfil == 10">
 
-   
+
             <div class="row">
                 <div class="col-4">
                 <div class="row">
@@ -26,11 +21,11 @@
                     </select>
                 </div>
                 </div>
-            
+
                 <div class="col-8">
                     <div class="row">
                     <div class="col-3" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 5">
-                        <label>Tipo Archivo</label> 
+                        <label>Tipo Archivo</label>
                         <select class="form-control" [(ngModel)]="tipoArchivo">
                             <option value="null" disabled="true" [selected]="true" ></option>
                             <option
@@ -41,13 +36,13 @@
                         </select>
                     </div>
                     <div class="col-4">
-                        <label>Fecha Inicio</label> 
-                        <input type="date" class="form-control" [(ngModel)]="fechaInicial">  
-                    </div> 
+                        <label>Fecha Inicio</label>
+                        <input type="date" class="form-control" [(ngModel)]="fechaInicial">
+                    </div>
                     <div class="col-4">
-                        <label>Fecha Fin</label> 
-                        <input type="date" class="form-control" [(ngModel)]="fechaFinal">  
-                    </div> 
+                        <label>Fecha Fin</label>
+                        <input type="date" class="form-control" [(ngModel)]="fechaFinal">
+                    </div>
                     </div>
                 </div>
             </div>
@@ -61,6 +56,8 @@
 
     <div class="row">
         <table mat-table [dataSource]="cargues" matSort>
+          <caption></caption>
+          <th></th>
             <ng-container matColumnDef="Entidad" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de la entidad</th>
             <td mat-cell *matCellDef="let car">{{car.entidad}} </td>
@@ -99,7 +96,7 @@
                 <button *ngIf="usuario.idPerfil == 10" mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
                 (click)="ingresoDatosSebra(0)">Seleccionar Todo
                 </button>
-                
+
 
             </mat-header-cell>
 
@@ -156,7 +153,6 @@
                         <button class="btn btn-primary mt-2" (click)="modificarDatos(car.idCargue)">Modificar CUD</button>
                     </div>
 
-                    <!-- <div *ngIf="car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5) && (car.vbnoautorizadororden == 1)"> -->
                     <div *ngIf="(car.tipoArchivo === 'TRASLADO' || car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 5)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra,car.vbnoadminorden,car.vbnoautorizadororden)">Descargar Orden</button>
                     </div>
@@ -176,7 +172,6 @@
 
                     </div>
 
-                    <!-- <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (car.vbnosebra == 1) && (usuario.idPerfil == 10)"> -->
                     <div *ngIf="(car.tipoArchivo === 'REINTEGRO') && car.estado === 'CARGA_PROCESADA' && (usuario.idPerfil == 10)">
                         <button class="btn btn-primary mt-2" (click)="llevarpdf(car.idCargue,car.tipoArchivo,car.vbnotesoreriaorden,car.vbnosebra,car.vbnoadminorden,car.vbnoautorizadororden)">Descargar Orden</button>
 

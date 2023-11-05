@@ -24,15 +24,16 @@
                           <button class="form-control btn-primary-icetex" (click)="descargarExcelEntidad()">Descargar Excel</button>
                         </div>
 
-                      </div>      
+                      </div>
                     </mat-card-actions>
-              
+
                     <div fxLayout="column">
                       <div class="mat-elevation-z8">
-                
+
                         <div class="table-responsive">
                           <table mat-table [dataSource]="dataSource" matSort>
-
+                            <caption></caption>
+                            <th></th>
                             <ng-container matColumnDef="Nombre" >
                               <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
                               <td mat-cell *matCellDef="let element" style="width: 700px;">{{element.nombre}}</td>
@@ -57,8 +58,8 @@
                               <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
                               <td mat-cell *matCellDef="let element" style="width: 600px;">{{element.direccion}}</td>
                             </ng-container>
-                            
-                           
+
+
 
                             <ng-container matColumnDef="Actions">
                               <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
@@ -66,11 +67,11 @@
                                 <th mat-header-cell *matHeaderCellDef  mat-sort-header>Acción</th>
                                 <div style="margin: 3px;" >
                                   <div *ngIf="usuario.idPerfil == 4">
-                                    <button [routerLink]="['/entidadRegistro',element.idOrganizacion]" class="form-control btn-primary-icetex">Actualizar</button> 
+                                    <button [routerLink]="['/entidadRegistro',element.idOrganizacion]" class="form-control btn-primary-icetex">Actualizar</button>
                                   </div>
 
                                   <div *ngIf="usuario.idPerfil == 5">
-                                    <button [routerLink]="['/visualizarentidadtesorero',element.idOrganizacion]" class="form-control btn-primary-icetex">Visualizar</button> 
+                                    <button [routerLink]="['/visualizarentidadtesorero',element.idOrganizacion]" class="form-control btn-primary-icetex">Visualizar</button>
                                   </div>
                                 </div>
                               </mat-cell>
@@ -85,7 +86,7 @@
                   </mat-card-content>
                 </div>
 
-                <div *ngIf="usuario.idPerfil == 9"> 
+                <div *ngIf="usuario.idPerfil == 9">
 
                   <mat-card-content>
                     <mat-card-actions align="start">
@@ -101,26 +102,26 @@
                         <div class="col-sm-4 col-md-4" style="color:blue;font-size: medium;font-weight: bold;">
                           <label>{{estadoCorreo}}</label>
                         </div>
-                      </div>      
+                      </div>
                     </mat-card-actions>
                     <form [formGroup]="financieraForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
                       <div class="mb-3 mt-5 col-sm-12 col-md-12 bg-blue-icetex1">
                       </div>
-                     
+
                       <div class="mb-3 col-sm-12 col-md-12" *ngIf="swCorreo == 0 || swCorreo == 1">
                               <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250" disabled>
                       </div>
-              
+
                       <div class="mb-3 col-sm-12 col-md-12" *ngIf="swCorreo == 2">
                         <input type="text" formControlName="nombre" class="form-control" placeholder="Entidad financiera *" maxlength="250">
                       </div>
-        
+
                       <div class="row mb-3">
-                        
+
                           <div class="mb-3 col-sm-12 col-md-4" >
                               <input type="text" formControlName="idOrganizacion" class="form-control" placeholder="NIT *" maxlength="20"  disabled>
                           </div>
-              
+
                           <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 0 || swCorreo == 1">
                               <select class="form-control" formControlName="tipoEntidad" style="color: grey;" disabled>
                                   <option value="null" disabled="true" [selected]="true" >Tipo entidad</option>
@@ -146,13 +147,13 @@
                           <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 0 || swCorreo == 1">
                               <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad" maxlength="3" disabled>
                           </div>
-              
+
                           <div class="mb-3 col-sm-12 col-md-4" *ngIf="swCorreo == 2">
                             <input type="text" formControlName="codigoEntidad" class="form-control" placeholder="Código entidad" maxlength="3">
                           </div>
 
                       </div>
-                     
+
                       <div class="row mb-3">
                           <div class="mb-3 col-sm-12 col-md-4">
                               <input type="text" formControlName="telefonoArea" class="form-control" placeholder="Área Teléfono" maxlength="3">
@@ -175,7 +176,7 @@
                           <div class="col-sm-3 col-md-3" >
                               <input type="submit" class="form-control btn-primary-icetex" value="Actualizar">
                           </div>
-                         
+
                       </div>
                   </form>
                   </mat-card-content>
@@ -186,7 +187,7 @@
         <div class="accordion-item" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 9">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Representante legal             
+              Representante legal
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -198,7 +199,7 @@
         <div class="accordion-item" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 9">
           <h2 class="accordion-header" id="headingTree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTree" aria-expanded="false" aria-controls="collapseTree">
-              Revisor Fiscal            
+              Revisor Fiscal
             </button>
           </h2>
           <div id="collapseTree" class="accordion-collapse collapse" aria-labelledby="headingTree" data-bs-parent="#accordionExample">
@@ -210,7 +211,7 @@
         <div class="accordion-item" *ngIf="usuario.idPerfil == 4 || usuario.idPerfil == 9">
           <h2 class="accordion-header" id="headingFive">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              Funcionarios Autorizados Para Acceso Al Aplicativo 
+              Funcionarios Autorizados Para Acceso Al Aplicativo
             </button>
           </h2>
           <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
@@ -224,7 +225,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
               <!-- Funcionarios Autorizados Para Confirmar Operaciones de Cumplimiento Financiero -->
               Funcionarios Autorizados Para Cuentas Abandonadas
-                            
+
             </button>
           </h2>
           <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
