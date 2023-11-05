@@ -16,74 +16,74 @@
   font-size: 24px; }
 
 .mat-h1, .mat-headline, .mat-typography h1 {
-  font: 400 24px/32px Roboto;
+  font: 400 24px/32px Roboto, sans-serif;
   letter-spacing: 0em;
   margin: 0 0 16px; }
 
 .mat-h2, .mat-title, .mat-typography h2 {
-  font: 500 20px/32px Roboto;
+  font: 500 20px/32px Roboto, sans-serif;
   letter-spacing: 0.0075em;
   margin: 0 0 16px; }
 
 .mat-h3, .mat-subheading-2, .mat-typography h3 {
-  font: 400 16px/28px Roboto;
+  font: 400 16px/28px Roboto, sans-serif;
   letter-spacing: 0.0094em;
   margin: 0 0 16px; }
 
 .mat-h4, .mat-subheading-1, .mat-typography h4 {
-  font: 500 15px/24px Roboto;
+  font: 500 15px/24px Roboto, sans-serif;
   letter-spacing: 0.0067em;
   margin: 0 0 16px; }
 
 .mat-h5, .mat-typography h5 {
-  font: 400 calc(14px * 0.83)/20px Roboto;
+  font: 400 calc(14px * 0.83)/20px Roboto, sans-serif;
   margin: 0 0 12px; }
 
 .mat-h6, .mat-typography h6 {
-  font: 400 calc(14px * 0.67)/20px Roboto;
+  font: 400 calc(14px * 0.67)/20px Roboto, sans-serif;
   margin: 0 0 12px; }
 
 .mat-body-strong, .mat-body-2 {
-  font: 500 14px/24px Roboto;
+  font: 500 14px/24px Roboto, sans-serif;
   letter-spacing: 0.0179em; }
 
 .mat-body, .mat-body-1, .mat-typography {
-  font: 400 14px/20px Roboto;
+  font: 400 14px/20px Roboto, sans-serif;
   letter-spacing: 0.0179em; }
   .mat-body p, .mat-body-1 p, .mat-typography p {
     margin: 0 0 12px; }
 
 .mat-small, .mat-caption {
-  font: 400 12px/20px Roboto;
+  font: 400 12px/20px Roboto, sans-serif;
   letter-spacing: 0.0333em; }
 
 .mat-display-4, .mat-typography .mat-display-4 {
-  font: 300 112px/112px Roboto;
+  font: 300 112px/112px Roboto, sans-serif;
   letter-spacing: -0.0134em;
   margin: 0 0 56px; }
 
 .mat-display-3, .mat-typography .mat-display-3 {
-  font: 400 56px/56px Roboto;
+  font: 400 56px/56px Roboto, sans-serif;
   letter-spacing: -0.0089em;
   margin: 0 0 64px; }
 
 .mat-display-2, .mat-typography .mat-display-2 {
-  font: 400 45px/48px Roboto;
+  font: 400 45px/48px Roboto, sans-serif;
   letter-spacing: 0em;
   margin: 0 0 64px; }
 
 .mat-display-1, .mat-typography .mat-display-1 {
-  font: 400 34px/40px Roboto;
+  font: 400 34px/40px Roboto, sans-serif;
   letter-spacing: 0.0074em;
   margin: 0 0 64px; }
 
 .mat-bottom-sheet-container {
-  font: 400 14px/20px Roboto;
+  font: 400 14px/20px Roboto, sans-serif;
   letter-spacing: 0.0179em; }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
 .mat-flat-button, .mat-fab, .mat-mini-fab {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   font-weight: 500; }
 
@@ -128,23 +128,23 @@
   font-weight: 400; }
 
 .mat-dialog-title {
-  font: 500 20px/32px Roboto;
+  font: 500 20px/32px Roboto, sans-serif;
   letter-spacing: 0.0075em; }
 
 .mat-expansion-panel-header {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 15px;
   font-weight: 500; }
 
 .mat-expansion-panel-content {
-  font: 400 14px/20px Roboto;
+  font: 400 14px/20px Roboto, sans-serif;
   letter-spacing: 0.0179em; }
 
 .mat-form-field {
   font-size: inherit;
   font-weight: 400;
   line-height: 1.125;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   letter-spacing: 1.5px; }
 
 .mat-form-field-wrapper {
@@ -290,13 +290,13 @@ input.mat-input-element {
   margin-top: -0.0625em; }
 
 .mat-menu-item {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   font-weight: 400; }
 
 .mat-paginator,
 .mat-paginator-page-size .mat-select-trigger {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 12px; }
 
 .mat-select-trigger {
@@ -321,7 +321,7 @@ input.mat-input-element {
   font-weight: 500; }
 
 .mat-tab-label, .mat-tab-link {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   font-weight: 500; }
 
@@ -332,7 +332,7 @@ input.mat-input-element {
 .mat-toolbar h4,
 .mat-toolbar h5,
 .mat-toolbar h6 {
-  font: 500 20px/32px Roboto;
+  font: 500 20px/32px Roboto, sans-serif;
   letter-spacing: 0.0075em;
   margin: 0; }
 
@@ -369,7 +369,7 @@ input.mat-input-element {
       font-size: 14px; }
 
 .mat-list-base .mat-subheader {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 14px;
   font-weight: 500; }
 
@@ -403,11 +403,11 @@ input.mat-input-element {
   font-size: 16px; }
 
 .mat-optgroup-label {
-  font: 500 14px/24px Roboto;
+  font: 500 14px/24px Roboto, sans-serif;
   letter-spacing: 0.0179em; }
 
 .mat-simple-snackbar {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 14px; }
 
 .mat-simple-snackbar-action {
