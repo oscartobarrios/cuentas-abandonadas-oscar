@@ -1,11 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <mat-card>
       <form [formGroup]="certificacionesForm" method="post" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()" *ngIf="usuario.idPerfil == 1">
-
       <mat-card-header>
         <mat-card-title>Formulario para el cargue de certificaciones</mat-card-title>
       </mat-card-header>
-
       <mat-card-content class="modal-certificados">
           <small> Nota: Recuerde que si el revisor fiscal cambio, debe adjuntar los documentos en donde conste este cambio</small>
           <br/><br/><br/>
@@ -13,15 +11,10 @@
             <mat-form-field appearance="outline" fxFlex="600">
               <mat-label>Nombre del certificado</mat-label>
               <mat-select formControlName="nombre">
-                <mat-option *ngFor="let type of typesCertificacion" [value]="type">
-                {{type}}
-                </mat-option>
+                <mat-option *ngFor="let type of typesCertificacion" [value]="type">{{type}}</mat-option>
               </mat-select>
             </mat-form-field>
-
-
           </div>
-
           <div class="col-md-4  col-sm-4">
             <input type="file" class="dropify" (change)="onFileChange($event)" data-height="80" data-allowed-file-extensions="pdf" formControlName="file" accept="application/pdf"/>
           </div>
@@ -29,7 +22,6 @@
           <div class="col-sm-3 col-md-3" >
             <input type="submit" class="form-control btn-primary-icetex" value="Guardar">
           </div>
-
       </mat-card-content>
     </form>
     <br>
@@ -75,7 +67,6 @@
                   <mat-icon color="accent">highlight_off</mat-icon> Rechazar
               </button>
             </div>
-
           </td>
         </ng-container>
         <ng-container matColumnDef="Descargar">
@@ -96,8 +87,6 @@
     <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
   </mat-card>
 </div>
-
-
 <ng-template #modalInfo let-modal>
   <form [formGroup]="rechazoForm" (ngSubmit)="!rechazoForm.invalid && rechazarCertificacion(rechazoForm.value)">
       <div class="modal-content">
@@ -106,42 +95,21 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close()"></button>
           </div>
           <div class="modal-body">
-              <!--Observacion-->
             <div class="form-group mx-sm-3 mb-2">
               <label for="observacion">Observacion</label>
-              <input
-                novalidate
-                id="observacion"
-                class="form-control"
-                formControlName="observacion"
-              />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                rechazoForm.get('observacion')!.hasError('required') &&
-                rechazoForm.get('observacion')!.touched
-                "
-              >
+              <input novalidate id="observacion" class="form-control" formControlName="observacion"/>
+              <div class="alert alert-danger alert-dismissible fade show" *ngIf=" rechazoForm.get('observacion')!.hasError('required') && rechazoForm.get('observacion')!.touched">
                 Observación requerida
               </div>
-              <div
-              class="alert alert-danger alert-dismissible fade show"
-              *ngIf="rechazoForm.get('observacion')!.hasError('maxlength')"
-            >
+              <div class="alert alert-danger alert-dismissible fade show" *ngIf="rechazoForm.get('observacion')!.hasError('maxlength')">
             Observación mayor a 200 caracteres
             </div>
-
             </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-danger" (click)="modal.close()">
-        Cancelar
-      </button>
-              <button type="submit" class="btn btn-primary" [disabled]="!rechazoForm.valid">
-        Aceptar
-      </button>
+              <button type="button" class="btn btn-danger" (click)="modal.close()"> Cancelar </button>
+              <button type="submit" class="btn btn-primary" [disabled]="!rechazoForm.valid"> Aceptar</button>
           </div>
       </div>
   </form>
 </ng-template>
-
