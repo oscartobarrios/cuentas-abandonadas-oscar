@@ -2,17 +2,14 @@
     <div class="row mb-5">
         <div class="col-2"><a href="javascript:history.go(-1)"><i class="fas fa-chevron-left shadowBox"></i></a></div>
         <div class="col-8">Cuentas Abandonadas - Lista de Notificaciones de Lider de Entidad</div>
-        <!-- <div class="col-2">
-            <button mat-raised-button style="margin-bottom: 20px;margin-left: 15px;" class="btn btn-primary-icetex"
-            (click)="vobuenoordenTodos()">Seleccionar Todo</button>
-          </div> -->
+
     </div>
     <div fxLayout="column">
       <div class="mat-elevation-z8">
 
         <div class="table-responsive">
           <table mat-table [dataSource]="dataSource" matSort>
-
+            <caption></caption>
             <ng-container matColumnDef="Entidad" >
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Entidad</th>
               <td mat-cell *matCellDef="let element" style="width: 300px;">{{element.nombreEntidad}}</td>
@@ -27,7 +24,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
                 <td mat-cell *matCellDef="let element" style="width: 500px;">{{element.fechaCreacion | date: 'dd/MM/yyyy'}}</td>
               </ng-container>
-            
+
             <ng-container matColumnDef="Actions">
               <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
               <mat-cell *matCellDef="let element;">
@@ -42,8 +39,8 @@
                             <mat-icon color="accent">highlight_off</mat-icon> Rechazar
                         </button>
                     </div>
-                   
-                 
+
+
                 </div>
               </mat-cell>
             </ng-container>
