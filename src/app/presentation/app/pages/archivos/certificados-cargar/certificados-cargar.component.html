@@ -115,22 +115,6 @@
                 class="form-control"
                 formControlName="observacion"
               />
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                *ngIf="
-                rechazoForm.get('observacion')!.hasError('required') &&
-                rechazoForm.get('observacion')!.touched
-                "
-              >
-                Observación requerida
-              </div>
-              <div
-              class="alert alert-danger alert-dismissible fade show"
-              *ngIf="rechazoForm.get('observacion')!.hasError('maxlength')"
-            >
-            Observación mayor a 200 caracteres
-            </div>
-
             </div>
           </div>
           <div class="modal-footer">
