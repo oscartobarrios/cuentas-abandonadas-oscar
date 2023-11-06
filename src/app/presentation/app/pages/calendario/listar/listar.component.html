@@ -15,7 +15,7 @@
             <h2>CESION</h2> Archivo de cargue de cesiones cuentas abandonadas
         </div>
         <div class="col-md-8">
-            <table width="100%" mat-table [dataSource]="calendariosCargueCesion" matSort>
+            <table mat-table [dataSource]="calendariosCargueCesion" matSort><caption>table calendar</caption>
                 <ng-container matColumnDef="fechaDesde">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                     <td mat-cell *matCellDef="let cal" >
@@ -55,13 +55,13 @@
             <mat-paginator #MatPaginatorCesion [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
         </div>
     </div>
-    
+
     <div class="row mb-5 bg-white">
         <div class="col-md-4">
             <h2>REINTEGRO</h2> Archivo de cargue de reintegros cuentas abandonadas
         </div>
         <div class="col-md-8">
-            <table width="100%" mat-table [dataSource]="calendariosCargueReintegro" matSort>
+            <table mat-table [dataSource]="calendariosCargueReintegro" matSort><caption>table calendar</caption>
                 <ng-container matColumnDef="fechaDesde">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                     <td mat-cell *matCellDef="let cal" >
@@ -106,7 +106,7 @@
             <h2>TRASLADO</h2> Archivo de cargue de traslado cuentas abandonadas
         </div>
         <div class="col-md-8">
-            <table width="100%" mat-table [dataSource]="calendariosCargueTraslado" matSort>
+            <table mat-table [dataSource]="calendariosCargueTraslado" matSort><caption>table calendar</caption>
                 <ng-container matColumnDef="fechaDesde">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                     <td mat-cell *matCellDef="let cal" >
@@ -162,7 +162,7 @@
             <h2>VALORACIÓN</h2> Archivo de cargue de valoración cuentas abandonadas
         </div>
         <div class="col-md-8">
-            <table width="100%" mat-table [dataSource]="calendariosCargueValoracion" matSort>
+            <table mat-table [dataSource]="calendariosCargueValoracion" matSort><caption>table calendar</caption>
                 <ng-container matColumnDef="fechaDesde">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                     <td mat-cell *matCellDef="let cal" >
@@ -208,7 +208,7 @@
           <h2>ACTUALIZACIÓN DE CUENTAS</h2> Archivo de cargue de actualización de cuentas
       </div>
       <div class="col-md-8">
-          <table width="100%" mat-table [dataSource]="calendariosCargueCuenta" matSort>
+          <table mat-table [dataSource]="calendariosCargueCuenta" matSort><caption>table calendar</caption>
               <ng-container matColumnDef="fechaDesde">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                   <td mat-cell *matCellDef="let cal" >
@@ -249,7 +249,7 @@
         <h2>SUBASTA</h2> Subasta para funcionarios de entidades
     </div>
     <div class="col-md-8">
-        <table width="100%" mat-table [dataSource]="calendariosCargueSubasta" matSort>
+        <table mat-table [dataSource]="calendariosCargueSubasta" matSort><caption>table calendar</caption>
             <ng-container matColumnDef="fechaDesde">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header width="120">DESDE</th>
                 <td mat-cell *matCellDef="let cal" >
